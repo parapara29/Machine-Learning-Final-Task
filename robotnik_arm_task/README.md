@@ -19,3 +19,15 @@ Key variables in robotnik_arm_task.py:
  
  Assessment Goal:
   - ML model that produces (wheel_cmds, torque_arm) from measurements (base_pos,base_bearing,q_mes,qd_mes)
+
+To record training data as CSV run:
+
+```bash
+uv run robotnik_arm_task/collect_data.py
+```
+
+Instead of uv run use whatever environment you have set up in your system.
+
+Edit `NUM_TARGETS`, `SEED`, and `OUTPUT_DIR` at the top of `collect_data.py`. The default output is `robotnik_arm_task/data`. It contains `targets.csv` and one CSV per episode. Each row records the target, base position and bearing, seven arm joint angles and velocities, four expert wheel commands, and seven expert arm torques. `time` and `ee_error` are metadata;
+
+Currently, the simulation is started with the same initial state, so to make the data more better, we can add changes in the initial state as well.

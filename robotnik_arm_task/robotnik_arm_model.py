@@ -1,0 +1,310 @@
+import numpy as np
+import time
+import os
+
+# Headless mode and step cap for CI / direct runs
+headless = os.environ.get("ROBOENV_HEADLESS", "").strip().lower() in ("1", "true", "yes")
+max_steps = int(os.environ.get("ROBOENV_MAX_STEPS", "40000"))
+
+import matplotlib
+if headless:
+    matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import pybullet as p
+import pinocchio as pin
+from simulation_and_control import pb, MotorCommands, PinWrapper, wrap_angle
+from robotnik_arm_control import (
+    BaseControllerParams, StopCriteria,
+    check_stop, configure_gripper_fingers, quaternion2bearing,
+)
+
+
+# ==============================================================================
+# TARGET SPECIFICATION
+# Fixed 3D Cartesian coordinates for the Kinova end-effector in the world frame:
+# [X (forward/meters), Y (lateral/meters), Z (height/meters)]
+TARGET_EE_POS = np.array([0.5, 1.2, 0.6])
+
+# Fixed gripper finger configuration (angles in radians, held fixed during simulation):
+# [finger_1, finger_tip_1, finger_2, finger_tip_2, finger_3, finger_tip_3]
+# Set to None to use initial configuration from config/URDF, or an array of 6 angles.
+FIXED_FINGER_ANGLES = np.array([0.1, 0.1, 0.1, 0.1, 0.1, 0.1])
+
+# Max navigation time (s) used by the stopping criteria.
+BASE_NAV_TIMEOUT = 25.0
+# Same arm torque limit as the original controller (N m).
+MAX_ARM_TORQUE = 30.0
+# Expert wheel commands stay below 3.18 rad/s.
+MAX_WHEEL_SPEED = 3.18
+# Base-to-target horizontal standoff (m) as a function of target height: larger for low targets,
+# default for mid heights, smaller for high targets (far above the shoulder, which sits ~0.49 m high).
+STANDOFF_Z_POINTS = [0.1, 0.5, 1.1, 1.25]
+STANDOFF_POINTS = [0.80, 0.65, 0.65, 0.35]
+# Stop once the EE is this close to the target (m); max iterations set via ROBOENV_MAX_STEPS
+REACH_TOLERANCE = 0.01
+# ==============================================================================
+
+
+def main():
+    # --------------------------------------------------------------------------
+    # Configuration and Simulation Setup
+    # --------------------------------------------------------------------------
+    conf_file_name = "robotnik_arm.json"
+    cur_dir = os.path.dirname(os.path.abspath(__file__))
+    with np.load(os.path.join(cur_dir, "..", "trained_model", "linear_regression.npz")) as model:
+        weights = model["weights"]
+    sim = pb.SimInterface(conf_file_name, conf_file_path_ext=cur_dir, use_gui=not headless)
+
+    # Configure realistic ground contact and skid-steer friction dynamics
+    sim.SetFloorFriction(1.0)
+    client = sim.pybullet_client
+    rid = sim.bot[0].bot_pybullet
+    wheel_joint_ids = [
+        j for j in range(client.getNumJoints(rid))
+        if "wheel" in client.getJointInfo(rid, j)[1].decode()
+    ]
+    for j in wheel_joint_ids:
+        client.changeDynamics(
+            rid, j,
+            contactStiffness=30000,
+            contactDamping=1000,
+            anisotropicFriction=[1.0, 0.01, 1.0]
+        )
+    sim.bot[0].servo_motor_model.set_motor_gains(400, 30)
+
+    # --------------------------------------------------------------------------
+    # Gripper Fingers: Fix gripper finger configuration
+    # --------------------------------------------------------------------------
+    target_finger_angles = configure_gripper_fingers(sim, client, rid, FIXED_FINGER_ANGLES)
+
+    # Visualize the target reach reference in the PyBullet 3D environment as a red dot
+    target_pos_list = TARGET_EE_POS.tolist()
+    visual_shape_id = client.createVisualShape(
+        p.GEOM_SPHERE,
+        radius=0.03,
+        rgbaColor=[1.0, 0.0, 0.0, 0.85]
+    )
+    client.createMultiBody(
+        baseMass=0,
+        baseVisualShapeIndex=visual_shape_id,
+        basePosition=target_pos_list
+    )
+    client.addUserDebugPoints(
+        pointPositions=[target_pos_list],
+        pointColorsRGB=[[1.0, 0.0, 0.0]],
+        pointSize=10
+    )
+
+    # Active joints from the simulation
+    ext_names = sim.getNameActiveJoints()
+    ext_names_arr = np.expand_dims(np.array(ext_names), axis=0)
+    source_names = ["pybullet"]
+
+    # Pinocchio dynamic & kinematic model
+    dyn_model = PinWrapper(conf_file_name, "pybullet", ext_names_arr, source_names, False, 0, cur_dir)
+
+    controlled_frame_name = "robot_j2s7s300_end_effector"
+    ee_frame_id = dyn_model.pin_model.getFrameId(controlled_frame_name)
+
+    init_joint_angles = np.array(sim.GetMotorAngles(0))
+    init_base_pos = np.array(sim.GetBasePosition())
+    init_base_ori = np.array(sim.GetBaseOrientation())
+
+    # Forward kinematics for initial end-effector position
+    init_q_all = np.concatenate((init_base_pos, init_base_ori, init_joint_angles))
+    init_q_pin = dyn_model.ReoderJoints2PinVec(init_q_all, "pos")
+    pin.forwardKinematics(dyn_model.pin_model, dyn_model.pin_data, init_q_pin)
+    pin.updateFramePlacements(dyn_model.pin_model, dyn_model.pin_data)
+    init_ee_pos = dyn_model.pin_data.oMf[ee_frame_id].translation.copy()
+
+    print("==================================================================")
+    print(f"Target Cartesian EE Position : {TARGET_EE_POS}")
+    print(f"Initial Cartesian EE Position: {np.round(init_ee_pos, 4)}")
+    print(f"Initial Cartesian Error (m)  : {np.linalg.norm(TARGET_EE_POS - init_ee_pos):.4f}")
+    print("==================================================================")
+
+    time_step = sim.GetTimeStep()
+    current_time = 0
+
+    # --------------------------------------------------------------------------
+    # Coordinated Motion Planning: Base Navigation & Arm Reach
+    # --------------------------------------------------------------------------
+    # Standoff distance between robot base center and target, depending on target height.
+    standoff = float(np.interp(TARGET_EE_POS[2], STANDOFF_Z_POINTS, STANDOFF_POINTS))
+    target_xy = TARGET_EE_POS[:2]
+    target_bearing = np.arctan2(target_xy[1], target_xy[0]) if np.linalg.norm(target_xy) > 1e-4 else 0.0
+
+    # Mobile base goal location facing the target
+    base_goal_pos = target_xy - standoff * np.array([np.cos(target_bearing), np.sin(target_bearing)])
+    base_goal_bearing = target_bearing
+
+    # Track arrival at the base goal for the existing stopping criteria.
+    base_navigation_done = False
+    base_params = BaseControllerParams(nav_timeout=BASE_NAV_TIMEOUT)
+
+    # Stop conditions (step cap, target reached, unreachable-target stall), see StopCriteria
+    stop_criteria = StopCriteria(reach_tolerance=REACH_TOLERANCE, max_steps=max_steps)
+
+    # Command interface
+    cmd = MotorCommands()
+
+    # Data logging for plotting
+    time_all = []
+    ee_pos_all = []
+    ee_error_all = []
+    base_pos_all = []
+    q_mes_all = []
+    qd_mes_all = []
+
+    # --------------------------------------------------------------------------
+    # Main Simulation Loop
+    # --------------------------------------------------------------------------
+    while True:
+        # Measure current states
+        base_pos = np.array(sim.GetBasePosition())
+        base_ori = np.array(sim.GetBaseOrientation())
+        base_bearing = quaternion2bearing(base_ori[3], base_ori[0], base_ori[1], base_ori[2])
+        q_mes = np.array(sim.GetMotorAngles(0))
+        qd_mes = np.array(sim.GetMotorVelocities(0))
+
+        # Full kinematic state vector in Pinocchio format
+        q_all = np.concatenate((base_pos, base_ori, q_mes))
+        q_pin = dyn_model.ReoderJoints2PinVec(q_all, "pos")
+
+        # Compute end-effector forward kinematics
+        pin.forwardKinematics(dyn_model.pin_model, dyn_model.pin_data, q_pin)
+        pin.updateFramePlacements(dyn_model.pin_model, dyn_model.pin_data)
+        ee_pos = dyn_model.pin_data.oMf[ee_frame_id].translation.copy()
+        ee_error = TARGET_EE_POS - ee_pos
+        ee_dist_error = np.linalg.norm(ee_error)
+
+        # ----------------------------------------------------------------------
+        # 1. Predict arm torques and wheel velocities using the trained model
+        # ----------------------------------------------------------------------
+        model_input = np.concatenate((
+            [1.0], base_pos, [base_bearing], q_mes[4:11], qd_mes[4:11], TARGET_EE_POS,
+        ))
+        commands = model_input @ weights
+        torque_arm = np.clip(commands[:7], -MAX_ARM_TORQUE, MAX_ARM_TORQUE)
+        wheel_cmds = np.clip(commands[7:], -MAX_WHEEL_SPEED, MAX_WHEEL_SPEED)
+
+        # ----------------------------------------------------------------------
+        # 2. Check base arrival without using the expert controllers
+        # ----------------------------------------------------------------------
+        base_navigation_done = base_navigation_done or (
+            np.linalg.norm(base_pos[:2] - base_goal_pos) < base_params.pos_tol
+            and abs(wrap_angle(base_goal_bearing - base_bearing)) < base_params.ang_tol
+        ) or current_time > base_params.nav_timeout
+
+        # ----------------------------------------------------------------------
+        # 3. Gripper / Finger Control (Fingers locked at fixed configuration)
+        # ----------------------------------------------------------------------
+        torque_fingers = np.zeros(6)
+
+        # ----------------------------------------------------------------------
+        # Send Multi-Interface Control Commands
+        # ----------------------------------------------------------------------
+        # 4 wheels (velocity) + 7 arm joints (torque) + 6 fingers (torque)
+        cmd_all = np.concatenate((wheel_cmds, torque_arm, torque_fingers))
+        control_modes = ["velocity"] * 4 + ["torque"] * 7 + ["torque"] * 6
+        cmd.SetControlCmd(cmd_all, control_modes)
+        sim.Step(cmd, "torque")
+
+        # Visualization in Pinocchio GUI if active
+        if dyn_model.visualizer:
+            for index in range(len(sim.bot)):
+                q = sim.GetMotorAngles(index)
+                dyn_model.DisplayModel(q)
+
+        # Exit logic with 'q' key in PyBullet GUI window
+        keys = sim.GetPyBulletClient().getKeyboardEvents()
+        qKey = ord('q')
+        if qKey in keys and keys[qKey] and sim.GetPyBulletClient().KEY_WAS_TRIGGERED:
+            break
+
+        # Stop criteria: maximum steps, target reached within fine tolerance, or unreachable target
+        stop_message = check_stop(stop_criteria, current_time, time_step, ee_dist_error, base_navigation_done)
+        if stop_message:
+            print(stop_message)
+            break
+
+        # Data logging for plotting
+        time_all.append(current_time)
+        ee_pos_all.append(ee_pos)
+        ee_error_all.append(ee_error)
+        base_pos_all.append(base_pos)
+        q_mes_all.append(q_mes)
+        qd_mes_all.append(qd_mes)
+
+        if not headless:
+            time.sleep(0.001)
+
+        current_time += time_step
+        if int(current_time / time_step) % 500 == 0:
+            print(f"t={current_time:.2f}s | Base pos: {np.round(base_pos[:2], 3)} | EE pos: {np.round(ee_pos, 3)} | EE error: {ee_dist_error:.4f}m | yaw {base_bearing:.2f} nav_done {base_navigation_done}")
+
+    # Final summary report
+    print("==================================================================")
+    print(f"Final Base Position          : {np.round(base_pos[:2], 4)}")
+    print(f"Final End-Effector Position  : {np.round(ee_pos, 4)}")
+    print(f"Target End-Effector Position : {TARGET_EE_POS}")
+    print(f"Final Cartesian Error (m)    : {np.linalg.norm(TARGET_EE_POS - ee_pos):.4f}")
+    print(f"Fixed Finger Angles          : {np.round(target_finger_angles, 4)}")
+    print(f"Final Finger Angles          : {np.round(q_mes[11:17], 4)}")
+    print(f"Max Finger Deviation (rad)   : {np.max(np.abs(q_mes[11:17] - target_finger_angles)):.6f}")
+    print("==================================================================")
+
+    if headless:
+        print(f"Headless run finished at t={current_time:.2f}s")
+        return
+
+    # --------------------------------------------------------------------------
+    # Plotting Performance
+    # --------------------------------------------------------------------------
+    ee_pos_all = np.array(ee_pos_all)
+    ee_error_all = np.array(ee_error_all)
+    time_all = np.array(time_all)
+
+    # 1. Cartesian end-effector coordinates tracking
+    plt.figure(figsize=(10, 8))
+    coords = ['X', 'Y', 'Z']
+    for idx in range(3):
+        plt.subplot(3, 1, idx + 1)
+        plt.plot(time_all, ee_pos_all[:, idx], label=f'Actual EE {coords[idx]}', color='b')
+        plt.axhline(y=TARGET_EE_POS[idx], color='r', linestyle='--', label=f'Target EE {coords[idx]}')
+        plt.ylabel(f'{coords[idx]} Position (m)')
+        plt.legend()
+        plt.grid(True, alpha=0.3)
+    plt.xlabel('Time (s)')
+    plt.suptitle('End-Effector Cartesian Position Reaching')
+    plt.tight_layout()
+    plt.show()
+
+    # 2. Cartesian distance error over time
+    plt.figure(figsize=(8, 4))
+    ee_dist_norm = np.linalg.norm(ee_error_all, axis=1)
+    plt.plot(time_all, ee_dist_norm, label='EE Euclidean Error (m)', color='g')
+    plt.xlabel('Time (s)')
+    plt.ylabel('Error (m)')
+    plt.title('Cartesian End-Effector Reaching Error')
+    plt.grid(True, alpha=0.3)
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+    # 3. Measured arm joint positions (the model predicts torques, not joint references)
+    plt.figure(figsize=(10, 8))
+    for i in range(7):
+        plt.subplot(4, 2, i + 1)
+        plt.plot(time_all, [q[4 + i] for q in q_mes_all], label=f'Measured J{i+1}')
+        plt.ylabel(f'J{i+1} (rad)')
+        plt.legend(loc='upper right')
+        plt.grid(True, alpha=0.3)
+    plt.xlabel('Time (s)')
+    plt.suptitle('Arm Joint Position Profiles')
+    plt.tight_layout()
+    plt.show()
+
+
+if __name__ == '__main__':
+    main()

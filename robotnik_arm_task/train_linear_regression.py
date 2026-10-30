@@ -7,32 +7,24 @@ import pandas as pd
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-DATA_DIR = Path(__file__).parent / "data"
-MODEL_PATH = Path(__file__).parent / "linear_regression.npz"
+from model_features import INPUT_COLUMNS, STATE_COLUMNS, OUTPUT_COLUMNS, make_features
+
+DATA_DIR = Path(__file__).parent / "data" / "data_randomized"
+MODEL_PATH = Path(__file__).parent.parent / "trained_model" / "linear_regression.npz"
 RESULTS_DIR = Path(__file__).parent / "training_results"
 TEST_FRACTION = 0.2
 SEED = 42
 
-INPUT_COLUMNS = (
-    ["base_x", "base_y", "base_z", "base_bearing"]
-    + [f"q_mes_{i}" for i in range(4, 11)]
-    + [f"qd_mes_{i}" for i in range(4, 11)]
-    + ["target_x", "target_y", "target_z"]
-)
-OUTPUT_COLUMNS = (
-    [f"torque_arm_{i}" for i in range(7)]
-    + [f"wheel_cmds_{i}" for i in range(4)]
-)
-
 
 def load_data(files):
     return pd.concat(
-        [pd.read_csv(file, usecols=INPUT_COLUMNS + OUTPUT_COLUMNS) for file in files],
+        [pd.read_csv(file, usecols=STATE_COLUMNS + OUTPUT_COLUMNS) for file in files],
         ignore_index=True,
     )
 
-# CHAT GPT CODED THIS PART:
-def save_plots(metrics, weights, train_file, test_file):
+
+# Plotting and episode splitting adapted with ChatGPT.
+def save_plots(metrics, weights, input_mean, input_scale, train_file, test_file):
     fig, axes = plt.subplots(2, 2, figsize=(14, 8))
     for row, (outputs, title, unit) in enumerate([
         (OUTPUT_COLUMNS[:7], "Arm torques", "N m"),
@@ -48,10 +40,11 @@ def save_plots(metrics, weights, train_file, test_file):
     plt.close(fig)
 
     for split, file in [("train", train_file), ("test", test_file)]:
-        episode = pd.read_csv(file, usecols=INPUT_COLUMNS + OUTPUT_COLUMNS + ["time"])
-        # Limit plotted points for readability; metrics still use every row.
+        episode = pd.read_csv(file, usecols=STATE_COLUMNS + OUTPUT_COLUMNS + ["time"])
+        # Limit plotted points; metrics use every recorded row.
         episode = episode.iloc[::max(1, len(episode) // 2000)]
-        X = np.column_stack((np.ones(len(episode)), episode[INPUT_COLUMNS].to_numpy()))
+        features = (make_features(episode) - input_mean) / input_scale
+        X = np.column_stack((np.ones(len(episode)), features))
         predictions = X @ weights
         fig, axes = plt.subplots(6, 2, figsize=(14, 16), sharex=True)
         for i, (ax, output) in enumerate(zip(axes.flat, OUTPUT_COLUMNS)):
@@ -65,38 +58,40 @@ def save_plots(metrics, weights, train_file, test_file):
         fig.tight_layout()
         fig.savefig(RESULTS_DIR / f"{split}_predictions.png", dpi=150)
         plt.close(fig)
-# CHAT GPT CODED THIS PART ENDS HERE
+
+
 def main():
     files = sorted(DATA_DIR.glob("episode_*.csv"))
+    if len(files) < 2:
+        raise ValueError("Collect at least two complete episodes in data_randomized before training.")
 
     # Keep whole episodes separate so neighbouring steps cannot leak into the test set.
-    #CHAT GPT CODED THIS PART:
     np.random.default_rng(SEED).shuffle(files)
     num_test = int(np.ceil(len(files) * TEST_FRACTION))
     test_files = files[:num_test]
     train_files = files[num_test:]
     train = load_data(train_files)
     test = load_data(test_files)
-    #END OF CHAT GPT CODED PART
-    # A column of ones lets the model learn a constant offset (intercept).
-    X_train = np.column_stack((np.ones(len(train)), train[INPUT_COLUMNS].to_numpy()))
+    # Fit feature scaling on training data only, then add the intercept column.
+    features = make_features(train)
+    input_mean = features.mean(axis=0)
+    input_scale = features.std(axis=0)
+    input_scale[np.isclose(input_scale, 0)] = 1.0
+    features -= input_mean
+    features /= input_scale
+    X_train = np.column_stack((np.ones(len(train)), features))
+    del features
     y_train = train[OUTPUT_COLUMNS].to_numpy()
     weights = np.linalg.pinv(X_train) @ y_train
 
-    X_test = np.column_stack((np.ones(len(test)), test[INPUT_COLUMNS].to_numpy()))
+    X_test = np.column_stack((np.ones(len(test)), (make_features(test) - input_mean) / input_scale))
     y_test = test[OUTPUT_COLUMNS].to_numpy()
-    predictions = X_test @ weights
-    error = y_test - predictions
-    arm_rmse = np.sqrt(np.mean(error[:, :7]**2))
-    wheel_rmse = np.sqrt(np.mean(error[:, 7:]**2))
     print(f"Training: {len(train_files)} episodes, {len(train)} rows")
     print(f"Testing: {len(test_files)} episodes, {len(test)} rows")
-    print(f"Arm torque test RMSE: {arm_rmse:.4f} N m")
-    print(f"Wheel command test RMSE: {wheel_rmse:.4f} rad/s")
 
     metrics = pd.DataFrame(index=OUTPUT_COLUMNS)
-    for split, actual, predicted in [("train", y_train, X_train @ weights), ("test", y_test, predictions)]:
-        squared_error = np.sum((actual - predicted)**2, axis=0)
+    for split, X, actual in [("train", X_train, y_train), ("test", X_test, y_test)]:
+        squared_error = np.sum((actual - X @ weights)**2, axis=0)
         total_variation = np.sum((actual - actual.mean(axis=0))**2, axis=0)
         metrics[f"{split}_rmse"] = np.sqrt(squared_error / len(actual))
         # R² is undefined when the expert command is constant.
@@ -107,12 +102,15 @@ def main():
     print(metrics.round(4).to_string())
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     metrics.to_csv(RESULTS_DIR / "metrics.csv", index_label="output")
-    save_plots(metrics, weights, train_files[0], test_files[0])
+    save_plots(metrics, weights, input_mean, input_scale, train_files[0], test_files[0])
     print(f"Saved metrics and graphs to {RESULTS_DIR}")
 
+    MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
     np.savez(
         MODEL_PATH,
         weights=weights,
+        input_mean=input_mean,
+        input_scale=input_scale,
         input_columns=INPUT_COLUMNS,
         output_columns=OUTPUT_COLUMNS,
         train_episodes=[file.name for file in train_files],

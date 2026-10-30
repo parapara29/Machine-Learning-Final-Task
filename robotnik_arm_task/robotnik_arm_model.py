@@ -12,36 +12,39 @@ if headless:
 import matplotlib.pyplot as plt
 import pybullet as p
 import pinocchio as pin
-from simulation_and_control import pb, MotorCommands, PinWrapper, wrap_angle
+from simulation_and_control import pb, MotorCommands, PinWrapper
 from robotnik_arm_control import (
-    BaseControllerParams, StopCriteria,
-    check_stop, configure_gripper_fingers, quaternion2bearing,
+    ArmControllerParams, BaseControllerParams, BaseNavState, StopCriteria,
+    base_controller, check_stop, configure_gripper_fingers, quaternion2bearing,
 )
+from model_features import INPUT_COLUMNS, make_features
 
 
 # ==============================================================================
 # TARGET SPECIFICATION
 # Fixed 3D Cartesian coordinates for the Kinova end-effector in the world frame:
 # [X (forward/meters), Y (lateral/meters), Z (height/meters)]
-TARGET_EE_POS = np.array([0.5, 1.2, 0.6])
+TARGET_EE_POS = np.array([-0.5, 1.1, 1.0])
 
 # Fixed gripper finger configuration (angles in radians, held fixed during simulation):
 # [finger_1, finger_tip_1, finger_2, finger_tip_2, finger_3, finger_tip_3]
 # Set to None to use initial configuration from config/URDF, or an array of 6 angles.
 FIXED_FINGER_ANGLES = np.array([0.1, 0.1, 0.1, 0.1, 0.1, 0.1])
 
-# Max navigation time (s) used by the stopping criteria.
+# Max time (s) allowed for the base to reach its standoff pose before the arm starts reaching.
+# Targets behind the robot need a large turn, so this must be generous.
 BASE_NAV_TIMEOUT = 25.0
-# Same arm torque limit as the original controller (N m).
-MAX_ARM_TORQUE = 30.0
-# Expert wheel commands stay below 3.18 rad/s.
-MAX_WHEEL_SPEED = 3.18
+# Max EE distance from the shoulder the arm is asked to reach (m). Targets further away are projected
+# onto this sphere, so the arm settles at the closest pose instead of fully stretching (singularity).
+ARM_REACH_LIMIT = 0.85
 # Base-to-target horizontal standoff (m) as a function of target height: larger for low targets,
 # default for mid heights, smaller for high targets (far above the shoulder, which sits ~0.49 m high).
 STANDOFF_Z_POINTS = [0.1, 0.5, 1.1, 1.25]
 STANDOFF_POINTS = [0.80, 0.65, 0.65, 0.35]
 # Stop once the EE is this close to the target (m); max iterations set via ROBOENV_MAX_STEPS
 REACH_TOLERANCE = 0.01
+# Keep predicted wheel commands within the expert speed range.
+MAX_WHEEL_SPEED = 3.18
 # ==============================================================================
 
 
@@ -53,6 +56,10 @@ def main():
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     with np.load(os.path.join(cur_dir, "..", "trained_model", "linear_regression.npz")) as model:
         weights = model["weights"]
+        input_mean = model["input_mean"]
+        input_scale = model["input_scale"]
+        if model["input_columns"].tolist() != INPUT_COLUMNS:
+            raise ValueError("Model features do not match model_features.py; retrain the model.")
     sim = pb.SimInterface(conf_file_name, conf_file_path_ext=cur_dir, use_gui=not headless)
 
     # Configure realistic ground contact and skid-steer friction dynamics
@@ -138,9 +145,13 @@ def main():
     base_goal_pos = target_xy - standoff * np.array([np.cos(target_bearing), np.sin(target_bearing)])
     base_goal_bearing = target_bearing
 
-    # Track arrival at the base goal for the existing stopping criteria.
-    base_navigation_done = False
+    # Base navigation controller (align -> drive -> orient -> done), see BaseControllerParams
+    base_state = BaseNavState()
+    base_navigation_done = base_state.done
     base_params = BaseControllerParams(nav_timeout=BASE_NAV_TIMEOUT)
+
+    # Use the expert's arm torque limit.
+    arm_params = ArmControllerParams(reach_limit=ARM_REACH_LIMIT)
 
     # Stop conditions (step cap, target reached, unreachable-target stall), see StopCriteria
     stop_criteria = StopCriteria(reach_tolerance=REACH_TOLERANCE, max_steps=max_steps)
@@ -178,23 +189,33 @@ def main():
         ee_error = TARGET_EE_POS - ee_pos
         ee_dist_error = np.linalg.norm(ee_error)
 
-        # ----------------------------------------------------------------------
-        # 1. Predict arm torques and wheel velocities using the trained model
-        # ----------------------------------------------------------------------
-        model_input = np.concatenate((
-            [1.0], base_pos, [base_bearing], q_mes[4:11], qd_mes[4:11], TARGET_EE_POS,
-        ))
-        commands = model_input @ weights
-        torque_arm = np.clip(commands[:7], -MAX_ARM_TORQUE, MAX_ARM_TORQUE)
-        wheel_cmds = np.clip(commands[7:], -MAX_WHEEL_SPEED, MAX_WHEEL_SPEED)
+        # Update the original navigation phases for stopping and reporting only.
+        # Both wheel velocities and arm torques below come from the trained model.
+        base_controller(
+            base_state, base_pos, base_bearing, base_goal_pos, base_goal_bearing, current_time, base_params
+        )
+        base_navigation_done = base_state.done
 
-        # ----------------------------------------------------------------------
-        # 2. Check base arrival without using the expert controllers
-        # ----------------------------------------------------------------------
-        base_navigation_done = base_navigation_done or (
-            np.linalg.norm(base_pos[:2] - base_goal_pos) < base_params.pos_tol
-            and abs(wrap_angle(base_goal_bearing - base_bearing)) < base_params.ang_tol
-        ) or current_time > base_params.nav_timeout
+        state = dict(zip(["base_x", "base_y", "base_z"], base_pos))
+        state["base_bearing"] = base_bearing
+        state.update(zip(["target_x", "target_y", "target_z"], TARGET_EE_POS))
+        state.update(zip(["ee_x", "ee_y", "ee_z"], ee_pos))
+        state.update(zip(["goal_x", "goal_y"], base_goal_pos))
+        state["goal_bearing"] = base_goal_bearing
+        for i in range(4, 11):
+            state[f"q_mes_{i}"] = q_mes[i]
+            state[f"qd_mes_{i}"] = qd_mes[i]
+            state[f"q_init_{i}"] = init_joint_angles[i]
+        features = (make_features(state)[0] - input_mean) / input_scale
+        model_input = np.concatenate(([1.0], features))
+        commands = model_input @ weights
+        torque_arm = np.clip(commands[:7], -arm_params.max_torque, arm_params.max_torque)
+        print("Torque commands (Nm):", torque_arm)
+        wheel_cmds = commands[7:].copy()
+        # Scale together so speed limiting preserves the steering ratio.
+        predicted_wheel_speed = np.max(np.abs(wheel_cmds))
+        if predicted_wheel_speed > MAX_WHEEL_SPEED:
+            wheel_cmds *= MAX_WHEEL_SPEED / predicted_wheel_speed
 
         # ----------------------------------------------------------------------
         # 3. Gripper / Finger Control (Fingers locked at fixed configuration)
@@ -241,7 +262,7 @@ def main():
 
         current_time += time_step
         if int(current_time / time_step) % 500 == 0:
-            print(f"t={current_time:.2f}s | Base pos: {np.round(base_pos[:2], 3)} | EE pos: {np.round(ee_pos, 3)} | EE error: {ee_dist_error:.4f}m | yaw {base_bearing:.2f} nav_done {base_navigation_done}")
+            print(f"t={current_time:.2f}s | Base pos: {np.round(base_pos[:2], 3)} | EE pos: {np.round(ee_pos, 3)} | EE error: {ee_dist_error:.4f}m | yaw {base_bearing:.2f} phase {base_state.phase} nav_done {base_navigation_done}")
 
     # Final summary report
     print("==================================================================")
@@ -292,7 +313,7 @@ def main():
     plt.tight_layout()
     plt.show()
 
-    # 3. Measured arm joint positions (the model predicts torques, not joint references)
+    # 3. Measured arm joint positions (the model predicts torques)
     plt.figure(figsize=(10, 8))
     for i in range(7):
         plt.subplot(4, 2, i + 1)

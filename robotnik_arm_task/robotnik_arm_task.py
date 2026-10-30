@@ -207,7 +207,7 @@ def main():
             ee_frame_id, shoulder_frame_id, arm_lower, arm_upper, time_step, arm_params,
             reach_active=base_navigation_done,
         )
-
+        # print("Torque commands (Nm):", torque_arm)
         # ----------------------------------------------------------------------
         # 3. Gripper / Finger Control (Fingers locked at fixed configuration)
         # ----------------------------------------------------------------------

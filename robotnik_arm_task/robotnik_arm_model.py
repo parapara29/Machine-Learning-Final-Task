@@ -24,8 +24,7 @@ from model_features import INPUT_COLUMNS, make_features
 # TARGET SPECIFICATION
 # Fixed 3D Cartesian coordinates for the Kinova end-effector in the world frame:
 # [X (forward/meters), Y (lateral/meters), Z (height/meters)]
-TARGET_EE_POS = np.array([-0.5, 1.1, 1.0])
-
+TARGET_EE_POS = np.array([1.2, 2, 1.0])
 # Fixed gripper finger configuration (angles in radians, held fixed during simulation):
 # [finger_1, finger_tip_1, finger_2, finger_tip_2, finger_3, finger_tip_3]
 # Set to None to use initial configuration from config/URDF, or an array of 6 angles.
@@ -210,6 +209,7 @@ def main():
         model_input = np.concatenate(([1.0], features))
         commands = model_input @ weights
         torque_arm = np.clip(commands[:7], -arm_params.max_torque, arm_params.max_torque)
+        # torque_arm = commands[:7]  # No clipping; the model was trained on expert torques, which are already limited.
         print("Torque commands (Nm):", torque_arm)
         wheel_cmds = commands[7:].copy()
         # Scale together so speed limiting preserves the steering ratio.

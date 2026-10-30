@@ -14,6 +14,7 @@ MODEL_PATH = Path(__file__).parent.parent / "trained_model" / "linear_regression
 RESULTS_DIR = Path(__file__).parent / "training_results"
 TEST_FRACTION = 0.2
 SEED = 42
+ARM_RIDGE_ALPHA = 0.001
 
 
 def load_data(files):
@@ -83,6 +84,13 @@ def main():
     del features
     y_train = train[OUTPUT_COLUMNS].to_numpy()
     weights = np.linalg.pinv(X_train) @ y_train
+    # Regularize arm coefficients; keep the wheel regression unchanged.
+    penalty = ARM_RIDGE_ALPHA * np.eye(X_train.shape[1])
+    penalty[0, 0] = 0  # Do not penalize the intercept.
+    weights[:, :7] = np.linalg.solve(
+        X_train.T @ X_train / len(train) + penalty,
+        X_train.T @ y_train[:, :7] / len(train),
+    )
 
     X_test = np.column_stack((np.ones(len(test)), (make_features(test) - input_mean) / input_scale))
     y_test = test[OUTPUT_COLUMNS].to_numpy()
@@ -113,6 +121,7 @@ def main():
         input_scale=input_scale,
         input_columns=INPUT_COLUMNS,
         output_columns=OUTPUT_COLUMNS,
+        arm_ridge_alpha=ARM_RIDGE_ALPHA,
         train_episodes=[file.name for file in train_files],
         test_episodes=[file.name for file in test_files],
     )

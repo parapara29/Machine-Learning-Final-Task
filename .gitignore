@@ -2,3 +2,17 @@
 models/
 configs/
 data/
+robotnik_RF/*.npz
+
+__pycache__/
+.vscode/
+robotnik_mlp/
+
+# Datasets (too large for GitHub); targets.csv is kept because evaluate.py reads the targets from it
+data_randomized/*
+!data_randomized/targets.csv
+data_npz_noise/
+robotnik_arm_task/data_npz/
+
+# Trained random forests (~100 MB per run); rerun train_rf.py to recreate them
+robotnik_RF/results/**/*.joblib

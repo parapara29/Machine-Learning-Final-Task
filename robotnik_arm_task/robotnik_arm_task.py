@@ -18,6 +18,12 @@ from robotnik_arm_control import (
     arm_controller, base_controller, check_stop, configure_gripper_fingers, quaternion2bearing,
 )
 
+# Noise added to the commands sent to the robot, for data collection (0 = clean expert).
+ARM_NOISE_STD = 0.0
+WHEEL_NOISE_STD = 0.0
+# Each noise sample is held for this many steps (100 steps = 100 ms at 1 kHz).
+NOISE_HOLD_STEPS = 100
+NOISE_SEED = 0
 
 # ==============================================================================
 # TARGET SPECIFICATION
@@ -168,6 +174,12 @@ def main():
     q_d_all = []
     qd_d_all = []
 
+    #noise config
+    rng = np.random.default_rng(NOISE_SEED)
+    arm_noise = np.zeros(7)
+    wheel_noise = np.zeros(4)
+    step = 0
+
     # --------------------------------------------------------------------------
     # Main Simulation Loop
     # --------------------------------------------------------------------------
@@ -214,6 +226,19 @@ def main():
         torque_fingers = np.zeros(6)
 
         # ----------------------------------------------------------------------
+        # 3.5 noise test to see how expert move
+        # ----------------------------------------------------------------------
+        if step % NOISE_HOLD_STEPS == 0:
+            arm_noise = rng.normal(0, ARM_NOISE_STD, size=7)
+            wheel_noise_side = rng.normal(0, WHEEL_NOISE_STD, size=2)
+            wheel_noise = np.array([wheel_noise_side[0], wheel_noise_side[1], wheel_noise_side[1], wheel_noise_side[0]])
+
+            # print("noise triggered")
+
+        torque_arm = np.clip((torque_arm + arm_noise),-arm_params.max_torque,arm_params.max_torque)
+        if not base_navigation_done:
+            wheel_cmds = wheel_cmds + wheel_noise
+        # ----------------------------------------------------------------------
         # Send Multi-Interface Control Commands
         # ----------------------------------------------------------------------
         # 4 wheels (velocity) + 7 arm joints (torque) + 6 fingers (torque)
@@ -256,6 +281,7 @@ def main():
             time.sleep(0.001)
 
         current_time += time_step
+        step += 1
         if int(current_time / time_step) % 500 == 0:
             print(f"t={current_time:.2f}s | Base pos: {np.round(base_pos[:2], 3)} | EE pos: {np.round(ee_pos, 3)} | EE error: {ee_dist_error:.4f}m | yaw {base_bearing:.2f} phase {base_state.phase} nav_done {base_navigation_done}")
 

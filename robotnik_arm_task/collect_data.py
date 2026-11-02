@@ -5,7 +5,7 @@ from pathlib import Path
 
 import numpy as np
 
-NUM_TARGETS = 200
+NUM_TARGETS = 500
 SEED = 42
 OUTPUT_DIR = Path(__file__).parent / "data"
 

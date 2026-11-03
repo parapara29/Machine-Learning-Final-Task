@@ -1,3 +1,8 @@
+#This code analyzes all the data we collected in the data_randomized folder, 
+# and generates plots to check for linearity of the features vs the outputs.
+#Helps make decisions on which features to use for the linear regression model, 
+# and which features are not useful.
+
 import csv
 from pathlib import Path
 

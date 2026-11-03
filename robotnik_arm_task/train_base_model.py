@@ -6,7 +6,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-DATA_DIR = Path(__file__).parent / "data" / "data_randomized"
+DATA_DIR = Path(__file__).parent / "data_randomized"
 MODEL_PATH = Path(__file__).parent.parent / "trained_model" / "base_linear_regression.npz"
 RESULTS_DIR = Path(__file__).parent / "base_training_results"
 TEST_FRACTION = 0.2
@@ -15,24 +15,33 @@ SEED = 42
 STATE_COLUMNS = ["base_x", "base_y", "base_bearing", "goal_x", "goal_y", "goal_bearing"]
 OUTPUT_COLUMNS = ["wheel_cmds_0", "wheel_cmds_1", "wheel_cmds_2", "wheel_cmds_3"]
 INPUT_COLUMNS = [
-    "goal_forward",
-    "goal_left",
-    "goal_distance",
-    "heading_error",
-    "sin_heading_error",
-    "cos_heading_error",
-    "abs_heading_error",
+    "goal_forward_sat",
+    "goal_left_sat",
+    "goal_distance_sat",
+    "drive_term",
+    "aligned",
+    "near_goal",
+    "far_heading_error",
+    "far_sin_heading_error",
+    "far_abs_heading_error",
+    "near_bearing_error",
+    "near_sin_bearing_error",
+    "near_abs_bearing_error",
     "bearing_error",
-    "sin_bearing_error",
+    "cos_heading_error",
     "cos_bearing_error",
-    "abs_bearing_error",
 ]
 
 
 def wrap_angle(angle):
     return np.arctan2(np.sin(angle), np.cos(angle))
 
-
+#This is where the feature engineering is done, to convert the raw state data into 
+# features for the linear regression model. 
+# The features being engineered are, the goal position in the robot's body frame, 
+# the heading error, bearing error
+#Also saturating the goal distance to 0.35m so that the model behaves the same for targets at 1m, 5m, or 10m away.
+#Also using the aligned and cos heading error to separate forward driving from turning in place near the goal.
 def make_base_features(data):
     yaw = np.asarray(data["base_bearing"])
     c, s = np.cos(yaw), np.sin(yaw)
@@ -43,22 +52,35 @@ def make_base_features(data):
     heading_error = wrap_angle(np.arctan2(goal_dy, goal_dx) - yaw)
     bearing_error = wrap_angle(np.asarray(data["goal_bearing"]) - yaw)
 
-    # Rotate horizontal goal offset from world coordinates into the robot's body frame.
-    goal_forward = c * goal_dx + s * goal_dy
-    goal_left = -s * goal_dx + c * goal_dy
+    # Rotate horizontal goal offset from world coordinates into the robot's body frame
+    # and saturate at 0.35m so targets at any distance (1m, 5m, 10m) behave identically.
+    dist_sat = np.minimum(goal_distance, 0.35)
+    goal_forward = np.clip(c * goal_dx + s * goal_dy, -0.35, 0.35)
+    goal_left = np.clip(-s * goal_dx + c * goal_dy, -0.35, 0.35)
+
+    # Separate forward driving (when aligned with the goal) from turning in place near the goal
+    # Got the idea from closed loop steering of unicycle like vehicles via lyapunov techniques
+    aligned = np.maximum(0.0, np.cos(heading_error) - 0.85)
+    drive_term = np.maximum(0.0, dist_sat - 0.04) * aligned
+    near_goal = np.clip((0.12 - goal_distance) / 0.12, 0.0, 1.0)
+    far_goal = 1.0 - near_goal
 
     return np.column_stack((
         goal_forward,
         goal_left,
-        goal_distance,
-        heading_error,
-        np.sin(heading_error),
-        np.cos(heading_error),
-        np.abs(heading_error),
+        dist_sat,
+        drive_term,
+        aligned,
+        near_goal,
+        far_goal * heading_error,
+        far_goal * np.sin(heading_error),
+        far_goal * np.abs(heading_error),
+        near_goal * bearing_error,
+        near_goal * np.sin(bearing_error),
+        near_goal * np.abs(bearing_error),
         bearing_error,
-        np.sin(bearing_error),
+        np.cos(heading_error),
         np.cos(bearing_error),
-        np.abs(bearing_error),
     ))
 
 
@@ -139,10 +161,10 @@ def save_plots(metrics, weights, input_mean, input_scale, train_file, test_file)
 
 def main():
     files = sorted(DATA_DIR.glob("episode_*.csv"))
-    if len(files) < 2:
-        raise ValueError(f"Need at least two episode CSVs in {DATA_DIR}")
 
     np.random.default_rng(SEED).shuffle(files)
+    #Splitting the test and train data into 20 percent test and 80 percent train
+    #Also ensuring that the test and the train sets are from different episodes, like the split is not done randomly on all the recorded data, but rather on the episodes.
     num_test = int(np.ceil(len(files) * TEST_FRACTION))
     test_files = files[:num_test]
     train_files = files[num_test:]

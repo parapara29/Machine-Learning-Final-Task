@@ -12,6 +12,7 @@ SEED = 42
 OUTPUT_DIR = Path(__file__).parent / "data_randomized"
 BASE_XY_RANGE = 0.25
 ARM_ANGLE_RANGE = 0.1
+#The simulation runs at 1000 Hz, that is too much data, we only record every 10th step, so we get 100 Hz data.
 RECORD_EVERY = 10
 
 
@@ -82,6 +83,9 @@ def main():
             ["episode", "target_x", "target_y", "target_z", "base_offset_x", "base_offset_y", "base_yaw"]
             + [f"arm_offset_{i}" for i in range(4, 11)] + ["seed"]
         )
+        #For each episode, a random target is generated, angle from -pi to pi, radius from 0.9 to 1.8, and height from 0.3 to 0.9. 
+        # The base is also randomly offset in x,y and yaw.
+        #Also add random offsets to the arm joint angles, within a small range.
         for episode in range(NUM_TARGETS):
             angle = rng.uniform(-np.pi, np.pi)
             radius = rng.uniform(0.9, 1.8)
@@ -92,7 +96,7 @@ def main():
             output = OUTPUT_DIR / f"episode_{episode:04d}.csv"
             print(f"Episode {episode + 1}/{NUM_TARGETS}: target={target}", flush=True)
 
-            # Run one simulation at a time, each in a fresh process.
+            # Run one simulation at a time, each in a fresh process. To avoid memory leaks, we dont use the same pybullet simulation for multiple episodes.
             process = Process(target=record, args=(target, output, base_pose, arm_offsets))
             process.start()
             process.join()

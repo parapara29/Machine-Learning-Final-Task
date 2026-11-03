@@ -1,14 +1,21 @@
+#OBSOLETE CODE, THIS FILE IS NOT USED ANYMORE, THE FEATURE ENGINEERING IS NOW DONE IN train_base_model.py and train_arm_model.py.
+#This file is kept for reference, for what was used originally in the linear regression model training, but it is not used anymore.
 import numpy as np
 
+#Arm joint angles range from 4 to 10, 0 to 3 are wheels, 11 to 16 are fingers.
 ARM_COLUMNS = [f"q_mes_{i}" for i in range(4, 11)]
 VELOCITY_COLUMNS = [f"qd_mes_{i}" for i in range(4, 11)]
 INITIAL_COLUMNS = [f"q_init_{i}" for i in range(4, 11)]
+#Output commands = The 7 arm torques and 4 wheel commands, in that order.
 OUTPUT_COLUMNS = [f"torque_arm_{i}" for i in range(7)] + [f"wheel_cmds_{i}" for i in range(4)]
+
+#Raw Data
 STATE_COLUMNS = (
     ["base_x", "base_y", "base_z", "base_bearing", "target_x", "target_y", "target_z",
      "ee_x", "ee_y", "ee_z", "goal_x", "goal_y", "goal_bearing"]
     + ARM_COLUMNS + VELOCITY_COLUMNS + INITIAL_COLUMNS
 )
+#Actual Feature inputs used to train the model, after doing some transformations on the raw data.
 INPUT_COLUMNS = (
     ARM_COLUMNS + VELOCITY_COLUMNS + INITIAL_COLUMNS
     + [f"sin_q_{i}" for i in range(4, 11)]
@@ -35,9 +42,17 @@ def make_features(data):
     ee_dx = np.asarray(data["target_x"]) - data["ee_x"]
     ee_dy = np.asarray(data["target_y"]) - data["ee_y"]
 
-    # Rotate horizontal offsets from world coordinates into the robot's yaw frame.
+    #Using rotation matrix to convert world frame coordinates into robot's body frame.
+    #-----------------------------------------------------------------------------------
+    #[target_forward]      [cosψ sinψ​][xtarget​−xbase ​​]
+    #[              ] =    [                         ]
+    #[target_left   ​]      [−sinψ​ cosψ​][ytarget​−ybase​​]
+    #-----------------------------------------------------------------------------------
     return np.column_stack((
         q, qd, q_init, np.sin(q), np.cos(q),
+        #target forward, target left, target height, goal forward, 
+        # goal left, goal distance, sin heading error, cos heading error, 
+        # sin bearing error, cos bearing error, ee error forward, ee error left, ee error z
         c * target_dx + s * target_dy, -s * target_dx + c * target_dy,
         np.asarray(data["target_z"]) - data["base_z"],
         c * goal_dx + s * goal_dy, -s * goal_dx + c * goal_dy,

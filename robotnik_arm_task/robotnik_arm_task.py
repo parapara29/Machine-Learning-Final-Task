@@ -23,7 +23,7 @@ from robotnik_arm_control import (
 # TARGET SPECIFICATION
 # Fixed 3D Cartesian coordinates for the Kinova end-effector in the world frame:
 # [X (forward/meters), Y (lateral/meters), Z (height/meters)]
-TARGET_EE_POS = np.array([0.5, 2.1, 1.0])
+TARGET_EE_POS = np.array([0.5, -2.1, 0.3])
 
 # Fixed gripper finger configuration (angles in radians, held fixed during simulation):
 # [finger_1, finger_tip_1, finger_2, finger_tip_2, finger_3, finger_tip_3]

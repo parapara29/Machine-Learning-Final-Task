@@ -24,7 +24,7 @@ from train_arm_model import (
 # ==============================================================================
 # TARGET SPECIFICATION
 # Fixed 3D Cartesian coordinates for the target in the world frame: [X, Y, Z]
-TARGET_EE_POS = np.array([2, 2.0, 0.5])
+TARGET_EE_POS = np.array([2, -2.0, 0.3])
 FIXED_FINGER_ANGLES = np.array([0.1, 0.1, 0.1, 0.1, 0.1, 0.1])
 
 # Base standoff distance curve (height-adjusted so base stops in the optimal arm reach window)
@@ -273,7 +273,7 @@ def main():
     ee_error_all = np.array(ee_error_all)
 
     # 1. Cartesian end-effector coordinates tracking
-    plt.figure(figsize=(10, 8))
+    fig1 = plt.figure(figsize=(10, 8))
     coords = ["X", "Y", "Z"]
     for idx in range(3):
         plt.subplot(3, 1, idx + 1)
@@ -285,10 +285,10 @@ def main():
     plt.xlabel("Time (s)")
     plt.suptitle("End-Effector Cartesian Position Reaching")
     plt.tight_layout()
-    plt.show()
+    fig1.savefig(os.path.join(cur_dir, "combined_run_ee_tracking.png"), dpi=150)
 
     # 2. Cartesian distance error over time
-    plt.figure(figsize=(8, 4))
+    fig2 = plt.figure(figsize=(8, 4))
     ee_dist_norm = np.linalg.norm(ee_error_all, axis=1)
     plt.plot(time_all, ee_dist_norm, label="EE Euclidean Error (m)", color="g")
     plt.xlabel("Time (s)")
@@ -297,10 +297,10 @@ def main():
     plt.grid(True, alpha=0.3)
     plt.legend()
     plt.tight_layout()
-    plt.show()
+    fig2.savefig(os.path.join(cur_dir, "combined_run_ee_error.png"), dpi=150)
 
     # 3. Measured arm joint positions
-    plt.figure(figsize=(10, 8))
+    fig3 = plt.figure(figsize=(10, 8))
     for i in range(7):
         plt.subplot(4, 2, i + 1)
         plt.plot(time_all, [q[4 + i] for q in q_mes_all], label=f"Measured J{i + 1}")
@@ -310,7 +310,13 @@ def main():
     plt.xlabel("Time (s)")
     plt.suptitle("Arm Joint Position Profiles")
     plt.tight_layout()
-    plt.show()
+    fig3.savefig(os.path.join(cur_dir, "combined_run_joints.png"), dpi=150)
+
+    print(f"Saved run plots to {cur_dir}/combined_run_*.png")
+    if matplotlib.get_backend().lower() != "agg":
+        plt.show()
+    else:
+        plt.close("all")
 
 
 if __name__ == "__main__":

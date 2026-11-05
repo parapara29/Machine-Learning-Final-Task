@@ -8,7 +8,7 @@ This branch contains the **MLP policy trained with Dataset Aggregation (DAgger)*
   <img src="robotnik_arm_task/robotnik_dagger_v5/media/v6_random_spawn_demo.gif" alt="Learned policy driving from a random spawn to a random target and reaching it" width="360">
 </p>
 
-**Result:** from a random spawn (x, y ∈ [−2, 2] m, any heading) the learned policy reaches **90.0 %** of 1000 random targets within 5 cm (median error 18 mm), with no expert involvement. The method, the results and how to reproduce them are in [`robotnik_arm_task/robotnik_dagger_v5/README.md`](robotnik_arm_task/robotnik_dagger_v5/README.md).
+**Result:** from a random spawn (x, y ∈ [−2, 2] m, any heading) the learned policy reaches **90.0 %** of 1000 random targets within 5 cm (median error 18 mm), with no expert involvement. On the same 1000 cases, run with the linear model's own test script `test_combined_random.py`, the linear-regression model reaches 65.0 %. The method, the results and how to reproduce them are in [`robotnik_arm_task/robotnik_dagger_v5/README.md`](robotnik_arm_task/robotnik_dagger_v5/README.md).
 
 ## Repository layout
 

@@ -13,7 +13,7 @@ A simulated Robotnik mobile manipulator (4-wheel skid-steer base + 7-DoF Kinova 
 | Parameters (3 networks) | 342,674 |
 | Inference time per 1 ms control step (CPU) | 0.21 ms |
 
-Spawn x, y ∈ [−2, 2] m with any heading; target 0.9–3.5 m from the spawn, height 0.3–0.9 m. 76 % of these targets lie outside the region used for training. The method, the theory and every design choice are explained in [Why DAgger](#why-dagger-the-theory) and [Technical details](#technical-details) below.
+Spawn x, y ∈ [−2, 2] m with any heading; target 0.9–3.5 m from the spawn, height 0.3–0.9 m. On the same test, the linear-regression model reaches 65.0 % (see [Comparison with the linear-regression model](#comparison-with-the-linear-regression-model)). 76 % of these targets lie outside the region used for training. The method, the theory and every design choice are explained in [Why DAgger](#why-dagger-the-theory) and [Technical details](#technical-details) below.
 
 ## Demo video
 
@@ -72,11 +72,67 @@ The wheels take part in the mixing (earlier versions only corrected the arm), so
 - w_i = 5 for REACH rows within 0.35 m of the target, otherwise 1. The final approach decides success but is a small fraction of the rows.
 - The smoothness term (λ = 0.01, m_i = 1 if the previous row is in the same phase) discourages jerky torques that would trip the velocity guard.
 
-## Strengths and cost compared with the linear-regression model
+## Comparison with the linear-regression model
 
-Both were tested on the same 1000 random episodes with the same stop rule.
+The linear-regression model (branch `shivansh/linear_regression`) is evaluated by its script `test_combined_random.py`. We ran that script unchanged and ran V6 on the same test:
+- the same 1000 cases: seed 42, spawn x, y ∈ [−2, 2] m with any heading, target 0.9–3.5 m from the spawn, height 0.3–0.9 m;
+- the same simulation settings (floor friction, wheel contacts, motor gains);
+- the same stop rule: stop at 1 cm, after a 1.5 s stall or at 40000 steps;
+- the same success criterion: final EE error ≤ 5 cm.
 
-- **The linear model** reaches every target with millimetre accuracy. It gets there through task-specific engineering: 40 hand-designed features, data filtering, DART noise injection and a hand-tuned parking rule. All of these must be redesigned if the task or the expert changes.
+Both runs were on the same machine. The linear run gave 65.0 %; the figure committed on that branch shows 65.1 %.
+
+| Metric (as printed by `test_combined_random.py`) | Linear regression | DAgger V6 |
+|---|---:|---:|
+| Successful / failed reaches | 650 / 350 | **900 / 100** |
+| Success rate (95 % Wilson CI) | 65.0 % [62.0, 67.9] | **90.0 %** [88.0, 91.7] |
+| Mean EE error | 0.476 m | **0.079 m** |
+| Median EE error | **0.010 m** | 0.018 m |
+| Std EE error | 0.750 m | **0.233 m** |
+| Min / max EE error | 0.010 / 2.304 m | 0.003 / **1.558 m** |
+| Average episode time, all episodes | 21.7 s | **16.1 s** |
+| Within 1 cm / within 2 cm (extra) | **54.6 %** / **61.4 %** | 19.6 % / 56.5 % |
+| Average time of the successful episodes (extra) | **13.5 s** | 14.2 s |
+
+**Paired result.** Both models faced the same 1000 cases:
+- both succeed on 637;
+- only DAgger succeeds on 263;
+- only the linear model succeeds on 13;
+- both fail on 87.
+
+McNemar's exact test on the 276 cases where the models differ gives p ≈ 10⁻⁶¹, so the difference in success rate is not chance.
+
+**Success by distance between spawn and target** (`figures/linear_vs_dagger.json`):
+
+| Spawn–target distance | Cases | Linear regression | DAgger V6 |
+|---|---:|---:|---:|
+| 0.9–1.5 m | 224 | 2.7 % | **65.2 %** |
+| 1.5–2.0 m | 196 | 45.4 % | **94.4 %** |
+| 2.0–2.5 m | 177 | 86.4 % | **97.2 %** |
+| 2.5–3.5 m | 403 | **99.8 %** | 98.5 % |
+
+![Linear regression vs DAgger V6 on the linear model's test](figures/linear_vs_dagger.png)
+
+*Same two-panel summary as `test_combined_random.py` produces, one row per model (left: final-error histogram, right: target offset from the start, success/fail).*
+
+**Reading the comparison:**
+- **Far targets (2.5–3.5 m):** both models succeed almost always.
+- **Near targets:** the difference is all here. When the target is close to the spawn, the base has to turn sharply or park close by. The linear model rarely recovers from that: 2.7 % success at 0.9–1.5 m. All 350 of its failures end at 36.5–40 s, right after its 35 s base-navigation timeout. The base never reached its parking pose, and the arm was left reaching from too far away: median final error 1.6 m, and 82 % of the failures end more than 0.5 m from the target. DAgger trained on its own off-course states, so it recovers in most of these cases. Its remaining failures are also near the spawn (see failure modes below).
+- **Precision:** when the linear model succeeds, it is more precise. It stops at the 1 cm tolerance in 54.6 % of all episodes, against 19.6 % for DAgger, which usually stops on the 1.5 s stall rule a few millimetres to centimetres away (median 18 mm).
+- **One difference in the procedure:** each controller computes its own base goal pose. The linear test places it on the line from the spawn to the target; V6 uses the expert's standoff pose, the one it was trained on. The cases, the simulation, the stop rule and the error metric (distance between gripper and target) are identical.
+
+Reproduce (the linear test needs its branch checked out, with `models/` and `configs/` available):
+```bash
+# on branch shivansh/linear_regression, in robotnik_arm_task/
+python test_combined_random.py > linear_regression_test.log
+# back here, after run_v6_evaluation.sh
+python compare_with_linear.py --linear-log linear_regression_test.log
+```
+The log of our run is in `eval_v6/linear_protocol/linear_regression_test.log`.
+
+### Strengths and cost
+
+- **The linear model** is built by task-specific engineering: 40 hand-designed features, data filtering, DART noise injection and a hand-tuned parking rule. It is very cheap to train and run, and precise when it gets close, but all of its failures come from the base navigation not finishing. All of this engineering has to be redesigned if the task or the expert changes.
 - **The DAgger MLP** learns the *complete* controller (driving, parking and reaching) from data, with only a generic egocentric transform. It learns to recover from its own mistakes (BC alone: 0 %, DAgger: 90 %), and it generalises to targets far outside its training region. It would adapt to a new expert simply by collecting new data.
 - **The price is a slow and tedious training process:**
   - six versions of trial and error;
@@ -262,6 +318,7 @@ bash run_v6_evaluation.sh   # -> eval_v6/linear_protocol/*/deploy_summary.csv, f
 | `train_v6.py` | trains the wheel, HOLD and REACH networks |
 | `run_v6_pipeline.sh` | the complete DAgger pipeline |
 | `run_v6_evaluation.sh`, `make_linear_protocol_cases.py`, `plot_v6_results.py` | evaluation and figures |
+| `compare_with_linear.py` | metrics and figure of the comparison with the linear-regression model (`figures/linear_vs_dagger.*`) |
 | `run_robotnik_v6.py` | single-episode GUI runner |
 | `test_random_sampling.py` | unit tests for the target/spawn samplers (`python test_random_sampling.py`) |
 | `trained_model_dagger_v6/` | **final policy**; `trained_model_dagger_v6_r0/`, `_r1/` are the checkpoints of DAgger rounds 0 and 1 |

@@ -15,7 +15,7 @@ import rf_sim
 
 SPLIT_FILE = Path(__file__).parent / "episode_split.json"
 TARGETS_CSV = Path(__file__).parent.parent / "data_randomized" / "targets.csv"
-EVAL_DIR = rf_sim.RUN_DIR / "eval"
+# EVAL_DIR = rf_sim.RUN_DIR / "eval"
 
 EXPERIMENTS = {
     "E1": ("rf", "raw"),
@@ -23,11 +23,13 @@ EXPERIMENTS = {
     "E3": ("dagger", "raw"),
     "E4": ("dagger", "extra"),
 }
-SPLIT = "validation"      
-NUM_EPISODES = 100        
+SPLIT = "random"      
+NUM_EPISODES = 1000        
 REACH_TOLERANCE = 0.05
 MAX_STEPS = 20000
+RANDOM_SEED = 2026
 WORKERS = max(1, os.cpu_count() // 2)
+EVAL_DIR = rf_sim.RUN_DIR / f"eval_{SPLIT}_{REACH_TOLERANCE * 100:.0f}cm"
 
 FIELDS = ["episode", "target_x", "target_y", "target_z", "success",
           "final_error", "best_error", "time", "nav_time", "stop"]
@@ -36,6 +38,14 @@ INK, MUTED = "#1f1f1e", "#52514e"
 
 
 def load_episodes():
+    if SPLIT == "random":
+        # Same target distribution as collect_data.py, new seed, so the targets are unseen.
+        rng = np.random.default_rng(RANDOM_SEED)
+        angle = rng.uniform(-np.pi, np.pi, NUM_EPISODES)
+        radius = rng.uniform(0.9, 1.8, NUM_EPISODES)
+        height = rng.uniform(0.3, 0.9, NUM_EPISODES)
+        return [(k, [r * np.cos(a), r * np.sin(a), z]) for k, (a, r, z) in enumerate(zip(angle, radius, height))]
+
     ids = json.loads(SPLIT_FILE.read_text())[SPLIT][:NUM_EPISODES]
     table = np.genfromtxt(TARGETS_CSV, delimiter=",", names=True)
     targets = {int(row["episode"]): [row["target_x"], row["target_y"], row["target_z"]] for row in table}

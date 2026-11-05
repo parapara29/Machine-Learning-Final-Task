@@ -13,7 +13,7 @@ DAGGER_DIR = ARM_TASK_DIR / "robotnik_dagger_v5"
 FEATURE_SET = "extra"       #we can use extra or raw
 PREDICT_EVERY = 10
 ARM_MODEL = "dagger"
-ARM_REACH_LIMIT = 0.85
+ARM_REACH_LIMIT = None
 
 # Headless mode and step cap for CI / direct runs
 headless = os.environ.get("ROBOENV_HEADLESS", "").strip().lower() in ("1", "true", "yes")

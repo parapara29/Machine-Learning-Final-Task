@@ -82,6 +82,8 @@ The linear-regression model (branch `shivansh/linear_regression`) is evaluated b
 
 Both runs were on the same machine. The linear run gave 65.0 %; the figure committed on that branch shows 65.1 %.
 
+The 100 % reported for the linear model elsewhere (the group report, after its sweet-spot parking fix) was measured on an earlier, narrower test: spawns within ±0.25 m of the origin, arm perturbations of ±0.1 rad, success within 20 s. The numbers here come from the wider test above, with spawns anywhere in a 4 × 4 m area.
+
 | Metric (as printed by `test_combined_random.py`) | Linear regression | DAgger V6 |
 |---|---:|---:|
 | Successful / failed reaches | 650 / 350 | **900 / 100** |
@@ -93,6 +95,7 @@ Both runs were on the same machine. The linear run gave 65.0 %; the figure commi
 | Average episode time, all episodes | 21.7 s | **16.1 s** |
 | Within 1 cm / within 2 cm (extra) | **54.6 %** / **61.4 %** | 19.6 % / 56.5 % |
 | Average time of the successful episodes (extra) | **13.5 s** | 14.2 s |
+| Inference per control step, CPU (extra) | **0.03 ms** | 0.21 ms |
 
 **Paired result.** Both models faced the same 1000 cases:
 - both succeed on 637;
@@ -110,6 +113,10 @@ McNemar's exact test on the 276 cases where the models differ gives p ≈ 10⁻�
 | 1.5–2.0 m | 196 | 45.4 % | **94.4 %** |
 | 2.0–2.5 m | 177 | 86.4 % | **97.2 %** |
 | 2.5–3.5 m | 403 | **99.8 %** | 98.5 % |
+
+<p align="center">
+  <img src="figures/linear_vs_dagger_distance.png" alt="Success rate of the linear model and DAgger V6 per spawn-to-target distance band" width="480">
+</p>
 
 ![Linear regression vs DAgger V6 on the linear model's test](figures/linear_vs_dagger.png)
 
@@ -318,7 +325,7 @@ bash run_v6_evaluation.sh   # -> eval_v6/linear_protocol/*/deploy_summary.csv, f
 | `train_v6.py` | trains the wheel, HOLD and REACH networks |
 | `run_v6_pipeline.sh` | the complete DAgger pipeline |
 | `run_v6_evaluation.sh`, `make_linear_protocol_cases.py`, `plot_v6_results.py` | evaluation and figures |
-| `compare_with_linear.py` | metrics and figure of the comparison with the linear-regression model (`figures/linear_vs_dagger.*`) |
+| `compare_with_linear.py` | metrics and figures of the comparison with the linear-regression model (`figures/linear_vs_dagger.*`, `figures/linear_vs_dagger_distance.*`) |
 | `run_robotnik_v6.py` | single-episode GUI runner |
 | `test_random_sampling.py` | unit tests for the target/spawn samplers (`python test_random_sampling.py`) |
 | `trained_model_dagger_v6/` | **final policy**; `trained_model_dagger_v6_r0/`, `_r1/` are the checkpoints of DAgger rounds 0 and 1 |

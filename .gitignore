@@ -15,7 +15,6 @@ robotnik_arm_task/data_npz/
 robotnik_RF/results/**/*.joblib
 !robotnik_RF/results/rf_run_4/**/*.joblib
 
-/README.md
 /main.tex
 /trained_model/
 robotnik_arm_task/robotnik_arm_task.py

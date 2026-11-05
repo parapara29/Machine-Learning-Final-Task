@@ -2,7 +2,8 @@
 models/
 configs/
 data/
-data_randomized/__pycache__/
+data_randomized/
+__pycache__/
 *.pyc
 # DAgger round 3 rollouts (26 GB) - regenerate with the command in README_V53_REPRODUCTION.md
 robotnik_arm_task/robotnik_dagger_v5/arm_dagger_v5_3_randomized/

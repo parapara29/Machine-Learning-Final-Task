@@ -9,6 +9,13 @@ Data = original demonstrations (training split only) + any number of DAgger roll
 * Parsed rollouts are cached as .npz under --cache-dir, so later DAgger rounds only parse
   new files.
 
+Pipeline of this script:
+  load_data()      demonstrations + DAgger rollouts -> per-episode arrays (raw features, labels)
+  wheel_arrays()   egocentric inputs + wheel labels, at most --max-rows-per-episode rows per episode
+  arm_arrays()     the same for one arm phase (HOLD or REACH) + recovery weights + previous rows
+  fit()            AdamW training with progress bars, LR reduction, early stopping, best checkpoint
+  main()           trains wheel -> arm_hold -> arm_reach and writes v6_metadata.json
+
 Example:
   python train_v6.py --dagger-dirs arm_dagger_v6_r0 arm_dagger_v6_r1 \
       --output-dir trained_model_dagger_v6_r0
@@ -30,13 +37,15 @@ from dagger_common import FEATURES as RAW, MLP
 from v6_features import (ARM_EGO_FEATURES, ARM_OUTPUTS, EGO_FEATURES, LAGS_S, MODEL_VERSION,
                          WHEEL_OUTPUTS, R, arm_matrix, ego_from_raw, resample_10ms)
 
-HIDDEN = [256, 256, 128]
+HIDDEN = [256, 256, 128]     # hidden layer sizes of all three networks
 DROPOUT = 0.1
+# The demonstration CSVs lack the navigation signals; they are recomputed by _nav_features().
 NAV_COLS = ['base_goal_distance', 'base_heading_error', 'base_orientation_error', 'navigation_complete']
 
 
 # ----------------------------------------------------------------------------- loading
 def _nav_features(df, timeout=25.0):
+    """Recompute distance / heading error / orientation error / navigation flag for a demo episode."""
     dx, dy = df.goal_x - df.base_x, df.goal_y - df.base_y
     wrap = lambda a: np.arctan2(np.sin(a), np.cos(a))
     d = np.hypot(dx, dy)
@@ -47,6 +56,8 @@ def _nav_features(df, timeout=25.0):
 
 
 def _episode_arrays(df):
+    """Episode DataFrame -> dict of float32 arrays. The navigation flag is latched (running max),
+    exactly as the deployed policy latches it."""
     raw = df[RAW].to_numpy(np.float64, copy=True)
     raw[:, R['navigation_complete']] = np.maximum.accumulate(raw[:, R['navigation_complete']] >= 0.5)
     ee_err = (df['ee_error'].to_numpy(np.float64) if 'ee_error' in df.columns else
@@ -59,6 +70,8 @@ def _episode_arrays(df):
 
 
 def _cached(path, cache_dir, parse):
+    """Parse a CSV once and store the result as .npz; the cache is reused while the CSV's size and
+    modification time are unchanged. Unusable files are cached as empty arrays (returns None)."""
     cache = cache_dir / path.parent.name / (path.name + '.npz')
     stamp = f'{path.stat().st_size}-{int(path.stat().st_mtime)}'
     if cache.is_file():
@@ -75,6 +88,8 @@ def _cached(path, cache_dir, parse):
 
 
 def _parse_demo(path, targets):
+    """One demonstration CSV: add its target (from targets.csv), the navigation signals, and drop
+    rows with missing values. Demos are already at 10 ms spacing."""
     df = pd.read_csv(path)
     eid = int(path.stem.split('_')[1])
     for k in ('target_x', 'target_y', 'target_z'):
@@ -86,6 +101,7 @@ def _parse_demo(path, targets):
 
 
 def _parse_rollout(path):
+    """One DAgger rollout CSV: read only the needed columns and resample to 10 ms rows."""
     wanted = set(RAW + WHEEL_OUTPUTS + ARM_OUTPUTS + ['time', 'ee_error'])
     df = pd.read_csv(path, usecols=lambda c: c in wanted, dtype=np.float64)
     missing = wanted - {'ee_error'} - set(df.columns)
@@ -99,6 +115,12 @@ def _parse_rollout(path):
 
 
 def load_data(args):
+    """Return (train, val_demo, val_dagger, manifest).
+
+    train: demo training episodes + 95 % of the DAgger rollouts; val_demo: the 300 validation demos;
+    val_dagger: 5 % of the rollouts, chosen by a CRC32 hash of the file name (order-independent).
+    Rollouts whose target equals a validation/test demo target are excluded from training.
+    """
     targets = pd.read_csv(Path(args.data_dir) / 'targets.csv').set_index('episode')
     split = json.loads(Path(args.split).read_text())
     train_ids, val_ids = set(split['train']), set(split['validation'])
@@ -139,6 +161,7 @@ def load_data(args):
 
 # ----------------------------------------------------------------------------- datasets
 def wheel_arrays(episodes, cap, rng):
+    """Inputs/labels for the wheel net; cap = max random rows per episode (0 = all rows)."""
     xs, ys = [], []
     for ep in episodes:
         idx = np.arange(len(ep['raw']))
@@ -149,6 +172,10 @@ def wheel_arrays(episodes, cap, rng):
 
 
 def arm_arrays(episodes, phase, cap, rng, args):
+    """Inputs/labels for one arm net. Returns (x, y, w, x_prev):
+    w[:, 0] = recovery weight (1 + recovery_weight near the target in REACH),
+    w[:, 1] = 1 if the previous row exists and is in the same phase (smoothness term mask),
+    x_prev = input of the previous row (10 ms earlier) for the smoothness penalty."""
     xs, ys, ws, xp = [], [], [], []
     for ep in episodes:
         flag = ep['raw'][:, R['navigation_complete']] >= 0.5
@@ -169,6 +196,7 @@ def arm_arrays(episodes, phase, cap, rng, args):
 
 # ----------------------------------------------------------------------------- training
 def mse(model, x, y, device, bs=8192):
+    """Unweighted mean squared error over all outputs (evaluation mode, no dropout)."""
     model.eval(); tot = 0.0
     with torch.no_grad():
         for i in range(0, len(x), bs):
@@ -198,6 +226,7 @@ def fit(name, train, vals, args, device, dest, init=None):
         for xb, yb, wb, xpb in tqdm(loader, desc=f'  epoch {epoch}', leave=False, unit='batch', dynamic_ncols=True):
             xb, yb, wb, xpb = (t.to(device, non_blocking=True) for t in (xb, yb, wb, xpb))
             pred = model(xb)
+            # weighted MSE (recovery weight) + lambda * |f(x_t) - f(x_{t-1})|^2 (smooth torques)
             loss = (((pred - yb) ** 2).mean(1) * wb[:, 0]).mean()
             if smooth > 0:
                 loss = loss + smooth * (((pred - model(xpb)) ** 2).mean(1) * wb[:, 1]).mean()
@@ -205,6 +234,7 @@ def fit(name, train, vals, args, device, dest, init=None):
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             opt.step()
             total += loss.item() * len(xb); n += len(xb)
+        # validation: demo hold-out and DAgger hold-out; model selection on their mean
         scores = {k: mse(model, vx, vy, device) for k, (vx, vy) in vals.items() if len(vx)}
         val = float(np.mean(list(scores.values())))
         sched.step(val)
@@ -251,6 +281,7 @@ def main():
     print(f'Device: {device} | output: {dest}')
 
     train, val_demo, val_dagger, manifest = load_data(args)
+    # Train the three networks one after the other (each on its own input/label arrays)
     print(f'Training episodes: {len(train)} | validation: {len(val_demo)} demos + {len(val_dagger)} DAgger rollouts')
     rng = np.random.default_rng(args.seed)
     best = {}

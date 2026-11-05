@@ -17,12 +17,15 @@ Spawn x, y ∈ [−2, 2] m with any heading; target 0.9–3.5 m from the spawn, 
 
 ## Demo video
 
-<!-- Replace the line below with your recording, e.g. drag-and-drop an .mp4 into the GitHub editor,
-     or commit it as media/v6_random_spawn_demo.mp4 and link it:
-     https://github.com/parapara29/Machine-Learning-Final-Task/blob/ricktho/robotnik_arm_task/robotnik_dagger_v5/media/v6_random_spawn_demo.mp4 -->
-**▶ Video: the robot reaching a random target from a random spawn point — _add the recording here_.**
+The V6 policy drives from a random spawn pose to a random target and reaches it with the arm. Wheels and arm are fully learned; the expert is not used.
 
-To record one, run the GUI command below and capture the PyBullet window (e.g. with OBS or `SimpleScreenRecorder`).
+<video src="media/v6_random_spawn_demo.mp4" controls muted width="720"></video>
+
+[![V6 demo: click to play the video](figures/v6_example_episodes.png)](media/v6_random_spawn_demo.mp4)
+
+**▶ [Play the demo video (`media/v6_random_spawn_demo.mp4`)](media/v6_random_spawn_demo.mp4)**. The image above shows three example episodes (base path and end-effector error) and links to the video.
+
+To record your own run, use the GUI command below and capture the PyBullet window (e.g. with OBS or `SimpleScreenRecorder`).
 
 ## Quick start
 

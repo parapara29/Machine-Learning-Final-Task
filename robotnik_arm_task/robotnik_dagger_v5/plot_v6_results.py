@@ -39,6 +39,7 @@ plt.rcParams.update({
 
 
 def load(path):
+    """Read a deploy_summary.csv (one row per episode); keep the last row per episode."""
     if not Path(path).is_file():
         return None
     df = pd.read_csv(path)
@@ -47,6 +48,7 @@ def load(path):
 
 
 def wilson(k, n, z=1.96):
+    """95 % Wilson score interval for k successes out of n (better than +-1.96*sqrt(p(1-p)/n) near 0 or 1)."""
     p = k / n; d = 1 + z**2 / n
     c = (p + z**2 / (2 * n)) / d; h = z * np.sqrt(p * (1 - p) / n + z**2 / (4 * n**2)) / d
     return c - h, c + h
@@ -60,12 +62,14 @@ def save(fig, name):
 
 
 def n_params(folder):
+    """Number of trainable parameters of each network in a checkpoint folder."""
     return {name: int(sum(v.numel() for v in torch.load(HERE / folder / f'{name}.pth', map_location='cpu',
                                                          weights_only=True).values()))
             for name in ('wheel', 'arm_hold', 'arm_reach')}
 
 
 def metrics(df):
+    """The metrics of the linear-regression table (success <= 5 cm, <= 2 cm, mean/median/max error, ...)."""
     e = df['final_error_m'].to_numpy(float)
     k, n = int(df['success'].sum()), len(df)
     succ = df[df['success']]

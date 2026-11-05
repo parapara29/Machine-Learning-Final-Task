@@ -1,5 +1,9 @@
 """Run the trained V6 DAgger policy in the PyBullet GUI on one (random or given) target and spawn.
 
+Examples:
+  python run_robotnik_v6.py --random-target --random-spawn --seed 7
+  python run_robotnik_v6.py --target 1.2 -0.8 0.6 --spawn-position -1.5 1.5 3.0
+
 This is a small deployment wrapper around the main simulation loop in
 robotnik_dagger_collect.py. It resolves either a fixed target or randomized target/spawn,
 loads the trained checkpoint, and then calls the same expert/learner control loop used by the
@@ -14,6 +18,7 @@ from robotnik_dagger_collect import (DEFAULT_SPAWN_XY, DEFAULT_TARGET_RADIUS, DE
 
 
 def resolve_target(args, parser, rng):
+    """Return the world-frame target: sampled with --random-target, otherwise --target X Y Z."""
     # The target is interpreted in the world frame, not the robot base frame. This is why the
     # later controller computes a base standoff pose relative to the target before driving.
     if args.random_target:
@@ -30,6 +35,7 @@ def resolve_target(args, parser, rng):
 
 
 def resolve_spawn(args, parser, rng):
+    """Return the spawn pose: --spawn-position, a random pose with --random-spawn, or None (default pose)."""
     if args.spawn_position is not None:
         spawn = np.asarray(args.spawn_position, dtype=np.float64)
         if spawn.size not in (2, 3):

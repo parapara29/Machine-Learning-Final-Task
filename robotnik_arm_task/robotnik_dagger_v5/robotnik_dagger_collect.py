@@ -5,6 +5,23 @@ actually encounters during deployment. Instead of replaying an ideal expert traj
 simulation runs the current learner policy and then asks the expert controller for the action
 that would be appropriate for that observed state. This is the standard DAgger setup used to
 reduce compounding error.
+
+The same loop (run()) is used for everything that needs the simulator:
+  --mode collect   DAgger data: wheels/arm driven by expert, learner or a beta-mix; label = expert
+  --mode deploy    learner only (expert never called): evaluation and demos
+  --mode expert    expert only;  --mode diagnose: any expert/learner combination for debugging
+Episodes come from targets.csv, from random sampling (--random-target/--random-spawn) or from a
+--cases-csv file, and run in parallel headless worker processes (--workers) with a progress bar.
+
+Outputs in --output-dir:
+  collect: dagger_<episode>_seed..._<wheel>W_<arm>A.csv  (one row per --log-every steps)
+  others:  <mode>_summary.csv (one row per episode), <mode>_<episode>.csv with --save-trajectory
+  all:     anomaly_*.json when a large joint-velocity jump is detected (diagnostics only)
+
+Examples (run from robotnik_dagger_v5/):
+  python robotnik_dagger_collect.py --mode deploy --random-target --random-spawn --num-episodes 20 --workers 4
+  python robotnik_dagger_collect.py --mode collect --random-target --random-spawn --wheel-source mix \
+      --arm-source mix --beta 0.5 --mix-interval-steps 300 --model-dir trained_model_dagger_v6_r0 --log-every 10
 """
 import argparse
 import json
@@ -22,7 +39,9 @@ from robotnik_arm_control import (ArmControllerParams, BaseControllerParams, Bas
 from dagger_common import FEATURES, OUTPUTS, features
 from v6_features import V6Policy, is_v6_model
 
-FINGER_ANGLES=np.full(6,.1)
+FINGER_ANGLES=np.full(6,.1)      # rad, the 6 gripper finger joints are held fixed (not learned)
+# Base standoff distance (m) from the target, as a function of target height (piecewise linear):
+# higher targets are approached more closely so that the arm reaches them comfortably.
 STANDOFF_Z=[.1,.5,1.1,1.25]
 STANDOFF=[.8,.65,.65,.35]
 
@@ -66,6 +85,12 @@ def load_policy(model_dir, device='cpu'):
 
 
 def run(args, target, episode_id, seed, initial_base_position=None):
+    """Simulate one episode and return its summary dict.
+
+    args: parsed command-line options (mode, sources, beta, stop rule, guards, ...).
+    target: world-frame end-effector target (x, y, z).  seed: per-episode RNG seed (beta draws).
+    initial_base_position: optional spawn (x, y[, yaw]); None keeps the default pose at the origin.
+    """
     # The simulation loop is the central state machine: it tracks base navigation and arm reach
     # while alternating between expert and learner commands depending on the requested mode.
     np.random.seed(seed)
@@ -73,6 +98,7 @@ def run(args, target, episode_id, seed, initial_base_position=None):
     execute_expert=False
     interval_expert=False
     here=Path(__file__).resolve().parent
+    # ---- simulator setup -------------------------------------------------------------------
     sim=pb.SimInterface(args.config,conf_file_path_ext=str(here),use_gui=args.gui)
     sim.SetFloorFriction(1.0)
     client=sim.pybullet_client; rid=sim.bot[0].bot_pybullet
@@ -85,34 +111,41 @@ def run(args, target, episode_id, seed, initial_base_position=None):
         client.resetBasePositionAndOrientation(rid, [float(base_xy[0]), float(base_xy[1]), 0.0],
                                                client.getQuaternionFromEuler([0.0, 0.0, yaw]))
         client.resetBaseVelocity(rid, [0.0, 0.0, 0.0], [0.0, 0.0, 0.0])
+    # Wheel contact model used for all data: stiff contacts and anisotropic friction (grip forward,
+    # slide sideways) approximate skid-steer wheels.
     for j in range(client.getNumJoints(rid)):
         if 'wheel' in client.getJointInfo(rid,j)[1].decode():
             client.changeDynamics(rid,j,contactStiffness=30000,contactDamping=1000,
                                   anisotropicFriction=[1.,.01,1.])
     sim.bot[0].servo_motor_model.set_motor_gains(400,30)
     configure_gripper_fingers(sim,client,rid,FINGER_ANGLES)
-    if args.gui:
+    if args.gui:   # red sphere marks the target (visual only, no collision)
         shape=client.createVisualShape(p.GEOM_SPHERE,radius=.03,rgbaColor=[1,0,0,.85])
         client.createMultiBody(baseMass=0,baseVisualShapeIndex=shape,basePosition=target.tolist())
+    # Pinocchio model of the same robot: forward kinematics (EE position), Jacobian and gravity torques
     names=np.expand_dims(np.array(sim.getNameActiveJoints()),axis=0)
     dyn=PinWrapper(args.config,'pybullet',names,['pybullet'],False,0,str(here))
     ee_id=dyn.pin_model.getFrameId('robot_j2s7s300_end_effector')
     shoulder_id=dyn.pin_model.getFrameId('robot_j2s7s300_link_2')
     if ee_id>=len(dyn.pin_model.frames) or shoulder_id>=len(dyn.pin_model.frames):
         raise ValueError('Missing expected end-effector/shoulder frames')
-    init_q=np.asarray(sim.GetMotorAngles(0))
+    init_q=np.asarray(sim.GetMotorAngles(0))       # motor angles at the start (arm = indices 4..10)
     lower,upper=sim.GetBotJointsLimit()
     arm_lower=np.asarray(lower[4:11]); arm_upper=np.asarray(upper[4:11])
-    q_des=init_q[4:11].copy()
+    q_des=init_q[4:11].copy()                      # expert's internal arm reference (part of its state)
     base_state=BaseNavState(); base_params=BaseControllerParams(nav_timeout=args.nav_timeout)
     arm_params=ArmControllerParams(reach_limit=.85)
+    # Base goal pose: on the ray from the world origin through the target, `standoff` metres short
+    # of it, facing the target (bearing). The learner sees it only through its egocentric features.
     standoff=float(np.interp(target[2],STANDOFF_Z,STANDOFF))
     bearing=float(np.arctan2(target[1],target[0])) if np.linalg.norm(target[:2])>1e-4 else 0.
     goal=target[:2]-standoff*np.array([np.cos(bearing),np.sin(bearing)])
+    # The network is needed unless both actuators are expert-driven in a collection run
     need_learner = args.mode in ('collect','learner','deploy','diagnose') and not (
         args.mode=='collect' and args.wheel_source=='expert' and args.arm_source=='expert')
     policy=load_policy(args.model_dir,args.device) if need_learner else None
-    dt=sim.GetTimeStep(); cmd=MotorCommands(); records=[]; n_steps=0
+    # ---- per-episode bookkeeping ----------------------------------------------------------------
+    dt=sim.GetTimeStep(); cmd=MotorCommands(); records=[]; n_steps=0   # dt = 1 ms
     best=float('inf'); stable=0; stop_reason='step_cap'; elapsed=0.
     expert_steps=0; guard_joint=None; guard_velocity=None
     velocity_exceed_steps=0; peak_velocity=0.0; first_exceed_time=None
@@ -124,7 +157,8 @@ def run(args, target, episode_id, seed, initial_base_position=None):
     # consecutive steps within --tolerance (the DAgger collector's original rule).
     criteria=(StopCriteria(reach_tolerance=args.reach_tolerance,max_steps=0,min_time=args.min_time,
                            stall_window=args.stall_window) if args.stop_rule=='linear' else None)
-    nav_latched=False; infer_s=0.; infer_n=0
+    nav_latched=False; infer_s=0.; infer_n=0   # latched nav flag for the stop rule; inference timing
+    # Who drives each actuator: explicit --wheel-source/--arm-source, otherwise implied by the mode
     wheel_source = args.wheel_source or ('expert' if args.mode=='expert' else 'learner' if args.mode in ('deploy','learner') else 'mix')
     arm_source = args.arm_source or ('expert' if args.mode=='expert' else 'learner' if args.mode in ('deploy','learner') else 'mix')
     if args.mode=='collect' and (wheel_source=='mix' or arm_source=='mix') and not 0 <= args.beta <= 1:
@@ -133,7 +167,9 @@ def run(args, target, episode_id, seed, initial_base_position=None):
         raise ValueError('deploy mode is strictly learner-only; use --mode diagnose for hybrid experiments')
     if args.mode=='expert' and (wheel_source!='expert' or arm_source!='expert'):
         raise ValueError('expert mode must use expert for both actuators; use diagnose for hybrid experiments')
+    # ---- control loop: one iteration = one 1 ms simulation step -----------------------------------
     for step in range(args.max_steps):
+        # 1. observe the state and compute the end-effector position with forward kinematics
         base=np.asarray(sim.GetBasePosition()); ori=np.asarray(sim.GetBaseOrientation())
         yaw=quaternion2bearing(ori[3],ori[0],ori[1],ori[2])
         q=np.asarray(sim.GetMotorAngles(0)); qd=np.asarray(sim.GetMotorVelocities(0))
@@ -142,7 +178,8 @@ def run(args, target, episode_id, seed, initial_base_position=None):
         pin.updateFramePlacements(dyn.pin_model,dyn.pin_data)
         ee=dyn.pin_data.oMf[ee_id].translation.copy()
         error=float(np.linalg.norm(target-ee)); best=min(best,error)
-        x=features(base,yaw,target,ee,goal,bearing,q,qd,init_q,elapsed,args.nav_timeout)
+        x=features(base,yaw,target,ee,goal,bearing,q,qd,init_q,elapsed,args.nav_timeout)   # 38 raw features
+        # 2. expert action in this state (the label)
         # IMPORTANT: advance the stateful expert on *every* observed learner state.
         if args.mode=='deploy':
             # No expert controller calls during deployment.
@@ -156,11 +193,14 @@ def run(args, target, episode_id, seed, initial_base_position=None):
                  init_q[4:11],target,ee,ee_id,shoulder_id,arm_lower,arm_upper,
                  dt,arm_params,reach_active=base_state.done)
             nav_done=base_state.done
+        # 3. learner action in the same state (timed for the inference benchmark)
         if policy is None:
             learned_w,learned_tau=expert_w,expert_tau
         else:
             t0=time.perf_counter(); learned_w,learned_tau=policy.predict(x)
             infer_s+=time.perf_counter()-t0; infer_n+=1
+        # 4. choose the executed action. In "mix" mode one Bernoulli(beta) draw every M steps decides
+        #    whether the expert or the learner drives the next M steps (shared by wheels and arm).
         if args.mode=='collect' and step % args.mix_interval_steps == 0:
             interval_expert=bool(rng.random()<args.beta)
         def choose(source, expert_cmd, learned_cmd):
@@ -189,9 +229,11 @@ def run(args, target, episode_id, seed, initial_base_position=None):
 
         # Preserve the original actuator torque limits
         tau = np.clip(tau, -30.0, 30.0)
+        # 5. log the row: raw features + EXPERT labels (training targets) + what the learner predicted
+        #    and what was executed (diagnostics)
         row=dict(zip(FEATURES,x.tolist()))
         # Diagnostic logging of the expert's internal reference.
-# These values are NOT supplied to the learned policy.
+        # These values are NOT supplied to the learned policy.
 
         if args.mode != "deploy":
 
@@ -261,9 +303,12 @@ def run(args, target, episode_id, seed, initial_base_position=None):
             records.append(row)
         n_steps=step+1
         previous_row=row
+        # 6. send the commands (wheel velocities, arm torques; fingers are position-held) and step
         cmd.SetControlCmd(np.concatenate((w,tau,np.zeros(6))),
                           ['velocity']*4+['torque']*13)
         sim.Step(cmd,'torque')
+        # 7. stop conditions: linear rule (1 cm / stall), hold rule (30 steps within --tolerance),
+        #    safety guards on joint angles and joint velocities
         nav_latched=nav_latched or bool(nav_done)
         if criteria is not None:
             msg=check_stop(criteria,elapsed,dt,error,nav_latched)
@@ -288,6 +333,7 @@ def run(args, target, episode_id, seed, initial_base_position=None):
             velocity_exceed_steps=0
             first_exceed_time=None
         if args.gui: time.sleep(.001)
+    # ---- write outputs ------------------------------------------------------------------------
     out=Path(args.output_dir); out.mkdir(parents=True,exist_ok=True)
     if args.mode=='collect':
         pd.DataFrame.from_records(records).to_csv(out/f'dagger_{episode_id:06d}_seed{seed}_beta{int(args.beta*100):03d}_{wheel_source}W_{arm_source}A.csv',index=False)
@@ -338,6 +384,8 @@ def _resolve_random_ranges(args):
 
 
 def build_episodes(args):
+    # One (episode_id, target, seed, spawn) tuple per episode. Drawn in the main process with one
+    # RNG so the task list is identical for any number of workers.
     """Deterministic (episode_id, target, seed, spawn) list; independent of --workers."""
     rng=np.random.default_rng(args.seed)
     ids=args.episode_ids if args.episode_ids else list(range(args.start_episode,args.start_episode+args.num_episodes))
@@ -374,6 +422,7 @@ def _silence_worker():
 
 
 def _run_episode(payload):
+    """Worker entry point: run one episode and attach its spawn pose to the summary."""
     args,eid,target,seed,spawn=payload
     report=run(args,target,eid,seed,initial_base_position=spawn)
     if spawn is not None:
@@ -383,6 +432,7 @@ def _run_episode(payload):
 
 
 def main():
+    """Parse options, build the episode list, run the episodes (in parallel) and write the summary."""
     ap=argparse.ArgumentParser(description=__doc__,formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--mode',choices=['collect','learner','expert','deploy','diagnose'],default='collect')
     ap.add_argument('--wheel-source',choices=['expert','learner','mix'],default=None,help='Override wheel authority; hybrid tests use diagnose mode')
@@ -446,6 +496,8 @@ def main():
     _resolve_random_ranges(args)
     # Collect mode permits independent sources; labels always come from the expert.
     out=Path(args.output_dir); out.mkdir(parents=True,exist_ok=True)
+    # The summary is rewritten after every episode, so an interrupted run keeps its results and
+    # --resume skips the episodes already in it.
     summary=out/f'{args.mode}_summary.csv'
     previous=pd.read_csv(summary) if summary.exists() else pd.DataFrame()
     episodes=build_episodes(args)
@@ -458,6 +510,7 @@ def main():
     reports=[]
 
     def record(report, bar=None):
+        # store one finished episode, rewrite the summary CSV, update the progress bar
         reports.append(report)
         pd.concat([previous,pd.DataFrame(reports)],ignore_index=True).to_csv(summary,index=False)
         if bar is not None:

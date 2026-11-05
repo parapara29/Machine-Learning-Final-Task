@@ -1,4 +1,12 @@
-"""Controllers, stop criteria and setup helpers for the Robotnik mobile base + Kinova arm reaching task."""
+"""Controllers, stop criteria and setup helpers for the Robotnik mobile base + Kinova arm reaching task.
+
+This file is the EXPERT that the neural policy imitates (it is never used by the deployed policy):
+  base_controller()  stateful skid-steer navigation: align -> drive -> orient -> done
+  arm_controller()   hold the start pose while driving; afterwards damped-least-squares IK toward the
+                     target, tracked by a joint PD law with gravity compensation
+  check_stop()       stop rule "reached 1 cm or stalled", shared with the linear-regression test
+Helpers: quaternion2bearing() (quaternion -> yaw) and configure_gripper_fingers() (fingers held fixed).
+"""
 from dataclasses import dataclass
 
 import numpy as np
@@ -28,11 +36,11 @@ class ArmControllerParams:
     max_joint_vel: float = 1.0           # rad/s
     max_q_lead: float = 0.15             # rad, max distance of the joint reference from the measured angle
     max_torque: float = 30.0             # N*m
-    cartesian_kp: float = 1.5
+    cartesian_kp: float = 1.5            # 1/s, Cartesian velocity = cartesian_kp * position error
     max_cartesian_speed: float = 0.25    # m/s
-    min_ik_damping: float = 0.01
-    max_ik_damping: float = 0.10
-    singularity_threshold: float = 0.15
+    min_ik_damping: float = 0.01         # IK damping far from singularities ...
+    max_ik_damping: float = 0.10         # ... and at a singular pose
+    singularity_threshold: float = 0.15  # smallest singular value of J below which damping is raised
     limit_margin: float = 0.05           # rad, joints this close to a limit are treated as saturated
 
 
@@ -47,6 +55,7 @@ def arm_controller(dyn_model, q_pin, q_arm, qd_arm, q_des_arm, q_hold_arm, targe
     Returns (torque_arm, q_des_arm, qd_des_arm).
     """
     if not reach_active:
+        # HOLD mode (base still driving): keep the arm at its initial configuration
         q_des_arm = q_hold_arm.copy()
         qd_des_arm = np.zeros(7)
     else:
@@ -55,7 +64,7 @@ def arm_controller(dyn_model, q_pin, q_arm, qd_arm, q_des_arm, q_hold_arm, targe
         J_lwa = pin.computeFrameJacobian(
             dyn_model.pin_model, dyn_model.pin_data, q_pin, ee_frame_id, pin.LOCAL_WORLD_ALIGNED
         )
-        J_arm = J_lwa[:3, 6:13]
+        J_arm = J_lwa[:3, 6:13]   # 3x7: linear velocity of the end-effector per arm joint velocity
 
         # Increase damping near singular poses to keep joint velocities bounded.
         sigma_min = np.linalg.svd(J_arm, compute_uv=False)[-1]
@@ -82,6 +91,7 @@ def arm_controller(dyn_model, q_pin, q_arm, qd_arm, q_des_arm, q_hold_arm, targe
         free = np.ones(7, dtype=bool)
         qd_des_arm = np.zeros(7)
         for _ in range(7):
+            # Damped least squares: qd = J^T (J J^T + lambda^2 I)^-1 v  (minimises |J qd - v|^2 + lambda^2 |qd|^2)
             J_free = J_arm[:, free]
             regularized_jacobian = J_free @ J_free.T + damping**2 * np.eye(3)
             qd_des_arm = np.zeros(7)
@@ -93,6 +103,7 @@ def arm_controller(dyn_model, q_pin, q_arm, qd_arm, q_des_arm, q_hold_arm, targe
                 break
             free &= ~newly_blocked
             qd_des_arm[:] = 0.0
+        # Scale (not clip) so the direction of motion is kept, then integrate the reference
         max_joint_speed = np.max(np.abs(qd_des_arm))
         if max_joint_speed > params.max_joint_vel:
             qd_des_arm *= params.max_joint_vel / max_joint_speed
@@ -116,13 +127,13 @@ def arm_controller(dyn_model, q_pin, q_arm, qd_arm, q_des_arm, q_hold_arm, targe
 @dataclass
 class StopCriteria:
     """Thresholds and running state for the simulation stop conditions."""
-    reach_tolerance: float                     # m
+    reach_tolerance: float                     # m, stop once the EE error is below this
     max_steps: int                             # 0 disables the step cap
     min_time: float = 8.0                      # s before reached / stalled can trigger
     stall_window: float = 3.0                  # s without meaningful improvement of the EE error
     stall_improvement: float = 0.002           # m
-    best_ee_error: float = np.inf
-    best_ee_error_time: float = 0.0
+    best_ee_error: float = np.inf              # running state: best error so far ...
+    best_ee_error_time: float = 0.0            # ... and when it was reached
 
 
 def check_stop(criteria, current_time, time_step, ee_dist_error, base_navigation_done):
@@ -152,14 +163,14 @@ def check_stop(criteria, current_time, time_step, ee_dist_error, base_navigation
 class BaseControllerParams:
     """Tuning parameters of the mobile-base navigation controller."""
     nav_timeout: float             # s, max time allowed for the base to reach its goal pose
-    kp_pos: float = 1.0
-    kp_ori: float = 3.0
+    kp_pos: float = 1.0            # 1/s, forward speed = kp_pos * distance (then clipped)
+    kp_ori: float = 3.0            # 1/s, turn rate = kp_ori * angle error (then clipped)
     max_lin_vel: float = 0.25      # m/s
     min_lin_vel: float = 0.05      # m/s, avoids stalling against wheel friction near the goal
     max_ang_vel: float = 1.0       # rad/s
-    pos_tol: float = 0.08          # m
-    ang_tol: float = 0.05          # rad
-    wheel_radius: float = 0.11
+    pos_tol: float = 0.08          # m, goal position reached
+    ang_tol: float = 0.05          # rad, heading reached
+    wheel_radius: float = 0.11     # m
     # Effective track width for skid-steer (calibrated in simulation: yaw rate ~0.34 rad/s per rad/s of wheel speed)
     wheel_base_width: float = 0.66
 
@@ -184,17 +195,20 @@ def base_controller(state, base_pos, base_bearing, goal_pos, goal_bearing, curre
     if state.done:
         return np.zeros(4)
 
+    # v_cmd = forward speed (m/s), w_cmd = yaw rate (rad/s); phases may hand over within one call
     dist_to_goal = np.linalg.norm(base_pos[:2] - goal_pos)
     to_goal = goal_pos - base_pos[:2]
     heading_to_goal = np.arctan2(to_goal[1], to_goal[0])
     v_cmd, w_cmd = 0.0, 0.0
     if state.phase == "align":
+        # 1. turn in place until the base faces the goal point
         err = wrap_angle(heading_to_goal - base_bearing)
         if dist_to_goal < params.pos_tol or abs(err) < params.ang_tol:
             state.phase = "drive" if dist_to_goal >= params.pos_tol else "orient"
         else:
             w_cmd = np.clip(params.kp_ori * err, -params.max_ang_vel, params.max_ang_vel)
     if state.phase == "drive":
+        # 2. drive toward the goal point; slower when close, no forward motion when facing away
         err = wrap_angle(heading_to_goal - base_bearing)
         passed_goal = dist_to_goal < 0.15 and np.cos(err) < 0.0
         if dist_to_goal < params.pos_tol or passed_goal:
@@ -204,11 +218,13 @@ def base_controller(state, base_pos, base_bearing, goal_pos, goal_bearing, curre
             v_cmd = np.clip(params.kp_pos * dist_to_goal, params.min_lin_vel, params.max_lin_vel) * max(0.0, np.cos(err))
             w_cmd = np.clip(1.5 * err, -0.3, 0.3)
     if state.phase == "orient":
+        # 3. at the goal point: turn in place to the final heading (facing the target)
         err = wrap_angle(goal_bearing - base_bearing)
         if abs(err) < params.ang_tol:
             state.done = True
         else:
             w_cmd = np.clip(params.kp_ori * err, -params.max_ang_vel, params.max_ang_vel)
+    # Differential-drive kinematics: left/right wheel speeds from (v, w); both wheels of a side are equal
     lw = (v_cmd - w_cmd * params.wheel_base_width / 2) / params.wheel_radius
     rw = (v_cmd + w_cmd * params.wheel_base_width / 2) / params.wheel_radius
     if current_time > params.nav_timeout:
@@ -246,6 +262,8 @@ def configure_gripper_fingers(sim, client, rid, fixed_angles=None):
         client.resetJointState(rid, jid, targetValue=float(target_finger_angles[i]), targetVelocity=0.0)
     sim.ReceiveObservation()
 
+    # Monkey-patch the simulator's torque setter: send torques to wheels+arm as usual, but replace the
+    # finger commands with a stiff position hold at the target angles.
     orig_set_torque = sim._SetMotorTorqueByIds
 
     def custom_set_torque(motor_ids, commands, index=0):

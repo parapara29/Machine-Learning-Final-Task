@@ -102,6 +102,8 @@ class V6Policy:
     """Wheel net + phase-gated arm nets on egocentric features. Input: raw 38-vector per 1 ms step."""
 
     def __init__(self, model_dir, device='cpu', sim_dt=0.001):
+        # Checks that the checkpoint was trained with exactly this feature contract, loads the three
+        # networks, and sizes the history buffer for the lags at the simulator step sim_dt.
         self.device = torch.device(device)
         folder = Path(model_dir)
         meta = json.loads((folder / 'v6_metadata.json').read_text())
@@ -123,6 +125,11 @@ class V6Policy:
 
     @torch.no_grad()
     def predict(self, raw_x):
+        """One control step: raw 38-vector -> (4 wheel speeds, 7 arm torques).
+
+        Latches the navigation flag, stores the joint state in the history buffer, builds the
+        egocentric (wheel) and egocentric + lagged (arm) inputs, and runs the wheel net and the
+        arm net of the current phase (HOLD before navigation completes, REACH after)."""
         raw = np.asarray(raw_x, dtype=np.float64).copy()
         if raw[self.nav_idx] >= 0.5:
             self.latched = True

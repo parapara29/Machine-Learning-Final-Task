@@ -17,6 +17,7 @@ cd "$(dirname "$0")"
 PY=${PY:-python}
 WORKERS=${WORKERS:-6}
 N_R0=${N_R0:-400}; N_R1=${N_R1:-600}; N_R2=${N_R2:-600}; N_EVAL=${N_EVAL:-200}
+# Shared collection options: random target + spawn per episode, 10 ms log rows, 45 s nav timeout
 WIDE="--random-target --random-spawn --log-every 10 --nav-timeout 45 --workers $WORKERS --resume"
 
 collect() {  # collect <out_dir> <start_id> <n> <seed> <extra args...>
@@ -34,6 +35,7 @@ train() {  # train <out_dir> <extra dagger dirs...> [-- --init-from X]
   "$PY" train_v6.py --output-dir "$out" "$@"
 }
 
+# stage NAME is true when no stage was requested on the command line, or NAME was requested
 stage() { [ -z "${ONLY:-}" ] || [ "$ONLY" = "$1" ]; }
 ONLY=${1:-}
 

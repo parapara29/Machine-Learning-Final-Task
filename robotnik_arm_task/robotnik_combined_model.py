@@ -1,3 +1,22 @@
+"""
+Decoupled Mobile Manipulation — Combined Runtime Simulation
+=============================================================
+This script executes a full mobile manipulation episode in PyBullet using our two
+trained linear regression models:
+
+- Phase 1 (Base Navigation): The 15-feature base model drives the 4 wheels toward the
+  standoff parking spot (~70cm in front of the target) while holding the arm locked.
+- Phase 2 (Arm Reaching): Once the base parks within the arm's sweet spot, wheels stop (0 rad/s)
+  and the 25-feature arm model commands joint torques to reach the 3D target.
+
+How to Change the Target:
+  Edit `TARGET_EE_POS = np.array([X, Y, Z])` around line 45.
+
+Run:
+  uv run robotnik_combined_model.py              # With PyBullet 3D GUI
+  ROBOENV_HEADLESS=1 uv run robotnik_combined_model.py  # Headless (terminal only)
+"""
+
 import os
 import time
 import numpy as np

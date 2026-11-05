@@ -1,3 +1,24 @@
+"""
+Decoupled Mobile Manipulation — Parallel 1,000-Episode Random Evaluation
+========================================================================
+This script evaluates the combined linear model across 1,000 brand-new random episodes
+using multi-core multiprocessing (default: up to 12 CPU workers).
+
+Test Randomization:
+- Random base start position shifted by up to +/- 2.0m across the floor.
+- Random initial compass heading over the full 360 degrees (-pi to +pi).
+- Random 3D targets placed between [RADIUS_MIN, RADIUS_MAX] meters away.
+- Random target heights from 0.3m to 0.9m.
+
+Outputs:
+- Prints episode-by-episode progress and final summary metrics (success rate, error stats).
+- Saves evaluation histogram and spatial target reach map to:
+  `combined_test_results/test_summary.png`
+
+Run:
+  uv run test_combined_random.py
+"""
+
 import multiprocessing as mp
 import os
 import time
@@ -27,7 +48,7 @@ from robotnik_combined_model import (
 # ==============================================================================
 NUM_TESTS = 1000
 REACH_TOLERANCE = 0.01    # Stop simulation once EE error <= 0.01 m (same as robotnik_arm_task.py)
-SUCCESS_TOLERANCE = 0.05  # Count episode as a success if final EE error <= 0.05 m
+SUCCESS_TOLERANCE = 0.01  # Count episode as a success if final EE error <= 0.05 m
 RADIUS_MIN = 2.0         # Min target distance from robot start position (m)
 RADIUS_MAX = 4.0          # Max target distance from robot start position (m)
 SEED = 42

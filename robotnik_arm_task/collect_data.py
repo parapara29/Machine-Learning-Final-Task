@@ -1,3 +1,18 @@
+"""
+Expert Demonstration Data Collection
+=====================================
+Runs the original expert controller (`robotnik_arm_task.py`) across randomized targets
+and saves downsampled (100 Hz) state-action trajectories to CSV files.
+
+Outputs:
+- Generates `targets.csv` and individual `episode_xxxx.csv` files in `data_randomized/`.
+- Each row contains robot state (base pos/yaw, joint angles/velocities), target (X, Y, Z),
+  and expert motor commands (4 wheel velocities, 7 arm torques).
+
+Run:
+  uv run collect_data.py
+"""
+
 import csv
 import os
 from multiprocessing import Process

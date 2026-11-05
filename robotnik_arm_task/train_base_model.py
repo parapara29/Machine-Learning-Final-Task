@@ -1,3 +1,21 @@
+"""
+Phase 1: Mobile Base Linear Regression Training
+================================================
+This script trains the linear regression model for the mobile base.
+It maps 15 engineered body-frame features to the 4 wheel velocity commands.
+
+Key Ideas:
+- Only trains on active navigation rows (Phase 1, where wheels are actually driving).
+- Converts room coordinates (X, Y) into the robot's own body frame (forward, left).
+- Saturates distance at 0.35m so targets at any distance (1m, 5m, 10m) cruise safely.
+- Uses an alignment gate (`drive_term`) inspired by Aicardi et al. Lyapunov steering:
+  the wheels turn in place until the robot points at the goal before moving forward.
+- Saves the trained weights to `trained_model/base_linear_regression.npz`.
+
+Run:
+  uv run train_base_model.py
+"""
+
 import csv
 from pathlib import Path
 

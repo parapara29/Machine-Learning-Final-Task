@@ -1,3 +1,22 @@
+"""
+Phase 2: 7-DOF Kinova Arm Linear Regression Training
+=====================================================
+This script trains the linear regression model for the robotic arm.
+It maps 25 engineered features to the 7 arm motor joint torques (tau_arm_0..6).
+
+Key Ideas:
+- Removes gripper position (x_ee) to eliminate the positive-feedback "anti-spring" explosion.
+- Uses joint angles q (7) and velocities qd (7) to learn stabilizing -Kp*q spring and -Kd*qd damping.
+- Includes 3D body-frame target offsets (tf, tl, th) and quadratic cross terms to fit workspace curvature.
+- Includes a low-Z hinge feature (max(0, 0.46 - th)) to bend the elbow roll joint (J3) when Shoulder 2 bottoms out.
+- Uses DART state perturbation (Gaussian noise injection) so the model learns restoring forces.
+- Filters out failed timeouts and the negative elbow branch to avoid averaging mirror postures to zero.
+- Saves the trained weights to `trained_model/arm_linear_regression.npz`.
+
+Run:
+  uv run train_arm_model.py
+"""
+
 import csv
 from pathlib import Path
 

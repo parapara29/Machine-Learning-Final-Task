@@ -13,7 +13,8 @@ paired comparison, since both models faced the same 1000 cases.
 
 Inputs:  --linear-log  the console output of test_combined_random.py (one line per episode)
          eval_v6/linear_protocol/v6/deploy_summary.csv
-Outputs: figures/linear_vs_dagger.{pdf,png} and figures/linear_vs_dagger.json
+Outputs: figures/linear_vs_dagger.{pdf,png} (4 panels), figures/linear_vs_dagger_distance.{pdf,png}
+         (success per distance band, one column) and figures/linear_vs_dagger.json
 Usage:   python compare_with_linear.py --linear-log linear_test.log
 """
 import argparse
@@ -141,6 +142,34 @@ def plot(results, cases, out):
     fig.savefig(out.with_suffix('.png'), dpi=150)
 
 
+def plot_distance(report, out):
+    """One-column figure for the report: success rate per spawn-target distance band, both models."""
+    bands = list(report['success_by_distance_percent'])
+    names = list(report['success_by_distance_percent'][bands[0]])
+    colors = ['#eb6834', '#2a78d6']          # validated categorical slots: linear orange, DAgger blue
+    fig, ax = plt.subplots(figsize=(3.5, 2.5))
+    x, w = np.arange(len(bands)), 0.38
+    for k, (name, color) in enumerate(zip(names, colors)):
+        vals = [report['success_by_distance_percent'][b][name] for b in bands]
+        bars = ax.bar(x + (k - 0.5) * (w + 0.02), vals, w, color=color, label=f'{name} ({report[name]["success_rate_percent"]:.1f} %)')
+        for bar, v in zip(bars, vals):
+            ax.text(bar.get_x() + bar.get_width() / 2, v + 1.5, f'{v:.0f}', ha='center', va='bottom', fontsize=7, color=INK2)
+    ax.set_xticks(x, [b.replace(' m (n=', ' m\n(n=') for b in bands], fontsize=7)
+    ax.set_ylabel('success rate (%)', fontsize=8)
+    ax.set_ylim(0, 108)
+    ax.set_yticks([0, 25, 50, 75, 100])
+    ax.tick_params(labelsize=7)
+    ax.legend(fontsize=7, frameon=False, loc='lower center', bbox_to_anchor=(0.5, 1.0), ncol=2)
+    for side in ('top', 'right'):
+        ax.spines[side].set_visible(False)
+    ax.grid(axis='y', color=GRID, lw=0.6)
+    ax.set_axisbelow(True)
+    ax.set_xlabel('distance from spawn to target', fontsize=8)
+    fig.tight_layout(pad=0.3)
+    fig.savefig(out.with_suffix('.pdf'))
+    fig.savefig(out.with_suffix('.png'), dpi=200)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--linear-log', required=True, help='console output of test_combined_random.py')
@@ -175,6 +204,7 @@ def main():
         for lo, hi in zip(edges[:-1], edges[1:])}
     out.with_suffix('.json').write_text(json.dumps(report, indent=2))
     plot(results, cases, out)
+    plot_distance(report, out.with_name(out.name + '_distance'))
 
     names = list(results)
     rows = [('Success rate (%)', 'success_rate_percent', '{:.2f}'),

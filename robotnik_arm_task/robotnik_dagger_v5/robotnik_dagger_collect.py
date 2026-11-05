@@ -1,7 +1,10 @@
 """Collect DAgger expert labels on learner-visited states. Expert state is advanced every step.
 
-This runs the original expert on the *observed* learner trajectory, rather than replaying
-expert demonstrations. Expert's q_des and base phase are preserved across steps.
+This is the data-collection loop used to generate imitation labels for states that the learner
+actually encounters during deployment. Instead of replaying an ideal expert trajectory, the
+simulation runs the current learner policy and then asks the expert controller for the action
+that would be appropriate for that observed state. This is the standard DAgger setup used to
+reduce compounding error.
 """
 import argparse
 import json
@@ -23,7 +26,28 @@ FINGER_ANGLES=np.full(6,.1)
 STANDOFF_Z=[.1,.5,1.1,1.25]
 STANDOFF=[.8,.65,.65,.35]
 
-def run(args, target, episode_id, seed):
+
+def sample_random_target(rng, x_range=(0.4, 1.2), y_range=(-1.0, 1.0), z_range=(0.2, 1.2)):
+    """Sample a world-frame end-effector target inside the requested ranges."""
+    return np.asarray([
+        float(rng.uniform(*x_range)),
+        float(rng.uniform(*y_range)),
+        float(rng.uniform(*z_range)),
+    ], dtype=np.float64)
+
+
+def sample_random_spawn(rng, x_range=(-1.5, 1.5), y_range=(-1.5, 1.5), yaw_range=(-np.pi, np.pi)):
+    """Sample a base spawn position and yaw in world coordinates."""
+    return np.asarray([
+        float(rng.uniform(*x_range)),
+        float(rng.uniform(*y_range)),
+        float(rng.uniform(*yaw_range)),
+    ], dtype=np.float64)
+
+
+def run(args, target, episode_id, seed, initial_base_position=None):
+    # The simulation loop is the central state machine: it tracks base navigation and arm reach
+    # while alternating between expert and learner commands depending on the requested mode.
     np.random.seed(seed)
     rng=np.random.default_rng(seed)
     execute_expert=False
@@ -32,6 +56,15 @@ def run(args, target, episode_id, seed):
     sim=pb.SimInterface(args.config,conf_file_path_ext=str(here),use_gui=args.gui)
     sim.SetFloorFriction(1.0)
     client=sim.pybullet_client; rid=sim.bot[0].bot_pybullet
+    if initial_base_position is not None:
+        spawn=np.asarray(initial_base_position,dtype=np.float64)
+        if spawn.size not in (2,3):
+            raise ValueError(f'Initial base pose must contain x/y or x/y/yaw; got {spawn.tolist()}')
+        base_xy = spawn[:2]
+        yaw = float(spawn[2]) if spawn.size == 3 else 0.0
+        client.resetBasePositionAndOrientation(rid, [float(base_xy[0]), float(base_xy[1]), 0.0],
+                                               client.getQuaternionFromEuler([0.0, 0.0, yaw]))
+        client.resetBaseVelocity(rid, [0.0, 0.0, 0.0], [0.0, 0.0, 0.0])
     for j in range(client.getNumJoints(rid)):
         if 'wheel' in client.getJointInfo(rid,j)[1].decode():
             client.changeDynamics(rid,j,contactStiffness=30000,contactDamping=1000,
@@ -249,6 +282,45 @@ def run(args, target, episode_id, seed):
              'peak_arm_velocity':peak_velocity,
              'velocity_guard_consecutive_steps':args.velocity_guard_consecutive_steps}
 
+def _csv_ranges(csv_path, columns):
+    path=Path(csv_path)
+    if not path.exists():
+        return None
+    table=pd.read_csv(path)
+    missing=[c for c in columns if c not in table.columns]
+    if missing:
+        return None
+    return [(float(table[c].min()), float(table[c].max())) for c in columns]
+
+
+def _resolve_random_ranges(args):
+    default_target_x=( -2.0, 2.0)
+    default_target_y=( -2.0, 2.0)
+    default_target_z=( 0.2, 1.2)
+    default_spawn_x=( -2.0, 2.0)
+    default_spawn_y=( -2.0, 2.0)
+    default_spawn_yaw=( -np.pi, np.pi)
+
+    csv_path = args.targets_csv if args.targets_csv else '../data_randomized/targets.csv'
+    csv_ranges = _csv_ranges(csv_path, ['target_x','target_y','target_z'])
+    if args.random_target:
+        if args.target_x_range is None:
+            args.target_x_range = list(csv_ranges[0]) if csv_ranges is not None else list(default_target_x)
+        if args.target_y_range is None:
+            args.target_y_range = list(csv_ranges[1]) if csv_ranges is not None else list(default_target_y)
+        if args.target_z_range is None:
+            args.target_z_range = list(csv_ranges[2]) if csv_ranges is not None else list(default_target_z)
+
+    spawn_ranges = _csv_ranges(csv_path, ['base_offset_x','base_offset_y','base_yaw'])
+    if args.random_spawn:
+        if args.spawn_x_range is None:
+            args.spawn_x_range = list(spawn_ranges[0]) if spawn_ranges is not None else list(default_spawn_x)
+        if args.spawn_y_range is None:
+            args.spawn_y_range = list(spawn_ranges[1]) if spawn_ranges is not None else list(default_spawn_y)
+        if args.spawn_yaw_range is None:
+            args.spawn_yaw_range = list(spawn_ranges[2]) if spawn_ranges is not None else list(default_spawn_yaw)
+
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('--mode',choices=['collect','learner','expert','deploy','diagnose'],default='collect')
@@ -260,7 +332,7 @@ def main():
     ap.add_argument('--velocity-guard-consecutive-steps',type=int,default=1,help='Consecutive sampled steps over velocity limit before stop; default preserves original guard')
     ap.add_argument('--model-dir',default='trained_model_dagger')
     ap.add_argument('--config',default='robotnik_arm.json')
-    ap.add_argument('--targets-csv',default='data_randomized/targets.csv')
+    ap.add_argument('--targets-csv',default='../data_randomized/targets.csv')
     ap.add_argument('--episode-ids',nargs='*',type=int)
     ap.add_argument('--start-episode',type=int,default=0)
     ap.add_argument('--num-episodes',type=int,default=10)
@@ -277,13 +349,22 @@ def main():
     ap.add_argument('--gui',action='store_true')
     ap.add_argument('--save-trajectory',action='store_true')
     ap.add_argument('--seed',type=int,default=42)
+    ap.add_argument('--random-target',action='store_true',help='Sample a random target for each episode instead of reading from targets.csv')
+    ap.add_argument('--random-spawn',action='store_true',help='Sample a random base start pose for each episode')
+    ap.add_argument('--spawn-position',nargs=3,type=float,metavar=('X','Y','YAW'),help='Exact robot start pose in world space (x y yaw)')
+    ap.add_argument('--target-x-range',nargs=2,type=float,default=None,metavar=('MIN','MAX'))
+    ap.add_argument('--target-y-range',nargs=2,type=float,default=None,metavar=('MIN','MAX'))
+    ap.add_argument('--target-z-range',nargs=2,type=float,default=None,metavar=('MIN','MAX'))
+    ap.add_argument('--spawn-x-range',nargs=2,type=float,default=None,metavar=('MIN','MAX'))
+    ap.add_argument('--spawn-y-range',nargs=2,type=float,default=None,metavar=('MIN','MAX'))
+    ap.add_argument('--spawn-yaw-range',nargs=2,type=float,default=None,metavar=('MIN','MAX'))
     ap.add_argument(
     "--arm-damping",
     type=float,
     default=0.0,
     help="Velocity-dependent damping coefficient for learned arm torques"
     )
-    
+
     args=ap.parse_args()
     if args.arm_damping < 0:
             ap.error("--arm-damping must be non-negative")
@@ -293,15 +374,41 @@ def main():
     if args.velocity_guard_consecutive_steps<1: ap.error('--velocity-guard-consecutive-steps must be >= 1')
     if args.mode=='diagnose' and (args.wheel_source is None or args.arm_source is None):
         ap.error('diagnose mode requires --wheel-source and --arm-source')
+    if args.spawn_position is not None and len(args.spawn_position)!=3:
+        ap.error('--spawn-position must contain x y yaw')
+    _resolve_random_ranges(args)
+    rng=np.random.default_rng(args.seed)
     # Collect mode permits independent sources for arm-focused DAgger.
     # Labels always come from the expert, never from executed learner commands.
-    target_table=pd.read_csv(args.targets_csv).set_index('episode')
+    target_table=None
+    if not args.random_target:
+        target_table=pd.read_csv(args.targets_csv).set_index('episode')
     ids=args.episode_ids if args.episode_ids else list(range(args.start_episode,args.start_episode+args.num_episodes))
     reports=[]
     for eid in ids:
-        if eid not in target_table.index: raise ValueError(f'No target for episode {eid}')
-        target=target_table.loc[eid,['target_x','target_y','target_z']].to_numpy(dtype=float)
-        report=run(args,target,int(eid),args.seed+int(eid))
+        if args.random_target:
+            target=sample_random_target(rng,
+                x_range=tuple(args.target_x_range),
+                y_range=tuple(args.target_y_range),
+                z_range=tuple(args.target_z_range))
+        else:
+            if eid not in target_table.index: raise ValueError(f'No target for episode {eid}')
+            target=target_table.loc[eid,['target_x','target_y','target_z']].to_numpy(dtype=float)
+        initial_base_position = None
+        if args.random_spawn:
+            initial_base_position = sample_random_spawn(rng,
+                x_range=tuple(args.spawn_x_range),
+                y_range=tuple(args.spawn_y_range),
+                yaw_range=tuple(args.spawn_yaw_range))
+        elif args.spawn_position is not None:
+            initial_base_position = np.asarray(args.spawn_position, dtype=np.float64)
+        if args.random_target or args.random_spawn:
+            print(f'episode {eid}: target={target.tolist()} spawn={None if initial_base_position is None else initial_base_position.tolist()}', flush=True)
+        report=run(args,target,int(eid),args.seed+int(eid), initial_base_position=initial_base_position)
+        if initial_base_position is not None:
+            report['initial_spawn_x'] = float(initial_base_position[0])
+            report['initial_spawn_y'] = float(initial_base_position[1])
+            report['initial_spawn_yaw'] = float(initial_base_position[2])
         reports.append(report); print(json.dumps(report),flush=True)
     out=Path(args.output_dir); out.mkdir(parents=True,exist_ok=True)
     summary=out/f'{args.mode}_summary.csv'

@@ -1,4 +1,10 @@
 """Train phase-specific temporal direct torque MLPs; preserve the validated V2 wheel model.
+
+This file separates the reach task into two phases: hold and reach. The idea is to learn a
+controller that keeps the arm steady when the goal is already satisfied, and a different
+controller that actively reaches when the base navigation is still in progress. This phase
+segmentation matches the actual deployment logic and makes the learned torques easier to reason
+about while keeping the wheel policy fixed.
 No scaling or normalization. Never train on held-out episode IDs.
 """
 import argparse
@@ -18,6 +24,11 @@ import re
 ARM_OUTPUTS=OUTPUTS['torque_mlp']
 
 def arrays(episodes, phase, cap, seed, args):
+    # The function builds a training set for a single phase (`hold` vs `reach`). It uses the
+    # already-computed navigation_complete flag to identify when the base has reached a stable
+    # pose and then samples rows from that subset. The `weights` term also rebalances recovery
+    # states so the model learns to stay stable near the target rather than over-optimising the
+    # easy early-trajectory examples.
     rng=np.random.default_rng(seed)
     xs=[]; ys=[]; ws=[]; xp=[]; counts=[]
     for _,df in episodes:
@@ -101,7 +112,7 @@ def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('--data-dir',default='../data_randomized')
     ap.add_argument('--dagger-dir',default='')
-    ap.add_argument('--wheel-model-dir',default='trained_model_dagger_v2')
+    ap.add_argument('--wheel-model-dir',default='trained_model_dagger_v5_3_A')
     ap.add_argument('--output-dir',default='trained_model_dagger_v4')
     ap.add_argument('--epochs',type=int,default=100)
     ap.add_argument('--patience',type=int,default=15)
@@ -134,8 +145,11 @@ def main():
             eid=int(match.group(1))
             if eid not in train_ids:
                 excluded+=1; continue
-            df=pd.read_csv(path)
             required=set(ARM_FEATURES[:38]+ARM_OUTPUTS)
+            # Load only the columns training uses, as float32: full DAgger CSVs (~100 columns,
+            # float64) for >1000 rollouts do not fit in memory.
+            wanted=required|{'ee_error'}
+            df=pd.read_csv(path,usecols=lambda c:c in wanted,dtype=np.float32)
             if not required.issubset(df.columns):
                 raise ValueError(f'{path} missing {sorted(required-set(df.columns))}')
             # Preserve temporal row spacing; never drop individual rows before computing lags.

@@ -1,10 +1,19 @@
-"""Shared raw 34-feature contract and independent PyTorch policies."""
+"""Shared raw feature contract and runtime policy loader for the Robotnik DAgger pipeline.
+
+This module is the contract boundary between the data pipeline and the learned policies:
+all CSV trajectories, training scripts, and deployment code are expected to agree on the
+same 38 input features and the same 11 output command names. Changing this schema without
+updating the models and metadata files would silently break training and inference.
+"""
 import json
 from pathlib import Path
 import numpy as np
 import torch
 from torch import nn
 
+# The policy sees only the current state and the deployment-observable navigation phase.
+# No hidden expert state is provided. This keeps the learned controller portable and
+# means the recorded features must be sufficient for both driving and arm control.
 FEATURES = ['base_x','base_y','base_z','base_bearing','target_x','target_y','target_z',
             'ee_x','ee_y','ee_z','goal_x','goal_y','goal_bearing',
             *[f'q_mes_{i}' for i in range(4,11)],

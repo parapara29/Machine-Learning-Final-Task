@@ -7,7 +7,12 @@ from simulation_and_control import wrap_angle
 
 
 def quaternion2bearing(q_w, q_x, q_y, q_z):
-    """Convert quaternion orientation to planar bearing (yaw angle)."""
+    """Convert quaternion orientation to planar bearing (yaw angle).
+
+    The Robotnik base state is stored in a quaternion, but the driving controller and
+    navigation logic reason in yaw/heading space. This helper converts the orientation to the
+    2D bearing used in the rest of the code.
+    """
     quat = pin.Quaternion(q_w, q_x, q_y, q_z)
     quat.normalize()
     base_euler = pin.rpy.matrixToRpy(quat.toRotationMatrix())
@@ -161,7 +166,11 @@ class BaseControllerParams:
 
 @dataclass
 class BaseNavState:
-    """Navigation phases: align (turn in place toward goal) -> drive -> orient (face target) -> done."""
+    """Navigation phases: align (turn in place toward goal) -> drive -> orient (face target) -> done.
+
+    The base controller is intentionally stateful: it changes behavior as the robot approaches
+    the goal pose, rather than trying to solve the full navigation problem in one step.
+    """
     phase: str = "align"
     done: bool = False
 
@@ -220,6 +229,9 @@ FINGER_JOINT_NAMES = [
 def configure_gripper_fingers(sim, client, rid, fixed_angles=None):
     """Reset the gripper fingers to fixed angles and hold them there.
 
+    The end-effector is not the focus of the learned policy, so the controller keeps the gripper
+    closed at a fixed configuration throughout each rollout. This avoids destabilizing the arm
+    with unnecessary finger motion during target reaching.
     Intercepts the motor torque commands so wheels (0..3) and arm (4..10) keep their
     normal torque control while fingers (11..16) are position-held.
     Returns the finger target angles (initial config angles if `fixed_angles` is None).

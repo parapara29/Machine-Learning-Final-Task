@@ -2,4 +2,12 @@
 models/
 configs/
 data/
-data_randomized/
+data_randomized/__pycache__/
+*.pyc
+# DAgger round 3 rollouts (26 GB) - regenerate with the command in README_V53_REPRODUCTION.md
+robotnik_arm_task/robotnik_dagger_v5/arm_dagger_v5_3_randomized/
+# Symlink folders - rebuild with robotnik_dagger_v5/make_combined_dirs.sh
+robotnik_arm_task/robotnik_dagger_v5/arm_dagger_v5_3_combined/
+robotnik_arm_task/robotnik_dagger_v5/arm_dagger_v5_4_combined/
+# Parsed-data cache of train_v6.py
+robotnik_arm_task/robotnik_dagger_v5/cache_v6/

@@ -1,5 +1,11 @@
 """Train independent state-only wheel and arm imitation policies without scaling.
 
+This is the core imitation-learning pipeline: load full episodes, create an episode-level
+train/validation/test split, train separate MLPs for wheel commands and arm torque, and
+save metadata so the runtime loader can validate that a checkpoint matches the expected
+feature contract. The split is by episode to avoid leakage between nearby time steps from
+the same trajectory.
+
 Usage: python train_models_v2.py --data-dir data_randomized --output-dir trained_model_v2
 The split is by episode, and test metrics are evaluated only after training.
 """
@@ -65,6 +71,8 @@ def add_phase_features(df):
     return df
 
 def read_episodes(folder):
+    # A single CSV episode contains the trajectory of one target-reaching task. We keep each
+    # full episode together and never split rows from the same episode across train/val/test.
     folder = Path(folder)
     target_path = folder / 'targets.csv'
     if not target_path.is_file():
@@ -109,7 +117,7 @@ def add_dagger_episodes(train_eps, folder, train_ids, max_rows_per_episode=0):
     """Append expert-labelled learner states ONLY for original training IDs.
 
     This preserves the original validation/test episode holdouts. A DAgger CSV
-    must use the same 34 raw input columns and 11 expert label columns.
+    must use the same 38 raw input columns and 11 expert label columns.
     """
     if not folder:
         return train_eps
@@ -173,6 +181,9 @@ def plot_episode(episode, model, outputs, device, dest):
     plt.close(fig)
 
 def train_one(name, outputs, train_eps, val_eps, test_eps, args, device, output_dir):
+    # Each independent model is trained on the same raw feature vector but predicts a different
+    # actuator output set. Early stopping is based on validation error, while test metrics are
+    # reported only after the model has been selected from the validation set.
     print(f'\nTraining {name}: {len(COMMON_FEATURES)} inputs -> {len(outputs)} outputs')
     x_train, y_train = raw_arrays(train_eps, outputs)
     x_val, y_val = raw_arrays(val_eps, outputs)

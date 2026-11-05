@@ -1,0 +1,91 @@
+{
+  "Validation targets": {
+    "v5_3_A": {
+      "episodes": 300,
+      "successes": 280,
+      "success_rate": 0.9333333333333333,
+      "wilson95": [
+        0.8992762041322797,
+        0.9564328232030161
+      ],
+      "median_final_error_m": 0.04669159505560902,
+      "mean_final_error_m": 0.09534931638828033,
+      "mean_time_to_success_s": 6.784107142857587,
+      "stop_reasons": {
+        "reached": 280,
+        "step_cap": 20
+      },
+      "velocity_jump_anomaly_episodes": 231
+    },
+    "v5_4": {
+      "episodes": 300,
+      "successes": 265,
+      "success_rate": 0.8833333333333333,
+      "wilson95": [
+        0.8420660083343473,
+        0.9149073620007219
+      ],
+      "median_final_error_m": 0.04712151040140901,
+      "mean_final_error_m": 0.08283014806428923,
+      "mean_time_to_success_s": 6.69589056603816,
+      "stop_reasons": {
+        "reached": 265,
+        "step_cap": 35
+      },
+      "velocity_jump_anomaly_episodes": 230
+    }
+  },
+  "Random target + spawn": {
+    "v5_3_A": {
+      "episodes": 100,
+      "successes": 76,
+      "success_rate": 0.76,
+      "wilson95": [
+        0.6676748127670786,
+        0.8330878873454004
+      ],
+      "median_final_error_m": 0.04764693408650532,
+      "mean_final_error_m": 0.2507131734222151,
+      "mean_time_to_success_s": 7.223855263158175,
+      "stop_reasons": {
+        "reached": 76,
+        "step_cap": 24
+      },
+      "velocity_jump_anomaly_episodes": 69
+    },
+    "v5_4": {
+      "episodes": 100,
+      "successes": 75,
+      "success_rate": 0.75,
+      "wilson95": [
+        0.6569535362992417,
+        0.8245490599627573
+      ],
+      "median_final_error_m": 0.04780122532434206,
+      "mean_final_error_m": 0.20768102162305369,
+      "mean_time_to_success_s": 6.953800000000359,
+      "stop_reasons": {
+        "reached": 75,
+        "step_cap": 23,
+        "velocity_guard": 2
+      },
+      "velocity_jump_anomaly_episodes": 72
+    }
+  },
+  "validation_paired": {
+    "both_success": 252,
+    "fixed_by_v5_4": 13,
+    "regressed_in_v5_4": 28,
+    "both_fail": 7
+  },
+  "best_validation_mse": {
+    "v5_3_A": {
+      "hold": 0.03183673499031223,
+      "reach": 0.30006018920096567
+    },
+    "v5_4": {
+      "hold": 0.07996164136117112,
+      "reach": 0.4686703656960016
+    }
+  }
+}

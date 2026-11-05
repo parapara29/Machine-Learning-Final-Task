@@ -1,0 +1,14 @@
+{
+  "time_s": 7.925000000000981,
+  "joint": 6,
+  "velocity_before": 0.25137069821357727,
+  "velocity_after": 7.990548417336804,
+  "velocity_jump": 7.7391777191232265,
+  "previous_executed_torque": 4.016169548034668,
+  "current_predicted_torque": -29.042682647705078,
+  "previous_executed_expert": 0,
+  "previous_wheel_expert": 0,
+  "previous_arm_expert": 0,
+  "contacts": null,
+  "base_goal_distance": 0.07859400659799576
+}

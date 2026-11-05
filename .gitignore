@@ -8,18 +8,13 @@ __pycache__/
 .vscode/
 robotnik_mlp/
 
-# Datasets (too large for GitHub); targets.csv is kept because evaluate.py reads the targets from it
-data_randomized/*
-!data_randomized/targets.csv
+data_randomized/
 data_npz_noise/
 robotnik_arm_task/data_npz/
 
-# Trained random forests (~100 MB per run); rerun train_rf.py to recreate them.
-# Only rf_run_4 (the run used in the report and by rf_sim.py) is kept in git.
 robotnik_RF/results/**/*.joblib
 !robotnik_RF/results/rf_run_4/**/*.joblib
 
-# Not part of the random forest pipeline (kept locally only)
 /README.md
 /main.tex
 /trained_model/
@@ -34,3 +29,4 @@ robotnik_RF/results/rf_run_1/
 robotnik_RF/results/rf_run_2/
 robotnik_RF/results/rf_run_3/
 robotnik_RF/results/rf_run_4/eval_0cm/
+

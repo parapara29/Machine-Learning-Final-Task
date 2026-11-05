@@ -5,10 +5,16 @@ data/
 data_randomized/
 __pycache__/
 *.pyc
-# DAgger round 3 rollouts (26 GB) - regenerate with the command in README_V53_REPRODUCTION.md
-robotnik_arm_task/robotnik_dagger_v5/arm_dagger_v5_3_randomized/
-# Symlink folders - rebuild with robotnik_dagger_v5/make_combined_dirs.sh
-robotnik_arm_task/robotnik_dagger_v5/arm_dagger_v5_3_combined/
-robotnik_arm_task/robotnik_dagger_v5/arm_dagger_v5_4_combined/
-# Parsed-data cache of train_v6.py
+# Robotnik DAgger V6 (robotnik_arm_task/robotnik_dagger_v5)
+# - rollout data of the three DAgger rounds (~4 GB): regenerate with run_v6_pipeline.sh
+robotnik_arm_task/robotnik_dagger_v5/arm_dagger_*/
+# - parsed-data cache of train_v6.py
 robotnik_arm_task/robotnik_dagger_v5/cache_v6/
+# - per-episode diagnostics and saved trajectories (summaries + figures are committed)
+robotnik_arm_task/robotnik_dagger_v5/eval_v6/**/anomaly_*.json
+robotnik_arm_task/robotnik_dagger_v5/eval_v6/examples/deploy_*.csv
+robotnik_arm_task/robotnik_dagger_v5/eval_v6/random_wide/
+robotnik_arm_task/robotnik_dagger_v5/eval_v6/validation/
+robotnik_arm_task/robotnik_dagger_v5/demo_v6/
+robotnik_arm_task/robotnik_dagger_v5/custom_target_demo/
+robotnik_arm_task/robotnik_dagger_v5/*.log

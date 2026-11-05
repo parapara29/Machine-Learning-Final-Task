@@ -1,0 +1,169 @@
+{
+  "linear_protocol_1000": {
+    "episodes": 1000,
+    "successes": 900,
+    "success_rate": 0.9,
+    "wilson95": [
+      0.8798476375941197,
+      0.9170908435367681
+    ],
+    "strict_success_rate_2cm": 0.565,
+    "within_1cm_rate": 0.196,
+    "mean_error_m": 0.07903057577429758,
+    "median_error_m": 0.018016637452954183,
+    "max_error_m": 1.5578743863397326,
+    "p95_error_m": 0.6406094506585291,
+    "successes_mean_error_m": 0.01853397500021908,
+    "successes_max_error_m": 0.04992411719860562,
+    "mean_episode_time_s": 16.084138999998412,
+    "mean_time_successes_s": 14.230693333331812,
+    "inference_ms_per_step": 0.5792191992657911,
+    "stop_reasons": {
+      "stalled": 731,
+      "reached": 196,
+      "step_cap": 73
+    }
+  },
+  "dagger_rounds_first_200_cases": {
+    "r0": {
+      "episodes": 200,
+      "successes": 0,
+      "success_rate": 0.0,
+      "wilson95": [
+        0.0,
+        0.018846005918320894
+      ],
+      "strict_success_rate_2cm": 0.0,
+      "within_1cm_rate": 0.0,
+      "mean_error_m": 0.9773577453820388,
+      "median_error_m": 0.8936819802517504,
+      "max_error_m": 2.058239167342488,
+      "p95_error_m": 1.784761968703572,
+      "successes_mean_error_m": null,
+      "successes_max_error_m": null,
+      "mean_episode_time_s": 6.275975000000428,
+      "mean_time_successes_s": null,
+      "inference_ms_per_step": 0.582264588945536,
+      "stop_reasons": {
+        "velocity_guard": 200
+      }
+    },
+    "r1": {
+      "episodes": 200,
+      "successes": 179,
+      "success_rate": 0.895,
+      "wilson95": [
+        0.8448186177864638,
+        0.9302930375380627
+      ],
+      "strict_success_rate_2cm": 0.58,
+      "within_1cm_rate": 0.155,
+      "mean_error_m": 0.06337101036000456,
+      "median_error_m": 0.018278718084703917,
+      "max_error_m": 1.0625223693611268,
+      "p95_error_m": 0.19827776639499495,
+      "successes_mean_error_m": 0.018850441434101074,
+      "successes_max_error_m": 0.046653110833535606,
+      "mean_episode_time_s": 14.960514999998836,
+      "mean_time_successes_s": 14.232402234635563,
+      "inference_ms_per_step": 0.5731730493029814,
+      "stop_reasons": {
+        "stalled": 157,
+        "reached": 31,
+        "velocity_guard": 6,
+        "step_cap": 6
+      }
+    },
+    "v6": {
+      "episodes": 200,
+      "successes": 180,
+      "success_rate": 0.9,
+      "wilson95": [
+        0.8505931364369146,
+        0.9343300588284289
+      ],
+      "strict_success_rate_2cm": 0.605,
+      "within_1cm_rate": 0.195,
+      "mean_error_m": 0.053992578779235266,
+      "median_error_m": 0.016654849005612794,
+      "max_error_m": 1.222279659069314,
+      "p95_error_m": 0.10886582080338444,
+      "successes_mean_error_m": 0.018073993347862763,
+      "successes_max_error_m": 0.04808618607126019,
+      "mean_episode_time_s": 15.212224999998455,
+      "mean_time_successes_s": 13.980477777776276,
+      "inference_ms_per_step": 0.607341142934403,
+      "stop_reasons": {
+        "stalled": 151,
+        "reached": 39,
+        "step_cap": 10
+      }
+    }
+  },
+  "parameters": {
+    "wheel": 109188,
+    "arm_hold": 116743,
+    "arm_reach": 116743,
+    "total": 342674
+  },
+  "best_validation_mse": {
+    "r0": {
+      "wheel": {
+        "demo": 0.015532061865394596,
+        "dagger": 0.01255528181234651,
+        "epochs_run": 46
+      },
+      "arm_hold": {
+        "demo": 0.026533411009975524,
+        "dagger": 0.016060869764935426,
+        "epochs_run": 60
+      },
+      "arm_reach": {
+        "demo": 0.22346551863122396,
+        "dagger": 0.2549981515290967,
+        "epochs_run": 60
+      }
+    },
+    "r1": {
+      "wheel": {
+        "demo": 0.018025003425062844,
+        "dagger": 0.014322573241499902,
+        "epochs_run": 52
+      },
+      "arm_hold": {
+        "demo": 0.03226385853889577,
+        "dagger": 0.08650995982476474,
+        "epochs_run": 46
+      },
+      "arm_reach": {
+        "demo": 0.22797674822584899,
+        "dagger": 0.562556542130304,
+        "epochs_run": 60
+      }
+    },
+    "v6": {
+      "wheel": {
+        "demo": 0.02127417470053943,
+        "dagger": 0.06705562236376053,
+        "epochs_run": 25
+      },
+      "arm_hold": {
+        "demo": 0.44134868714404485,
+        "dagger": 1.0391024004309861,
+        "epochs_run": 52
+      },
+      "arm_reach": {
+        "demo": 0.2744251238158142,
+        "dagger": 34.13975391405095,
+        "epochs_run": 41
+      }
+    }
+  },
+  "inference_benchmark": {
+    "mean_ms": 0.21182853507671098,
+    "median_ms": 0.20770200353581458,
+    "p99_ms": 0.2503529977548169,
+    "steps": 20000,
+    "torch_threads": 1
+  }
+}

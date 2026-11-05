@@ -1,12 +1,10 @@
-"""Shared raw feature contract and runtime policy loader for the Robotnik DAgger pipeline.
+"""Shared raw feature contract (38 inputs, 11 outputs) and the MLP used by every network.
 
 This module is the contract boundary between the data pipeline and the learned policies:
 all CSV trajectories, training scripts, and deployment code are expected to agree on the
 same 38 input features and the same 11 output command names. Changing this schema without
 updating the models and metadata files would silently break training and inference.
 """
-import json
-from pathlib import Path
 import numpy as np
 import torch
 from torch import nn
@@ -35,43 +33,20 @@ class MLP(nn.Module):
 def wrap(x):
     return float(np.arctan2(np.sin(x), np.cos(x)))
 
-def navigation_features(base, bearing, goal, goal_bearing, elapsed=0.):
+def navigation_features(base, bearing, goal, goal_bearing, elapsed=0., timeout=25.):
     delta=np.asarray(goal)[:2]-np.asarray(base)[:2]
     distance=float(np.linalg.norm(delta))
     heading=wrap(float(np.arctan2(delta[1],delta[0]))-bearing)
     orientation=wrap(goal_bearing-bearing)
     # This is an observable, deployable navigation-stage estimate, NOT expert internal state.
-    complete=float((distance < 0.08 and abs(orientation)<0.05) or elapsed>25.)
+    complete=float((distance < 0.08 and abs(orientation)<0.05) or elapsed>timeout)
     return [distance, heading, orientation, complete]
 
-def features(base, bearing, target, ee, goal, goal_bearing, q, qd, qinit, elapsed=0.):
+def features(base, bearing, target, ee, goal, goal_bearing, q, qd, qinit, elapsed=0., timeout=25.):
     vals=[*base[:3],bearing,*target[:3],*ee[:3],*goal[:2],goal_bearing,
           *q[4:11],*qd[4:11],*qinit[4:11],
-          *navigation_features(base,bearing,goal,goal_bearing,elapsed)]
+          *navigation_features(base,bearing,goal,goal_bearing,elapsed,timeout)]
     arr=np.asarray(vals,dtype=np.float32)
     if arr.shape!=(len(FEATURES),) or not np.isfinite(arr).all():
         raise ValueError(f'Invalid features: shape={arr.shape} finite={np.isfinite(arr).all()}')
     return arr
-
-class Policy:
-    def __init__(self, model_dir, device='cpu'):
-        self.device=torch.device(device)
-        self.models={}
-        for name,outputs in OUTPUTS.items():
-            folder=Path(model_dir)
-            meta=json.loads((folder/f'{name}_metadata.json').read_text())
-            if meta['input_features']!=FEATURES or meta['output_features']!=outputs:
-                raise ValueError(f'{name}: incompatible feature contract; retrain with train_dagger.py')
-            if meta.get('normalization') not in (None,'none'):
-                raise ValueError(f'{name}: scaled model supplied, but this pipeline uses raw inputs')
-            model=MLP(len(FEATURES),len(outputs),meta.get('hidden_dims',[256,256,128]),meta.get('dropout',.1))
-            weights=torch.load(folder/f'{name}.pth',map_location='cpu',weights_only=True)
-            model.load_state_dict(weights); model.to(self.device).eval()
-            self.models[name]=model
-    @torch.no_grad()
-    def predict(self,x):
-        t=torch.from_numpy(np.asarray(x,dtype=np.float32).reshape(1,len(FEATURES))).to(self.device)
-        results={name:model(t).cpu().numpy()[0] for name,model in self.models.items()}
-        if not all(np.isfinite(v).all() for v in results.values()):
-            raise FloatingPointError('MLP generated nonfinite commands')
-        return results['wheel_mlp'],results['torque_mlp']

@@ -29,18 +29,18 @@ To record your own run, use the GUI command below and capture the PyBullet windo
 
 ## Quick start
 
-All commands run from `robotnik_arm_task/robotnik_dagger_v5/` inside the project's Pixi `ml` environment (`pixi run -e ml ...`, or `pixi shell -e ml` once). The demonstrations are expected in `../data_randomized/` (only needed for training); create them with `../collect_data.py` (see the [top-level README](../../README.md)).
+All commands run from `robotnik_arm_task/robotnik_dagger_v5/` inside the Pixi `ml` environment of the repository's `RoboEnv/` folder: run `pixi shell -e ml` in `RoboEnv/` once, then `cd` here (see the [top-level README](../../README.md#setup)). The demonstrations are expected in `../data_randomized/` (only needed for training); create them with `../collect_data.py` (see the [top-level README](../../README.md)).
 
 **Watch the policy in the PyBullet GUI.** Each run uses a new random target and spawn:
 
 ```bash
-pixi run -e ml python run_robotnik_v6.py --random-target --random-spawn --seed $RANDOM
+python run_robotnik_v6.py --random-target --random-spawn --seed $RANDOM
 ```
 
 Use a given target and start pose instead:
 
 ```bash
-pixi run -e ml python run_robotnik_v6.py --target 1.2 -0.8 0.6 --spawn-position -1.5 1.5 3.0
+python run_robotnik_v6.py --target 1.2 -0.8 0.6 --spawn-position -1.5 1.5 3.0
 ```
 
 The runner prints `SUCCESS | reached` once the gripper has stayed within 5 cm of the target for 30 ms. It also writes a JSON summary to `custom_target_demo/`. Add `--headless` to run without a window.
@@ -235,10 +235,10 @@ The DAgger hold-out MSE (dashed) *rises* from round to round because the hold-ou
 
 ```bash
 # full pipeline: 3 collection rounds + 3 trainings + evaluation + figures (~4 h with 6 workers)
-pixi run -e ml bash run_v6_pipeline.sh
+bash run_v6_pipeline.sh
 # or stage by stage: r0 train_r0 r1 train_r1 r2 train_r2 eval
-pixi run -e ml bash run_v6_pipeline.sh train_r2
-WORKERS=4 pixi run -e ml bash run_v6_pipeline.sh     # fewer parallel simulations if RAM is tight
+bash run_v6_pipeline.sh train_r2
+WORKERS=4 bash run_v6_pipeline.sh     # fewer parallel simulations if RAM is tight
 ```
 
 Every stage is resumable: finished episodes and trained models are skipped. Progress bars show the episodes, epochs and batches. `train_v6.py` caches parsed rollouts in `cache_v6/`. The train/validation/test split of the 2000 demonstrations is in `episode_split.json`; the 300 test episodes are never used.
@@ -246,7 +246,7 @@ Every stage is resumable: finished episodes and trained models are skipped. Prog
 **Evaluation only** (on the 1000 linear-model test cases):
 
 ```bash
-pixi run -e ml bash run_v6_evaluation.sh   # -> eval_v6/linear_protocol/*/deploy_summary.csv, figures/v6_*.pdf, figures/v6_results.json
+bash run_v6_evaluation.sh   # -> eval_v6/linear_protocol/*/deploy_summary.csv, figures/v6_*.pdf, figures/v6_results.json
 ```
 
 `make_linear_protocol_cases.py` regenerates the cases with the same random sequence (seed 42) as the linear model's `test_combined_random.py`. `robotnik_dagger_collect.py --stop-rule linear` applies the same stop rule: stop at 1 cm, or when the error stalls for 1.5 s, or at 40 s; success = final error ≤ 5 cm.
@@ -294,4 +294,4 @@ The earlier code is in the git history of this branch (commit `5bdfe14` and befo
 - **No PyBullet window:** you need a desktop session; on a headless machine use `--headless`.
 - **`... is not a V6 checkpoint`:** `--model-dir` must contain `v6_metadata.json`, `wheel.pth`, `arm_hold.pth` and `arm_reach.pth`.
 - **Out of memory during collection:** lower `WORKERS`. Each simulation uses about 1 GB of RAM.
-- **`pixi` not found / no `ml` environment:** install Pixi and use the project's `RoboEnv` manifest. The `simulation_and_control` package must be importable.
+- **`pixi` not found / no `ml` environment:** install Pixi, then run `pixi install -e ml` and `pixi shell -e ml` inside the repository's `RoboEnv/` folder. `python -c "import simulation_and_control"` must work in that shell.

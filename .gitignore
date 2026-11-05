@@ -1,10 +1,10 @@
-# Robot assets from RoboEnv (copied or symlinked locally, see README)
-models/
-configs/
-robotnik_arm_task/models
-robotnik_arm_task/configs
-robotnik_arm_task/robotnik_dagger_v5/models
-robotnik_arm_task/robotnik_dagger_v5/configs
+# Robot assets live in RoboEnv/; the task folders link to them (committed symlinks).
+# Ignore stray local copies at the repo root.
+/models/
+/configs/
+# Pixi environment of RoboEnv (created by 'pixi install', several GB)
+RoboEnv/.pixi/
+*.egg-info/
 # Demonstrations (regenerate with robotnik_arm_task/collect_data.py)
 data/
 data_randomized/

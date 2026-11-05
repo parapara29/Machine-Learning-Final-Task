@@ -14,33 +14,39 @@ This branch contains the **MLP policy trained with Dataset Aggregation (DAgger)*
 
 ```text
 Machine-Learning-Final-Task/
+├── RoboEnv/                       simulation environment from the labs (Pixi manifest, simulation_and_control,
+│                                  robot models/ and configs/)
 ├── robotnik_arm_task/
 │   ├── robotnik_arm_task.py       expert simulation: one episode with the model-based controller (GUI or headless)
 │   ├── robotnik_arm_control.py    expert controllers used by robotnik_arm_task.py
 │   ├── collect_data.py            records the expert demonstrations -> data_randomized/
 │   ├── data_randomized/           2000 demonstration episodes (not in git, created by collect_data.py)
+│   ├── models, configs            links to RoboEnv/models and RoboEnv/configs
 │   └── robotnik_dagger_v5/        the DAgger policy: code, trained model, evaluation, figures, demo video
-│                                  (see its README)
+│                                  (see its README; also links to RoboEnv/models and RoboEnv/configs)
 └── README.md                      this file
 ```
 
 ## Setup
 
-1. Use the RoboEnv environment from the labs. The examples below use Pixi's `ml` environment (`pixi run -e ml ...`); uv or conda work the same way. The `simulation_and_control` package must be importable.
-2. Make RoboEnv's `models/` and `configs/` folders available next to the scripts that start a simulation, i.e. in `robotnik_arm_task/` and in `robotnik_arm_task/robotnik_dagger_v5/`. Copy them, or link them from one copy:
-   ```bash
-   cd robotnik_arm_task
-   ln -s /path/to/RoboEnv/models models && ln -s /path/to/RoboEnv/configs configs
-   ```
-   These folders are git-ignored.
+The simulation environment is included in `RoboEnv/`. Install [Pixi](https://pixi.sh), then create and activate the `ml` environment (Python 3.12 with PyTorch, PyBullet, Pinocchio and the bundled `simulation_and_control` package):
+
+```bash
+cd RoboEnv
+pixi install -e ml        # first time only, downloads a few GB
+pixi shell -e ml          # activates the environment in this terminal
+cd ../robotnik_arm_task
+```
+
+Check the environment with `python -c "import torch, pybullet, simulation_and_control"`. The robot models and configs need no copying: `robotnik_arm_task/` and `robotnik_arm_task/robotnik_dagger_v5/` contain links to `RoboEnv/models` and `RoboEnv/configs` (on Windows, enable symlinks in git or copy the two folders there).
 
 ## Workflow
 
-All commands run from `robotnik_arm_task/`.
+All commands run from `robotnik_arm_task/` in the terminal where `pixi shell -e ml` is active.
 
 **1. Watch the expert.** One episode of the model-based controller, which drives to the target (red dot) and reaches it:
 ```bash
-pixi run -e ml python robotnik_arm_task.py
+python robotnik_arm_task.py
 ```
 Set `TARGET_EE_POS` at the top of the file to change the target.
 
@@ -51,21 +57,21 @@ Set `TARGET_EE_POS` at the top of the file to change the target.
 
 The state and the expert's commands are logged every 10 ms.
 ```bash
-pixi run -e ml python collect_data.py                      # -> data_randomized/
-pixi run -e ml python collect_data.py --num-episodes 5 --output-dir /tmp/check   # quick test
+python collect_data.py                      # -> data_randomized/
+python collect_data.py --num-episodes 5 --output-dir /tmp/check   # quick test
 ```
 The same seed reproduces the same tasks and start states (`targets.csv`). Tiny numerical differences in the physics can still make individual torque spikes differ between runs.
 
 **3. Train and evaluate the DAgger policy.** Three DAgger rounds, training, and evaluation on 1000 random episodes, with progress bars and resumable stages:
 ```bash
 cd robotnik_dagger_v5
-pixi run -e ml bash run_v6_pipeline.sh
+bash run_v6_pipeline.sh
 ```
 
 **4. Run the trained policy** in the GUI on a random target and spawn:
 ```bash
 cd robotnik_dagger_v5
-pixi run -e ml python run_robotnik_v6.py --random-target --random-spawn --seed $RANDOM
+python run_robotnik_v6.py --random-target --random-spawn --seed $RANDOM
 ```
 
 ## Simulation variables

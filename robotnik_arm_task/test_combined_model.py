@@ -30,8 +30,8 @@ from robotnik_combined_model import (
 NUM_TESTS = 1000
 REACH_TOLERANCE = 0.01    # Stop simulation early once EE error <= 0.01 m (same as robotnik_arm_task.py)
 SUCCESS_TOLERANCE = 0.05  # Count episode as a success if final EE error <= 0.05 m
-RADIUS_MIN = 0.9          # Min target distance from robot start position (m)
-RADIUS_MAX = 3.5          # Max target distance from robot start position (m)
+RADIUS_MIN = 1.8          # Min target distance from robot start position (m)
+RADIUS_MAX = 4.0          # Max target distance from robot start position (m)
 SEED = 42
 # ==============================================================================
 

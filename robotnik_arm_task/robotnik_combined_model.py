@@ -24,7 +24,7 @@ from train_arm_model import (
 # ==============================================================================
 # TARGET SPECIFICATION
 # Fixed 3D Cartesian coordinates for the target in the world frame: [X, Y, Z]
-TARGET_EE_POS = np.array([2, -2.0, 0.3])
+TARGET_EE_POS = np.array([-0.067, -0.263, 0.395])
 FIXED_FINGER_ANGLES = np.array([0.1, 0.1, 0.1, 0.1, 0.1, 0.1])
 
 # Base standoff distance curve (height-adjusted so base stops in the optimal arm reach window)

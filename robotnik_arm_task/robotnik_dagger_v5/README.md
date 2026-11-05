@@ -19,11 +19,11 @@ Spawn x, y ∈ [−2, 2] m with any heading; target 0.9–3.5 m from the spawn, 
 
 The V6 policy drives from a random spawn pose to a random target and reaches it with the arm. Wheels and arm are fully learned; the expert is not used.
 
-<video src="media/v6_random_spawn_demo.mp4" controls muted width="720"></video>
+<p align="center">
+  <img src="media/v6_random_spawn_demo.gif" alt="V6 policy driving from a random spawn to a random target (red dot) and reaching it with the arm" width="420">
+</p>
 
-[![V6 demo: click to play the video](figures/v6_example_episodes.png)](media/v6_random_spawn_demo.mp4)
-
-**▶ [Play the demo video (`media/v6_random_spawn_demo.mp4`)](media/v6_random_spawn_demo.mp4)**. The image above shows three example episodes (base path and end-effector error) and links to the video.
+The animation plays at the speed of the screen recording (8 frames/s, cropped to the simulation view). The full-resolution screen recording is [`media/v6_random_spawn_demo.mp4`](media/v6_random_spawn_demo.mp4).
 
 To record your own run, use the GUI command below and capture the PyBullet window (e.g. with OBS or `SimpleScreenRecorder`).
 

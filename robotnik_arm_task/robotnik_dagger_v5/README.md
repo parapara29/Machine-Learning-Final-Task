@@ -29,7 +29,7 @@ To record your own run, use the GUI command below and capture the PyBullet windo
 
 ## Quick start
 
-All commands run from `robotnik_arm_task/robotnik_dagger_v5/` inside the project's Pixi `ml` environment (`pixi run -e ml ...`, or `pixi shell -e ml` once). The demonstrations are expected in `../data_randomized/` (only needed for training).
+All commands run from `robotnik_arm_task/robotnik_dagger_v5/` inside the project's Pixi `ml` environment (`pixi run -e ml ...`, or `pixi shell -e ml` once). The demonstrations are expected in `../data_randomized/` (only needed for training); create them with `../collect_data.py` (see the [top-level README](../../README.md)).
 
 **Watch the policy in the PyBullet GUI.** Each run uses a new random target and spawn:
 

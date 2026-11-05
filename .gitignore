@@ -1,6 +1,11 @@
-/robotnik_arm_task/__pycache__/*
+# Robot assets from RoboEnv (copied or symlinked locally, see README)
 models/
 configs/
+robotnik_arm_task/models
+robotnik_arm_task/configs
+robotnik_arm_task/robotnik_dagger_v5/models
+robotnik_arm_task/robotnik_dagger_v5/configs
+# Demonstrations (regenerate with robotnik_arm_task/collect_data.py)
 data/
 data_randomized/
 __pycache__/

@@ -1,5 +1,6 @@
 # COMP0245 Final Task, Group 10: Behaviour Cloning for a Mobile Manipulator
-The link to the github repo for this group is at [github.com/parapara29/Machine-Learning-Final-Task](github.com/parapara29/Machine-Learning-Final-Task), each branch of the github repo is made into a folder in the final zip file.
+The link to the github repo for this group is at [github.com/parapara29/Machine-Learning-Final-Task](https://github.com/parapara29/Machine-Learning-Final-Task), each branch of the github repo is made into a folder in the final zip file.
+
 A simulated Robotnik mobile manipulator (4-wheel skid-steer base + 7-DoF Kinova arm, PyBullet + Pinocchio) must drive to a 3D target and touch it with its gripper. A model-based expert controller solves the task. The goal is a learned model that produces the 4 wheel commands and 7 arm torques from the robot state and the target.
 
 Each group member developed one approach on their own branch. This `main` branch holds only the shared starting point: the expert simulation and the data collector. Check out a branch to get its model, results and instructions.

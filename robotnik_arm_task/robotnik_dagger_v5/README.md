@@ -4,15 +4,18 @@ A simulated Robotnik mobile manipulator (4-wheel skid-steer base + 7-DoF Kinova 
 
 **Final model:** [`trained_model_dagger_v6/`](trained_model_dagger_v6)
 
-1000 random episodes each, spawn x, y ∈ [−2, 2] m with any heading, target height 0.3–0.9 m. The test cases are those of the linear-regression model's test script `test_combined_random.py`, at two target-distance ranges:
+1000 random episodes each, spawn x, y ∈ [−2, 2] m with any heading, target height 0.3–0.9 m. The test cases are generated like those of the linear-regression model's test script `test_combined_random.py` (seed 42), at three target-distance ranges. 2.0–4.0 m is the range of the current script, 0.9–3.5 m that of its earlier version, and 1.3–4.0 m an extra DAgger-only run:
 
-| V6 (DAgger) | Target 2.0–4.0 m from the spawn | Target 0.9–3.5 m from the spawn |
-|---|---:|---:|
-| Success (final error ≤ 5 cm) | **99.1 %** (991/1000, 95 % CI [98.3, 99.5] %) | **90.0 %** (900/1000, 95 % CI [88.0, 91.7] %) |
-| Within 2 cm / within 1 cm | 68.8 % / 23.3 % | 56.5 % / 19.6 % |
-| Median / mean final error | 15.8 mm / 18.2 mm | 18.0 mm / 79.0 mm |
-| Mean episode time | 16.1 s | 16.1 s |
-| Targets outside the training region | 89 % | 76 % |
+| V6 (DAgger) | Target 2.0–4.0 m from the spawn | Target 1.3–4.0 m | Target 0.9–3.5 m |
+|---|---:|---:|---:|
+| Success (final error ≤ 5 cm) | **99.1 %** (991/1000, 95 % CI [98.3, 99.5] %) | **96.5 %** (965/1000, [95.2, 97.5] %) | **90.0 %** (900/1000, [88.0, 91.7] %) |
+| Within 2 cm / within 1 cm | 68.8 % / 23.3 % | 64.4 % / 21.6 % | 56.5 % / 19.6 % |
+| Median / mean final error | 15.8 mm / 18.2 mm | 16.8 mm / 39.2 mm | 18.0 mm / 79.0 mm |
+| Mean episode time | 16.1 s | 15.8 s | 16.1 s |
+| Episodes stopped by the 40 s cap | 0 | 24 | 73 |
+| Targets outside the training region | 89 % | 83 % | 76 % |
+
+The closer the targets can be to the spawn, the more episodes end in the short-range base failure described under [Failure modes](#full-evaluation-results-1000-cases-target-0935-m-from-the-spawn) (40 s cap). The 1.3–4.0 m results are in `eval_v6/protocol_1.3-4.0/v6/deploy_summary.csv`; they are not in the report.
 
 | Model size and speed | |
 |---|---:|
@@ -60,6 +63,22 @@ At every 1 ms step the robot is in a state s_t and the policy π_θ must output 
 - **Mixing:** in a "mix" round, one draw b ~ Bernoulli(β) every M steps decides whether the expert or the learner drives the next M steps. The **label is always the expert's action**, whoever drove.
 - **Aggregation:** D_{k+1} = D_k ∪ {(features, expert action) of the states visited in round k}. D_0 is the 1400 training demonstrations.
 - **Stateful expert:** the expert has hidden state (its base phase and arm reference q_des). The collector therefore advances it on *every* step, including learner steps, so its labels stay consistent.
+
+The collection loop and the three rounds of the final policy (the same diagram as in the report):
+
+```mermaid
+flowchart LR
+    S["State s_t<br/>features φ(s_t)"] --> L["Learner π_θ"]
+    S --> E["Expert E<br/>(stateful, advanced every step)"]
+    L --> X["Execute a_t<br/>expert with prob. β, per block of M steps"]
+    E --> X
+    E -- "expert label a*_t" --> D[("Dataset D ← (φ(s_t), a*_t)")]
+    X -- "simulator step → s_t+1" --> S
+    X --> D
+    D -. "retrain after each round" .-> L
+```
+
+The rollouts and test success of each round are in the table under [DAgger rounds and training](#dagger-rounds-and-training-train_v6py).
 
 **Evidence that it matters here:** after round 0 (pure behaviour cloning on expert data) the policy reaches **0 of 200** test targets. Every episode ends with the arm torques diverging (joint-velocity guard). After one DAgger round with the learner in control half of the time, it reaches **179/200**, and after the final round **180/200**.
 
@@ -262,6 +281,7 @@ The 38 egocentric inputs:
 | rollouts (train / 5 % hold-out) | 381 / 19 | 565 / 35 | 571 / 29 |
 | rollouts reaching the target | 398/400 | 594/600 | 537/600 |
 | mean rollout length | 11.4 s | 11.7 s | 15.1 s |
+| policy after the round: success on 200 test cases | 0/200 | 179/200 | 180/200 |
 
 - **Why M = 300 steps (0.3 s):** within one learner segment the base can travel at most 7.5 cm or turn 0.3 rad. That is enough to drift into realistic error states, while the expert can still recover.
 - **Rollout logging:** every 10 ms, capped at 60 s.
@@ -299,6 +319,10 @@ The DAgger hold-out MSE (dashed) *rises* from round to round because the hold-ou
   - r0: 0/200, all ended by the joint-velocity guard;
   - r1: 179/200, with 6 velocity-guard and 6 step-cap stops;
   - r2: 180/200, with no guard stops.
+![Success map](figures/v6_success_map.png)
+
+*(a) Targets in the robot's initial body frame (the robot faces up), by outcome. (b) Success rate against the distance from the spawn to the base goal: the failures concentrate where the spawn is close to the goal.*
+
 - **Failure modes:**
   - 73 failures hit the 40 s cap, 62 of them with the spawn within 1 m of the base goal (52.3 % success there versus 96.9 % beyond 1 m). Replays show the base reaching its goal point but still 1.0–1.5 rad off the final heading. It drives on and circles (4–12 m of path) instead of turning in place, so navigation never completes and the arm never reaches.
   - 27 failures stall just outside the tolerance (median 7.0 cm).

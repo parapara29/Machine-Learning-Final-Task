@@ -74,8 +74,8 @@ def load_linear(log_path, cases):
     return df.sort_values('episode').reset_index(drop=True)
 
 
-def load_dagger(cases):
-    df = pd.read_csv(HERE / 'eval_v6' / 'linear_protocol' / 'v6' / 'deploy_summary.csv')
+def load_dagger(cases, summary_csv=HERE / 'eval_v6' / 'linear_protocol' / 'v6' / 'deploy_summary.csv'):
+    df = pd.read_csv(summary_csv)
     df = df.sort_values('episode').reset_index(drop=True)
     if df['episode'].tolist() != cases['episode'].tolist():
         raise SystemExit('DAgger summary does not cover the 1000 linear-protocol cases')
@@ -106,7 +106,7 @@ def wilson(k, n, z=1.96):
     return [100 * (c - h), 100 * (c + h)]
 
 
-def plot(results, cases, out):
+def plot(results, cases, out, radius_min=0.9, radius_max=3.5):
     """The two-panel summary figure of test_combined_random.py, one row per model, shared axes."""
     rel = cases[['target_x', 'target_y']].to_numpy() - cases[['spawn_x', 'spawn_y']].to_numpy()
     fig, axes = plt.subplots(2, 2, figsize=(12, 8.5), gridspec_kw={'width_ratios': [1.25, 1]})
@@ -130,7 +130,7 @@ def plot(results, cases, out):
         ax.set_aspect('equal')
         ax.set_xlabel('target offset dX from start (m)')
         ax.set_ylabel('target offset dY from start (m)')
-        ax.set_title(f'{name}: target offset from the start', loc='left')
+        ax.set_title(f'{name}: target offset from the start ({radius_min}–{radius_max} m)', loc='left')
         ax.legend(loc='upper left', bbox_to_anchor=(1.01, 1.0))
     for ax in axes.flat:
         for side in ('top', 'right'):
@@ -174,9 +174,14 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--linear-log', required=True, help='console output of test_combined_random.py')
     ap.add_argument('--out', default=str(HERE / 'figures' / 'linear_vs_dagger'))
+    ap.add_argument('--dagger-summary', default=str(HERE / 'eval_v6' / 'linear_protocol' / 'v6' / 'deploy_summary.csv'),
+                    help='deploy_summary.csv of the DAgger run on the same cases')
+    ap.add_argument('--radius-min', type=float, default=0.9, help='RADIUS_MIN of the test_combined_random.py run')
+    ap.add_argument('--radius-max', type=float, default=3.5, help='RADIUS_MAX of the test_combined_random.py run')
     args = ap.parse_args()
-    cases = make_cases()
-    results = {'Linear regression': load_linear(args.linear_log, cases), 'DAgger V6': load_dagger(cases)}
+    cases = make_cases(radius_min=args.radius_min, radius_max=args.radius_max)
+    results = {'Linear regression': load_linear(args.linear_log, cases),
+               'DAgger V6': load_dagger(cases, args.dagger_summary)}
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
 
@@ -196,14 +201,21 @@ def main():
         'only_dagger_succeeds': int((~lin & dag).sum()), 'both_fail': int((~lin & ~dag).sum()),
     }
     # Success by spawn-target distance (both models fail mostly on the near targets).
-    edges = [0.9, 1.5, 2.0, 2.5, 3.5]
+    edges = [e for e in [1.3, 2.0, 2.5, 3.0] if args.radius_min < e < args.radius_max]
+    edges = [args.radius_min, *edges, args.radius_max]
     dist = cases['spawn_target_distance'].to_numpy()
-    report['success_by_distance_percent'] = {
-        f'{lo}-{hi} m (n={int(((dist >= lo) & (dist < hi)).sum())})': {
-            name: float(100 * df['success'].to_numpy()[(dist >= lo) & (dist < hi)].mean()) for name, df in results.items()}
-        for lo, hi in zip(edges[:-1], edges[1:])}
+    report['success_by_distance_percent'] = {}
+    for lo, hi in zip(edges[:-1], edges[1:]):
+        band = (dist >= lo) & ((dist < hi) | (hi == args.radius_max))
+        report['success_by_distance_percent'][f'{lo}-{hi} m (n={int(band.sum())})'] = {
+            name: float(100 * df['success'].to_numpy()[band].mean()) for name, df in results.items()}
+    # Success for all targets at or beyond a distance (e.g. "100 % above 1.3 m").
+    report['success_at_or_beyond_percent'] = {
+        f'>= {t} m (n={int((dist >= t).sum())})': {
+            name: float(100 * df['success'].to_numpy()[dist >= t].mean()) for name, df in results.items()}
+        for t in [1.3, 1.8, 2.0, 2.5] if args.radius_min <= t < args.radius_max}
     out.with_suffix('.json').write_text(json.dumps(report, indent=2))
-    plot(results, cases, out)
+    plot(results, cases, out, args.radius_min, args.radius_max)
     plot_distance(report, out.with_name(out.name + '_distance'))
 
     names = list(results)
@@ -223,8 +235,9 @@ def main():
             vals = [fmt.format(report[n][key]) for n in names]
         print(f'{label:28s}' + ''.join(f'{v:>20s}' for v in vals))
     print('paired:', report['paired'])
-    for band, rates in report['success_by_distance_percent'].items():
-        print(f'success {band:18s}' + ''.join(f'{v:>20.1f}' for v in rates.values()))
+    for key in ('success_by_distance_percent', 'success_at_or_beyond_percent'):
+        for band, rates in report[key].items():
+            print(f'success {band:22s}' + ''.join(f'{v:>20.1f}' for v in rates.values()))
     print('wrote', out.with_suffix('.json'), out.with_suffix('.png'), out.with_suffix('.pdf'))
 
 

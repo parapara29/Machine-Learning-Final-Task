@@ -1,0 +1,70 @@
+{
+  "Linear regression": {
+    "total_points_tested": 1000,
+    "successful_reaches": 970,
+    "failed_reaches": 30,
+    "success_rate_percent": 97.0,
+    "mean_ee_error_m": 0.032608099999999994,
+    "median_ee_error_m": 0.01,
+    "std_ee_error_m": 0.1283980926041738,
+    "min_ee_error_m": 0.0097,
+    "max_ee_error_m": 0.9971,
+    "average_episode_time_s": 14.31989,
+    "success_rate_95ci_percent": [
+      95.749631851849,
+      97.8906396810303
+    ],
+    "within_2cm_percent": 92.5,
+    "within_1cm_percent": 84.2,
+    "average_episode_time_successes_s": 13.616319587628865
+  },
+  "DAgger V6": {
+    "total_points_tested": 1000,
+    "successful_reaches": 991,
+    "failed_reaches": 9,
+    "success_rate_percent": 99.1,
+    "mean_ee_error_m": 0.018227718195331307,
+    "median_ee_error_m": 0.015834185738415503,
+    "std_ee_error_m": 0.009037467254045773,
+    "min_ee_error_m": 0.009818418508630468,
+    "max_ee_error_m": 0.0851602864519047,
+    "average_episode_time_s": 16.090651999998705,
+    "success_rate_95ci_percent": [
+      98.2983992177176,
+      99.52579934109885
+    ],
+    "within_2cm_percent": 68.8,
+    "within_1cm_percent": 23.3,
+    "average_episode_time_successes_s": 16.08850756811172
+  },
+  "paired": {
+    "both_succeed": 962,
+    "only_linear_succeeds": 8,
+    "only_dagger_succeeds": 29,
+    "both_fail": 1
+  },
+  "success_by_distance_percent": {
+    "2.0-2.5 m (n=241)": {
+      "Linear regression": 87.55186721991701,
+      "DAgger V6": 97.9253112033195
+    },
+    "2.5-3.0 m (n=253)": {
+      "Linear regression": 100.0,
+      "DAgger V6": 100.0
+    },
+    "3.0-4.0 m (n=506)": {
+      "Linear regression": 100.0,
+      "DAgger V6": 99.2094861660079
+    }
+  },
+  "success_at_or_beyond_percent": {
+    ">= 2.0 m (n=1000)": {
+      "Linear regression": 97.0,
+      "DAgger V6": 99.1
+    },
+    ">= 2.5 m (n=759)": {
+      "Linear regression": 100.0,
+      "DAgger V6": 99.4729907773386
+    }
+  }
+}

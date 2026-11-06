@@ -1,0 +1,1195 @@
+pybullet build time: Oct 21 2025 10:07:17
+==================================================================
+Testing Combined Model on 1000 Random Base Starts & Targets
+Target Distance Range: [2.0, 4.0] m | Parallel Workers: 12
+Stop Tolerance: 0.01 m | Success Criterion: <= 0.05 m
+==================================================================
+pybullet build time: Oct 21 2025 10:07:17
+pybullet build time: Oct 21 2025 10:07:17
+pybullet build time: Oct 21 2025 10:07:17
+pybullet build time: Oct 21 2025 10:07:17
+pybullet build time: Oct 21 2025 10:07:17
+pybullet build time: Oct 21 2025 10:07:17
+pybullet build time: Oct 21 2025 10:07:17
+pybullet build time: Oct 21 2025 10:07:17
+pybullet build time: Oct 21 2025 10:07:17
+pybullet build time: Oct 21 2025 10:07:17
+pybullet build time: Oct 21 2025 10:07:17
+pybullet build time: Oct 21 2025 10:07:17
+argv[0]=
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkargv[0]=
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintargv[0]=
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorargv[0]=
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorargv[0]=
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorargv[0]=
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintargv[0]=
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameNo inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkrobot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkargv[0]=
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameNo inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorrobot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkargv[0]=
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkargv[0]=
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorargv[0]=
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintargv[0]=
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effector[   1/1000] Start: (-1.39,  0.79, yaw=-0.34) | Target: [ 0.518 -0.985  0.678] | EE Error: 0.0100 m | Time: 10.07s | SUCCESS
+[   2/1000] Start: (-0.55, -1.65, yaw=-2.40) | Target: [-4.261 -0.744  0.72 ] | EE Error: 0.0100 m | Time: 14.56s | SUCCESS
+[   3/1000] Start: (-0.94,  1.88, yaw= 1.75) | Target: [-0.338  4.713  0.463] | EE Error: 0.0100 m | Time: 10.40s | SUCCESS
+[   4/1000] Start: (-1.61,  1.61, yaw=-0.28) | Target: [-2.384 -0.886  0.648] | EE Error: 0.0100 m | Time: 10.63s | SUCCESS
+[   5/1000] Start: (-1.29,  1.43, yaw= 1.62) | Target: [-0.747  4.238  0.676] | EE Error: 0.0100 m | Time: 10.10s | SUCCESS
+[   6/1000] Start: ( 1.10, -0.24, yaw= 2.25) | Target: [1.807 1.826 0.885] | EE Error: 0.0099 m | Time:  8.89s | SUCCESS
+[   7/1000] Start: ( 1.04,  1.14, yaw=-2.34) | Target: [3.654 0.303 0.856] | EE Error: 0.0100 m | Time: 11.46s | SUCCESS
+[   8/1000] Start: ( 0.57,  1.29, yaw=-0.36) | Target: [ 0.132 -1.786  0.338] | EE Error: 0.0178 m | Time: 13.75s | SUCCESS
+[   9/1000] Start: ( 1.31,  0.53, yaw= 1.62) | Target: [ 3.717 -2.594  0.836] | EE Error: 0.0100 m | Time: 17.13s | SUCCESS
+[  10/1000] Start: ( 1.11, -1.22, yaw=-0.21) | Target: [-1.108 -1.848  0.71 ] | EE Error: 0.0100 m | Time: 11.30s | SUCCESS
+[  11/1000] Start: ( 1.12, -1.46, yaw= 0.23) | Target: [ 4.816 -1.13   0.578] | EE Error: 0.0100 m | Time: 13.65s | SUCCESS
+[  12/1000] Start: (-0.46,  0.56, yaw=-1.47) | Target: [-2.347 -1.717  0.55 ] | EE Error: 0.0100 m | Time: 11.71s | SUCCESS
+[  13/1000] Start: (-1.07, -0.53, yaw=-0.84) | Target: [ 0.221 -2.968  0.711] | EE Error: 0.0100 m | Time:  9.58s | SUCCESS
+[  14/1000] Start: (-0.81,  1.79, yaw= 2.62) | Target: [1.826 1.477 0.621] | EE Error: 0.0100 m | Time: 12.07s | SUCCESS
+[  15/1000] Start: ( 1.39,  0.61, yaw= 1.91) | Target: [4.591 1.277 0.473] | EE Error: 0.0100 m | Time: 13.33s | SUCCESS
+[  16/1000] Start: ( 0.67, -0.12, yaw= 0.41) | Target: [0.366 3.139 0.632] | EE Error: 0.0100 m | Time: 12.92s | SUCCESS
+[  17/1000] Start: ( 0.24, -0.78, yaw=-2.95) | Target: [ 2.477 -1.725  0.545] | EE Error: 0.0146 m | Time: 13.88s | SUCCESS
+[  18/1000] Start: ( 1.41, -1.06, yaw=-2.77) | Target: [ 1.921 -3.601  0.697] | EE Error: 0.0100 m | Time: 10.02s | SUCCESS
+[  19/1000] Start: ( 0.23,  1.14, yaw= 1.03) | Target: [ 3.246 -0.877  0.4  ] | EE Error: 0.0100 m | Time: 14.75s | SUCCESS
+[  20/1000] Start: (-1.91, -1.64, yaw= 1.40) | Target: [ 0.347 -2.191  0.601] | EE Error: 0.0101 m | Time: 12.13s | SUCCESS
+[  21/1000] Start: ( 1.56,  1.57, yaw= 0.12) | Target: [ 2.989 -1.67   0.697] | EE Error: 0.0100 m | Time: 13.89s | SUCCESS
+[  22/1000] Start: (-0.51, -1.62, yaw= 1.55) | Target: [-0.202 -5.484  0.445] | EE Error: 0.0100 m | Time: 17.13s | SUCCESS
+[  23/1000] Start: (-1.51,  1.32, yaw=-2.18) | Target: [-2.884 -1.564  0.825] | EE Error: 0.0100 m | Time: 11.27s | SUCCESS
+[  24/1000] Start: (-1.21, -0.76, yaw= 1.74) | Target: [-4.169 -0.23   0.386] | EE Error: 0.0100 m | Time: 11.70s | SUCCESS
+[  25/1000] Start: (-1.94, -1.08, yaw=-2.31) | Target: [-0.959  0.935  0.604] | EE Error: 0.0100 m | Time: 11.83s | SUCCESS
+[  26/1000] Start: ( 0.34,  0.60, yaw=-2.61) | Target: [ 2.134 -0.452  0.596] | EE Error: 0.0100 m | Time: 20.04s | SUCCESS
+[  27/1000] Start: (-0.68, -1.42, yaw=-2.49) | Target: [ 1.314 -0.197  0.855] | EE Error: 0.0100 m | Time: 10.88s | SUCCESS
+[  28/1000] Start: ( 0.32, -0.61, yaw= 0.57) | Target: [-3.553 -1.172  0.589] | EE Error: 0.0100 m | Time: 17.34s | SUCCESS
+[  29/1000] Start: ( 1.13, -1.67, yaw=-0.08) | Target: [ 5.    -1.895  0.643] | EE Error: 0.0100 m | Time: 14.17s | SUCCESS
+[  30/1000] Start: (-0.11, -0.93, yaw=-1.06) | Target: [ 2.748 -0.559  0.313] | EE Error: 0.0100 m | Time: 11.01s | SUCCESS
+[  31/1000] Start: ( 1.30,  1.58, yaw=-2.26) | Target: [3.396 2.323 0.703] | EE Error: 0.0100 m | Time: 35.76s | SUCCESS
+[  32/1000] Start: (-0.88,  0.64, yaw= 1.43) | Target: [-1.134  2.838  0.85 ] | EE Error: 0.0100 m | Time:  7.40s | SUCCESS
+[  33/1000] Start: (-1.08, -1.85, yaw= 0.34) | Target: [ 1.442 -4.503  0.785] | EE Error: 0.0100 m | Time: 14.12s | SUCCESS
+[  34/1000] Start: (-0.73,  1.81, yaw=-1.31) | Target: [1.77  2.049 0.862] | EE Error: 0.0100 m | Time:  9.82s | SUCCESS
+[  35/1000] Start: (-1.34, -1.82, yaw=-0.41) | Target: [-5.121 -1.639  0.749] | EE Error: 0.0100 m | Time: 16.39s | SUCCESS
+[  36/1000] Start: ( 0.98,  1.87, yaw=-1.09) | Target: [ 2.997 -0.267  0.414] | EE Error: 0.0100 m | Time: 10.41s | SUCCESS
+[  37/1000] Start: (-1.48, -0.10, yaw=-1.72) | Target: [-0.092  2.42   0.8  ] | EE Error: 0.0099 m | Time: 13.15s | SUCCESS
+[  38/1000] Start: ( 0.80, -0.75, yaw= 2.09) | Target: [-0.135  1.861  0.473] | EE Error: 0.0100 m | Time:  9.65s | SUCCESS
+[  39/1000] Start: ( 0.73, -1.44, yaw=-1.89) | Target: [-2.84  -1.606  0.699] | EE Error: 0.0100 m | Time: 13.90s | SUCCESS
+[  40/1000] Start: ( 0.82,  1.12, yaw=-0.26) | Target: [2.891 2.077 0.369] | EE Error: 0.0205 m | Time: 37.32s | SUCCESS
+[  41/1000] Start: ( 0.94, -1.19, yaw= 1.22) | Target: [-0.511  0.548  0.669] | EE Error: 0.0100 m | Time: 35.82s | SUCCESS
+[  42/1000] Start: (-1.62,  0.90, yaw=-2.61) | Target: [-3.713  1.794  0.875] | EE Error: 0.0100 m | Time:  9.47s | SUCCESS
+[  43/1000] Start: ( 1.20,  0.38, yaw= 1.78) | Target: [0.115 4.112 0.452] | EE Error: 0.0100 m | Time: 14.13s | SUCCESS
+[  44/1000] Start: ( 0.36, -1.62, yaw= 0.73) | Target: [-1.126 -4.375  0.643] | EE Error: 0.0100 m | Time: 14.22s | SUCCESS
+[  45/1000] Start: (-0.14,  0.09, yaw= 1.66) | Target: [-1.045  2.934  0.66 ] | EE Error: 0.0100 m | Time: 10.54s | SUCCESS
+[  46/1000] Start: (-1.78, -1.30, yaw=-2.81) | Target: [1.047 0.52  0.536] | EE Error: 0.0100 m | Time: 15.31s | SUCCESS
+[  47/1000] Start: (-0.73,  0.02, yaw= 2.36) | Target: [-1.967  1.698  0.409] | EE Error: 0.0100 m | Time:  6.98s | SUCCESS
+[  48/1000] Start: (-1.05, -1.00, yaw= 0.45) | Target: [ 0.762 -2.056  0.524] | EE Error: 0.9157 m | Time: 37.12s | FAIL
+[  49/1000] Start: ( 0.10, -1.59, yaw= 2.10) | Target: [-3.551 -2.828  0.359] | EE Error: 0.0200 m | Time: 16.78s | SUCCESS
+[  50/1000] Start: ( 1.37,  1.61, yaw= 3.01) | Target: [0.231 4.981 0.685] | EE Error: 0.0100 m | Time: 13.81s | SUCCESS
+[  51/1000] Start: ( 1.32,  1.19, yaw=-1.68) | Target: [4.47  1.804 0.821] | EE Error: 0.0100 m | Time: 13.22s | SUCCESS
+[  52/1000] Start: ( 0.41, -0.35, yaw=-0.79) | Target: [ 3.364 -1.834  0.82 ] | EE Error: 0.0100 m | Time: 11.81s | SUCCESS
+[  53/1000] Start: (-0.18, -1.01, yaw=-1.66) | Target: [-0.093  2.623  0.363] | EE Error: 0.0198 m | Time: 17.52s | SUCCESS
+[  54/1000] Start: (-1.73,  0.38, yaw=-2.22) | Target: [-2.919  2.716  0.386] | EE Error: 0.0203 m | Time: 12.88s | SUCCESS
+[  55/1000] Start: ( 1.68, -1.34, yaw=-1.35) | Target: [ 0.414 -3.172  0.313] | EE Error: 0.2467 m | Time: 37.50s | FAIL
+[  56/1000] Start: ( 0.78,  0.32, yaw=-1.89) | Target: [-0.367  3.558  0.743] | EE Error: 0.0100 m | Time: 14.64s | SUCCESS
+[  57/1000] Start: (-1.48, -1.50, yaw= 2.69) | Target: [ 0.605 -3.066  0.593] | EE Error: 0.0100 m | Time: 12.84s | SUCCESS
+[  58/1000] Start: ( 0.65,  1.82, yaw=-1.34) | Target: [-1.174  2.755  0.633] | EE Error: 0.9501 m | Time: 37.07s | FAIL
+[  59/1000] Start: ( 0.54, -1.58, yaw=-2.26) | Target: [ 3.971 -3.49   0.658] | EE Error: 0.0100 m | Time: 16.16s | SUCCESS
+[  60/1000] Start: ( 1.73,  1.22, yaw=-0.20) | Target: [1.291 3.204 0.365] | EE Error: 0.0233 m | Time: 10.86s | SUCCESS
+[  61/1000] Start: ( 1.73, -1.52, yaw=-2.41) | Target: [-1.1   -3.257  0.551] | EE Error: 0.0100 m | Time: 12.18s | SUCCESS
+[  62/1000] Start: ( 1.10,  0.69, yaw=-1.04) | Target: [-1.733  2.786  0.462] | EE Error: 0.0100 m | Time: 15.57s | SUCCESS
+[  63/1000] Start: (-0.54, -0.74, yaw=-2.15) | Target: [-2.862 -3.843  0.563] | EE Error: 0.0100 m | Time: 14.37s | SUCCESS
+[  64/1000] Start: (-0.47,  0.92, yaw= 0.33) | Target: [-3.745  2.31   0.588] | EE Error: 0.0100 m | Time: 15.48s | SUCCESS
+[  65/1000] Start: (-0.49,  1.95, yaw= 1.37) | Target: [-2.628  2.622  0.81 ] | EE Error: 0.0100 m | Time:  9.08s | SUCCESS
+[  66/1000] Start: (-1.83,  1.54, yaw= 1.32) | Target: [-2.845 -0.397  0.41 ] | EE Error: 0.0119 m | Time: 14.34s | SUCCESS
+[  67/1000] Start: ( 1.92, -0.17, yaw= 1.78) | Target: [3.979 2.211 0.387] | EE Error: 0.0175 m | Time: 13.67s | SUCCESS
+[  68/1000] Start: ( 1.78, -0.80, yaw= 0.49) | Target: [2.808 2.341 0.864] | EE Error: 0.0100 m | Time: 12.48s | SUCCESS
+[  69/1000] Start: (-1.41,  0.03, yaw=-0.60) | Target: [ 0.803 -0.329  0.38 ] | EE Error: 0.0170 m | Time:  9.49s | SUCCESS
+[  70/1000] Start: (-0.89, -0.78, yaw=-0.45) | Target: [1.618 1.318 0.547] | EE Error: 0.0100 m | Time: 13.03s | SUCCESS
+[  71/1000] Start: (-1.71,  1.37, yaw=-2.79) | Target: [-1.202 -1.251  0.404] | EE Error: 0.0100 m | Time: 10.43s | SUCCESS
+[  72/1000] Start: (-0.74,  0.97, yaw=-3.05) | Target: [-2.475  4.256  0.523] | EE Error: 0.0100 m | Time: 14.71s | SUCCESS
+[  73/1000] Start: (-1.39,  0.40, yaw=-2.39) | Target: [ 1.203 -2.536  0.897] | EE Error: 0.0100 m | Time: 15.95s | SUCCESS
+[  74/1000] Start: ( 1.09, -0.76, yaw= 1.18) | Target: [1.856 1.911 0.685] | EE Error: 0.0100 m | Time:  9.55s | SUCCESS
+[  75/1000] Start: (-1.96, -1.16, yaw= 0.16) | Target: [-3.16  -3.162  0.802] | EE Error: 0.0099 m | Time: 11.08s | SUCCESS
+[  76/1000] Start: (-0.36, -1.13, yaw= 0.56) | Target: [ 0.482 -3.02   0.551] | EE Error: 0.0100 m | Time: 21.07s | SUCCESS
+[  77/1000] Start: (-0.10, -1.10, yaw= 0.46) | Target: [3.014 0.269 0.689] | EE Error: 0.0100 m | Time: 12.21s | SUCCESS
+[  78/1000] Start: ( 0.61, -0.73, yaw= 1.81) | Target: [3.337 0.135 0.676] | EE Error: 0.0100 m | Time: 11.47s | SUCCESS
+[  79/1000] Start: (-0.56,  0.05, yaw= 1.49) | Target: [-3.461  2.566  0.602] | EE Error: 0.0100 m | Time: 15.01s | SUCCESS
+[  80/1000] Start: ( 0.08,  1.20, yaw=-1.17) | Target: [-1.478  3.748  0.37 ] | EE Error: 0.0194 m | Time: 14.90s | SUCCESS
+[  81/1000] Start: ( 1.96,  0.22, yaw= 2.13) | Target: [-0.322  0.363  0.569] | EE Error: 0.0100 m | Time:  8.46s | SUCCESS
+[  82/1000] Start: (-0.43, -1.68, yaw= 1.60) | Target: [ 2.258 -2.868  0.39 ] | EE Error: 0.0100 m | Time: 12.46s | SUCCESS
+[  83/1000] Start: (-1.28,  1.63, yaw=-2.86) | Target: [-1.554 -0.941  0.594] | EE Error: 0.0100 m | Time:  9.99s | SUCCESS
+[  84/1000] Start: ( 0.35, -0.03, yaw=-2.61) | Target: [ 0.199 -3.711  0.683] | EE Error: 0.0100 m | Time: 14.27s | SUCCESS
+[  85/1000] Start: ( 0.60,  0.68, yaw= 1.65) | Target: [-1.956 -0.295  0.624] | EE Error: 0.0100 m | Time: 11.44s | SUCCESS
+[  86/1000] Start: ( 0.62, -1.85, yaw=-3.11) | Target: [-2.419 -2.879  0.781] | EE Error: 0.0100 m | Time: 11.48s | SUCCESS
+[  87/1000] Start: (-1.05,  1.40, yaw=-2.78) | Target: [-2.26   5.058  0.763] | EE Error: 0.0100 m | Time: 15.37s | SUCCESS
+[  88/1000] Start: ( 0.79,  1.35, yaw=-2.89) | Target: [ 0.121 -0.795  0.603] | EE Error: 0.0100 m | Time:  9.93s | SUCCESS
+[  89/1000] Start: ( 0.98,  0.52, yaw= 2.21) | Target: [-0.965 -2.352  0.416] | EE Error: 0.0099 m | Time: 14.50s | SUCCESS
+[  90/1000] Start: (-0.92,  0.84, yaw= 3.02) | Target: [0.695 2.2   0.67 ] | EE Error: 0.7962 m | Time: 36.90s | FAIL
+[  91/1000] Start: (-0.65,  1.38, yaw=-0.11) | Target: [-1.079  5.057  0.603] | EE Error: 0.0100 m | Time: 15.43s | SUCCESS
+[  92/1000] Start: ( 1.64,  0.35, yaw= 2.20) | Target: [ 3.254 -2.177  0.619] | EE Error: 0.0100 m | Time: 13.47s | SUCCESS
+[  93/1000] Start: (-1.58, -0.41, yaw= 2.62) | Target: [0.023 1.319 0.503] | EE Error: 0.0120 m | Time: 12.31s | SUCCESS
+[  94/1000] Start: (-1.23, -1.90, yaw= 2.69) | Target: [ 1.244 -2.737  0.659] | EE Error: 0.0100 m | Time: 11.96s | SUCCESS
+[  95/1000] Start: (-1.97, -0.89, yaw= 1.28) | Target: [0.673 2.065 0.672] | EE Error: 0.0100 m | Time: 15.02s | SUCCESS
+[  96/1000] Start: ( 0.55, -1.51, yaw= 0.56) | Target: [1.339 0.352 0.573] | EE Error: 0.8851 m | Time: 37.12s | FAIL
+[  97/1000] Start: ( 1.30, -0.82, yaw=-0.26) | Target: [ 3.737 -1.742  0.851] | EE Error: 0.0100 m | Time:  8.84s | SUCCESS
+[  98/1000] Start: ( 1.12, -1.56, yaw= 3.12) | Target: [-0.738  0.209  0.802] | EE Error: 0.0100 m | Time: 35.62s | SUCCESS
+[  99/1000] Start: (-1.57,  2.00, yaw= 1.04) | Target: [-0.293  3.761  0.838] | EE Error: 0.0100 m | Time:  7.17s | SUCCESS
+[ 100/1000] Start: (-1.88, -1.04, yaw=-2.24) | Target: [-2.285  1.326  0.846] | EE Error: 0.0100 m | Time: 10.40s | SUCCESS
+[ 101/1000] Start: (-0.09,  1.05, yaw= 2.53) | Target: [0.629 4.906 0.769] | EE Error: 0.0099 m | Time: 15.20s | SUCCESS
+[ 102/1000] Start: ( 1.47, -1.54, yaw= 1.46) | Target: [ 4.356 -2.686  0.692] | EE Error: 0.0100 m | Time: 12.80s | SUCCESS
+[ 103/1000] Start: ( 1.88,  1.94, yaw=-1.33) | Target: [2.236 5.42  0.508] | EE Error: 0.0100 m | Time: 15.74s | SUCCESS
+[ 104/1000] Start: (-1.50, -1.84, yaw= 1.74) | Target: [ 2.458 -2.093  0.579] | EE Error: 0.0100 m | Time: 16.55s | SUCCESS
+[ 105/1000] Start: ( 1.91, -0.35, yaw= 1.84) | Target: [-0.767 -1.935  0.781] | EE Error: 0.0099 m | Time: 12.72s | SUCCESS
+[ 106/1000] Start: (-0.86,  1.59, yaw=-1.66) | Target: [ 0.879 -1.81   0.618] | EE Error: 0.0100 m | Time: 14.43s | SUCCESS
+[ 107/1000] Start: ( 0.97,  0.36, yaw= 0.96) | Target: [ 1.727 -2.001  0.493] | EE Error: 0.0107 m | Time: 12.85s | SUCCESS
+[ 108/1000] Start: (-1.38,  1.50, yaw=-1.36) | Target: [1.942 2.847 0.77 ] | EE Error: 0.0099 m | Time: 14.69s | SUCCESS
+[ 109/1000] Start: (-0.25, -0.10, yaw= 3.11) | Target: [1.41  3.135 0.842] | EE Error: 0.0100 m | Time: 15.13s | SUCCESS
+[ 110/1000] Start: ( 1.15, -1.26, yaw= 0.39) | Target: [-1.501 -3.234  0.873] | EE Error: 0.0100 m | Time: 14.96s | SUCCESS
+[ 111/1000] Start: (-0.90,  1.55, yaw=-1.96) | Target: [-3.213  0.183  0.731] | EE Error: 0.0100 m | Time: 10.31s | SUCCESS
+[ 112/1000] Start: ( 1.23,  2.00, yaw=-1.28) | Target: [3.134 0.752 0.645] | EE Error: 0.8500 m | Time: 37.04s | FAIL
+[ 113/1000] Start: ( 1.99,  0.80, yaw= 0.60) | Target: [ 4.978 -1.594  0.598] | EE Error: 0.0100 m | Time: 15.32s | SUCCESS
+[ 114/1000] Start: (-1.46, -0.54, yaw=-2.72) | Target: [-2.068 -2.481  0.572] | EE Error: 0.0118 m | Time: 12.06s | SUCCESS
+[ 115/1000] Start: ( 0.54, -0.63, yaw=-0.50) | Target: [-2.851  0.261  0.625] | EE Error: 0.0100 m | Time: 15.70s | SUCCESS
+[ 116/1000] Start: ( 0.05, -0.27, yaw=-2.92) | Target: [-2.085  0.284  0.325] | EE Error: 0.0249 m | Time:  9.90s | SUCCESS
+[ 117/1000] Start: (-1.02, -1.74, yaw=-0.28) | Target: [ 1.596 -1.473  0.331] | EE Error: 0.0171 m | Time: 10.54s | SUCCESS
+[ 118/1000] Start: (-1.55, -0.46, yaw=-2.76) | Target: [-0.782  1.825  0.481] | EE Error: 0.0100 m | Time: 11.22s | SUCCESS
+[ 119/1000] Start: (-0.42, -0.33, yaw=-3.13) | Target: [-3.262 -2.746  0.301] | EE Error: 0.0100 m | Time: 14.23s | SUCCESS
+[ 120/1000] Start: ( 0.03, -0.04, yaw=-1.05) | Target: [ 3.268 -1.531  0.805] | EE Error: 0.0100 m | Time: 13.13s | SUCCESS
+[ 121/1000] Start: (-0.96, -0.71, yaw=-1.62) | Target: [ 2.381 -1.135  0.437] | EE Error: 0.0100 m | Time: 13.52s | SUCCESS
+[ 122/1000] Start: (-0.68,  1.72, yaw=-2.84) | Target: [2.643 0.887 0.39 ] | EE Error: 0.0100 m | Time: 15.00s | SUCCESS
+[ 123/1000] Start: (-1.81, -1.45, yaw= 2.63) | Target: [-4.184 -1.585  0.319] | EE Error: 0.0168 m | Time:  9.81s | SUCCESS
+[ 124/1000] Start: (-1.56,  0.48, yaw=-1.62) | Target: [1.327 1.821 0.81 ] | EE Error: 0.0100 m | Time: 13.33s | SUCCESS
+[ 125/1000] Start: (-1.98,  1.41, yaw= 0.75) | Target: [-3.829 -1.613  0.813] | EE Error: 0.0099 m | Time: 15.74s | SUCCESS
+[ 126/1000] Start: ( 1.70,  1.29, yaw=-2.91) | Target: [ 3.161 -0.214  0.366] | EE Error: 0.9039 m | Time: 37.23s | FAIL
+[ 127/1000] Start: ( 0.70,  0.85, yaw= 1.72) | Target: [-1.607  3.456  0.781] | EE Error: 0.0099 m | Time: 12.72s | SUCCESS
+[ 128/1000] Start: (-1.80, -1.06, yaw= 0.77) | Target: [-3.066  0.501  0.609] | EE Error: 0.9132 m | Time: 37.15s | FAIL
+[ 129/1000] Start: ( 0.71, -1.88, yaw=-0.62) | Target: [-1.941  0.157  0.443] | EE Error: 0.0100 m | Time: 14.75s | SUCCESS
+[ 130/1000] Start: ( 1.41, -0.61, yaw= 2.22) | Target: [ 2.374 -3.639  0.538] | EE Error: 0.0100 m | Time: 14.38s | SUCCESS
+[ 131/1000] Start: ( 0.97, -1.91, yaw= 3.01) | Target: [ 3.438 -4.305  0.833] | EE Error: 0.0099 m | Time: 14.94s | SUCCESS
+[ 132/1000] Start: (-0.42, -0.72, yaw= 0.68) | Target: [2.04  0.65  0.661] | EE Error: 0.0100 m | Time:  9.93s | SUCCESS
+[ 133/1000] Start: ( 1.74, -0.13, yaw=-1.91) | Target: [ 3.741 -2.073  0.379] | EE Error: 0.0180 m | Time: 12.53s | SUCCESS
+[ 134/1000] Start: (-1.35,  0.74, yaw=-1.01) | Target: [-3.737  1.433  0.359] | EE Error: 0.0294 m | Time: 13.08s | SUCCESS
+[ 135/1000] Start: ( 1.01,  1.52, yaw=-1.39) | Target: [ 0.311 -0.741  0.613] | EE Error: 0.0100 m | Time:  8.76s | SUCCESS
+[ 136/1000] Start: (-0.13, -0.96, yaw=-2.86) | Target: [ 3.766 -1.417  0.692] | EE Error: 0.0100 m | Time: 17.19s | SUCCESS
+[ 137/1000] Start: (-0.02, -1.56, yaw=-1.55) | Target: [ 0.962 -4.948  0.826] | EE Error: 0.0100 m | Time: 12.74s | SUCCESS
+[ 138/1000] Start: ( 1.61,  1.94, yaw= 3.03) | Target: [-0.444  2.562  0.383] | EE Error: 0.0155 m | Time:  8.69s | SUCCESS
+[ 139/1000] Start: (-0.78,  0.21, yaw=-2.53) | Target: [-2.613  2.877  0.625] | EE Error: 0.0100 m | Time: 13.13s | SUCCESS
+[ 140/1000] Start: (-1.34, -0.99, yaw=-2.13) | Target: [-3.232  1.554  0.741] | EE Error: 0.0100 m | Time: 12.95s | SUCCESS
+[ 141/1000] Start: (-0.82, -0.52, yaw=-0.60) | Target: [-1.039  3.023  0.424] | EE Error: 0.0100 m | Time: 15.10s | SUCCESS
+[ 142/1000] Start: ( 1.77, -1.52, yaw= 2.49) | Target: [-0.276 -3.009  0.808] | EE Error: 0.0099 m | Time: 10.43s | SUCCESS
+[ 143/1000] Start: (-1.28, -0.35, yaw=-0.32) | Target: [-1.384 -3.765  0.811] | EE Error: 0.0100 m | Time: 13.35s | SUCCESS
+[ 144/1000] Start: ( 1.50, -0.64, yaw= 0.19) | Target: [ 1.473 -3.132  0.397] | EE Error: 0.0100 m | Time: 10.20s | SUCCESS
+[ 145/1000] Start: ( 1.76,  1.55, yaw= 1.74) | Target: [4.723 1.882 0.618] | EE Error: 0.0100 m | Time: 12.14s | SUCCESS
+[ 146/1000] Start: (-1.98, -1.93, yaw= 3.10) | Target: [-0.041 -0.791  0.838] | EE Error: 0.5627 m | Time: 36.92s | FAIL
+[ 147/1000] Start: ( 1.52,  0.14, yaw= 0.77) | Target: [ 1.827 -1.934  0.657] | EE Error: 0.0100 m | Time:  9.56s | SUCCESS
+[ 148/1000] Start: (-0.82,  0.65, yaw= 2.11) | Target: [-3.992  0.291  0.439] | EE Error: 0.0100 m | Time: 12.39s | SUCCESS
+[ 149/1000] Start: ( 1.50, -0.98, yaw= 0.70) | Target: [ 4.132 -0.063  0.707] | EE Error: 0.0100 m | Time:  9.91s | SUCCESS
+[ 150/1000] Start: ( 0.90,  0.27, yaw= 1.62) | Target: [-1.92   0.563  0.609] | EE Error: 0.0100 m | Time: 11.28s | SUCCESS
+[ 151/1000] Start: (-1.95,  1.18, yaw= 0.13) | Target: [-0.118 -0.012  0.834] | EE Error: 0.5778 m | Time: 37.24s | FAIL
+[ 152/1000] Start: (-0.42,  0.73, yaw=-2.20) | Target: [-2.708  1.294  0.42 ] | EE Error: 0.0100 m | Time:  9.74s | SUCCESS
+[ 153/1000] Start: ( 1.44,  1.65, yaw=-1.81) | Target: [4.841 0.996 0.827] | EE Error: 0.0100 m | Time: 13.93s | SUCCESS
+[ 154/1000] Start: (-0.48,  0.07, yaw= 1.52) | Target: [-0.062  3.609  0.642] | EE Error: 0.0100 m | Time: 12.83s | SUCCESS
+[ 155/1000] Start: (-1.58,  1.62, yaw= 2.30) | Target: [-2.237  3.716  0.423] | EE Error: 0.0100 m | Time:  8.56s | SUCCESS
+[ 156/1000] Start: ( 0.15, -0.26, yaw=-2.31) | Target: [-2.603 -3.034  0.589] | EE Error: 0.0100 m | Time: 14.47s | SUCCESS
+[ 157/1000] Start: ( 1.81, -1.35, yaw= 0.34) | Target: [ 1.155 -3.764  0.318] | EE Error: 0.0183 m | Time: 12.45s | SUCCESS
+[ 158/1000] Start: (-1.52,  1.67, yaw=-1.12) | Target: [0.755 3.508 0.54 ] | EE Error: 0.0108 m | Time: 14.18s | SUCCESS
+[ 159/1000] Start: ( 0.13, -1.25, yaw= 3.07) | Target: [-1.321  1.916  0.581] | EE Error: 0.0100 m | Time: 13.74s | SUCCESS
+[ 160/1000] Start: (-1.39,  1.68, yaw=-1.00) | Target: [-3.941  0.852  0.777] | EE Error: 0.0100 m | Time: 11.09s | SUCCESS
+[ 161/1000] Start: (-0.98,  1.68, yaw=-0.29) | Target: [2.177 4.077 0.517] | EE Error: 0.0100 m | Time: 15.71s | SUCCESS
+[ 162/1000] Start: ( 1.25, -0.73, yaw= 1.88) | Target: [3.214 0.713 0.548] | EE Error: 0.0100 m | Time: 11.29s | SUCCESS
+[ 163/1000] Start: (-0.73, -1.69, yaw=-2.95) | Target: [ 0.432 -3.363  0.399] | EE Error: 0.0100 m | Time: 36.00s | SUCCESS
+[ 164/1000] Start: ( 0.90,  0.83, yaw= 1.50) | Target: [ 2.449 -2.617  0.656] | EE Error: 0.0100 m | Time: 16.61s | SUCCESS
+[ 165/1000] Start: (-1.50, -1.43, yaw= 1.21) | Target: [-2.899 -4.093  0.895] | EE Error: 0.0100 m | Time: 13.87s | SUCCESS
+[ 166/1000] Start: ( 0.67, -1.48, yaw=-1.41) | Target: [-0.982 -3.447  0.705] | EE Error: 0.0100 m | Time: 10.61s | SUCCESS
+[ 167/1000] Start: ( 1.64, -1.19, yaw= 0.26) | Target: [2.815 2.535 0.666] | EE Error: 0.0100 m | Time: 15.35s | SUCCESS
+[ 168/1000] Start: (-0.98,  0.50, yaw=-1.13) | Target: [-3.748  0.92   0.711] | EE Error: 0.0100 m | Time: 11.73s | SUCCESS
+[ 169/1000] Start: (-1.91, -0.40, yaw= 2.36) | Target: [0.316 1.444 0.862] | EE Error: 0.0100 m | Time: 11.94s | SUCCESS
+[ 170/1000] Start: ( 1.42, -0.71, yaw= 0.28) | Target: [ 4.674 -0.92   0.5  ] | EE Error: 0.0100 m | Time: 11.95s | SUCCESS
+[ 171/1000] Start: ( 1.57,  1.00, yaw= 3.09) | Target: [4.826 1.649 0.481] | EE Error: 0.0100 m | Time: 14.94s | SUCCESS
+[ 172/1000] Start: ( 1.79, -0.54, yaw= 1.50) | Target: [ 4.353 -2.321  0.732] | EE Error: 0.0100 m | Time: 13.03s | SUCCESS
+[ 173/1000] Start: ( 0.04,  1.63, yaw=-0.51) | Target: [1.654 3.771 0.545] | EE Error: 0.0110 m | Time: 13.10s | SUCCESS
+[ 174/1000] Start: (-0.24, -1.50, yaw=-2.56) | Target: [1.401 1.379 0.698] | EE Error: 0.0100 m | Time: 14.69s | SUCCESS
+[ 175/1000] Start: (-1.92, -0.69, yaw=-1.90) | Target: [-2.576  2.969  0.448] | EE Error: 0.0100 m | Time: 16.27s | SUCCESS
+[ 176/1000] Start: ( 0.49,  1.00, yaw= 1.84) | Target: [-0.42  -2.735  0.563] | EE Error: 0.0100 m | Time: 16.96s | SUCCESS
+[ 177/1000] Start: ( 0.56, -1.99, yaw= 3.10) | Target: [ 0.966 -4.075  0.575] | EE Error: 0.0100 m | Time: 10.31s | SUCCESS
+[ 178/1000] Start: (-1.48, -1.39, yaw= 0.83) | Target: [ 1.522 -3.786  0.491] | EE Error: 0.0100 m | Time: 15.62s | SUCCESS
+[ 179/1000] Start: ( 0.91, -0.16, yaw= 1.00) | Target: [3.291 1.571 0.87 ] | EE Error: 0.0100 m | Time: 10.72s | SUCCESS
+[ 180/1000] Start: (-0.63, -1.29, yaw= 1.12) | Target: [-1.809  0.422  0.57 ] | EE Error: 0.0338 m | Time: 37.46s | SUCCESS
+[ 181/1000] Start: (-1.02,  1.65, yaw= 2.66) | Target: [-3.212  4.947  0.747] | EE Error: 0.0100 m | Time: 14.59s | SUCCESS
+[ 182/1000] Start: ( 1.06,  1.05, yaw=-0.12) | Target: [3.447 0.38  0.687] | EE Error: 0.0100 m | Time:  8.35s | SUCCESS
+[ 183/1000] Start: (-0.84, -0.97, yaw= 0.54) | Target: [ 1.215 -2.275  0.79 ] | EE Error: 0.0099 m | Time: 10.63s | SUCCESS
+[ 184/1000] Start: ( 1.44, -1.33, yaw=-3.09) | Target: [ 3.294 -4.41   0.804] | EE Error: 0.0100 m | Time: 14.86s | SUCCESS
+[ 185/1000] Start: (-1.45,  1.10, yaw=-2.42) | Target: [ 1.634 -1.45   0.416] | EE Error: 0.0100 m | Time: 16.45s | SUCCESS
+[ 186/1000] Start: (-1.38, -0.31, yaw= 0.75) | Target: [-4.999  1.312  0.342] | EE Error: 0.0198 m | Time: 17.88s | SUCCESS
+[ 187/1000] Start: (-1.45,  1.16, yaw=-1.44) | Target: [-3.941  3.365  0.367] | EE Error: 0.0202 m | Time: 15.82s | SUCCESS
+[ 188/1000] Start: ( 1.33, -1.29, yaw=-0.48) | Target: [ 4.172 -0.328  0.712] | EE Error: 0.0100 m | Time: 11.14s | SUCCESS
+[ 189/1000] Start: ( 0.61,  1.97, yaw= 3.14) | Target: [2.79  2.194 0.737] | EE Error: 0.0100 m | Time:  9.92s | SUCCESS
+[ 190/1000] Start: ( 1.91, -0.73, yaw=-0.24) | Target: [ 3.779 -1.684  0.703] | EE Error: 0.0100 m | Time:  7.86s | SUCCESS
+[ 191/1000] Start: (-1.14,  0.34, yaw=-1.91) | Target: [-0.099  2.537  0.359] | EE Error: 0.0229 m | Time: 12.67s | SUCCESS
+[ 192/1000] Start: (-1.17, -0.31, yaw=-2.04) | Target: [-3.638 -3.095  0.492] | EE Error: 0.0100 m | Time: 13.87s | SUCCESS
+[ 193/1000] Start: (-0.56, -1.78, yaw=-0.90) | Target: [-0.258 -4.986  0.423] | EE Error: 0.0100 m | Time: 11.87s | SUCCESS
+[ 194/1000] Start: ( 1.55,  1.72, yaw=-2.51) | Target: [-0.189  0.325  0.672] | EE Error: 0.0100 m | Time:  7.28s | SUCCESS
+[ 195/1000] Start: (-1.51,  1.41, yaw= 1.60) | Target: [-2.808  4.173  0.898] | EE Error: 0.0100 m | Time: 11.16s | SUCCESS
+[ 196/1000] Start: (-1.82, -0.40, yaw=-1.11) | Target: [-4.814  0.605  0.784] | EE Error: 0.0100 m | Time: 13.43s | SUCCESS
+[ 197/1000] Start: (-1.32,  1.92, yaw=-0.01) | Target: [2.62  1.758 0.528] | EE Error: 0.0100 m | Time: 14.50s | SUCCESS
+[ 198/1000] Start: (-0.41,  0.34, yaw=-2.34) | Target: [ 0.621 -1.813  0.362] | EE Error: 0.0245 m | Time: 11.20s | SUCCESS
+[ 199/1000] Start: ( 1.47,  0.36, yaw=-0.89) | Target: [ 3.869 -1.197  0.68 ] | EE Error: 0.0100 m | Time: 10.17s | SUCCESS
+[ 200/1000] Start: ( 1.71,  1.73, yaw=-0.68) | Target: [ 3.093 -0.819  0.641] | EE Error: 0.0100 m | Time: 10.48s | SUCCESS
+[ 201/1000] Start: (-0.42,  0.95, yaw=-1.52) | Target: [-0.466  3.959  0.75 ] | EE Error: 0.0100 m | Time: 13.08s | SUCCESS
+[ 202/1000] Start: (-0.14, -0.53, yaw=-1.76) | Target: [-1.047 -3.912  0.371] | EE Error: 0.0182 m | Time: 14.03s | SUCCESS
+[ 203/1000] Start: (-1.66, -1.29, yaw=-2.04) | Target: [-2.896  1.212  0.894] | EE Error: 0.0100 m | Time: 12.11s | SUCCESS
+[ 204/1000] Start: (-1.45,  0.61, yaw=-0.32) | Target: [ 1.482 -1.723  0.885] | EE Error: 0.0100 m | Time: 14.01s | SUCCESS
+[ 205/1000] Start: ( 1.49, -1.23, yaw=-1.75) | Target: [2.926 0.911 0.741] | EE Error: 0.0100 m | Time: 15.10s | SUCCESS
+[ 206/1000] Start: (-0.15,  0.64, yaw= 0.34) | Target: [ 1.004 -1.795  0.527] | EE Error: 0.0100 m | Time: 11.40s | SUCCESS
+[ 207/1000] Start: (-1.62, -1.34, yaw= 1.40) | Target: [ 0.242 -2.895  0.638] | EE Error: 0.0100 m | Time: 12.13s | SUCCESS
+[ 208/1000] Start: ( 1.02, -0.97, yaw= 2.05) | Target: [-1.847  0.435  0.701] | EE Error: 0.0100 m | Time: 11.80s | SUCCESS
+[ 209/1000] Start: (-1.79,  1.78, yaw=-0.68) | Target: [-4.594  3.235  0.303] | EE Error: 0.0100 m | Time: 14.13s | SUCCESS
+[ 210/1000] Start: (-1.85,  0.72, yaw= 0.39) | Target: [-5.285  0.143  0.811] | EE Error: 0.0100 m | Time: 15.40s | SUCCESS
+[ 211/1000] Start: ( 1.18,  1.35, yaw=-1.35) | Target: [ 2.422 -2.186  0.314] | EE Error: 0.0100 m | Time: 13.50s | SUCCESS
+[ 212/1000] Start: ( 0.08, -0.14, yaw= 1.20) | Target: [-1.645 -3.     0.526] | EE Error: 0.0100 m | Time: 15.17s | SUCCESS
+[ 213/1000] Start: ( 0.47, -1.84, yaw=-0.24) | Target: [ 2.88  -1.502  0.384] | EE Error: 0.0151 m | Time:  9.86s | SUCCESS
+[ 214/1000] Start: (-1.25, -0.62, yaw=-2.53) | Target: [-3.903  0.29   0.785] | EE Error: 0.0100 m | Time: 10.47s | SUCCESS
+[ 215/1000] Start: ( 1.90, -1.68, yaw= 0.95) | Target: [-0.36   0.686  0.557] | EE Error: 0.0100 m | Time: 13.13s | SUCCESS
+[ 216/1000] Start: ( 0.27,  0.20, yaw= 2.06) | Target: [0.77  2.194 0.33 ] | EE Error: 0.0329 m | Time: 37.23s | SUCCESS
+[ 217/1000] Start: ( 0.41, -0.06, yaw=-1.51) | Target: [ 3.473 -1.775  0.796] | EE Error: 0.0100 m | Time: 13.36s | SUCCESS
+[ 218/1000] Start: ( 0.24, -0.46, yaw=-1.44) | Target: [ 2.85  -0.098  0.638] | EE Error: 0.0100 m | Time: 10.65s | SUCCESS
+[ 219/1000] Start: ( 0.71, -1.74, yaw=-3.13) | Target: [-0.183 -5.419  0.688] | EE Error: 0.0100 m | Time: 15.13s | SUCCESS
+[ 220/1000] Start: (-1.31,  1.56, yaw=-0.19) | Target: [2.515 0.982 0.336] | EE Error: 0.0180 m | Time: 15.44s | SUCCESS
+[ 221/1000] Start: (-0.01, -0.14, yaw=-3.11) | Target: [-0.621  2.454  0.827] | EE Error: 0.0100 m | Time: 10.41s | SUCCESS
+[ 222/1000] Start: (-0.51,  0.26, yaw=-1.44) | Target: [-2.399 -2.744  0.598] | EE Error: 0.0100 m | Time: 13.60s | SUCCESS
+[ 223/1000] Start: ( 0.15,  1.86, yaw= 2.91) | Target: [-1.317  3.733  0.657] | EE Error: 0.8145 m | Time: 36.90s | FAIL
+[ 224/1000] Start: ( 1.51, -0.50, yaw=-2.51) | Target: [0.405 2.247 0.639] | EE Error: 0.0100 m | Time: 12.32s | SUCCESS
+[ 225/1000] Start: ( 1.93,  0.43, yaw=-0.47) | Target: [ 3.87  -1.638  0.371] | EE Error: 0.0189 m | Time: 11.55s | SUCCESS
+[ 226/1000] Start: (-0.59,  1.15, yaw= 2.09) | Target: [-1.813  3.704  0.493] | EE Error: 0.0100 m | Time:  9.86s | SUCCESS
+[ 227/1000] Start: ( 0.99,  1.21, yaw=-0.06) | Target: [-0.795  2.63   0.827] | EE Error: 0.7404 m | Time: 37.06s | FAIL
+[ 228/1000] Start: (-1.62, -1.39, yaw= 0.21) | Target: [-3.535 -2.253  0.3  ] | EE Error: 0.0100 m | Time: 35.85s | SUCCESS
+[ 229/1000] Start: (-0.26,  1.10, yaw=-2.92) | Target: [1.846 4.078 0.401] | EE Error: 0.0100 m | Time: 15.86s | SUCCESS
+[ 230/1000] Start: (-1.41,  1.44, yaw= 2.03) | Target: [2.117 2.324 0.356] | EE Error: 0.0202 m | Time: 16.27s | SUCCESS
+[ 231/1000] Start: (-1.05, -1.80, yaw=-2.18) | Target: [-3.259 -2.73   0.641] | EE Error: 0.0100 m | Time:  9.87s | SUCCESS
+[ 232/1000] Start: ( 1.65,  0.15, yaw= 0.79) | Target: [ 0.577 -3.289  0.671] | EE Error: 0.0100 m | Time: 15.90s | SUCCESS
+[ 233/1000] Start: ( 1.46,  1.79, yaw=-0.96) | Target: [-0.608  0.474  0.563] | EE Error: 0.0100 m | Time: 12.98s | SUCCESS
+[ 234/1000] Start: ( 1.78, -0.49, yaw= 1.70) | Target: [4.073 0.108 0.492] | EE Error: 0.0100 m | Time: 10.06s | SUCCESS
+[ 235/1000] Start: ( 0.61,  0.69, yaw=-0.41) | Target: [ 0.152 -2.722  0.401] | EE Error: 0.0100 m | Time: 13.49s | SUCCESS
+[ 236/1000] Start: (-0.28, -1.86, yaw= 0.22) | Target: [-4.19  -1.697  0.324] | EE Error: 0.0100 m | Time: 17.16s | SUCCESS
+[ 237/1000] Start: ( 0.82, -0.79, yaw= 2.53) | Target: [-2.894 -1.876  0.802] | EE Error: 0.0099 m | Time: 14.76s | SUCCESS
+[ 238/1000] Start: (-1.53, -1.76, yaw= 2.10) | Target: [-3.243 -4.308  0.849] | EE Error: 0.0100 m | Time: 12.87s | SUCCESS
+[ 239/1000] Start: ( 0.27, -0.41, yaw=-0.34) | Target: [-3.362 -1.932  0.486] | EE Error: 0.0100 m | Time: 17.08s | SUCCESS
+[ 240/1000] Start: (-1.24, -0.86, yaw= 2.92) | Target: [-4.341 -2.941  0.725] | EE Error: 0.0100 m | Time: 14.19s | SUCCESS
+[ 241/1000] Start: ( 1.75, -1.25, yaw=-2.47) | Target: [ 4.786 -1.293  0.605] | EE Error: 0.0100 m | Time: 13.35s | SUCCESS
+[ 242/1000] Start: (-0.25,  1.98, yaw=-0.09) | Target: [2.563 1.586 0.34 ] | EE Error: 0.0173 m | Time: 11.19s | SUCCESS
+[ 243/1000] Start: ( 0.37, -1.09, yaw= 0.86) | Target: [-3.39  -2.332  0.581] | EE Error: 0.0100 m | Time: 17.49s | SUCCESS
+[ 244/1000] Start: ( 1.59, -0.10, yaw=-2.76) | Target: [0.142 2.865 0.769] | EE Error: 0.0100 m | Time: 12.96s | SUCCESS
+[ 245/1000] Start: (-0.29,  0.55, yaw= 2.24) | Target: [1.545 2.529 0.698] | EE Error: 0.0100 m | Time: 11.19s | SUCCESS
+[ 246/1000] Start: ( 0.69,  1.84, yaw=-0.81) | Target: [3.917 0.198 0.603] | EE Error: 0.0100 m | Time: 13.44s | SUCCESS
+[ 247/1000] Start: ( 0.95, -0.16, yaw=-1.79) | Target: [1.014 2.1   0.419] | EE Error: 0.0100 m | Time: 10.51s | SUCCESS
+[ 248/1000] Start: ( 0.51,  0.99, yaw= 2.48) | Target: [ 0.821 -1.21   0.874] | EE Error: 0.0100 m | Time: 10.14s | SUCCESS
+[ 249/1000] Start: (-1.38, -1.21, yaw=-1.31) | Target: [ 2.32  -0.518  0.756] | EE Error: 0.0099 m | Time: 14.84s | SUCCESS
+[ 250/1000] Start: ( 0.83, -1.30, yaw=-0.89) | Target: [ 3.107 -1.609  0.464] | EE Error: 0.0100 m | Time:  8.40s | SUCCESS
+[ 251/1000] Start: ( 1.32,  1.90, yaw= 2.15) | Target: [-0.793  2.689  0.777] | EE Error: 0.0100 m | Time: 10.81s | SUCCESS
+[ 252/1000] Start: ( 0.18,  0.17, yaw= 2.51) | Target: [-3.173  0.775  0.59 ] | EE Error: 0.0100 m | Time: 12.63s | SUCCESS
+[ 253/1000] Start: (-0.17, -0.46, yaw=-0.87) | Target: [ 1.518 -1.828  0.346] | EE Error: 0.0202 m | Time:  8.72s | SUCCESS
+[ 254/1000] Start: ( 1.12, -0.22, yaw= 2.71) | Target: [2.696 1.126 0.395] | EE Error: 0.1317 m | Time: 37.23s | FAIL
+[ 255/1000] Start: (-1.18,  1.90, yaw=-1.77) | Target: [2.676 2.286 0.886] | EE Error: 0.0100 m | Time: 16.17s | SUCCESS
+[ 256/1000] Start: (-0.77, -1.49, yaw= 0.32) | Target: [-0.17   0.564  0.589] | EE Error: 0.0100 m | Time:  9.70s | SUCCESS
+[ 257/1000] Start: ( 1.13,  0.99, yaw= 1.98) | Target: [ 4.579 -0.171  0.444] | EE Error: 0.0100 m | Time: 15.57s | SUCCESS
+[ 258/1000] Start: (-0.56, -1.29, yaw=-0.20) | Target: [ 1.376 -2.852  0.751] | EE Error: 0.0100 m | Time: 10.22s | SUCCESS
+[ 259/1000] Start: (-0.74, -0.91, yaw=-2.32) | Target: [ 1.671 -1.886  0.522] | EE Error: 0.0126 m | Time: 13.05s | SUCCESS
+[ 260/1000] Start: (-1.06,  1.05, yaw= 2.70) | Target: [2.23 1.01 0.82] | EE Error: 0.0100 m | Time: 14.46s | SUCCESS
+[ 261/1000] Start: ( 2.00,  0.45, yaw= 2.45) | Target: [-1.013  2.4    0.577] | EE Error: 0.0100 m | Time: 13.09s | SUCCESS
+[ 262/1000] Start: (-1.68, -1.94, yaw=-0.14) | Target: [ 1.138 -2.038  0.641] | EE Error: 0.0100 m | Time:  9.79s | SUCCESS
+[ 263/1000] Start: ( 0.21,  1.35, yaw=-2.46) | Target: [-0.348 -2.196  0.809] | EE Error: 0.0100 m | Time: 13.42s | SUCCESS
+[ 264/1000] Start: ( 1.98,  1.49, yaw= 2.45) | Target: [ 3.082 -1.085  0.461] | EE Error: 0.0100 m | Time: 12.90s | SUCCESS
+[ 265/1000] Start: ( 0.42,  1.75, yaw=-0.98) | Target: [2.853 2.664 0.402] | EE Error: 0.0100 m | Time: 10.45s | SUCCESS
+[ 266/1000] Start: (-1.17,  0.08, yaw= 1.95) | Target: [-3.533 -1.405  0.748] | EE Error: 0.0100 m | Time: 11.53s | SUCCESS
+[ 267/1000] Start: (-0.51, -1.25, yaw=-1.91) | Target: [ 1.985 -2.83   0.817] | EE Error: 0.0099 m | Time: 11.61s | SUCCESS
+[ 268/1000] Start: ( 0.57,  0.76, yaw= 3.04) | Target: [ 2.956 -0.714  0.854] | EE Error: 0.0099 m | Time: 13.00s | SUCCESS
+[ 269/1000] Start: (-1.02,  0.92, yaw= 1.60) | Target: [-3.415 -0.774  0.42 ] | EE Error: 0.0100 m | Time: 12.80s | SUCCESS
+[ 270/1000] Start: (-1.26, -0.14, yaw=-1.32) | Target: [-2.347  3.512  0.782] | EE Error: 0.0099 m | Time: 16.52s | SUCCESS
+[ 271/1000] Start: (-1.22, -1.77, yaw= 2.82) | Target: [ 1.787 -3.87   0.709] | EE Error: 0.0100 m | Time: 16.12s | SUCCESS
+[ 272/1000] Start: (-1.23, -1.30, yaw= 1.96) | Target: [-0.879 -5.108  0.384] | EE Error: 0.0150 m | Time: 18.37s | SUCCESS
+[ 273/1000] Start: ( 0.71,  1.26, yaw=-1.66) | Target: [ 1.355 -2.618  0.459] | EE Error: 0.0099 m | Time: 14.57s | SUCCESS
+[ 274/1000] Start: (-0.28, -0.27, yaw=-1.55) | Target: [-0.852  3.227  0.527] | EE Error: 0.0100 m | Time: 15.94s | SUCCESS
+[ 275/1000] Start: ( 1.34, -1.15, yaw=-3.12) | Target: [4.937 0.576 0.323] | EE Error: 0.0100 m | Time: 17.59s | SUCCESS
+[ 276/1000] Start: ( 0.98,  1.28, yaw= 1.57) | Target: [ 1.506 -0.891  0.443] | EE Error: 0.0110 m | Time: 12.78s | SUCCESS
+[ 277/1000] Start: ( 0.01,  0.02, yaw= 0.52) | Target: [ 2.836 -2.168  0.848] | EE Error: 0.0100 m | Time: 13.97s | SUCCESS
+[ 278/1000] Start: (-1.01,  0.95, yaw= 1.12) | Target: [1.339 1.29  0.777] | EE Error: 0.0100 m | Time:  8.73s | SUCCESS
+[ 279/1000] Start: ( 1.84,  0.89, yaw= 2.62) | Target: [-0.848  1.155  0.683] | EE Error: 0.0100 m | Time:  9.48s | SUCCESS
+[ 280/1000] Start: (-0.10,  1.95, yaw=-2.55) | Target: [ 3.093 -0.015  0.47 ] | EE Error: 0.0099 m | Time: 15.60s | SUCCESS
+[ 281/1000] Start: (-0.94, -0.90, yaw=-1.54) | Target: [-3.506 -3.82   0.541] | EE Error: 0.0100 m | Time: 15.12s | SUCCESS
+[ 282/1000] Start: (-1.10,  1.39, yaw=-0.63) | Target: [-3.369  0.878  0.684] | EE Error: 0.0100 m | Time: 10.61s | SUCCESS
+[ 283/1000] Start: ( 1.13, -1.16, yaw= 2.62) | Target: [-1.06   1.821  0.437] | EE Error: 0.0099 m | Time: 13.80s | SUCCESS
+[ 284/1000] Start: (-1.80,  1.47, yaw=-1.22) | Target: [0.784 3.862 0.377] | EE Error: 0.0166 m | Time: 16.21s | SUCCESS
+[ 285/1000] Start: ( 1.12,  1.75, yaw= 1.44) | Target: [4.623 0.399 0.616] | EE Error: 0.0100 m | Time: 15.62s | SUCCESS
+[ 286/1000] Start: ( 1.15, -0.47, yaw= 3.02) | Target: [-0.785  1.27   0.762] | EE Error: 0.0100 m | Time: 10.46s | SUCCESS
+[ 287/1000] Start: (-0.65,  0.42, yaw= 1.00) | Target: [-1.635  2.223  0.432] | EE Error: 0.0121 m | Time: 11.87s | SUCCESS
+[ 288/1000] Start: ( 0.85,  0.25, yaw=-0.03) | Target: [-1.688 -0.663  0.819] | EE Error: 0.0099 m | Time: 12.53s | SUCCESS
+[ 289/1000] Start: (-1.88, -0.41, yaw= 2.80) | Target: [-5.198 -1.514  0.455] | EE Error: 0.0099 m | Time: 13.19s | SUCCESS
+[ 290/1000] Start: ( 1.47,  0.98, yaw= 2.42) | Target: [ 0.815 -2.009  0.768] | EE Error: 0.0099 m | Time: 12.65s | SUCCESS
+[ 291/1000] Start: ( 0.32,  1.10, yaw= 0.82) | Target: [-2.098  3.308  0.613] | EE Error: 0.0100 m | Time: 13.32s | SUCCESS
+[ 292/1000] Start: ( 0.85, -0.21, yaw=-0.97) | Target: [ 3.142 -0.682  0.778] | EE Error: 0.0099 m | Time:  8.58s | SUCCESS
+[ 293/1000] Start: (-0.96, -1.39, yaw=-1.59) | Target: [-2.412  0.842  0.712] | EE Error: 0.0100 m | Time: 12.90s | SUCCESS
+[ 294/1000] Start: ( 1.43, -1.69, yaw= 1.67) | Target: [ 2.288 -3.964  0.713] | EE Error: 0.0100 m | Time: 12.22s | SUCCESS
+[ 295/1000] Start: ( 1.64, -0.82, yaw= 0.43) | Target: [ 2.409 -3.832  0.673] | EE Error: 0.0100 m | Time: 12.72s | SUCCESS
+[ 296/1000] Start: (-0.13,  1.85, yaw=-0.31) | Target: [-1.151 -0.359  0.357] | EE Error: 0.0304 m | Time: 11.92s | SUCCESS
+[ 297/1000] Start: (-2.00, -0.27, yaw= 1.69) | Target: [-1.784  1.781  0.642] | EE Error: 0.0100 m | Time:  6.93s | SUCCESS
+[ 298/1000] Start: (-1.38,  1.76, yaw=-2.09) | Target: [0.473 3.659 0.685] | EE Error: 0.0100 m | Time: 13.01s | SUCCESS
+[ 299/1000] Start: (-0.35,  1.04, yaw=-1.69) | Target: [-2.841  2.713  0.754] | EE Error: 0.0100 m | Time: 12.43s | SUCCESS
+[ 300/1000] Start: ( 1.40,  2.00, yaw=-1.74) | Target: [ 1.974 -0.439  0.458] | EE Error: 0.0100 m | Time:  8.68s | SUCCESS
+[ 301/1000] Start: ( 0.44,  0.49, yaw=-2.29) | Target: [1.604 3.635 0.71 ] | EE Error: 0.0100 m | Time: 14.80s | SUCCESS
+[ 302/1000] Start: (-1.70, -0.21, yaw=-0.57) | Target: [-3.795 -1.48   0.565] | EE Error: 0.0100 m | Time: 11.30s | SUCCESS
+[ 303/1000] Start: ( 0.97, -1.05, yaw= 2.07) | Target: [ 4.348 -0.053  0.584] | EE Error: 0.0100 m | Time: 14.61s | SUCCESS
+[ 304/1000] Start: (-0.00,  0.48, yaw= 2.69) | Target: [3.05  0.322 0.661] | EE Error: 0.0100 m | Time: 13.71s | SUCCESS
+[ 305/1000] Start: ( 0.95, -1.71, yaw= 0.10) | Target: [ 4.768 -2.157  0.596] | EE Error: 0.0100 m | Time: 14.24s | SUCCESS
+[ 306/1000] Start: (-1.02, -1.08, yaw=-2.97) | Target: [-4.322 -0.196  0.681] | EE Error: 0.0100 m | Time: 12.58s | SUCCESS
+[ 307/1000] Start: ( 0.98,  0.13, yaw=-0.15) | Target: [ 4.093 -0.897  0.421] | EE Error: 0.0100 m | Time: 11.75s | SUCCESS
+[ 308/1000] Start: ( 1.55,  1.25, yaw=-0.94) | Target: [3.561 2.329 0.883] | EE Error: 0.0099 m | Time: 10.13s | SUCCESS
+[ 309/1000] Start: ( 1.61,  1.69, yaw=-1.05) | Target: [ 0.433 -0.429  0.354] | EE Error: 0.0318 m | Time: 11.45s | SUCCESS
+[ 310/1000] Start: (-1.52, -1.72, yaw= 3.08) | Target: [-3.544 -2.731  0.796] | EE Error: 0.0100 m | Time: 35.57s | SUCCESS
+[ 311/1000] Start: ( 0.33,  1.97, yaw= 3.08) | Target: [3.562 2.523 0.816] | EE Error: 0.0100 m | Time: 14.60s | SUCCESS
+[ 312/1000] Start: ( 1.73, -1.19, yaw= 0.18) | Target: [0.436 1.076 0.564] | EE Error: 0.0100 m | Time: 11.59s | SUCCESS
+[ 313/1000] Start: ( 1.94,  1.94, yaw= 2.55) | Target: [1.181 4.362 0.493] | EE Error: 0.0100 m | Time: 10.14s | SUCCESS
+[ 314/1000] Start: ( 0.19,  0.24, yaw= 0.04) | Target: [2.029 2.375 0.75 ] | EE Error: 0.0100 m | Time: 10.78s | SUCCESS
+[ 315/1000] Start: (-0.67, -0.68, yaw=-2.34) | Target: [-2.056 -4.107  0.568] | EE Error: 0.0100 m | Time: 13.95s | SUCCESS
+[ 316/1000] Start: (-1.09,  1.04, yaw= 0.34) | Target: [-3.698  0.688  0.406] | EE Error: 0.0100 m | Time: 11.96s | SUCCESS
+[ 317/1000] Start: ( 0.62, -0.90, yaw=-2.73) | Target: [-2.354 -1.97   0.313] | EE Error: 0.0100 m | Time: 11.16s | SUCCESS
+[ 318/1000] Start: ( 1.40, -1.38, yaw= 0.67) | Target: [ 4.108 -2.361  0.343] | EE Error: 0.0221 m | Time: 12.38s | SUCCESS
+[ 319/1000] Start: ( 1.21,  1.57, yaw=-3.07) | Target: [-0.44  -1.859  0.63 ] | EE Error: 0.0100 m | Time: 15.06s | SUCCESS
+[ 320/1000] Start: (-1.40, -1.19, yaw= 1.00) | Target: [-0.896  1.97   0.872] | EE Error: 0.0100 m | Time: 11.77s | SUCCESS
+[ 321/1000] Start: ( 0.99, -1.48, yaw= 1.93) | Target: [-1.976 -0.236  0.726] | EE Error: 0.0100 m | Time: 11.85s | SUCCESS
+[ 322/1000] Start: ( 0.85,  1.97, yaw=-1.00) | Target: [-0.728 -0.623  0.62 ] | EE Error: 0.0100 m | Time: 11.97s | SUCCESS
+[ 323/1000] Start: (-1.29,  0.45, yaw=-3.05) | Target: [-3.56   1.562  0.324] | EE Error: 0.0233 m | Time: 11.13s | SUCCESS
+[ 324/1000] Start: (-1.57, -1.04, yaw=-1.42) | Target: [-4.072 -1.563  0.416] | EE Error: 0.0100 m | Time: 10.27s | SUCCESS
+[ 325/1000] Start: (-0.49, -0.46, yaw=-1.01) | Target: [ 0.539 -2.382  0.315] | EE Error: 0.0100 m | Time:  7.05s | SUCCESS
+[ 326/1000] Start: (-1.81, -0.85, yaw=-2.26) | Target: [ 0.826 -1.877  0.613] | EE Error: 0.0100 m | Time: 12.03s | SUCCESS
+[ 327/1000] Start: (-0.88, -1.87, yaw= 0.72) | Target: [ 1.435 -4.226  0.365] | EE Error: 0.0195 m | Time: 14.67s | SUCCESS
+[ 328/1000] Start: (-1.95, -1.01, yaw=-0.27) | Target: [ 0.903 -3.243  0.527] | EE Error: 0.0100 m | Time: 13.66s | SUCCESS
+[ 329/1000] Start: ( 0.12,  0.37, yaw=-3.00) | Target: [2.8   0.629 0.553] | EE Error: 0.0100 m | Time: 12.19s | SUCCESS
+[ 330/1000] Start: (-1.60,  1.13, yaw= 2.78) | Target: [-4.77   0.684  0.758] | EE Error: 0.0099 m | Time: 11.46s | SUCCESS
+[ 331/1000] Start: ( 1.44, -0.21, yaw=-1.39) | Target: [-0.272  1.984  0.618] | EE Error: 0.0100 m | Time: 13.67s | SUCCESS
+[ 332/1000] Start: ( 1.91, -1.25, yaw=-1.25) | Target: [-0.825 -1.794  0.42 ] | EE Error: 0.0099 m | Time: 11.31s | SUCCESS
+[ 333/1000] Start: ( 0.72, -1.27, yaw= 1.10) | Target: [ 0.949 -3.976  0.509] | EE Error: 0.0100 m | Time: 12.24s | SUCCESS
+[ 334/1000] Start: ( 0.87, -0.13, yaw=-0.87) | Target: [-1.023  2.379  0.428] | EE Error: 0.0100 m | Time: 13.96s | SUCCESS
+[ 335/1000] Start: ( 1.60, -0.63, yaw=-2.90) | Target: [ 3.847 -0.705  0.443] | EE Error: 0.0099 m | Time: 10.37s | SUCCESS
+[ 336/1000] Start: ( 1.81, -1.95, yaw= 1.65) | Target: [-1.937 -1.242  0.882] | EE Error: 0.0100 m | Time: 15.16s | SUCCESS
+[ 337/1000] Start: ( 0.20, -1.69, yaw= 2.20) | Target: [2.639 0.431 0.55 ] | EE Error: 0.0100 m | Time: 13.18s | SUCCESS
+[ 338/1000] Start: ( 0.29, -1.39, yaw= 1.51) | Target: [-2.795 -2.957  0.809] | EE Error: 0.0099 m | Time: 14.53s | SUCCESS
+[ 339/1000] Start: (-0.11,  0.04, yaw=-1.18) | Target: [-3.513  0.7    0.521] | EE Error: 0.0100 m | Time: 14.76s | SUCCESS
+[ 340/1000] Start: (-1.30, -1.12, yaw=-0.23) | Target: [-4.546  0.103  0.429] | EE Error: 0.0100 m | Time: 15.47s | SUCCESS
+[ 341/1000] Start: (-0.02, -0.80, yaw=-0.14) | Target: [ 1.533 -2.689  0.328] | EE Error: 0.8097 m | Time: 37.01s | FAIL
+[ 342/1000] Start: (-0.59,  0.85, yaw=-3.03) | Target: [ 2.46  -0.38   0.666] | EE Error: 0.0100 m | Time: 14.53s | SUCCESS
+[ 343/1000] Start: ( 1.11,  1.24, yaw= 1.33) | Target: [-1.249 -0.534  0.662] | EE Error: 0.0100 m | Time: 13.40s | SUCCESS
+[ 344/1000] Start: (-1.02, -1.83, yaw=-1.74) | Target: [ 1.697 -2.621  0.406] | EE Error: 0.0100 m | Time: 11.28s | SUCCESS
+[ 345/1000] Start: ( 1.30,  1.70, yaw=-1.88) | Target: [-0.542  2.575  0.855] | EE Error: 0.0100 m | Time: 35.70s | SUCCESS
+[ 346/1000] Start: (-0.86,  1.15, yaw= 0.83) | Target: [-4.437  2.856  0.325] | EE Error: 0.0150 m | Time: 17.75s | SUCCESS
+[ 347/1000] Start: (-0.22,  0.19, yaw=-2.22) | Target: [ 1.831 -3.217  0.31 ] | EE Error: 0.0100 m | Time: 15.54s | SUCCESS
+[ 348/1000] Start: (-0.19,  1.37, yaw=-1.11) | Target: [3.734 0.87  0.585] | EE Error: 0.0100 m | Time: 15.52s | SUCCESS
+[ 349/1000] Start: (-1.48, -1.79, yaw= 2.80) | Target: [-1.178 -4.786  0.354] | EE Error: 0.0205 m | Time: 13.96s | SUCCESS
+[ 350/1000] Start: (-0.30,  1.72, yaw= 0.01) | Target: [-2.781  2.174  0.603] | EE Error: 0.0100 m | Time: 11.60s | SUCCESS
+[ 351/1000] Start: (-0.21, -0.94, yaw=-0.67) | Target: [ 3.143 -2.643  0.462] | EE Error: 0.0100 m | Time: 13.68s | SUCCESS
+[ 352/1000] Start: ( 1.57, -0.30, yaw=-1.08) | Target: [ 4.41  -0.251  0.454] | EE Error: 0.0100 m | Time: 10.78s | SUCCESS
+[ 353/1000] Start: ( 0.01, -1.39, yaw=-0.93) | Target: [ 2.6   -0.257  0.794] | EE Error: 0.0100 m | Time: 10.94s | SUCCESS
+[ 354/1000] Start: (-0.97,  1.88, yaw= 1.79) | Target: [-4.573  2.622  0.385] | EE Error: 0.0100 m | Time: 14.40s | SUCCESS
+[ 355/1000] Start: ( 0.11, -1.32, yaw= 2.00) | Target: [ 2.288 -0.045  0.858] | EE Error: 0.0100 m | Time: 10.60s | SUCCESS
+[ 356/1000] Start: ( 1.44, -0.49, yaw= 2.21) | Target: [ 1.269 -3.72   0.856] | EE Error: 0.0100 m | Time: 14.14s | SUCCESS
+[ 357/1000] Start: (-0.97,  0.77, yaw= 3.06) | Target: [-2.241 -0.994  0.705] | EE Error: 0.0100 m | Time: 35.72s | SUCCESS
+[ 358/1000] Start: (-0.64, -1.72, yaw=-0.15) | Target: [-0.702  0.855  0.501] | EE Error: 0.0100 m | Time: 10.60s | SUCCESS
+[ 359/1000] Start: ( 1.38,  0.08, yaw= 2.15) | Target: [ 5.069 -1.211  0.69 ] | EE Error: 0.0100 m | Time: 16.85s | SUCCESS
+[ 360/1000] Start: (-1.54,  1.54, yaw=-0.07) | Target: [-2.987 -0.251  0.713] | EE Error: 0.0100 m | Time: 11.03s | SUCCESS
+[ 361/1000] Start: (-1.19,  1.03, yaw= 3.08) | Target: [-3.902  2.333  0.619] | EE Error: 0.0100 m | Time: 10.99s | SUCCESS
+[ 362/1000] Start: (-0.74,  1.10, yaw= 1.66) | Target: [-2.859  4.241  0.561] | EE Error: 0.0100 m | Time: 14.30s | SUCCESS
+[ 363/1000] Start: ( 1.07,  1.23, yaw=-1.20) | Target: [-0.908  2.167  0.897] | EE Error: 0.0100 m | Time: 35.73s | SUCCESS
+[ 364/1000] Start: ( 1.08, -1.63, yaw= 0.98) | Target: [-2.379 -2.381  0.78 ] | EE Error: 0.0099 m | Time: 15.09s | SUCCESS
+[ 365/1000] Start: ( 0.41,  1.43, yaw=-2.53) | Target: [ 0.869 -1.364  0.325] | EE Error: 0.0152 m | Time: 12.20s | SUCCESS
+[ 366/1000] Start: ( 0.14,  1.09, yaw=-0.76) | Target: [3.489 3.142 0.613] | EE Error: 0.0100 m | Time: 15.88s | SUCCESS
+[ 367/1000] Start: ( 1.64,  1.18, yaw=-2.77) | Target: [ 4.704 -0.289  0.892] | EE Error: 0.0100 m | Time: 14.68s | SUCCESS
+[ 368/1000] Start: (-0.17, -1.63, yaw= 0.39) | Target: [-2.619 -4.13   0.605] | EE Error: 0.0100 m | Time: 15.83s | SUCCESS
+[ 369/1000] Start: ( 0.89,  1.48, yaw= 0.81) | Target: [3.563 3.755 0.805] | EE Error: 0.0100 m | Time: 12.51s | SUCCESS
+[ 370/1000] Start: ( 1.48, -1.85, yaw= 0.35) | Target: [ 0.693 -5.491  0.689] | EE Error: 0.0100 m | Time: 15.68s | SUCCESS
+[ 371/1000] Start: (-0.58, -0.19, yaw=-0.53) | Target: [-1.976 -3.721  0.452] | EE Error: 0.0099 m | Time: 15.27s | SUCCESS
+[ 372/1000] Start: ( 0.82, -1.73, yaw=-2.90) | Target: [2.344 0.472 0.693] | EE Error: 0.0100 m | Time: 12.39s | SUCCESS
+[ 373/1000] Start: (-1.62,  1.80, yaw= 1.56) | Target: [-3.244  3.393  0.492] | EE Error: 0.3399 m | Time: 37.09s | FAIL
+[ 374/1000] Start: (-0.53,  0.15, yaw=-1.28) | Target: [-3.068 -0.869  0.453] | EE Error: 0.0100 m | Time: 11.27s | SUCCESS
+[ 375/1000] Start: (-0.46, -1.21, yaw=-1.50) | Target: [1.483 0.775 0.507] | EE Error: 0.0123 m | Time: 14.59s | SUCCESS
+[ 376/1000] Start: (-0.32, -1.25, yaw=-1.01) | Target: [0.371 1.06  0.356] | EE Error: 0.0255 m | Time: 12.41s | SUCCESS
+[ 377/1000] Start: ( 1.55,  1.06, yaw=-1.89) | Target: [ 2.588 -2.749  0.725] | EE Error: 0.0100 m | Time: 14.19s | SUCCESS
+[ 378/1000] Start: ( 0.44, -0.77, yaw=-1.26) | Target: [-2.909 -1.619  0.326] | EE Error: 0.0100 m | Time: 13.91s | SUCCESS
+[ 379/1000] Start: (-1.98,  0.92, yaw= 2.82) | Target: [-2.101  3.859  0.592] | EE Error: 0.0100 m | Time: 11.62s | SUCCESS
+[ 380/1000] Start: (-0.26, -0.70, yaw= 0.14) | Target: [ 2.647 -2.041  0.839] | EE Error: 0.0100 m | Time: 11.73s | SUCCESS
+[ 381/1000] Start: (-1.54,  0.26, yaw= 1.39) | Target: [-4.519 -0.9    0.79 ] | EE Error: 0.0100 m | Time: 13.38s | SUCCESS
+[ 382/1000] Start: (-1.73,  0.05, yaw=-1.52) | Target: [-0.566  1.96   0.862] | EE Error: 0.8914 m | Time: 36.88s | FAIL
+[ 383/1000] Start: ( 1.58, -1.26, yaw=-1.11) | Target: [4.507 0.542 0.566] | EE Error: 0.0100 m | Time: 14.35s | SUCCESS
+[ 384/1000] Start: (-1.38, -1.58, yaw= 3.14) | Target: [ 2.224 -2.62   0.589] | EE Error: 0.0100 m | Time: 16.77s | SUCCESS
+[ 385/1000] Start: ( 1.69, -1.65, yaw=-2.42) | Target: [-1.831  0.018  0.489] | EE Error: 0.0100 m | Time: 15.37s | SUCCESS
+[ 386/1000] Start: (-1.32, -1.72, yaw= 1.43) | Target: [-0.502 -5.072  0.34 ] | EE Error: 0.0186 m | Time: 16.67s | SUCCESS
+[ 387/1000] Start: ( 1.45,  1.34, yaw=-2.58) | Target: [-0.639  1.028  0.812] | EE Error: 0.0100 m | Time:  7.27s | SUCCESS
+[ 388/1000] Start: (-1.06,  0.19, yaw=-0.46) | Target: [-1.901  3.05   0.6  ] | EE Error: 0.0100 m | Time: 12.94s | SUCCESS
+[ 389/1000] Start: ( 1.96, -1.40, yaw= 2.08) | Target: [-0.844 -2.343  0.832] | EE Error: 0.0100 m | Time: 11.61s | SUCCESS
+[ 390/1000] Start: ( 0.66,  0.74, yaw=-1.49) | Target: [ 3.044 -0.597  0.613] | EE Error: 0.0100 m | Time: 11.20s | SUCCESS
+[ 391/1000] Start: (-0.15, -0.69, yaw=-1.22) | Target: [-0.136 -3.422  0.39 ] | EE Error: 0.0100 m | Time:  9.62s | SUCCESS
+[ 392/1000] Start: ( 1.49,  0.41, yaw=-2.30) | Target: [2.765 3.876 0.443] | EE Error: 0.0100 m | Time: 16.44s | SUCCESS
+[ 393/1000] Start: (-1.40, -1.97, yaw=-2.85) | Target: [-1.704  1.997  0.327] | EE Error: 0.0100 m | Time: 16.25s | SUCCESS
+[ 394/1000] Start: ( 0.99, -1.71, yaw= 0.58) | Target: [0.888 1.003 0.307] | EE Error: 0.0100 m | Time: 10.12s | SUCCESS
+[ 395/1000] Start: ( 0.38,  1.97, yaw=-1.52) | Target: [-0.453 -0.122  0.633] | EE Error: 0.0100 m | Time:  8.65s | SUCCESS
+[ 396/1000] Start: ( 1.49,  0.72, yaw=-2.57) | Target: [3.536 2.055 0.74 ] | EE Error: 0.0100 m | Time: 10.84s | SUCCESS
+[ 397/1000] Start: ( 1.31,  0.37, yaw= 0.57) | Target: [ 2.838 -2.082  0.818] | EE Error: 0.0100 m | Time: 11.61s | SUCCESS
+[ 398/1000] Start: ( 0.89,  0.08, yaw=-0.83) | Target: [-1.279 -0.633  0.416] | EE Error: 0.0100 m | Time: 10.46s | SUCCESS
+[ 399/1000] Start: (-0.51,  1.78, yaw= 0.03) | Target: [-0.716 -0.424  0.503] | EE Error: 0.0100 m | Time:  9.74s | SUCCESS
+[ 400/1000] Start: ( 1.26, -0.47, yaw= 1.71) | Target: [0.541 1.634 0.665] | EE Error: 0.0100 m | Time:  7.40s | SUCCESS
+[ 401/1000] Start: ( 0.39,  1.17, yaw= 1.59) | Target: [-2.433  3.426  0.448] | EE Error: 0.0099 m | Time: 13.81s | SUCCESS
+[ 402/1000] Start: ( 0.22, -0.81, yaw=-1.07) | Target: [-2.837  0.585  0.885] | EE Error: 0.0100 m | Time: 14.84s | SUCCESS
+[ 403/1000] Start: (-0.33,  0.15, yaw=-0.08) | Target: [-2.264 -1.394  0.617] | EE Error: 0.0100 m | Time: 12.32s | SUCCESS
+[ 404/1000] Start: (-1.73,  1.73, yaw=-2.36) | Target: [-2.865 -1.618  0.358] | EE Error: 0.0203 m | Time: 14.52s | SUCCESS
+[ 405/1000] Start: ( 1.60,  0.90, yaw=-2.71) | Target: [2.767 3.951 0.754] | EE Error: 0.0099 m | Time: 13.95s | SUCCESS
+[ 406/1000] Start: ( 1.84, -0.39, yaw=-2.82) | Target: [-1.502  1.355  0.613] | EE Error: 0.0100 m | Time: 14.57s | SUCCESS
+[ 407/1000] Start: ( 0.21, -1.15, yaw= 2.01) | Target: [ 2.277 -1.171  0.71 ] | EE Error: 0.0100 m | Time:  8.62s | SUCCESS
+[ 408/1000] Start: ( 1.80,  1.32, yaw=-1.40) | Target: [-1.863  0.041  0.862] | EE Error: 0.0100 m | Time: 15.63s | SUCCESS
+[ 409/1000] Start: ( 0.13,  0.57, yaw=-0.23) | Target: [ 2.09  -0.512  0.358] | EE Error: 0.0287 m | Time:  9.44s | SUCCESS
+[ 410/1000] Start: (-1.07,  1.35, yaw=-2.23) | Target: [-1.521 -1.717  0.429] | EE Error: 0.0100 m | Time: 11.31s | SUCCESS
+[ 411/1000] Start: ( 1.98, -1.69, yaw=-0.72) | Target: [ 0.839 -4.137  0.472] | EE Error: 0.0100 m | Time: 10.58s | SUCCESS
+[ 412/1000] Start: (-1.30,  1.06, yaw=-0.02) | Target: [-3.107  2.059  0.34 ] | EE Error: 0.6574 m | Time: 36.96s | FAIL
+[ 413/1000] Start: (-0.39, -1.68, yaw=-1.49) | Target: [-2.796 -1.467  0.419] | EE Error: 0.0100 m | Time:  9.82s | SUCCESS
+[ 414/1000] Start: ( 0.29, -0.01, yaw= 0.51) | Target: [ 2.906 -2.563  0.383] | EE Error: 0.0157 m | Time: 15.85s | SUCCESS
+[ 415/1000] Start: (-0.29,  0.76, yaw= 2.31) | Target: [ 1.854 -1.532  0.341] | EE Error: 0.0187 m | Time: 15.23s | SUCCESS
+[ 416/1000] Start: (-1.35,  0.25, yaw=-0.83) | Target: [1.337 2.977 0.391] | EE Error: 0.0100 m | Time: 15.70s | SUCCESS
+[ 417/1000] Start: ( 1.65,  1.61, yaw= 2.07) | Target: [3.853 3.99  0.684] | EE Error: 0.0100 m | Time: 12.80s | SUCCESS
+[ 418/1000] Start: ( 0.76, -1.93, yaw= 2.88) | Target: [ 3.822 -0.109  0.526] | EE Error: 0.0100 m | Time: 15.55s | SUCCESS
+[ 419/1000] Start: (-1.95,  0.04, yaw= 0.04) | Target: [ 0.522 -0.994  0.45 ] | EE Error: 0.0100 m | Time:  9.69s | SUCCESS
+[ 420/1000] Start: ( 0.11, -0.50, yaw= 2.95) | Target: [-1.119 -2.835  0.476] | EE Error: 0.0119 m | Time: 12.52s | SUCCESS
+[ 421/1000] Start: ( 1.31,  0.87, yaw= 0.54) | Target: [ 2.806 -2.176  0.874] | EE Error: 0.0100 m | Time: 13.85s | SUCCESS
+[ 422/1000] Start: ( 0.35,  0.66, yaw=-0.40) | Target: [0.196 4.649 0.396] | EE Error: 0.0100 m | Time: 16.79s | SUCCESS
+[ 423/1000] Start: (-1.19,  0.16, yaw=-0.12) | Target: [0.7   1.07  0.543] | EE Error: 0.0186 m | Time: 37.67s | SUCCESS
+[ 424/1000] Start: ( 0.33,  0.34, yaw= 0.99) | Target: [0.943 3.567 0.774] | EE Error: 0.0100 m | Time: 11.78s | SUCCESS
+[ 425/1000] Start: ( 0.50,  0.15, yaw= 0.67) | Target: [-1.55  -1.362  0.616] | EE Error: 0.0100 m | Time: 11.54s | SUCCESS
+[ 426/1000] Start: ( 1.55,  1.28, yaw=-0.04) | Target: [1.183 3.793 0.597] | EE Error: 0.0100 m | Time: 10.71s | SUCCESS
+[ 427/1000] Start: (-1.21,  1.44, yaw= 2.03) | Target: [-4.277  3.61   0.876] | EE Error: 0.0100 m | Time: 14.07s | SUCCESS
+[ 428/1000] Start: (-1.09,  1.73, yaw= 0.45) | Target: [1.671 0.267 0.506] | EE Error: 0.0100 m | Time: 12.01s | SUCCESS
+[ 429/1000] Start: (-0.85, -1.03, yaw=-2.62) | Target: [ 2.929 -1.116  0.678] | EE Error: 0.0100 m | Time: 16.53s | SUCCESS
+[ 430/1000] Start: ( 0.08, -0.29, yaw=-0.22) | Target: [-0.839 -3.813  0.419] | EE Error: 0.0100 m | Time: 14.81s | SUCCESS
+[ 431/1000] Start: ( 0.87,  1.04, yaw= 0.47) | Target: [-0.816  2.999  0.829] | EE Error: 0.0099 m | Time: 11.22s | SUCCESS
+[ 432/1000] Start: ( 0.92,  1.20, yaw= 1.03) | Target: [-1.35   4.473  0.552] | EE Error: 0.0100 m | Time: 15.86s | SUCCESS
+[ 433/1000] Start: ( 1.26,  0.98, yaw=-0.30) | Target: [-1.244  2.214  0.639] | EE Error: 0.0100 m | Time: 12.91s | SUCCESS
+[ 434/1000] Start: (-1.58, -1.10, yaw= 2.14) | Target: [ 0.644 -2.784  0.448] | EE Error: 0.0100 m | Time: 13.65s | SUCCESS
+[ 435/1000] Start: (-0.03,  1.22, yaw= 2.48) | Target: [-2.883 -0.12   0.58 ] | EE Error: 0.0100 m | Time: 12.34s | SUCCESS
+[ 436/1000] Start: ( 0.46, -0.21, yaw=-0.64) | Target: [ 3.572 -0.767  0.601] | EE Error: 0.0100 m | Time: 11.60s | SUCCESS
+[ 437/1000] Start: (-0.11,  1.27, yaw= 1.54) | Target: [ 1.845 -1.753  0.812] | EE Error: 0.0100 m | Time: 15.62s | SUCCESS
+[ 438/1000] Start: (-1.39,  0.33, yaw=-1.35) | Target: [-1.218  2.803  0.703] | EE Error: 0.0100 m | Time: 11.20s | SUCCESS
+[ 439/1000] Start: (-0.98,  0.04, yaw= 2.82) | Target: [ 1.776 -2.501  0.892] | EE Error: 0.0100 m | Time: 16.70s | SUCCESS
+[ 440/1000] Start: ( 1.50, -1.34, yaw= 2.01) | Target: [-1.231 -1.896  0.822] | EE Error: 0.0099 m | Time: 10.75s | SUCCESS
+[ 441/1000] Start: ( 0.17, -0.00, yaw= 0.90) | Target: [-2.272  0.791  0.716] | EE Error: 0.0100 m | Time: 11.21s | SUCCESS
+[ 442/1000] Start: (-1.90, -0.95, yaw=-0.23) | Target: [-5.074 -1.576  0.707] | EE Error: 0.0100 m | Time: 14.27s | SUCCESS
+[ 443/1000] Start: ( 0.99,  0.07, yaw= 0.65) | Target: [ 2.641 -1.199  0.36 ] | EE Error: 0.8979 m | Time: 36.95s | FAIL
+[ 444/1000] Start: ( 0.62,  1.98, yaw=-3.04) | Target: [3.895 3.222 0.796] | EE Error: 0.0100 m | Time: 15.45s | SUCCESS
+[ 445/1000] Start: ( 0.18,  0.48, yaw= 1.24) | Target: [-1.238  2.219  0.856] | EE Error: 0.0100 m | Time: 15.96s | SUCCESS
+[ 446/1000] Start: ( 0.76,  0.13, yaw=-0.70) | Target: [-0.549  3.292  0.581] | EE Error: 0.0100 m | Time: 15.17s | SUCCESS
+[ 447/1000] Start: ( 1.57, -1.08, yaw=-2.07) | Target: [4.03  2.003 0.448] | EE Error: 0.0099 m | Time: 17.60s | SUCCESS
+[ 448/1000] Start: (-1.00, -1.44, yaw= 2.27) | Target: [-1.445 -4.415  0.895] | EE Error: 0.0100 m | Time: 13.01s | SUCCESS
+[ 449/1000] Start: (-1.95,  0.23, yaw= 0.08) | Target: [-2.908  2.762  0.546] | EE Error: 0.0100 m | Time: 11.40s | SUCCESS
+[ 450/1000] Start: (-1.33,  0.96, yaw= 1.79) | Target: [-3.149 -1.147  0.836] | EE Error: 0.0099 m | Time: 12.47s | SUCCESS
+[ 451/1000] Start: ( 0.61,  1.68, yaw=-2.51) | Target: [ 1.472 -0.288  0.867] | EE Error: 0.0100 m | Time:  8.93s | SUCCESS
+[ 452/1000] Start: (-0.22,  0.70, yaw= 2.14) | Target: [-2.539  0.832  0.78 ] | EE Error: 0.0099 m | Time:  8.24s | SUCCESS
+[ 453/1000] Start: ( 1.55, -1.80, yaw= 1.60) | Target: [ 3.566 -4.413  0.608] | EE Error: 0.0100 m | Time: 14.53s | SUCCESS
+[ 454/1000] Start: (-0.96, -1.46, yaw=-2.41) | Target: [-3.57  -3.439  0.511] | EE Error: 0.0100 m | Time: 11.88s | SUCCESS
+[ 455/1000] Start: (-1.13,  0.77, yaw= 1.17) | Target: [2.62  1.711 0.531] | EE Error: 0.0100 m | Time: 15.15s | SUCCESS
+[ 456/1000] Start: (-1.90,  1.34, yaw=-2.66) | Target: [-2.581 -0.542  0.567] | EE Error: 0.0100 m | Time: 14.61s | SUCCESS
+[ 457/1000] Start: (-0.66, -1.34, yaw=-0.31) | Target: [ 2.228 -3.371  0.836] | EE Error: 0.0100 m | Time: 12.88s | SUCCESS
+[ 458/1000] Start: ( 0.61, -1.50, yaw=-1.29) | Target: [-1.252 -0.374  0.544] | EE Error: 0.8048 m | Time: 37.00s | FAIL
+[ 459/1000] Start: ( 1.77,  1.80, yaw=-0.56) | Target: [3.215 4.333 0.752] | EE Error: 0.0100 m | Time: 11.69s | SUCCESS
+[ 460/1000] Start: (-1.87, -1.42, yaw= 0.72) | Target: [-2.239 -4.735  0.511] | EE Error: 0.0100 m | Time: 14.62s | SUCCESS
+[ 461/1000] Start: ( 1.34, -1.70, yaw= 1.51) | Target: [-2.34  -1.431  0.648] | EE Error: 0.0100 m | Time: 14.96s | SUCCESS
+[ 462/1000] Start: ( 0.51, -0.59, yaw= 1.13) | Target: [-0.004  3.377  0.595] | EE Error: 0.0100 m | Time: 15.19s | SUCCESS
+[ 463/1000] Start: (-1.75,  0.38, yaw=-2.39) | Target: [-1.842 -2.273  0.739] | EE Error: 0.0100 m | Time:  9.44s | SUCCESS
+[ 464/1000] Start: (-1.26, -1.34, yaw=-2.86) | Target: [-3.633  1.084  0.324] | EE Error: 0.0100 m | Time: 13.07s | SUCCESS
+[ 465/1000] Start: (-1.89,  0.23, yaw=-1.37) | Target: [0.468 1.873 0.854] | EE Error: 0.0100 m | Time: 11.99s | SUCCESS
+[ 466/1000] Start: (-0.85,  0.72, yaw=-2.80) | Target: [-4.659  1.802  0.743] | EE Error: 0.0100 m | Time: 14.66s | SUCCESS
+[ 467/1000] Start: (-0.14, -1.12, yaw= 1.96) | Target: [0.07  1.315 0.571] | EE Error: 0.0100 m | Time:  8.70s | SUCCESS
+[ 468/1000] Start: (-0.15,  1.31, yaw= 1.16) | Target: [1.903 3.89  0.462] | EE Error: 0.0100 m | Time: 11.93s | SUCCESS
+[ 469/1000] Start: (-0.51, -1.82, yaw= 1.80) | Target: [ 2.112 -2.992  0.447] | EE Error: 0.0099 m | Time: 12.29s | SUCCESS
+[ 470/1000] Start: (-1.16,  0.35, yaw=-1.68) | Target: [-4.413 -1.037  0.526] | EE Error: 0.0100 m | Time: 13.96s | SUCCESS
+[ 471/1000] Start: (-1.99, -0.81, yaw= 0.35) | Target: [-0.706 -3.002  0.576] | EE Error: 0.0100 m | Time: 10.50s | SUCCESS
+[ 472/1000] Start: (-1.27,  0.12, yaw= 1.30) | Target: [0.672 1.115 0.807] | EE Error: 0.0100 m | Time: 35.61s | SUCCESS
+[ 473/1000] Start: (-1.30,  1.06, yaw=-0.88) | Target: [-1.793  3.421  0.412] | EE Error: 0.0100 m | Time: 11.49s | SUCCESS
+[ 474/1000] Start: (-0.01, -1.87, yaw=-1.73) | Target: [0.585 1.758 0.348] | EE Error: 0.0193 m | Time: 17.59s | SUCCESS
+[ 475/1000] Start: ( 1.53,  1.19, yaw= 2.32) | Target: [2.594 4.364 0.615] | EE Error: 0.0100 m | Time: 13.10s | SUCCESS
+[ 476/1000] Start: (-1.35, -1.63, yaw= 0.31) | Target: [ 0.123 -4.348  0.433] | EE Error: 0.0100 m | Time: 12.30s | SUCCESS
+[ 477/1000] Start: (-1.90,  1.76, yaw=-2.46) | Target: [-3.505  0.125  0.889] | EE Error: 0.0100 m | Time:  7.82s | SUCCESS
+[ 478/1000] Start: ( 0.47,  0.44, yaw= 3.06) | Target: [-2.884 -1.642  0.422] | EE Error: 0.0099 m | Time: 15.18s | SUCCESS
+[ 479/1000] Start: ( 0.49, -0.32, yaw=-0.73) | Target: [-1.595  0.642  0.898] | EE Error: 0.0100 m | Time: 11.80s | SUCCESS
+[ 480/1000] Start: (-0.48,  0.59, yaw= 2.94) | Target: [-4.08  -0.767  0.641] | EE Error: 0.0100 m | Time: 14.65s | SUCCESS
+[ 481/1000] Start: (-0.48, -0.28, yaw= 1.98) | Target: [ 1.035 -3.449  0.864] | EE Error: 0.0100 m | Time: 15.55s | SUCCESS
+[ 482/1000] Start: ( 0.64, -0.27, yaw= 1.56) | Target: [ 3.373 -1.013  0.615] | EE Error: 0.0100 m | Time: 11.72s | SUCCESS
+[ 483/1000] Start: (-0.73, -1.58, yaw=-0.54) | Target: [-2.738 -3.563  0.634] | EE Error: 0.0100 m | Time: 12.08s | SUCCESS
+[ 484/1000] Start: ( 1.72, -1.85, yaw= 0.76) | Target: [ 3.692 -2.391  0.45 ] | EE Error: 0.0099 m | Time: 35.81s | SUCCESS
+[ 485/1000] Start: (-1.53, -1.13, yaw=-1.42) | Target: [ 0.963 -2.91   0.301] | EE Error: 0.0100 m | Time: 11.79s | SUCCESS
+[ 486/1000] Start: ( 0.82, -1.40, yaw= 0.21) | Target: [2.164 1.18  0.393] | EE Error: 0.0100 m | Time: 11.38s | SUCCESS
+[ 487/1000] Start: (-1.02,  1.42, yaw=-2.92) | Target: [-2.000e-03  5.284e+00  3.040e-01] | EE Error: 0.0100 m | Time: 16.63s | SUCCESS
+[ 488/1000] Start: (-1.36,  0.70, yaw=-2.77) | Target: [1.49  2.498 0.653] | EE Error: 0.0100 m | Time: 15.25s | SUCCESS
+[ 489/1000] Start: (-0.54,  0.79, yaw= 0.59) | Target: [-1.361 -2.227  0.829] | EE Error: 0.0100 m | Time: 13.57s | SUCCESS
+[ 490/1000] Start: ( 0.67, -0.11, yaw=-1.12) | Target: [-1.469 -1.392  0.307] | EE Error: 0.0100 m | Time: 10.85s | SUCCESS
+[ 491/1000] Start: ( 0.39, -0.23, yaw=-1.61) | Target: [-1.645  1.613  0.568] | EE Error: 0.0100 m | Time: 12.69s | SUCCESS
+[ 492/1000] Start: (-0.36, -1.27, yaw= 1.46) | Target: [ 1.566 -1.919  0.878] | EE Error: 0.0100 m | Time: 10.01s | SUCCESS
+[ 493/1000] Start: ( 1.26,  0.89, yaw= 2.32) | Target: [-0.966  2.372  0.667] | EE Error: 0.0100 m | Time:  9.34s | SUCCESS
+[ 494/1000] Start: ( 0.43, -0.93, yaw=-1.75) | Target: [-2.069 -3.109  0.769] | EE Error: 0.0100 m | Time: 12.36s | SUCCESS
+[ 495/1000] Start: ( 1.04, -0.73, yaw=-1.85) | Target: [ 4.007 -1.624  0.851] | EE Error: 0.0100 m | Time: 12.37s | SUCCESS
+[ 496/1000] Start: (-0.12,  0.60, yaw=-2.34) | Target: [-2.853  1.875  0.792] | EE Error: 0.0100 m | Time: 11.55s | SUCCESS
+[ 497/1000] Start: ( 0.62,  0.84, yaw= 1.36) | Target: [-1.667  3.121  0.467] | EE Error: 0.0100 m | Time: 12.59s | SUCCESS
+[ 498/1000] Start: (-1.60,  0.42, yaw=-2.73) | Target: [-1.718 -1.693  0.629] | EE Error: 0.0100 m | Time:  8.17s | SUCCESS
+[ 499/1000] Start: (-1.36,  0.44, yaw= 1.83) | Target: [-2.502  2.798  0.629] | EE Error: 0.0100 m | Time:  9.18s | SUCCESS
+[ 500/1000] Start: ( 0.25, -0.11, yaw= 0.97) | Target: [-0.73  -3.943  0.359] | EE Error: 0.0204 m | Time: 18.87s | SUCCESS
+[ 501/1000] Start: ( 1.16, -1.74, yaw=-1.55) | Target: [ 0.665 -5.682  0.724] | EE Error: 0.0100 m | Time: 14.31s | SUCCESS
+[ 502/1000] Start: ( 0.47, -1.98, yaw=-1.98) | Target: [2.289 0.096 0.855] | EE Error: 0.0099 m | Time: 13.38s | SUCCESS
+[ 503/1000] Start: ( 1.06, -0.21, yaw= 1.57) | Target: [-1.828  0.24   0.686] | EE Error: 0.0100 m | Time: 11.50s | SUCCESS
+[ 504/1000] Start: ( 1.68, -1.00, yaw= 2.43) | Target: [-1.022 -2.901  0.77 ] | EE Error: 0.0099 m | Time: 12.83s | SUCCESS
+[ 505/1000] Start: ( 0.46, -0.02, yaw= 0.74) | Target: [-0.95  -2.     0.462] | EE Error: 0.0100 m | Time: 12.29s | SUCCESS
+[ 506/1000] Start: ( 1.32,  0.38, yaw=-1.60) | Target: [1.376 2.544 0.765] | EE Error: 0.0100 m | Time:  9.60s | SUCCESS
+[ 507/1000] Start: ( 0.36, -1.56, yaw=-2.64) | Target: [0.346 1.029 0.834] | EE Error: 0.0100 m | Time: 10.84s | SUCCESS
+[ 508/1000] Start: ( 1.05,  0.79, yaw=-1.39) | Target: [2.042 4.56  0.355] | EE Error: 0.0201 m | Time: 18.56s | SUCCESS
+[ 509/1000] Start: (-0.69, -1.06, yaw=-0.67) | Target: [-0.553  1.884  0.642] | EE Error: 0.0100 m | Time: 12.63s | SUCCESS
+[ 510/1000] Start: (-0.74, -1.44, yaw=-1.46) | Target: [-2.781  1.038  0.527] | EE Error: 0.0100 m | Time: 14.27s | SUCCESS
+[ 511/1000] Start: ( 1.50,  1.66, yaw= 2.20) | Target: [-1.36   2.311  0.328] | EE Error: 0.0178 m | Time: 12.14s | SUCCESS
+[ 512/1000] Start: (-1.67, -0.44, yaw=-1.52) | Target: [-3.549 -3.862  0.417] | EE Error: 0.0100 m | Time: 14.83s | SUCCESS
+[ 513/1000] Start: ( 1.84,  1.04, yaw= 0.89) | Target: [3.032 3.423 0.688] | EE Error: 0.0100 m | Time:  9.19s | SUCCESS
+[ 514/1000] Start: (-1.25,  1.75, yaw=-1.25) | Target: [-1.141 -1.67   0.694] | EE Error: 0.0100 m | Time: 12.42s | SUCCESS
+[ 515/1000] Start: (-0.20,  0.53, yaw=-2.14) | Target: [0.982 2.782 0.464] | EE Error: 0.0100 m | Time: 11.62s | SUCCESS
+[ 516/1000] Start: ( 1.95, -1.11, yaw= 1.98) | Target: [ 0.691 -3.349  0.551] | EE Error: 0.0106 m | Time: 13.54s | SUCCESS
+[ 517/1000] Start: (-0.70,  1.19, yaw= 2.88) | Target: [-2.336  2.821  0.766] | EE Error: 0.0100 m | Time: 35.80s | SUCCESS
+[ 518/1000] Start: (-1.41,  1.65, yaw= 0.11) | Target: [-0.213 -0.328  0.307] | EE Error: 0.0099 m | Time: 11.33s | SUCCESS
+[ 519/1000] Start: (-1.01,  1.66, yaw= 1.87) | Target: [-3.17   2.071  0.655] | EE Error: 0.0100 m | Time:  9.16s | SUCCESS
+[ 520/1000] Start: (-0.97,  0.17, yaw=-1.13) | Target: [-0.314 -2.906  0.41 ] | EE Error: 0.0100 m | Time: 11.28s | SUCCESS
+[ 521/1000] Start: (-1.35, -0.67, yaw=-1.06) | Target: [ 0.932 -1.346  0.416] | EE Error: 0.0100 m | Time:  9.62s | SUCCESS
+[ 522/1000] Start: ( 0.17, -1.48, yaw= 1.19) | Target: [-2.511 -0.5    0.841] | EE Error: 0.0100 m | Time: 11.50s | SUCCESS
+[ 523/1000] Start: (-1.61, -1.83, yaw= 1.39) | Target: [-1.862  1.849  0.334] | EE Error: 0.0170 m | Time: 14.98s | SUCCESS
+[ 524/1000] Start: ( 1.11, -0.49, yaw=-1.24) | Target: [-0.748 -4.028  0.338] | EE Error: 0.0173 m | Time: 16.78s | SUCCESS
+[ 525/1000] Start: ( 1.31,  0.56, yaw= 1.48) | Target: [2.193 4.168 0.41 ] | EE Error: 0.0100 m | Time: 13.56s | SUCCESS
+[ 526/1000] Start: (-2.00,  0.39, yaw=-0.92) | Target: [-3.687 -1.271  0.499] | EE Error: 0.0151 m | Time: 12.11s | SUCCESS
+[ 527/1000] Start: (-1.72, -1.77, yaw= 2.61) | Target: [-0.211 -5.438  0.879] | EE Error: 0.0100 m | Time: 17.19s | SUCCESS
+[ 528/1000] Start: (-1.43,  0.86, yaw= 0.63) | Target: [-0.631  2.902  0.413] | EE Error: 0.0100 m | Time: 11.73s | SUCCESS
+[ 529/1000] Start: (-1.69,  0.42, yaw= 3.06) | Target: [-0.082  3.436  0.891] | EE Error: 0.0100 m | Time: 14.54s | SUCCESS
+[ 530/1000] Start: ( 0.71, -1.84, yaw= 2.31) | Target: [ 2.037 -3.348  0.604] | EE Error: 0.0100 m | Time:  9.42s | SUCCESS
+[ 531/1000] Start: ( 1.75, -0.97, yaw=-0.05) | Target: [ 0.773 -2.848  0.348] | EE Error: 0.0315 m | Time: 11.53s | SUCCESS
+[ 532/1000] Start: ( 0.91,  1.46, yaw=-2.24) | Target: [ 1.478 -0.865  0.316] | EE Error: 0.0205 m | Time: 10.66s | SUCCESS
+[ 533/1000] Start: ( 0.21,  0.80, yaw= 0.93) | Target: [ 2.586 -1.212  0.356] | EE Error: 0.0270 m | Time: 14.17s | SUCCESS
+[ 534/1000] Start: (-1.38,  1.73, yaw= 1.64) | Target: [-4.773  3.516  0.69 ] | EE Error: 0.0100 m | Time: 14.90s | SUCCESS
+[ 535/1000] Start: ( 1.71, -0.33, yaw=-3.12) | Target: [-0.337 -1.183  0.357] | EE Error: 0.0242 m | Time: 10.11s | SUCCESS
+[ 536/1000] Start: (-0.59,  0.81, yaw= 1.83) | Target: [1.341 2.036 0.749] | EE Error: 0.0100 m | Time: 10.09s | SUCCESS
+[ 537/1000] Start: (-0.58, -1.95, yaw=-1.38) | Target: [ 0.655 -4.177  0.787] | EE Error: 0.0100 m | Time:  8.65s | SUCCESS
+[ 538/1000] Start: ( 1.04,  0.78, yaw=-2.27) | Target: [-0.152  3.917  0.417] | EE Error: 0.0100 m | Time: 14.04s | SUCCESS
+[ 539/1000] Start: ( 0.59, -0.07, yaw=-0.38) | Target: [-1.722 -2.033  0.36 ] | EE Error: 0.0210 m | Time: 14.23s | SUCCESS
+[ 540/1000] Start: (-1.34, -1.47, yaw= 2.85) | Target: [-0.754 -4.116  0.493] | EE Error: 0.0100 m | Time: 11.49s | SUCCESS
+[ 541/1000] Start: (-1.45,  0.80, yaw= 2.98) | Target: [-4.873  0.178  0.856] | EE Error: 0.0100 m | Time: 12.72s | SUCCESS
+[ 542/1000] Start: (-1.70, -1.56, yaw= 1.21) | Target: [-0.422  0.154  0.801] | EE Error: 0.0100 m | Time:  7.41s | SUCCESS
+[ 543/1000] Start: ( 0.09,  1.63, yaw= 2.38) | Target: [-1.066  4.43   0.451] | EE Error: 0.0100 m | Time: 10.88s | SUCCESS
+[ 544/1000] Start: ( 0.02, -1.60, yaw= 1.00) | Target: [-1.989 -3.851  0.333] | EE Error: 0.0177 m | Time: 15.05s | SUCCESS
+[ 545/1000] Start: (-0.80, -1.07, yaw= 0.75) | Target: [-1.286  0.986  0.81 ] | EE Error: 0.0100 m | Time:  8.25s | SUCCESS
+[ 546/1000] Start: ( 1.59,  0.25, yaw= 2.63) | Target: [ 2.281 -1.869  0.634] | EE Error: 0.0100 m | Time: 11.13s | SUCCESS
+[ 547/1000] Start: (-0.62,  1.21, yaw= 2.38) | Target: [3.266 0.532 0.632] | EE Error: 0.0100 m | Time: 17.18s | SUCCESS
+[ 548/1000] Start: (-0.92, -0.04, yaw=-2.91) | Target: [-1.649  2.033  0.485] | EE Error: 0.0117 m | Time: 11.54s | SUCCESS
+[ 549/1000] Start: ( 0.26, -1.83, yaw=-2.64) | Target: [0.973 0.194 0.586] | EE Error: 0.0100 m | Time: 10.90s | SUCCESS
+[ 550/1000] Start: (-0.65, -1.09, yaw=-1.96) | Target: [-0.974  2.801  0.384] | EE Error: 0.0153 m | Time: 18.59s | SUCCESS
+[ 551/1000] Start: ( 1.84,  0.38, yaw= 0.89) | Target: [2.688 3.68  0.792] | EE Error: 0.0100 m | Time: 12.41s | SUCCESS
+[ 552/1000] Start: (-0.07,  0.13, yaw=-1.11) | Target: [-2.693 -1.912  0.32 ] | EE Error: 0.0100 m | Time: 13.19s | SUCCESS
+[ 553/1000] Start: (-0.90, -1.62, yaw=-1.94) | Target: [1.199 0.87  0.553] | EE Error: 0.0100 m | Time: 14.90s | SUCCESS
+[ 554/1000] Start: (-1.64, -0.27, yaw=-0.93) | Target: [-1.056  2.837  0.595] | EE Error: 0.0100 m | Time: 13.69s | SUCCESS
+[ 555/1000] Start: (-0.05,  1.86, yaw= 1.61) | Target: [2.906 1.809 0.316] | EE Error: 0.0099 m | Time: 11.80s | SUCCESS
+[ 556/1000] Start: ( 0.77,  0.24, yaw=-3.13) | Target: [-3.117 -0.634  0.769] | EE Error: 0.0099 m | Time: 14.50s | SUCCESS
+[ 557/1000] Start: ( 1.75,  1.61, yaw=-3.01) | Target: [0.996 4.412 0.774] | EE Error: 0.0100 m | Time: 11.25s | SUCCESS
+[ 558/1000] Start: (-1.97, -0.85, yaw= 1.58) | Target: [-2.838  2.275  0.481] | EE Error: 0.0100 m | Time: 11.69s | SUCCESS
+[ 559/1000] Start: (-0.76,  1.87, yaw=-0.38) | Target: [2.176 0.854 0.546] | EE Error: 0.0100 m | Time: 10.99s | SUCCESS
+[ 560/1000] Start: ( 0.21, -0.27, yaw= 2.05) | Target: [-3.039  1.819  0.639] | EE Error: 0.0100 m | Time: 14.56s | SUCCESS
+[ 561/1000] Start: ( 1.77, -0.72, yaw=-1.53) | Target: [-1.667 -0.71   0.328] | EE Error: 0.0100 m | Time: 13.84s | SUCCESS
+[ 562/1000] Start: (-1.75, -1.90, yaw= 0.63) | Target: [-5.234 -3.579  0.862] | EE Error: 0.0100 m | Time: 17.28s | SUCCESS
+[ 563/1000] Start: ( 0.18,  0.47, yaw=-1.31) | Target: [-3.014 -0.892  0.361] | EE Error: 0.0202 m | Time: 15.34s | SUCCESS
+[ 564/1000] Start: (-1.66, -0.76, yaw=-3.06) | Target: [ 1.468 -2.13   0.781] | EE Error: 0.0099 m | Time: 14.82s | SUCCESS
+[ 565/1000] Start: ( 0.42,  1.39, yaw=-0.59) | Target: [-1.335  3.838  0.434] | EE Error: 0.0140 m | Time: 15.51s | SUCCESS
+[ 566/1000] Start: ( 1.78, -0.90, yaw=-2.98) | Target: [ 1.651 -3.63   0.511] | EE Error: 0.0100 m | Time: 10.88s | SUCCESS
+[ 567/1000] Start: ( 0.10,  1.53, yaw=-1.30) | Target: [2.756 1.882 0.793] | EE Error: 0.0099 m | Time: 10.36s | SUCCESS
+[ 568/1000] Start: (-1.37, -1.59, yaw= 0.02) | Target: [0.323 1.581 0.654] | EE Error: 0.0100 m | Time: 14.11s | SUCCESS
+[ 569/1000] Start: ( 1.09, -0.43, yaw=-2.94) | Target: [-0.454 -1.814  0.497] | EE Error: 0.7829 m | Time: 36.99s | FAIL
+[ 570/1000] Start: (-0.02, -0.57, yaw= 0.38) | Target: [ 3.313 -0.983  0.7  ] | EE Error: 0.0100 m | Time: 12.24s | SUCCESS
+[ 571/1000] Start: ( 1.44, -0.63, yaw= 1.00) | Target: [ 3.333 -1.957  0.617] | EE Error: 0.0100 m | Time: 31.38s | SUCCESS
+[ 572/1000] Start: (-1.66,  1.51, yaw= 2.67) | Target: [-3.014  4.328  0.635] | EE Error: 0.0100 m | Time: 11.66s | SUCCESS
+[ 573/1000] Start: ( 1.94, -1.01, yaw=-2.66) | Target: [4.397 0.    0.493] | EE Error: 0.0100 m | Time: 12.18s | SUCCESS
+[ 574/1000] Start: (-1.97,  0.39, yaw=-1.48) | Target: [-2.764 -1.539  0.519] | EE Error: 0.0104 m | Time: 10.49s | SUCCESS
+[ 575/1000] Start: ( 1.52, -0.65, yaw= 1.12) | Target: [1.407 2.001 0.793] | EE Error: 0.0099 m | Time:  9.19s | SUCCESS
+[ 576/1000] Start: (-0.73, -0.61, yaw= 0.54) | Target: [1.433 0.882 0.498] | EE Error: 0.0100 m | Time:  9.07s | SUCCESS
+[ 577/1000] Start: ( 0.78,  0.59, yaw=-2.29) | Target: [ 4.305 -0.78   0.322] | EE Error: 0.0100 m | Time: 15.55s | SUCCESS
+[ 578/1000] Start: ( 1.42, -1.35, yaw= 0.05) | Target: [ 3.217 -2.272  0.849] | EE Error: 0.5055 m | Time: 36.84s | FAIL
+[ 579/1000] Start: (-0.18,  1.82, yaw=-1.34) | Target: [-2.746  4.681  0.634] | EE Error: 0.0100 m | Time: 16.97s | SUCCESS
+[ 580/1000] Start: (-1.19,  0.74, yaw= 0.31) | Target: [-3.894  1.724  0.461] | EE Error: 0.0100 m | Time: 12.97s | SUCCESS
+[ 581/1000] Start: ( 1.55,  0.18, yaw= 2.42) | Target: [ 1.143 -2.452  0.583] | EE Error: 0.0100 m | Time: 11.36s | SUCCESS
+[ 582/1000] Start: (-0.08,  1.99, yaw=-2.42) | Target: [-2.308  4.979  0.632] | EE Error: 0.0100 m | Time: 15.28s | SUCCESS
+[ 583/1000] Start: (-0.62,  0.08, yaw=-1.30) | Target: [-1.534  2.932  0.856] | EE Error: 0.0100 m | Time: 13.35s | SUCCESS
+[ 584/1000] Start: ( 0.49,  0.06, yaw= 1.33) | Target: [4.299 0.151 0.411] | EE Error: 0.0100 m | Time: 15.10s | SUCCESS
+[ 585/1000] Start: ( 1.89,  1.25, yaw= 2.27) | Target: [5.546 0.855 0.484] | EE Error: 0.0100 m | Time: 15.89s | SUCCESS
+[ 586/1000] Start: ( 1.05, -1.44, yaw=-1.21) | Target: [ 3.54  -2.322  0.532] | EE Error: 0.0120 m | Time: 12.04s | SUCCESS
+[ 587/1000] Start: ( 1.28, -0.97, yaw= 1.54) | Target: [-1.879 -2.551  0.775] | EE Error: 0.0100 m | Time: 14.72s | SUCCESS
+[ 588/1000] Start: (-0.39,  0.89, yaw= 2.61) | Target: [-1.264  3.531  0.591] | EE Error: 0.0100 m | Time: 10.69s | SUCCESS
+[ 589/1000] Start: ( 1.12, -0.83, yaw= 1.91) | Target: [ 2.819 -4.016  0.352] | EE Error: 0.0210 m | Time: 17.40s | SUCCESS
+[ 590/1000] Start: (-1.82,  1.99, yaw= 2.32) | Target: [-4.714  4.611  0.563] | EE Error: 0.0100 m | Time: 14.44s | SUCCESS
+[ 591/1000] Start: (-0.23,  0.82, yaw= 2.13) | Target: [2.906 2.132 0.75 ] | EE Error: 0.0100 m | Time: 13.74s | SUCCESS
+[ 592/1000] Start: ( 0.71,  0.98, yaw=-1.83) | Target: [3.882 0.953 0.301] | EE Error: 0.0100 m | Time: 13.10s | SUCCESS
+[ 593/1000] Start: ( 1.42,  0.44, yaw=-2.33) | Target: [0.033 3.58  0.755] | EE Error: 0.0100 m | Time: 13.98s | SUCCESS
+[ 594/1000] Start: (-0.43,  1.42, yaw=-0.54) | Target: [1.376 2.275 0.687] | EE Error: 0.7902 m | Time: 36.95s | FAIL
+[ 595/1000] Start: ( 0.87,  0.27, yaw=-0.02) | Target: [-0.364  3.395  0.467] | EE Error: 0.0099 m | Time: 13.96s | SUCCESS
+[ 596/1000] Start: (-0.85, -1.48, yaw= 0.01) | Target: [-1.577 -5.283  0.302] | EE Error: 0.0100 m | Time: 15.96s | SUCCESS
+[ 597/1000] Start: (-1.43, -1.01, yaw=-1.89) | Target: [-1.929 -4.288  0.497] | EE Error: 0.0100 m | Time: 12.03s | SUCCESS
+[ 598/1000] Start: ( 0.46,  1.56, yaw= 0.64) | Target: [1.393 4.128 0.396] | EE Error: 0.0100 m | Time: 10.27s | SUCCESS
+[ 599/1000] Start: (-0.72,  1.86, yaw= 0.77) | Target: [-0.219 -1.002  0.801] | EE Error: 0.0100 m | Time: 12.10s | SUCCESS
+[ 600/1000] Start: ( 0.67,  0.24, yaw= 2.42) | Target: [2.212 3.146 0.414] | EE Error: 0.0100 m | Time: 13.10s | SUCCESS
+[ 601/1000] Start: (-1.15,  1.63, yaw= 2.45) | Target: [-0.085  3.874  0.552] | EE Error: 0.0100 m | Time: 10.08s | SUCCESS
+[ 602/1000] Start: (-1.16, -1.49, yaw=-0.75) | Target: [ 1.262 -0.239  0.666] | EE Error: 0.0100 m | Time: 11.37s | SUCCESS
+[ 603/1000] Start: (-0.81, -0.62, yaw= 1.83) | Target: [-2.723  1.213  0.643] | EE Error: 0.0100 m | Time: 10.50s | SUCCESS
+[ 604/1000] Start: (-0.89, -1.79, yaw= 1.50) | Target: [-2.245 -4.294  0.592] | EE Error: 0.0100 m | Time: 13.91s | SUCCESS
+[ 605/1000] Start: (-1.26, -1.62, yaw=-0.95) | Target: [-4.348 -0.668  0.529] | EE Error: 0.0100 m | Time: 14.31s | SUCCESS
+[ 606/1000] Start: ( 1.84,  0.83, yaw= 3.07) | Target: [-1.939  1.518  0.753] | EE Error: 0.0100 m | Time: 13.72s | SUCCESS
+[ 607/1000] Start: ( 0.44, -1.31, yaw= 0.27) | Target: [0.145 1.717 0.821] | EE Error: 0.0100 m | Time: 11.91s | SUCCESS
+[ 608/1000] Start: (-1.56, -0.48, yaw= 0.04) | Target: [ 0.459 -1.391  0.392] | EE Error: 0.0173 m | Time: 37.29s | SUCCESS
+[ 609/1000] Start: ( 1.35, -0.06, yaw=-2.83) | Target: [-1.581 -0.367  0.399] | EE Error: 0.0100 m | Time: 10.41s | SUCCESS
+[ 610/1000] Start: ( 0.82,  1.18, yaw=-1.71) | Target: [2.753 2.445 0.482] | EE Error: 0.0100 m | Time: 35.96s | SUCCESS
+[ 611/1000] Start: (-1.57,  1.86, yaw= 0.62) | Target: [1.168 0.255 0.337] | EE Error: 0.0162 m | Time: 13.77s | SUCCESS
+[ 612/1000] Start: ( 1.29, -1.13, yaw= 1.91) | Target: [ 3.783 -0.586  0.318] | EE Error: 0.0195 m | Time: 12.07s | SUCCESS
+[ 613/1000] Start: ( 1.26, -1.29, yaw=-2.82) | Target: [1.163 1.404 0.534] | EE Error: 0.0100 m | Time: 11.35s | SUCCESS
+[ 614/1000] Start: (-1.01,  1.44, yaw=-1.27) | Target: [-1.66  -1.1    0.422] | EE Error: 0.0100 m | Time:  9.43s | SUCCESS
+[ 615/1000] Start: (-0.73, -1.67, yaw=-2.15) | Target: [ 2.531 -3.54   0.334] | EE Error: 0.0179 m | Time: 16.61s | SUCCESS
+[ 616/1000] Start: ( 0.55,  0.06, yaw= 2.21) | Target: [ 3.859 -1.461  0.78 ] | EE Error: 0.0100 m | Time: 15.78s | SUCCESS
+[ 617/1000] Start: ( 1.85, -1.00, yaw= 1.32) | Target: [1.68  2.865 0.844] | EE Error: 0.0100 m | Time: 14.22s | SUCCESS
+[ 618/1000] Start: ( 0.29,  0.32, yaw=-2.09) | Target: [-2.185  0.71   0.735] | EE Error: 0.0100 m | Time:  9.45s | SUCCESS
+[ 619/1000] Start: ( 1.18, -0.23, yaw=-1.81) | Target: [-0.206 -3.678  0.606] | EE Error: 0.0100 m | Time: 13.67s | SUCCESS
+[ 620/1000] Start: (-1.64,  0.87, yaw=-1.57) | Target: [-3.507  2.704  0.42 ] | EE Error: 0.0100 m | Time: 12.27s | SUCCESS
+[ 621/1000] Start: (-1.66,  1.34, yaw= 2.72) | Target: [-2.115 -1.672  0.857] | EE Error: 0.0100 m | Time: 12.56s | SUCCESS
+[ 622/1000] Start: ( 1.84, -1.49, yaw=-0.95) | Target: [2.623 0.827 0.495] | EE Error: 0.0134 m | Time: 12.77s | SUCCESS
+[ 623/1000] Start: (-1.91, -1.39, yaw= 0.39) | Target: [-0.021  1.319  0.767] | EE Error: 0.0100 m | Time: 12.00s | SUCCESS
+[ 624/1000] Start: (-0.34, -0.91, yaw=-3.04) | Target: [-1.045 -3.434  0.407] | EE Error: 0.0100 m | Time: 10.37s | SUCCESS
+[ 625/1000] Start: (-1.92, -1.37, yaw= 1.04) | Target: [0.738 1.445 0.779] | EE Error: 0.0100 m | Time: 14.08s | SUCCESS
+[ 626/1000] Start: (-1.84,  0.40, yaw=-2.56) | Target: [1.535 1.327 0.554] | EE Error: 0.0100 m | Time: 15.77s | SUCCESS
+[ 627/1000] Start: (-0.80, -1.81, yaw=-2.99) | Target: [ 2.606 -3.413  0.446] | EE Error: 0.0100 m | Time: 16.38s | SUCCESS
+[ 628/1000] Start: ( 0.30,  0.74, yaw=-2.76) | Target: [-1.227 -1.447  0.702] | EE Error: 0.0100 m | Time: 10.52s | SUCCESS
+[ 629/1000] Start: (-0.24,  0.94, yaw= 2.31) | Target: [-0.454  4.916  0.753] | EE Error: 0.0100 m | Time: 14.87s | SUCCESS
+[ 630/1000] Start: ( 1.41,  1.33, yaw= 1.45) | Target: [0.172 4.995 0.585] | EE Error: 0.0100 m | Time: 14.58s | SUCCESS
+[ 631/1000] Start: (-1.66,  0.05, yaw=-0.31) | Target: [-1.685  2.975  0.506] | EE Error: 0.0100 m | Time: 12.21s | SUCCESS
+[ 632/1000] Start: (-0.95, -0.89, yaw= 2.69) | Target: [-2.975 -4.311  0.496] | EE Error: 0.0100 m | Time: 16.28s | SUCCESS
+[ 633/1000] Start: (-1.65, -1.00, yaw=-2.77) | Target: [-2.399  1.925  0.502] | EE Error: 0.0100 m | Time: 12.48s | SUCCESS
+[ 634/1000] Start: ( 0.65,  0.52, yaw= 2.76) | Target: [-2.614  1.333  0.791] | EE Error: 0.0099 m | Time: 11.77s | SUCCESS
+[ 635/1000] Start: ( 1.17, -0.04, yaw= 1.28) | Target: [-1.929 -1.695  0.877] | EE Error: 0.0100 m | Time: 15.36s | SUCCESS
+[ 636/1000] Start: ( 0.27, -1.45, yaw= 0.40) | Target: [-2.379 -2.53   0.534] | EE Error: 0.0100 m | Time: 12.88s | SUCCESS
+[ 637/1000] Start: (-0.29, -0.88, yaw= 1.17) | Target: [-2.202  2.094  0.677] | EE Error: 0.0100 m | Time: 13.61s | SUCCESS
+[ 638/1000] Start: ( 0.15, -1.88, yaw= 1.40) | Target: [ 2.594 -1.167  0.497] | EE Error: 0.0100 m | Time: 10.33s | SUCCESS
+[ 639/1000] Start: ( 1.74,  0.50, yaw=-0.15) | Target: [3.792 2.444 0.582] | EE Error: 0.0100 m | Time: 11.97s | SUCCESS
+[ 640/1000] Start: (-0.84, -0.24, yaw= 1.17) | Target: [-4.317 -1.133  0.47 ] | EE Error: 0.0099 m | Time: 15.31s | SUCCESS
+[ 641/1000] Start: ( 0.73,  0.57, yaw= 0.96) | Target: [3.778 3.033 0.605] | EE Error: 0.0100 m | Time: 14.74s | SUCCESS
+[ 642/1000] Start: ( 0.93,  0.82, yaw=-1.66) | Target: [ 1.521 -1.964  0.467] | EE Error: 0.0100 m | Time: 10.06s | SUCCESS
+[ 643/1000] Start: (-0.53, -0.44, yaw= 0.65) | Target: [-1.212 -3.98   0.563] | EE Error: 0.0100 m | Time: 15.67s | SUCCESS
+[ 644/1000] Start: ( 0.82, -1.67, yaw=-0.19) | Target: [-2.474 -2.265  0.506] | EE Error: 0.0100 m | Time: 15.10s | SUCCESS
+[ 645/1000] Start: ( 1.80, -0.70, yaw= 0.40) | Target: [ 1.947 -3.941  0.58 ] | EE Error: 0.0100 m | Time: 13.54s | SUCCESS
+[ 646/1000] Start: (-1.43,  1.24, yaw= 1.29) | Target: [1.272 1.762 0.701] | EE Error: 0.0100 m | Time: 10.43s | SUCCESS
+[ 647/1000] Start: ( 1.25,  1.52, yaw= 0.29) | Target: [-0.033  4.261  0.585] | EE Error: 0.0100 m | Time: 12.48s | SUCCESS
+[ 648/1000] Start: ( 1.46, -0.46, yaw=-0.65) | Target: [ 2.489 -3.313  0.627] | EE Error: 0.0100 m | Time: 11.21s | SUCCESS
+[ 649/1000] Start: ( 0.64, -0.28, yaw=-1.77) | Target: [-1.162  1.721  0.854] | EE Error: 0.0100 m | Time: 12.24s | SUCCESS
+[ 650/1000] Start: (-1.17,  0.24, yaw= 0.23) | Target: [-2.251  2.245  0.846] | EE Error: 0.0100 m | Time:  9.96s | SUCCESS
+[ 651/1000] Start: (-1.11, -1.23, yaw=-1.16) | Target: [-4.051  0.842  0.868] | EE Error: 0.0100 m | Time: 15.80s | SUCCESS
+[ 652/1000] Start: ( 0.61,  0.65, yaw=-0.12) | Target: [-1.893  2.348  0.513] | EE Error: 0.0124 m | Time: 15.72s | SUCCESS
+[ 653/1000] Start: ( 0.56,  0.18, yaw=-2.36) | Target: [ 2.614 -1.454  0.808] | EE Error: 0.0100 m | Time: 11.16s | SUCCESS
+[ 654/1000] Start: (-0.48,  1.29, yaw=-0.36) | Target: [-0.535  3.556  0.855] | EE Error: 0.0100 m | Time:  9.38s | SUCCESS
+[ 655/1000] Start: (-0.08, -0.96, yaw=-1.62) | Target: [ 0.181 -3.682  0.731] | EE Error: 0.0097 m | Time:  8.70s | SUCCESS
+[ 656/1000] Start: ( 1.92, -0.31, yaw=-2.63) | Target: [ 3.022 -2.524  0.308] | EE Error: 0.0161 m | Time: 11.79s | SUCCESS
+[ 657/1000] Start: (-1.62, -0.19, yaw=-1.01) | Target: [-3.073 -3.296  0.514] | EE Error: 0.0100 m | Time: 13.45s | SUCCESS
+[ 658/1000] Start: ( 1.41, -1.04, yaw= 0.24) | Target: [ 0.204 -3.774  0.391] | EE Error: 0.0100 m | Time: 12.88s | SUCCESS
+[ 659/1000] Start: (-1.35,  0.45, yaw=-1.48) | Target: [-3.163 -2.96   0.326] | EE Error: 0.0100 m | Time: 14.51s | SUCCESS
+[ 660/1000] Start: ( 0.26,  0.19, yaw=-1.57) | Target: [ 2.341 -0.443  0.733] | EE Error: 0.0100 m | Time:  9.21s | SUCCESS
+[ 661/1000] Start: (-0.52, -1.19, yaw=-2.44) | Target: [-3.434 -3.92   0.547] | EE Error: 0.0100 m | Time: 14.93s | SUCCESS
+[ 662/1000] Start: (-1.99,  1.81, yaw=-3.02) | Target: [1.003 0.131 0.849] | EE Error: 0.0100 m | Time: 14.95s | SUCCESS
+[ 663/1000] Start: ( 0.85, -0.14, yaw= 2.98) | Target: [-3.001 -1.117  0.81 ] | EE Error: 0.0099 m | Time: 14.78s | SUCCESS
+[ 664/1000] Start: ( 1.72, -0.98, yaw=-2.25) | Target: [3.287 1.612 0.614] | EE Error: 0.0100 m | Time: 13.80s | SUCCESS
+[ 665/1000] Start: ( 1.70,  0.48, yaw=-1.19) | Target: [ 3.533 -0.852  0.415] | EE Error: 0.0100 m | Time: 35.93s | SUCCESS
+[ 666/1000] Start: (-0.74, -1.48, yaw= 1.22) | Target: [-0.336 -4.141  0.354] | EE Error: 0.0207 m | Time: 13.50s | SUCCESS
+[ 667/1000] Start: (-0.01, -1.37, yaw=-0.43) | Target: [-2.435 -4.43   0.387] | EE Error: 0.0148 m | Time: 17.69s | SUCCESS
+[ 668/1000] Start: ( 0.09, -1.21, yaw=-2.66) | Target: [-0.535 -3.228  0.384] | EE Error: 0.0100 m | Time:  9.88s | SUCCESS
+[ 669/1000] Start: (-0.03,  0.61, yaw=-2.59) | Target: [ 2.922 -0.538  0.441] | EE Error: 0.0100 m | Time: 13.51s | SUCCESS
+[ 670/1000] Start: (-0.51, -1.71, yaw=-1.76) | Target: [ 3.382 -2.539  0.898] | EE Error: 0.0100 m | Time: 16.37s | SUCCESS
+[ 671/1000] Start: ( 1.80,  0.68, yaw= 0.30) | Target: [ 5.265 -0.484  0.81 ] | EE Error: 0.0100 m | Time: 13.67s | SUCCESS
+[ 672/1000] Start: (-0.83,  1.81, yaw=-0.66) | Target: [-2.045  5.555  0.722] | EE Error: 0.0100 m | Time: 16.41s | SUCCESS
+[ 673/1000] Start: (-1.35,  0.34, yaw=-2.40) | Target: [-1.978  2.831  0.717] | EE Error: 0.0100 m | Time: 10.69s | SUCCESS
+[ 674/1000] Start: ( 1.64, -1.28, yaw=-0.67) | Target: [3.35  0.99  0.405] | EE Error: 0.0100 m | Time: 11.88s | SUCCESS
+[ 675/1000] Start: (-1.88, -0.37, yaw= 0.94) | Target: [0.183 0.663 0.57 ] | EE Error: 0.0100 m | Time:  9.94s | SUCCESS
+[ 676/1000] Start: (-0.52, -0.90, yaw= 1.44) | Target: [ 0.606 -3.769  0.854] | EE Error: 0.0100 m | Time: 13.69s | SUCCESS
+[ 677/1000] Start: ( 0.16,  0.47, yaw=-2.68) | Target: [-0.804 -1.513  0.759] | EE Error: 0.0100 m | Time: 13.89s | SUCCESS
+[ 678/1000] Start: ( 1.34, -1.25, yaw=-1.76) | Target: [ 2.757 -4.105  0.673] | EE Error: 0.0100 m | Time: 11.80s | SUCCESS
+[ 679/1000] Start: ( 0.75,  1.62, yaw=-1.29) | Target: [2.439 4.242 0.484] | EE Error: 0.0100 m | Time: 13.61s | SUCCESS
+[ 680/1000] Start: ( 1.63, -1.62, yaw= 1.33) | Target: [2.161 2.176 0.611] | EE Error: 0.0100 m | Time: 14.05s | SUCCESS
+[ 681/1000] Start: (-0.71,  1.31, yaw= 1.70) | Target: [2.822 1.318 0.461] | EE Error: 0.0100 m | Time: 14.38s | SUCCESS
+[ 682/1000] Start: ( 0.36,  1.46, yaw=-1.14) | Target: [4.239 1.058 0.779] | EE Error: 0.0099 m | Time: 14.95s | SUCCESS
+[ 683/1000] Start: ( 1.55, -0.46, yaw= 3.12) | Target: [-0.198 -2.945  0.588] | EE Error: 0.0100 m | Time: 12.21s | SUCCESS
+[ 684/1000] Start: ( 1.19,  1.63, yaw= 1.45) | Target: [3.19  3.676 0.606] | EE Error: 0.0100 m | Time: 11.28s | SUCCESS
+[ 685/1000] Start: ( 0.04, -1.92, yaw= 0.02) | Target: [-2.075  0.769  0.777] | EE Error: 0.0099 m | Time: 14.30s | SUCCESS
+[ 686/1000] Start: (-0.44,  0.12, yaw=-2.93) | Target: [ 1.749 -1.862  0.453] | EE Error: 0.0100 m | Time: 13.18s | SUCCESS
+[ 687/1000] Start: (-1.88,  0.76, yaw=-0.41) | Target: [ 0.282 -0.501  0.623] | EE Error: 0.0100 m | Time:  8.59s | SUCCESS
+[ 688/1000] Start: (-0.25, -0.10, yaw= 0.51) | Target: [-4.06  -0.256  0.343] | EE Error: 0.0194 m | Time: 18.16s | SUCCESS
+[ 689/1000] Start: (-0.20, -1.17, yaw= 0.15) | Target: [ 0.506 -4.824  0.538] | EE Error: 0.0100 m | Time: 15.12s | SUCCESS
+[ 690/1000] Start: ( 0.56, -1.00, yaw=-3.02) | Target: [ 3.087 -2.745  0.576] | EE Error: 0.0100 m | Time: 14.00s | SUCCESS
+[ 691/1000] Start: ( 1.85,  0.83, yaw= 3.11) | Target: [ 2.848 -2.609  0.633] | EE Error: 0.0100 m | Time: 14.90s | SUCCESS
+[ 692/1000] Start: ( 0.45,  1.94, yaw= 0.97) | Target: [-2.33   3.992  0.376] | EE Error: 0.0175 m | Time: 15.28s | SUCCESS
+[ 693/1000] Start: ( 0.80, -0.06, yaw= 2.63) | Target: [0.026 2.006 0.38 ] | EE Error: 0.0226 m | Time: 13.42s | SUCCESS
+[ 694/1000] Start: (-1.72, -0.03, yaw=-2.63) | Target: [-1.211  3.035  0.802] | EE Error: 0.0100 m | Time: 13.15s | SUCCESS
+[ 695/1000] Start: (-0.88,  0.08, yaw=-2.40) | Target: [-2.64   1.635  0.361] | EE Error: 0.0297 m | Time: 11.88s | SUCCESS
+[ 696/1000] Start: ( 1.91, -1.87, yaw= 1.46) | Target: [1.598 0.243 0.403] | EE Error: 0.0100 m | Time:  7.14s | SUCCESS
+[ 697/1000] Start: (-0.46,  1.47, yaw= 0.23) | Target: [1.536 4.426 0.797] | EE Error: 0.0100 m | Time: 13.44s | SUCCESS
+[ 698/1000] Start: (-0.10,  0.04, yaw= 1.37) | Target: [ 0.216 -3.661  0.312] | EE Error: 0.0100 m | Time: 16.37s | SUCCESS
+[ 699/1000] Start: (-1.22,  1.20, yaw=-1.00) | Target: [-2.614 -0.718  0.618] | EE Error: 0.0100 m | Time: 10.24s | SUCCESS
+[ 700/1000] Start: ( 1.39, -1.72, yaw=-2.95) | Target: [ 5.204 -2.566  0.467] | EE Error: 0.0100 m | Time: 17.22s | SUCCESS
+[ 701/1000] Start: ( 0.13,  0.34, yaw= 0.06) | Target: [-2.792 -0.328  0.458] | EE Error: 0.0100 m | Time: 13.47s | SUCCESS
+[ 702/1000] Start: (-0.63,  0.60, yaw=-0.01) | Target: [-2.417 -0.59   0.411] | EE Error: 0.4045 m | Time: 37.22s | FAIL
+[ 703/1000] Start: (-1.24,  0.43, yaw=-2.02) | Target: [-3.018  2.07   0.355] | EE Error: 0.0287 m | Time: 37.25s | SUCCESS
+[ 704/1000] Start: ( 1.50, -0.82, yaw=-0.47) | Target: [-2.258  0.171  0.729] | EE Error: 0.0100 m | Time: 16.89s | SUCCESS
+[ 705/1000] Start: (-1.72,  0.37, yaw= 3.07) | Target: [-3.814  1.097  0.538] | EE Error: 0.0100 m | Time:  7.76s | SUCCESS
+[ 706/1000] Start: (-1.18,  1.23, yaw=-2.48) | Target: [1.448 3.525 0.751] | EE Error: 0.0100 m | Time: 15.32s | SUCCESS
+[ 707/1000] Start: (-1.24, -1.75, yaw=-0.32) | Target: [-2.24  -5.002  0.514] | EE Error: 0.0100 m | Time: 13.82s | SUCCESS
+[ 708/1000] Start: (-0.20, -1.55, yaw= 0.42) | Target: [-1.526 -4.632  0.343] | EE Error: 0.0195 m | Time: 15.98s | SUCCESS
+[ 709/1000] Start: ( 1.90,  0.74, yaw=-2.00) | Target: [-0.754  0.502  0.392] | EE Error: 0.0100 m | Time: 10.03s | SUCCESS
+[ 710/1000] Start: (-1.13,  1.49, yaw= 0.65) | Target: [-2.514 -1.296  0.453] | EE Error: 0.0099 m | Time: 13.92s | SUCCESS
+[ 711/1000] Start: (-1.66, -1.74, yaw=-2.67) | Target: [1.394 0.198 0.542] | EE Error: 0.0100 m | Time: 16.34s | SUCCESS
+[ 712/1000] Start: (-0.22,  0.36, yaw= 0.21) | Target: [0.896 3.08  0.728] | EE Error: 0.0100 m | Time: 11.22s | SUCCESS
+[ 713/1000] Start: ( 1.99, -0.60, yaw=-3.06) | Target: [-0.199 -2.805  0.507] | EE Error: 0.0106 m | Time: 13.75s | SUCCESS
+[ 714/1000] Start: ( 1.76,  0.51, yaw= 0.13) | Target: [1.012 2.913 0.792] | EE Error: 0.0100 m | Time: 10.32s | SUCCESS
+[ 715/1000] Start: (-1.99,  0.48, yaw= 2.73) | Target: [-2.862  4.082  0.538] | EE Error: 0.0100 m | Time: 14.40s | SUCCESS
+[ 716/1000] Start: ( 0.09, -0.72, yaw=-1.73) | Target: [ 3.714 -1.374  0.849] | EE Error: 0.0100 m | Time: 14.84s | SUCCESS
+[ 717/1000] Start: (-0.79, -1.38, yaw= 1.38) | Target: [ 1.303 -0.199  0.756] | EE Error: 0.0100 m | Time: 10.36s | SUCCESS
+[ 718/1000] Start: ( 0.08,  0.61, yaw=-0.88) | Target: [ 2.266 -0.267  0.754] | EE Error: 0.0100 m | Time:  8.84s | SUCCESS
+[ 719/1000] Start: (-1.37,  1.11, yaw= 1.87) | Target: [-1.328  3.151  0.464] | EE Error: 0.0100 m | Time:  6.76s | SUCCESS
+[ 720/1000] Start: (-0.13,  0.38, yaw= 2.63) | Target: [ 2.535 -2.26   0.398] | EE Error: 0.0100 m | Time: 16.58s | SUCCESS
+[ 721/1000] Start: ( 1.84,  1.55, yaw=-1.36) | Target: [0.46  4.629 0.607] | EE Error: 0.0100 m | Time: 15.23s | SUCCESS
+[ 722/1000] Start: (-0.31,  1.26, yaw= 1.84) | Target: [-0.482  5.255  0.587] | EE Error: 0.0100 m | Time: 14.95s | SUCCESS
+[ 723/1000] Start: ( 1.23,  1.45, yaw=-1.81) | Target: [-1.484  0.716  0.814] | EE Error: 0.0100 m | Time: 10.62s | SUCCESS
+[ 724/1000] Start: (-0.84,  0.80, yaw=-3.10) | Target: [ 1.142 -1.748  0.378] | EE Error: 0.0168 m | Time: 15.17s | SUCCESS
+[ 725/1000] Start: ( 1.59, -1.38, yaw= 2.58) | Target: [ 0.75  -5.275  0.663] | EE Error: 0.0100 m | Time: 16.63s | SUCCESS
+[ 726/1000] Start: (-1.27, -1.73, yaw= 0.98) | Target: [-4.853 -2.941  0.715] | EE Error: 0.0100 m | Time: 15.88s | SUCCESS
+[ 727/1000] Start: ( 1.81, -0.74, yaw=-0.09) | Target: [1.939 1.738 0.625] | EE Error: 0.0100 m | Time: 10.03s | SUCCESS
+[ 728/1000] Start: ( 0.64,  1.92, yaw= 1.54) | Target: [-1.537 -0.079  0.653] | EE Error: 0.0100 m | Time: 13.24s | SUCCESS
+[ 729/1000] Start: (-1.41, -0.27, yaw=-1.36) | Target: [-3.634 -2.326  0.399] | EE Error: 0.0100 m | Time: 11.99s | SUCCESS
+[ 730/1000] Start: ( 0.36, -1.32, yaw= 1.41) | Target: [-0.917 -4.891  0.316] | EE Error: 0.0100 m | Time: 16.73s | SUCCESS
+[ 731/1000] Start: (-1.84, -0.74, yaw= 2.38) | Target: [-3.725  0.425  0.575] | EE Error: 0.0100 m | Time:  7.56s | SUCCESS
+[ 732/1000] Start: (-0.47, -0.04, yaw= 0.34) | Target: [-4.13  -0.511  0.884] | EE Error: 0.0100 m | Time: 16.49s | SUCCESS
+[ 733/1000] Start: ( 0.61,  0.64, yaw= 0.18) | Target: [ 1.775 -1.341  0.65 ] | EE Error: 0.0100 m | Time: 10.38s | SUCCESS
+[ 734/1000] Start: (-1.82,  1.30, yaw=-0.50) | Target: [ 0.463 -0.057  0.882] | EE Error: 0.0100 m | Time:  9.08s | SUCCESS
+[ 735/1000] Start: (-1.30, -1.40, yaw=-2.10) | Target: [0.866 1.949 0.441] | EE Error: 0.0100 m | Time: 17.63s | SUCCESS
+[ 736/1000] Start: (-1.93, -0.18, yaw= 0.74) | Target: [ 0.267 -0.737  0.538] | EE Error: 0.0100 m | Time:  9.75s | SUCCESS
+[ 737/1000] Start: (-0.35, -1.25, yaw= 1.61) | Target: [ 1.025 -4.112  0.609] | EE Error: 0.0100 m | Time: 14.34s | SUCCESS
+[ 738/1000] Start: ( 1.51, -1.51, yaw=-2.42) | Target: [ 2.4   -4.233  0.479] | EE Error: 0.0099 m | Time: 11.01s | SUCCESS
+[ 739/1000] Start: ( 1.05, -1.02, yaw=-2.61) | Target: [ 4.092 -2.847  0.81 ] | EE Error: 0.0099 m | Time: 14.67s | SUCCESS
+[ 740/1000] Start: ( 0.93,  0.23, yaw= 1.41) | Target: [1.965 2.475 0.63 ] | EE Error: 0.0100 m | Time:  8.69s | SUCCESS
+[ 741/1000] Start: ( 1.62, -0.89, yaw= 0.93) | Target: [-1.273 -1.639  0.693] | EE Error: 0.0100 m | Time: 13.02s | SUCCESS
+[ 742/1000] Start: ( 0.14, -1.05, yaw= 2.06) | Target: [-2.722 -0.505  0.682] | EE Error: 0.0100 m | Time: 10.86s | SUCCESS
+[ 743/1000] Start: ( 1.16, -1.03, yaw= 2.29) | Target: [ 1.832 -4.522  0.367] | EE Error: 0.0194 m | Time: 16.95s | SUCCESS
+[ 744/1000] Start: (-0.85,  0.13, yaw= 0.16) | Target: [-3.201  3.357  0.364] | EE Error: 0.0193 m | Time: 18.19s | SUCCESS
+[ 745/1000] Start: (-0.91, -0.57, yaw=-0.13) | Target: [ 2.796 -0.712  0.762] | EE Error: 0.0099 m | Time: 13.14s | SUCCESS
+[ 746/1000] Start: ( 1.30,  0.20, yaw= 0.74) | Target: [-0.943 -0.666  0.631] | EE Error: 0.0100 m | Time: 12.64s | SUCCESS
+[ 747/1000] Start: (-1.76,  0.97, yaw= 2.14) | Target: [-3.698  2.023  0.864] | EE Error: 0.0100 m | Time: 25.76s | SUCCESS
+[ 748/1000] Start: (-1.73, -0.10, yaw= 2.14) | Target: [-3.571 -0.975  0.315] | EE Error: 0.0180 m | Time: 37.37s | SUCCESS
+[ 749/1000] Start: ( 0.04,  1.25, yaw=-2.34) | Target: [-2.179 -0.967  0.441] | EE Error: 0.0100 m | Time: 11.18s | SUCCESS
+[ 750/1000] Start: ( 0.92,  1.80, yaw= 1.67) | Target: [-1.257  3.918  0.799] | EE Error: 0.0100 m | Time: 11.35s | SUCCESS
+[ 751/1000] Start: ( 1.96, -1.03, yaw=-1.42) | Target: [1.059 1.109 0.696] | EE Error: 0.0100 m | Time: 12.00s | SUCCESS
+[ 752/1000] Start: ( 1.02, -1.85, yaw= 0.34) | Target: [ 3.336 -0.655  0.826] | EE Error: 0.0100 m | Time:  8.82s | SUCCESS
+[ 753/1000] Start: (-1.35, -0.54, yaw= 2.19) | Target: [-2.676 -3.935  0.347] | EE Error: 0.0201 m | Time: 16.79s | SUCCESS
+[ 754/1000] Start: (-0.04, -1.70, yaw= 1.12) | Target: [-0.977  1.881  0.889] | EE Error: 0.0100 m | Time: 14.19s | SUCCESS
+[ 755/1000] Start: ( 0.69,  1.08, yaw= 0.04) | Target: [-2.118  2.79   0.83 ] | EE Error: 0.0100 m | Time: 14.37s | SUCCESS
+[ 756/1000] Start: (-0.52, -1.79, yaw= 1.52) | Target: [-1.984 -3.831  0.765] | EE Error: 0.0100 m | Time: 35.50s | SUCCESS
+[ 757/1000] Start: ( 0.14, -1.94, yaw=-3.13) | Target: [ 2.743 -1.769  0.408] | EE Error: 0.0099 m | Time: 11.70s | SUCCESS
+[ 758/1000] Start: ( 0.45, -1.09, yaw= 0.58) | Target: [ 2.177 -2.719  0.383] | EE Error: 0.0221 m | Time: 12.11s | SUCCESS
+[ 759/1000] Start: (-1.05, -1.88, yaw=-1.21) | Target: [-4.042  0.235  0.523] | EE Error: 0.0100 m | Time: 16.20s | SUCCESS
+[ 760/1000] Start: ( 0.30,  0.27, yaw= 2.07) | Target: [ 0.08  -2.314  0.481] | EE Error: 0.0100 m | Time: 11.56s | SUCCESS
+[ 761/1000] Start: (-1.06, -0.01, yaw= 1.44) | Target: [-1.767 -2.33   0.887] | EE Error: 0.0100 m | Time: 11.44s | SUCCESS
+[ 762/1000] Start: (-0.26, -1.27, yaw=-1.06) | Target: [ 2.332 -3.224  0.854] | EE Error: 0.0100 m | Time: 11.77s | SUCCESS
+[ 763/1000] Start: ( 1.95,  0.61, yaw= 1.26) | Target: [ 3.566 -2.735  0.431] | EE Error: 0.0100 m | Time: 15.96s | SUCCESS
+[ 764/1000] Start: (-1.57,  1.89, yaw= 2.29) | Target: [-0.466 -1.269  0.58 ] | EE Error: 0.0100 m | Time: 14.99s | SUCCESS
+[ 765/1000] Start: (-0.71, -0.85, yaw=-2.29) | Target: [2.048 0.029 0.607] | EE Error: 0.0100 m | Time: 13.06s | SUCCESS
+[ 766/1000] Start: ( 1.38,  1.21, yaw=-2.35) | Target: [-0.632 -0.786  0.822] | EE Error: 0.0099 m | Time:  9.69s | SUCCESS
+[ 767/1000] Start: ( 1.53, -1.57, yaw= 0.47) | Target: [-0.356 -4.368  0.85 ] | EE Error: 0.0100 m | Time: 14.93s | SUCCESS
+[ 768/1000] Start: (-0.18, -1.67, yaw= 0.50) | Target: [ 2.859 -3.637  0.504] | EE Error: 0.0100 m | Time: 14.29s | SUCCESS
+[ 769/1000] Start: ( 1.50, -0.91, yaw=-2.15) | Target: [ 2.219 -2.846  0.469] | EE Error: 0.0100 m | Time: 17.69s | SUCCESS
+[ 770/1000] Start: ( 0.64, -1.43, yaw=-2.44) | Target: [-0.812 -3.024  0.825] | EE Error: 0.0100 m | Time:  7.18s | SUCCESS
+[ 771/1000] Start: ( 1.78, -1.81, yaw= 1.63) | Target: [2.098 2.167 0.509] | EE Error: 0.0100 m | Time: 14.87s | SUCCESS
+[ 772/1000] Start: (-0.86, -0.19, yaw= 2.24) | Target: [-0.463  2.729  0.447] | EE Error: 0.0099 m | Time: 10.90s | SUCCESS
+[ 773/1000] Start: ( 0.91,  1.42, yaw=-0.63) | Target: [2.279 3.86  0.587] | EE Error: 0.0100 m | Time: 12.01s | SUCCESS
+[ 774/1000] Start: ( 0.10,  1.10, yaw= 3.00) | Target: [2.622 0.184 0.524] | EE Error: 0.0100 m | Time: 12.68s | SUCCESS
+[ 775/1000] Start: (-1.46, -0.81, yaw=-2.60) | Target: [ 0.635 -1.834  0.508] | EE Error: 0.0144 m | Time: 12.75s | SUCCESS
+[ 776/1000] Start: ( 1.17, -1.02, yaw= 0.70) | Target: [-1.375  0.807  0.416] | EE Error: 0.0100 m | Time: 13.02s | SUCCESS
+[ 777/1000] Start: (-0.62,  0.36, yaw= 0.04) | Target: [-2.342 -1.965  0.626] | EE Error: 0.0100 m | Time: 12.76s | SUCCESS
+[ 778/1000] Start: (-0.93,  0.45, yaw=-2.70) | Target: [ 0.937 -2.637  0.456] | EE Error: 0.0100 m | Time: 14.66s | SUCCESS
+[ 779/1000] Start: ( 0.42, -0.36, yaw=-1.15) | Target: [-1.901  0.991  0.442] | EE Error: 0.0109 m | Time: 14.58s | SUCCESS
+[ 780/1000] Start: ( 1.64,  0.98, yaw= 1.14) | Target: [-0.517  0.291  0.683] | EE Error: 0.0100 m | Time: 11.29s | SUCCESS
+[ 781/1000] Start: (-1.14,  1.75, yaw= 0.87) | Target: [-2.931  3.063  0.674] | EE Error: 0.0100 m | Time: 35.78s | SUCCESS
+[ 782/1000] Start: ( 1.40, -0.68, yaw=-1.92) | Target: [ 1.638 -3.211  0.568] | EE Error: 0.0100 m | Time:  9.03s | SUCCESS
+[ 783/1000] Start: (-0.70, -0.92, yaw= 0.93) | Target: [-3.229 -1.792  0.714] | EE Error: 0.0100 m | Time: 12.40s | SUCCESS
+[ 784/1000] Start: (-1.30, -1.12, yaw=-1.88) | Target: [-4.244 -1.133  0.323] | EE Error: 0.0100 m | Time: 11.35s | SUCCESS
+[ 785/1000] Start: (-0.91,  1.98, yaw= 2.63) | Target: [-1.478 -0.578  0.578] | EE Error: 0.0100 m | Time: 11.10s | SUCCESS
+[ 786/1000] Start: (-1.16, -1.10, yaw= 1.75) | Target: [-0.682 -3.186  0.322] | EE Error: 0.0100 m | Time:  9.76s | SUCCESS
+[ 787/1000] Start: (-0.23,  0.47, yaw= 2.32) | Target: [-2.063 -1.066  0.618] | EE Error: 0.0100 m | Time: 12.37s | SUCCESS
+[ 788/1000] Start: (-0.54, -0.07, yaw= 2.67) | Target: [2.174 0.718 0.894] | EE Error: 0.0100 m | Time: 12.59s | SUCCESS
+[ 789/1000] Start: (-1.74,  1.73, yaw= 0.01) | Target: [2.104 1.819 0.604] | EE Error: 0.0100 m | Time: 14.07s | SUCCESS
+[ 790/1000] Start: (-0.25, -0.91, yaw= 1.00) | Target: [1.954 0.119 0.726] | EE Error: 0.0100 m | Time:  9.69s | SUCCESS
+[ 791/1000] Start: ( 1.08, -0.73, yaw= 0.97) | Target: [ 4.068 -1.081  0.354] | EE Error: 0.0203 m | Time: 12.85s | SUCCESS
+[ 792/1000] Start: ( 0.67,  1.46, yaw=-2.25) | Target: [ 2.063 -0.101  0.318] | EE Error: 0.0218 m | Time: 37.71s | SUCCESS
+[ 793/1000] Start: ( 1.96, -0.03, yaw=-0.91) | Target: [ 2.575 -3.938  0.451] | EE Error: 0.0100 m | Time: 14.87s | SUCCESS
+[ 794/1000] Start: ( 0.90, -0.86, yaw=-2.70) | Target: [1.718 0.965 0.705] | EE Error: 0.9263 m | Time: 37.01s | FAIL
+[ 795/1000] Start: (-1.00,  0.98, yaw= 1.70) | Target: [-0.666  3.006  0.722] | EE Error: 0.0100 m | Time:  6.76s | SUCCESS
+[ 796/1000] Start: ( 0.58, -0.41, yaw=-3.11) | Target: [ 2.476 -1.074  0.345] | EE Error: 0.0263 m | Time: 16.54s | SUCCESS
+[ 797/1000] Start: (-0.28, -1.67, yaw=-1.41) | Target: [1.186 0.497 0.899] | EE Error: 0.0100 m | Time: 12.33s | SUCCESS
+[ 798/1000] Start: ( 1.67,  0.34, yaw= 2.93) | Target: [-0.117  2.286  0.75 ] | EE Error: 0.0100 m | Time: 10.43s | SUCCESS
+[ 799/1000] Start: (-1.45,  0.74, yaw=-0.06) | Target: [-3.987  0.469  0.873] | EE Error: 0.0100 m | Time: 11.71s | SUCCESS
+[ 800/1000] Start: (-0.74, -1.27, yaw=-1.96) | Target: [ 2.917 -1.754  0.755] | EE Error: 0.0100 m | Time: 14.95s | SUCCESS
+[ 801/1000] Start: ( 0.02,  1.54, yaw=-1.44) | Target: [-0.502  4.828  0.369] | EE Error: 0.0188 m | Time: 16.12s | SUCCESS
+[ 802/1000] Start: (-0.83, -1.05, yaw=-0.36) | Target: [1.065 1.105 0.447] | EE Error: 0.0100 m | Time: 11.88s | SUCCESS
+[ 803/1000] Start: ( 0.78,  0.34, yaw= 0.12) | Target: [3.086 1.157 0.708] | EE Error: 0.0100 m | Time:  7.83s | SUCCESS
+[ 804/1000] Start: (-0.45, -0.55, yaw=-2.20) | Target: [2.18  1.286 0.504] | EE Error: 0.0100 m | Time: 14.57s | SUCCESS
+[ 805/1000] Start: ( 1.44,  1.38, yaw=-2.46) | Target: [2.383 4.005 0.9  ] | EE Error: 0.0100 m | Time: 12.75s | SUCCESS
+[ 806/1000] Start: (-0.25, -1.17, yaw=-2.85) | Target: [ 3.277 -2.009  0.738] | EE Error: 0.0100 m | Time: 15.60s | SUCCESS
+[ 807/1000] Start: (-0.37,  0.38, yaw=-0.40) | Target: [2.303 1.825 0.709] | EE Error: 0.0100 m | Time: 11.61s | SUCCESS
+[ 808/1000] Start: ( 0.03,  1.76, yaw=-0.45) | Target: [-2.429  1.515  0.6  ] | EE Error: 0.0100 m | Time: 11.18s | SUCCESS
+[ 809/1000] Start: ( 0.16,  0.21, yaw= 1.35) | Target: [ 0.676 -3.08   0.722] | EE Error: 0.0100 m | Time: 14.62s | SUCCESS
+[ 810/1000] Start: (-0.35, -0.39, yaw=-2.02) | Target: [ 2.709 -2.23   0.845] | EE Error: 0.0100 m | Time: 14.26s | SUCCESS
+[ 811/1000] Start: (-1.10, -0.88, yaw=-0.36) | Target: [-0.703 -4.239  0.589] | EE Error: 0.0100 m | Time: 13.21s | SUCCESS
+[ 812/1000] Start: (-1.12,  0.03, yaw= 2.44) | Target: [-1.905  2.917  0.473] | EE Error: 0.0099 m | Time: 11.05s | SUCCESS
+[ 813/1000] Start: (-1.28,  1.51, yaw= 1.32) | Target: [2.099 3.161 0.373] | EE Error: 0.0186 m | Time: 15.89s | SUCCESS
+[ 814/1000] Start: ( 0.73, -1.13, yaw=-2.38) | Target: [ 3.44  -1.728  0.865] | EE Error: 0.0100 m | Time: 11.83s | SUCCESS
+[ 815/1000] Start: (-0.70,  1.26, yaw= 1.56) | Target: [1.19  4.601 0.545] | EE Error: 0.0100 m | Time: 14.71s | SUCCESS
+[ 816/1000] Start: (-0.44, -1.36, yaw=-1.41) | Target: [-2.588  0.666  0.505] | EE Error: 0.0100 m | Time: 13.52s | SUCCESS
+[ 817/1000] Start: (-1.14, -0.06, yaw= 1.36) | Target: [-0.333 -3.482  0.678] | EE Error: 0.0100 m | Time: 15.55s | SUCCESS
+[ 818/1000] Start: ( 1.15, -1.00, yaw= 0.82) | Target: [-0.401 -3.24   0.735] | EE Error: 0.0100 m | Time: 12.29s | SUCCESS
+[ 819/1000] Start: ( 0.53, -1.25, yaw= 2.25) | Target: [-2.486 -2.299  0.89 ] | EE Error: 0.0100 m | Time: 12.70s | SUCCESS
+[ 820/1000] Start: ( 0.13,  1.20, yaw= 0.60) | Target: [-0.557  4.443  0.715] | EE Error: 0.0100 m | Time: 12.26s | SUCCESS
+[ 821/1000] Start: (-1.09,  0.97, yaw=-1.65) | Target: [-3.526  1.265  0.442] | EE Error: 0.0100 m | Time:  9.86s | SUCCESS
+[ 822/1000] Start: ( 1.44, -1.03, yaw=-0.87) | Target: [1.946 1.233 0.395] | EE Error: 0.0100 m | Time: 10.39s | SUCCESS
+[ 823/1000] Start: (-0.06, -1.02, yaw=-1.66) | Target: [-2.791 -1.184  0.491] | EE Error: 0.0100 m | Time: 10.95s | SUCCESS
+[ 824/1000] Start: (-1.88,  0.48, yaw= 0.80) | Target: [-4.253 -0.649  0.824] | EE Error: 0.0099 m | Time: 12.47s | SUCCESS
+[ 825/1000] Start: ( 0.33, -0.35, yaw=-0.22) | Target: [-0.61  -3.852  0.848] | EE Error: 0.0100 m | Time: 14.71s | SUCCESS
+[ 826/1000] Start: ( 0.37, -0.80, yaw= 1.15) | Target: [0.539 1.856 0.796] | EE Error: 0.0100 m | Time:  9.15s | SUCCESS
+[ 827/1000] Start: (-1.71, -1.96, yaw=-2.37) | Target: [-3.797 -5.078  0.555] | EE Error: 0.0100 m | Time: 14.03s | SUCCESS
+[ 828/1000] Start: (-0.90, -0.28, yaw=-0.66) | Target: [-0.177 -2.442  0.694] | EE Error: 0.0100 m | Time:  9.49s | SUCCESS
+[ 829/1000] Start: (-1.45,  1.10, yaw=-1.87) | Target: [-1.032  4.688  0.375] | EE Error: 0.0175 m | Time: 17.51s | SUCCESS
+[ 830/1000] Start: (-1.65,  1.80, yaw=-0.23) | Target: [-0.254  3.292  0.467] | EE Error: 0.3599 m | Time: 37.00s | FAIL
+[ 831/1000] Start: (-1.04, -1.40, yaw=-1.16) | Target: [ 0.96  -2.887  0.899] | EE Error: 0.0100 m | Time: 10.23s | SUCCESS
+[ 832/1000] Start: (-1.08,  1.32, yaw=-2.14) | Target: [-3.513  1.626  0.553] | EE Error: 0.0100 m | Time:  9.46s | SUCCESS
+[ 833/1000] Start: ( 0.23, -1.52, yaw= 1.99) | Target: [ 0.713 -4.58   0.63 ] | EE Error: 0.0100 m | Time: 13.93s | SUCCESS
+[ 834/1000] Start: ( 0.41, -1.78, yaw=-2.08) | Target: [-0.968 -3.987  0.387] | EE Error: 0.0140 m | Time: 10.43s | SUCCESS
+[ 835/1000] Start: ( 1.69,  0.05, yaw= 0.78) | Target: [ 3.284 -1.94   0.602] | EE Error: 0.0100 m | Time: 11.27s | SUCCESS
+[ 836/1000] Start: (-0.82, -0.62, yaw=-0.30) | Target: [ 3.143 -0.482  0.434] | EE Error: 0.0100 m | Time: 14.75s | SUCCESS
+[ 837/1000] Start: (-0.05, -1.40, yaw=-0.94) | Target: [0.431 0.898 0.649] | EE Error: 0.0100 m | Time: 10.78s | SUCCESS
+[ 838/1000] Start: (-0.33, -1.79, yaw= 2.72) | Target: [ 2.722 -3.637  0.55 ] | EE Error: 0.0100 m | Time: 15.99s | SUCCESS
+[ 839/1000] Start: ( 1.75, -0.84, yaw=-0.55) | Target: [1.599 1.845 0.519] | EE Error: 0.0100 m | Time: 11.54s | SUCCESS
+[ 840/1000] Start: ( 1.98,  0.22, yaw= 1.19) | Target: [4.248 3.089 0.817] | EE Error: 0.0100 m | Time: 13.46s | SUCCESS
+[ 841/1000] Start: ( 0.25, -0.82, yaw=-3.00) | Target: [3.001 1.582 0.57 ] | EE Error: 0.0100 m | Time: 16.29s | SUCCESS
+[ 842/1000] Start: (-1.34, -0.85, yaw= 0.06) | Target: [-2.555  1.156  0.667] | EE Error: 0.0100 m | Time: 10.90s | SUCCESS
+[ 843/1000] Start: ( 1.01,  1.74, yaw=-2.41) | Target: [-1.853  3.173  0.76 ] | EE Error: 0.0099 m | Time: 12.21s | SUCCESS
+[ 844/1000] Start: (-1.78,  0.03, yaw= 0.77) | Target: [-0.784 -2.658  0.633] | EE Error: 0.0100 m | Time: 12.06s | SUCCESS
+[ 845/1000] Start: ( 0.21, -1.83, yaw=-0.38) | Target: [-0.654 -5.568  0.886] | EE Error: 0.0100 m | Time: 15.54s | SUCCESS
+[ 846/1000] Start: ( 1.64, -1.10, yaw=-1.19) | Target: [ 0.251 -3.317  0.5  ] | EE Error: 0.0112 m | Time: 12.22s | SUCCESS
+[ 847/1000] Start: ( 0.53, -1.24, yaw= 2.63) | Target: [-1.074 -2.456  0.813] | EE Error: 0.5804 m | Time: 37.16s | FAIL
+[ 848/1000] Start: ( 0.81, -0.58, yaw= 0.60) | Target: [ 0.428 -2.884  0.583] | EE Error: 0.0100 m | Time: 10.99s | SUCCESS
+[ 849/1000] Start: (-0.59,  0.46, yaw=-1.77) | Target: [1.251 3.479 0.4  ] | EE Error: 0.0100 m | Time: 15.78s | SUCCESS
+[ 850/1000] Start: (-1.82, -0.24, yaw= 1.72) | Target: [0.162 2.521 0.542] | EE Error: 0.0100 m | Time: 13.05s | SUCCESS
+[ 851/1000] Start: (-1.06,  0.13, yaw=-1.86) | Target: [-0.704  2.494  0.475] | EE Error: 0.0099 m | Time: 11.07s | SUCCESS
+[ 852/1000] Start: ( 0.03, -0.05, yaw= 0.63) | Target: [ 3.572 -1.523  0.804] | EE Error: 0.0100 m | Time: 14.74s | SUCCESS
+[ 853/1000] Start: ( 1.52,  0.52, yaw= 0.85) | Target: [3.736 2.336 0.493] | EE Error: 0.0100 m | Time: 10.30s | SUCCESS
+[ 854/1000] Start: ( 0.37, -1.90, yaw=-3.10) | Target: [-0.88  -0.218  0.615] | EE Error: 0.9971 m | Time: 36.99s | FAIL
+[ 855/1000] Start: ( 0.46, -1.21, yaw= 2.49) | Target: [-0.925 -4.712  0.758] | EE Error: 0.0100 m | Time: 15.31s | SUCCESS
+[ 856/1000] Start: ( 0.43,  0.73, yaw=-2.37) | Target: [2.143 4.076 0.885] | EE Error: 0.0100 m | Time: 16.89s | SUCCESS
+[ 857/1000] Start: (-0.23, -0.62, yaw= 1.59) | Target: [2.196 0.047 0.403] | EE Error: 0.0100 m | Time:  9.95s | SUCCESS
+[ 858/1000] Start: (-1.32, -0.16, yaw=-2.07) | Target: [-3.407 -0.423  0.858] | EE Error: 0.0100 m | Time:  7.86s | SUCCESS
+[ 859/1000] Start: (-1.71, -1.71, yaw=-0.31) | Target: [-1.829 -5.631  0.847] | EE Error: 0.0100 m | Time: 15.50s | SUCCESS
+[ 860/1000] Start: (-0.38, -0.20, yaw=-0.79) | Target: [-2.894 -0.814  0.374] | EE Error: 0.0230 m | Time: 12.57s | SUCCESS
+[ 861/1000] Start: (-1.59,  0.24, yaw=-2.52) | Target: [-3.954 -1.541  0.565] | EE Error: 0.0100 m | Time: 10.58s | SUCCESS
+[ 862/1000] Start: (-1.45, -1.98, yaw=-1.93) | Target: [-1.768 -5.568  0.849] | EE Error: 0.0100 m | Time: 13.18s | SUCCESS
+[ 863/1000] Start: (-0.38, -0.38, yaw= 1.33) | Target: [1.278 1.315 0.365] | EE Error: 0.0277 m | Time: 17.20s | SUCCESS
+[ 864/1000] Start: (-0.25,  0.26, yaw=-2.27) | Target: [ 0.451 -2.257  0.457] | EE Error: 0.0100 m | Time: 10.04s | SUCCESS
+[ 865/1000] Start: (-0.16,  0.61, yaw= 0.06) | Target: [-0.819 -1.492  0.793] | EE Error: 0.0099 m | Time:  9.54s | SUCCESS
+[ 866/1000] Start: (-0.08, -1.75, yaw=-1.52) | Target: [-1.25   1.552  0.825] | EE Error: 0.0100 m | Time: 15.54s | SUCCESS
+[ 867/1000] Start: ( 0.41, -0.31, yaw=-0.46) | Target: [-0.73  -3.407  0.651] | EE Error: 0.0100 m | Time: 13.27s | SUCCESS
+[ 868/1000] Start: (-1.38,  1.54, yaw=-0.83) | Target: [-3.908  0.726  0.822] | EE Error: 0.0100 m | Time: 11.16s | SUCCESS
+[ 869/1000] Start: ( 1.67, -0.04, yaw= 2.87) | Target: [-0.917  2.539  0.816] | EE Error: 0.0100 m | Time: 13.54s | SUCCESS
+[ 870/1000] Start: (-0.47,  1.03, yaw= 0.49) | Target: [-0.026  3.339  0.739] | EE Error: 0.0100 m | Time:  8.79s | SUCCESS
+[ 871/1000] Start: (-0.80, -1.30, yaw=-1.76) | Target: [ 2.911 -1.821  0.6  ] | EE Error: 0.0100 m | Time: 15.39s | SUCCESS
+[ 872/1000] Start: (-1.78, -1.84, yaw=-1.71) | Target: [-3.563  0.867  0.638] | EE Error: 0.0100 m | Time: 14.15s | SUCCESS
+[ 873/1000] Start: (-0.72,  1.72, yaw=-1.06) | Target: [-2.653  4.982  0.59 ] | EE Error: 0.0100 m | Time: 16.80s | SUCCESS
+[ 874/1000] Start: ( 1.58, -0.89, yaw= 0.99) | Target: [-0.932 -2.441  0.43 ] | EE Error: 0.0120 m | Time: 15.67s | SUCCESS
+[ 875/1000] Start: (-1.75, -1.99, yaw=-1.10) | Target: [ 0.713 -0.433  0.481] | EE Error: 0.0100 m | Time: 12.34s | SUCCESS
+[ 876/1000] Start: (-0.30, -1.00, yaw=-0.96) | Target: [1.44  1.057 0.538] | EE Error: 0.0109 m | Time: 13.80s | SUCCESS
+[ 877/1000] Start: (-1.84,  1.67, yaw=-0.58) | Target: [-0.815 -0.244  0.681] | EE Error: 0.0100 m | Time: 10.17s | SUCCESS
+[ 878/1000] Start: ( 1.46, -1.83, yaw=-2.23) | Target: [-0.487 -4.384  0.853] | EE Error: 0.0100 m | Time: 11.29s | SUCCESS
+[ 879/1000] Start: (-0.25, -0.62, yaw= 1.67) | Target: [-0.133  1.866  0.396] | EE Error: 0.0100 m | Time:  8.47s | SUCCESS
+[ 880/1000] Start: (-0.57,  1.10, yaw= 1.23) | Target: [1.277 4.261 0.466] | EE Error: 0.0100 m | Time: 13.43s | SUCCESS
+[ 881/1000] Start: ( 1.97,  1.76, yaw=-2.35) | Target: [4.805 0.081 0.74 ] | EE Error: 0.0100 m | Time: 13.29s | SUCCESS
+[ 882/1000] Start: (-0.54,  0.98, yaw=-2.36) | Target: [ 1.153 -2.004  0.675] | EE Error: 0.0100 m | Time: 13.54s | SUCCESS
+[ 883/1000] Start: ( 1.35, -1.81, yaw=-2.05) | Target: [-0.925 -2.528  0.303] | EE Error: 0.0100 m | Time:  9.52s | SUCCESS
+[ 884/1000] Start: ( 0.02,  0.11, yaw= 0.99) | Target: [ 1.521 -1.215  0.704] | EE Error: 0.7956 m | Time: 36.73s | FAIL
+[ 885/1000] Start: (-1.78,  1.47, yaw=-3.00) | Target: [1.938 2.186 0.643] | EE Error: 0.0100 m | Time: 16.80s | SUCCESS
+[ 886/1000] Start: ( 0.73, -1.20, yaw=-0.73) | Target: [-1.153 -3.667  0.738] | EE Error: 0.0100 m | Time: 12.33s | SUCCESS
+[ 887/1000] Start: (-0.58, -1.35, yaw=-1.72) | Target: [-1.633  0.961  0.765] | EE Error: 0.0100 m | Time: 11.87s | SUCCESS
+[ 888/1000] Start: (-0.68, -1.25, yaw= 1.43) | Target: [ 1.347 -1.65   0.876] | EE Error: 0.0099 m | Time:  8.93s | SUCCESS
+[ 889/1000] Start: (-1.41, -0.59, yaw=-0.72) | Target: [ 2.154 -0.823  0.304] | EE Error: 0.0100 m | Time: 13.34s | SUCCESS
+[ 890/1000] Start: ( 1.73,  0.58, yaw= 2.83) | Target: [0.146 4.099 0.661] | EE Error: 0.0100 m | Time: 14.80s | SUCCESS
+[ 891/1000] Start: ( 1.83, -0.79, yaw= 3.06) | Target: [ 3.562 -2.449  0.367] | EE Error: 0.9589 m | Time: 37.68s | FAIL
+[ 892/1000] Start: ( 1.14,  0.22, yaw=-1.21) | Target: [3.209 1.897 0.569] | EE Error: 0.0100 m | Time: 12.56s | SUCCESS
+[ 893/1000] Start: ( 1.45,  0.67, yaw= 1.65) | Target: [4.898 2.668 0.445] | EE Error: 0.0100 m | Time: 15.74s | SUCCESS
+[ 894/1000] Start: (-0.95, -1.63, yaw= 0.34) | Target: [1.662 0.626 0.501] | EE Error: 0.0100 m | Time: 12.94s | SUCCESS
+[ 895/1000] Start: (-1.95,  0.53, yaw= 3.13) | Target: [-1.297 -1.747  0.469] | EE Error: 0.0100 m | Time: 10.41s | SUCCESS
+[ 896/1000] Start: (-1.42,  1.99, yaw=-2.95) | Target: [1.283 3.883 0.709] | EE Error: 0.0100 m | Time: 14.80s | SUCCESS
+[ 897/1000] Start: (-0.98,  0.89, yaw=-1.78) | Target: [-2.139  3.03   0.718] | EE Error: 0.0100 m | Time: 11.90s | SUCCESS
+[ 898/1000] Start: ( 1.13, -1.24, yaw=-1.65) | Target: [0.739 0.892 0.414] | EE Error: 0.0099 m | Time: 10.72s | SUCCESS
+[ 899/1000] Start: (-0.18,  1.72, yaw= 0.39) | Target: [ 2.834 -0.845  0.578] | EE Error: 0.0100 m | Time: 15.64s | SUCCESS
+[ 900/1000] Start: (-0.27, -0.35, yaw=-1.18) | Target: [ 1.281 -3.354  0.325] | EE Error: 0.0100 m | Time: 11.91s | SUCCESS
+[ 901/1000] Start: (-0.75,  0.65, yaw=-1.65) | Target: [ 0.906 -2.679  0.45 ] | EE Error: 0.0099 m | Time: 13.89s | SUCCESS
+[ 902/1000] Start: ( 1.86, -0.78, yaw=-2.99) | Target: [ 1.929 -3.116  0.604] | EE Error: 0.0100 m | Time:  9.25s | SUCCESS
+[ 903/1000] Start: (-1.55,  0.50, yaw= 2.36) | Target: [-0.031 -1.273  0.54 ] | EE Error: 0.0100 m | Time: 10.85s | SUCCESS
+[ 904/1000] Start: ( 1.14,  0.37, yaw=-2.51) | Target: [4.    1.046 0.496] | EE Error: 0.0100 m | Time: 13.33s | SUCCESS
+[ 905/1000] Start: (-1.56,  1.92, yaw=-2.04) | Target: [-2.366 -0.22   0.642] | EE Error: 0.0100 m | Time:  7.58s | SUCCESS
+[ 906/1000] Start: (-0.64, -1.83, yaw= 2.32) | Target: [ 1.615 -0.546  0.342] | EE Error: 0.0294 m | Time: 12.57s | SUCCESS
+[ 907/1000] Start: ( 0.89,  0.99, yaw= 1.04) | Target: [-0.202 -2.671  0.752] | EE Error: 0.0099 m | Time: 16.67s | SUCCESS
+[ 908/1000] Start: ( 0.63,  0.60, yaw= 2.54) | Target: [-2.242  1.993  0.55 ] | EE Error: 0.0100 m | Time: 11.46s | SUCCESS
+[ 909/1000] Start: (-0.55,  1.28, yaw= 0.91) | Target: [-2.565  0.21   0.84 ] | EE Error: 0.0443 m | Time: 38.08s | SUCCESS
+[ 910/1000] Start: ( 1.54,  1.81, yaw=-0.45) | Target: [0.761 5.38  0.489] | EE Error: 0.0100 m | Time: 15.59s | SUCCESS
+[ 911/1000] Start: (-0.23, -1.00, yaw=-0.44) | Target: [0.96  1.271 0.849] | EE Error: 0.0100 m | Time: 10.54s | SUCCESS
+[ 912/1000] Start: (-0.78, -1.21, yaw= 2.86) | Target: [-1.773  1.287  0.805] | EE Error: 0.0100 m | Time: 10.28s | SUCCESS
+[ 913/1000] Start: ( 0.07, -0.61, yaw= 2.13) | Target: [0.04  1.983 0.664] | EE Error: 0.0100 m | Time:  9.30s | SUCCESS
+[ 914/1000] Start: (-0.52, -2.00, yaw= 2.90) | Target: [ 2.521 -1.015  0.66 ] | EE Error: 0.0100 m | Time: 14.16s | SUCCESS
+[ 915/1000] Start: ( 0.20, -0.84, yaw= 2.96) | Target: [2.615 1.473 0.573] | EE Error: 0.0100 m | Time: 14.49s | SUCCESS
+[ 916/1000] Start: (-0.85, -1.74, yaw=-0.94) | Target: [-2.338 -4.715  0.827] | EE Error: 0.0100 m | Time: 12.91s | SUCCESS
+[ 917/1000] Start: (-0.79, -0.67, yaw= 1.07) | Target: [-3.071 -3.779  0.518] | EE Error: 0.0100 m | Time: 17.36s | SUCCESS
+[ 918/1000] Start: (-1.59, -1.30, yaw= 2.72) | Target: [-1.655 -4.625  0.394] | EE Error: 0.0100 m | Time: 13.83s | SUCCESS
+[ 919/1000] Start: (-1.22,  1.52, yaw=-2.21) | Target: [-4.206  1.164  0.818] | EE Error: 0.0100 m | Time: 11.10s | SUCCESS
+[ 920/1000] Start: (-0.70, -1.49, yaw= 3.03) | Target: [0.948 1.829 0.751] | EE Error: 0.0100 m | Time: 15.12s | SUCCESS
+[ 921/1000] Start: ( 0.79, -0.46, yaw=-1.10) | Target: [1.501 2.898 0.87 ] | EE Error: 0.0100 m | Time: 14.95s | SUCCESS
+[ 922/1000] Start: ( 0.28, -0.82, yaw=-0.07) | Target: [2.431 1.048 0.775] | EE Error: 0.0100 m | Time: 11.09s | SUCCESS
+[ 923/1000] Start: ( 0.34, -1.96, yaw= 0.44) | Target: [2.896 0.889 0.548] | EE Error: 0.0100 m | Time: 14.54s | SUCCESS
+[ 924/1000] Start: ( 0.30, -0.10, yaw= 0.20) | Target: [-3.162 -1.657  0.846] | EE Error: 0.0100 m | Time: 16.95s | SUCCESS
+[ 925/1000] Start: ( 0.19,  0.23, yaw=-2.78) | Target: [2.526 1.876 0.725] | EE Error: 0.0100 m | Time: 13.30s | SUCCESS
+[ 926/1000] Start: ( 0.74, -1.56, yaw=-2.47) | Target: [0.874 0.549 0.786] | EE Error: 0.0100 m | Time:  9.50s | SUCCESS
+[ 927/1000] Start: ( 1.19, -1.43, yaw= 0.12) | Target: [-1.497 -3.297  0.338] | EE Error: 0.0246 m | Time: 16.10s | SUCCESS
+[ 928/1000] Start: ( 1.78, -1.17, yaw= 1.15) | Target: [ 0.103 -2.915  0.571] | EE Error: 0.9815 m | Time: 37.12s | FAIL
+[ 929/1000] Start: ( 0.29,  2.00, yaw=-2.98) | Target: [-2.409  1.99   0.52 ] | EE Error: 0.0100 m | Time:  9.50s | SUCCESS
+[ 930/1000] Start: ( 1.53,  1.65, yaw= 2.39) | Target: [-0.221 -0.562  0.748] | EE Error: 0.0100 m | Time: 11.64s | SUCCESS
+[ 931/1000] Start: (-1.81,  0.84, yaw=-1.34) | Target: [0.072 3.497 0.436] | EE Error: 0.0100 m | Time: 14.07s | SUCCESS
+[ 932/1000] Start: (-0.24,  1.34, yaw= 0.66) | Target: [-2.859  0.135  0.487] | EE Error: 0.0099 m | Time: 13.12s | SUCCESS
+[ 933/1000] Start: ( 0.57,  0.46, yaw=-3.08) | Target: [3.272 2.631 0.761] | EE Error: 0.0100 m | Time: 15.06s | SUCCESS
+[ 934/1000] Start: (-1.76, -0.79, yaw=-0.49) | Target: [-2.978 -3.354  0.343] | EE Error: 0.0194 m | Time: 12.80s | SUCCESS
+[ 935/1000] Start: (-1.55,  0.68, yaw=-1.49) | Target: [-1.044  2.71   0.638] | EE Error: 0.0100 m | Time: 11.44s | SUCCESS
+[ 936/1000] Start: (-0.57, -0.23, yaw= 0.99) | Target: [ 2.534 -1.763  0.355] | EE Error: 0.0200 m | Time: 15.25s | SUCCESS
+[ 937/1000] Start: ( 1.32, -1.18, yaw= 2.79) | Target: [ 0.057 -3.055  0.787] | EE Error: 0.0100 m | Time: 12.07s | SUCCESS
+[ 938/1000] Start: ( 1.27,  0.95, yaw= 2.89) | Target: [ 1.745 -2.668  0.511] | EE Error: 0.0100 m | Time: 15.45s | SUCCESSfile path ext:  /tmp/claude-1000/-home-rick-LAB-SESSION-COMP-0245-2026-PUBLIC-final-Machine-Learning-Final-Task-robotnik-arm-task-robotnik-dagger-v5/571d05c1-9ea3-42d4-b5fb-c87cc464c1c7/scratchpad/linear_wt2/robotnik_arm_task
+No feet defined for robot index 0
+init_motor_angles_names not found in the config file,assuming it empty
+No feet specified in the configuration file.
+file path ext:  /tmp/claude-1000/-home-rick-LAB-SESSION-COMP-0245-2026-PUBLIC-final-Machine-Learning-Final-Task-robotnik-arm-task-robotnik-dagger-v5/571d05c1-9ea3-42d4-b5fb-c87cc464c1c7/scratchpad/linear_wt2/robotnik_arm_task
+No feet defined for robot index 0
+init_motor_angles_names not found in the config file,assuming it empty
+No feet specified in the configuration file.
+file path ext:  /tmp/claude-1000/-home-rick-LAB-SESSION-COMP-0245-2026-PUBLIC-final-Machine-Learning-Final-Task-robotnik-arm-task-robotnik-dagger-v5/571d05c1-9ea3-42d4-b5fb-c87cc464c1c7/scratchpad/linear_wt2/robotnik_arm_task
+No feet defined for robot index 0
+init_motor_angles_names not found in the config file,assuming it empty
+No feet specified in the configuration file.
+file path ext:  /tmp/claude-1000/-home-rick-LAB-SESSION-COMP-0245-2026-PUBLIC-final-Machine-Learning-Final-Task-robotnik-arm-task-robotnik-dagger-v5/571d05c1-9ea3-42d4-b5fb-c87cc464c1c7/scratchpad/linear_wt2/robotnik_arm_task
+No feet defined for robot index 0
+init_motor_angles_names not found in the config file,assuming it empty
+No feet specified in the configuration file.
+file path ext:  /tmp/claude-1000/-home-rick-LAB-SESSION-COMP-0245-2026-PUBLIC-final-Machine-Learning-Final-Task-robotnik-arm-task-robotnik-dagger-v5/571d05c1-9ea3-42d4-b5fb-c87cc464c1c7/scratchpad/linear_wt2/robotnik_arm_task
+No feet defined for robot index 0
+init_motor_angles_names not found in the config file,assuming it empty
+No feet specified in the configuration file.
+file path ext:  /tmp/claude-1000/-home-rick-LAB-SESSION-COMP-0245-2026-PUBLIC-final-Machine-Learning-Final-Task-robotnik-arm-task-robotnik-dagger-v5/571d05c1-9ea3-42d4-b5fb-c87cc464c1c7/scratchpad/linear_wt2/robotnik_arm_task
+No feet defined for robot index 0
+init_motor_angles_names not found in the config file,assuming it empty
+No feet specified in the configuration file.
+file path ext:  /tmp/claude-1000/-home-rick-LAB-SESSION-COMP-0245-2026-PUBLIC-final-Machine-Learning-Final-Task-robotnik-arm-task-robotnik-dagger-v5/571d05c1-9ea3-42d4-b5fb-c87cc464c1c7/scratchpad/linear_wt2/robotnik_arm_task
+No feet defined for robot index 0
+init_motor_angles_names not found in the config file,assuming it empty
+No feet specified in the configuration file.
+file path ext:  /tmp/claude-1000/-home-rick-LAB-SESSION-COMP-0245-2026-PUBLIC-final-Machine-Learning-Final-Task-robotnik-arm-task-robotnik-dagger-v5/571d05c1-9ea3-42d4-b5fb-c87cc464c1c7/scratchpad/linear_wt2/robotnik_arm_task
+No feet defined for robot index 0
+init_motor_angles_names not found in the config file,assuming it empty
+No feet specified in the configuration file.
+file path ext:  /tmp/claude-1000/-home-rick-LAB-SESSION-COMP-0245-2026-PUBLIC-final-Machine-Learning-Final-Task-robotnik-arm-task-robotnik-dagger-v5/571d05c1-9ea3-42d4-b5fb-c87cc464c1c7/scratchpad/linear_wt2/robotnik_arm_task
+No feet defined for robot index 0
+init_motor_angles_names not found in the config file,assuming it empty
+No feet specified in the configuration file.
+file path ext:  /tmp/claude-1000/-home-rick-LAB-SESSION-COMP-0245-2026-PUBLIC-final-Machine-Learning-Final-Task-robotnik-arm-task-robotnik-dagger-v5/571d05c1-9ea3-42d4-b5fb-c87cc464c1c7/scratchpad/linear_wt2/robotnik_arm_task
+No feet defined for robot index 0
+init_motor_angles_names not found in the config file,assuming it empty
+No feet specified in the configuration file.
+file path ext:  /tmp/claude-1000/-home-rick-LAB-SESSION-COMP-0245-2026-PUBLIC-final-Machine-Learning-Final-Task-robotnik-arm-task-robotnik-dagger-v5/571d05c1-9ea3-42d4-b5fb-c87cc464c1c7/scratchpad/linear_wt2/robotnik_arm_task
+No feet defined for robot index 0
+init_motor_angles_names not found in the config file,assuming it empty
+No feet specified in the configuration file.
+file path ext:  /tmp/claude-1000/-home-rick-LAB-SESSION-COMP-0245-2026-PUBLIC-final-Machine-Learning-Final-Task-robotnik-arm-task-robotnik-dagger-v5/571d05c1-9ea3-42d4-b5fb-c87cc464c1c7/scratchpad/linear_wt2/robotnik_arm_task
+No feet defined for robot index 0
+init_motor_angles_names not found in the config file,assuming it empty
+No feet specified in the configuration file.
+
+[ 939/1000] Start: ( 0.15, -0.22, yaw=-3.10) | Target: [3.269 1.358 0.405] | EE Error: 0.0100 m | Time: 15.54s | SUCCESS
+[ 940/1000] Start: ( 1.73,  0.12, yaw=-2.02) | Target: [3.177 2.014 0.338] | EE Error: 0.0316 m | Time: 37.34s | SUCCESS
+[ 941/1000] Start: (-0.43,  1.19, yaw= 1.78) | Target: [ 1.869 -1.099  0.437] | EE Error: 0.0100 m | Time: 14.30s | SUCCESS
+[ 942/1000] Start: ( 0.32, -1.68, yaw=-0.41) | Target: [-1.223 -5.11   0.567] | EE Error: 0.0100 m | Time: 15.43s | SUCCESS
+[ 943/1000] Start: ( 0.36, -0.56, yaw=-1.33) | Target: [-0.752 -4.216  0.78 ] | EE Error: 0.0100 m | Time: 14.12s | SUCCESS
+[ 944/1000] Start: (-1.47,  0.99, yaw=-0.51) | Target: [-4.509  0.692  0.378] | EE Error: 0.0175 m | Time: 14.79s | SUCCESS
+[ 945/1000] Start: (-1.16,  0.78, yaw=-1.53) | Target: [-3.739  2.866  0.799] | EE Error: 0.0100 m | Time: 14.04s | SUCCESS
+[ 946/1000] Start: (-0.90,  1.55, yaw= 1.14) | Target: [-2.731  2.955  0.871] | EE Error: 0.0100 m | Time:  9.65s | SUCCESS
+[ 947/1000] Start: ( 0.45,  0.67, yaw= 2.60) | Target: [ 2.969 -1.67   0.684] | EE Error: 0.0100 m | Time: 15.35s | SUCCESS
+[ 948/1000] Start: ( 1.15,  1.59, yaw= 1.13) | Target: [-1.005  0.612  0.872] | EE Error: 0.0099 m | Time: 14.19s | SUCCESS
+[ 949/1000] Start: ( 1.88,  1.87, yaw=-2.91) | Target: [ 4.477 -0.499  0.752] | EE Error: 0.0100 m | Time: 14.65s | SUCCESS
+[ 950/1000] Start: (-1.66,  0.44, yaw=-2.24) | Target: [0.821 0.332 0.332] | EE Error: 0.0181 m | Time: 11.93s | SUCCESS
+[ 951/1000] Start: ( 0.46,  1.48, yaw=-0.87) | Target: [3.349 2.396 0.842] | EE Error: 0.0100 m | Time: 11.65s | SUCCESS
+[ 952/1000] Start: (-1.34,  0.31, yaw= 1.60) | Target: [ 1.218 -2.41   0.524] | EE Error: 0.0100 m | Time: 16.37s | SUCCESS
+[ 953/1000] Start: (-1.31,  0.34, yaw=-0.50) | Target: [-3.437  0.132  0.417] | EE Error: 0.0100 m | Time:  9.77s | SUCCESS
+[ 954/1000] Start: ( 1.08,  1.57, yaw= 0.29) | Target: [-1.341 -0.322  0.813] | EE Error: 0.0100 m | Time: 14.02s | SUCCESS
+[ 955/1000] Start: ( 1.00, -0.84, yaw=-2.36) | Target: [-2.011  1.331  0.332] | EE Error: 0.0156 m | Time: 16.24s | SUCCESS
+[ 956/1000] Start: (-1.68,  1.64, yaw= 1.54) | Target: [-4.354  2.865  0.548] | EE Error: 0.0100 m | Time: 11.96s | SUCCESS
+[ 957/1000] Start: (-0.57,  0.47, yaw=-0.93) | Target: [-0.482  4.067  0.826] | EE Error: 0.0100 m | Time: 15.55s | SUCCESS
+[ 958/1000] Start: (-1.03,  0.11, yaw=-1.74) | Target: [-4.35  -0.691  0.629] | EE Error: 0.0100 m | Time: 13.44s | SUCCESS
+[ 959/1000] Start: ( 0.90, -1.65, yaw= 3.11) | Target: [-2.032 -1.546  0.82 ] | EE Error: 0.0100 m | Time: 10.03s | SUCCESS
+[ 960/1000] Start: (-1.03,  0.95, yaw= 2.38) | Target: [-2.458  4.279  0.578] | EE Error: 0.0100 m | Time: 13.52s | SUCCESS
+[ 961/1000] Start: ( 0.78,  1.38, yaw= 1.39) | Target: [-0.472 -1.045  0.395] | EE Error: 0.0100 m | Time: 13.17s | SUCCESS
+[ 962/1000] Start: ( 0.75, -1.01, yaw= 0.16) | Target: [-0.121  2.22   0.479] | EE Error: 0.0100 m | Time: 13.62s | SUCCESS
+[ 963/1000] Start: (-0.67,  0.61, yaw= 0.31) | Target: [-3.75  -1.521  0.608] | EE Error: 0.0100 m | Time: 16.84s | SUCCESS
+[ 964/1000] Start: (-0.11, -1.21, yaw=-0.77) | Target: [ 1.157 -3.411  0.64 ] | EE Error: 0.0100 m | Time:  8.92s | SUCCESS
+[ 965/1000] Start: (-0.15,  1.56, yaw= 2.77) | Target: [-0.57  -0.603  0.771] | EE Error: 0.0099 m | Time:  9.11s | SUCCESS
+[ 966/1000] Start: ( 1.28,  0.76, yaw=-2.31) | Target: [-1.39  -1.567  0.675] | EE Error: 0.0100 m | Time: 12.97s | SUCCESS
+[ 967/1000] Start: ( 0.08,  1.63, yaw= 1.00) | Target: [ 2.325 -0.088  0.663] | EE Error: 0.0100 m | Time: 11.97s | SUCCESS
+[ 968/1000] Start: ( 1.04,  0.26, yaw= 0.06) | Target: [1.534 3.632 0.798] | EE Error: 0.0099 m | Time: 13.42s | SUCCESS
+[ 969/1000] Start: (-1.75,  1.02, yaw= 0.09) | Target: [-4.745 -0.499  0.73 ] | EE Error: 0.0100 m | Time: 14.87s | SUCCESS
+[ 970/1000] Start: ( 0.10,  1.18, yaw=-1.25) | Target: [-0.709 -1.404  0.546] | EE Error: 0.0100 m | Time: 10.02s | SUCCESS
+[ 971/1000] Start: (-0.75, -1.11, yaw= 1.79) | Target: [-3.644 -0.36   0.325] | EE Error: 0.0161 m | Time: 12.80s | SUCCESS
+[ 972/1000] Start: (-0.96, -1.37, yaw= 2.15) | Target: [-4.345 -3.367  0.653] | EE Error: 0.0100 m | Time: 16.09s | SUCCESS
+[ 973/1000] Start: ( 0.07,  1.39, yaw=-2.97) | Target: [-0.308  3.59   0.804] | EE Error: 0.0100 m | Time:  9.04s | SUCCESS
+[ 974/1000] Start: ( 0.12, -1.75, yaw= 2.09) | Target: [-2.126 -2.144  0.779] | EE Error: 0.0100 m | Time:  8.99s | SUCCESS
+[ 975/1000] Start: (-0.14,  1.53, yaw= 0.85) | Target: [1.703 3.337 0.38 ] | EE Error: 0.0167 m | Time: 10.32s | SUCCESS
+[ 976/1000] Start: ( 1.98,  1.45, yaw=-2.99) | Target: [ 1.996 -0.633  0.792] | EE Error: 0.0100 m | Time:  8.05s | SUCCESS
+[ 977/1000] Start: ( 0.33,  0.06, yaw= 0.34) | Target: [ 0.375 -3.148  0.318] | EE Error: 0.0100 m | Time: 13.07s | SUCCESS
+[ 978/1000] Start: ( 0.58,  0.94, yaw= 1.09) | Target: [ 2.386 -2.239  0.729] | EE Error: 0.0100 m | Time: 15.11s | SUCCESS
+[ 979/1000] Start: (-1.49, -1.22, yaw= 0.86) | Target: [-0.938 -3.39   0.393] | EE Error: 0.0099 m | Time: 10.21s | SUCCESS
+[ 980/1000] Start: (-1.34, -0.09, yaw= 0.68) | Target: [-2.866 -3.154  0.469] | EE Error: 0.0100 m | Time: 15.29s | SUCCESS
+[ 981/1000] Start: ( 1.84, -1.58, yaw= 0.18) | Target: [ 2.202 -4.084  0.657] | EE Error: 0.0100 m | Time: 10.23s | SUCCESS
+[ 982/1000] Start: ( 1.19,  1.11, yaw= 2.32) | Target: [ 1.973 -1.717  0.306] | EE Error: 0.0100 m | Time: 12.94s | SUCCESS
+[ 983/1000] Start: ( 0.99, -0.79, yaw= 0.39) | Target: [-0.78  -3.972  0.79 ] | EE Error: 0.0100 m | Time: 15.72s | SUCCESS
+[ 984/1000] Start: ( 1.51, -1.82, yaw= 3.09) | Target: [ 1.473 -4.435  0.45 ] | EE Error: 0.0099 m | Time: 10.46s | SUCCESS
+[ 985/1000] Start: (-0.93,  0.21, yaw=-1.64) | Target: [ 1.671 -1.839  0.802] | EE Error: 0.0099 m | Time: 12.57s | SUCCESS
+[ 986/1000] Start: ( 1.29, -1.61, yaw=-2.74) | Target: [1.129 1.457 0.549] | EE Error: 0.0100 m | Time: 12.89s | SUCCESS
+[ 987/1000] Start: ( 1.61,  1.36, yaw=-2.78) | Target: [4.258 3.719 0.63 ] | EE Error: 0.0100 m | Time: 16.00s | SUCCESS
+[ 988/1000] Start: ( 1.93,  0.74, yaw=-2.49) | Target: [ 0.766 -2.717  0.898] | EE Error: 0.0100 m | Time: 13.92s | SUCCESS
+[ 989/1000] Start: (-1.61, -1.60, yaw= 1.66) | Target: [-3.572 -2.44   0.833] | EE Error: 0.0100 m | Time: 35.59s | SUCCESS
+[ 990/1000] Start: ( 1.20,  1.53, yaw= 0.95) | Target: [ 2.88  -1.897  0.479] | EE Error: 0.0100 m | Time: 16.01s | SUCCESS
+[ 991/1000] Start: ( 0.77,  0.38, yaw=-2.21) | Target: [-0.066  2.275  0.459] | EE Error: 0.0100 m | Time: 35.80s | SUCCESS
+[ 992/1000] Start: (-1.77,  0.67, yaw=-0.83) | Target: [-0.217  2.87   0.573] | EE Error: 0.0100 m | Time: 12.12s | SUCCESS
+[ 993/1000] Start: (-0.17, -1.82, yaw=-0.44) | Target: [1.787 0.578 0.345] | EE Error: 0.0217 m | Time: 13.67s | SUCCESS
+[ 994/1000] Start: ( 0.67, -0.77, yaw=-3.05) | Target: [-1.002 -3.248  0.486] | EE Error: 0.0100 m | Time: 11.80s | SUCCESS
+[ 995/1000] Start: ( 0.78, -1.04, yaw= 1.71) | Target: [ 1.514 -4.194  0.78 ] | EE Error: 0.0099 m | Time: 14.20s | SUCCESS
+[ 996/1000] Start: (-0.46, -1.81, yaw= 0.22) | Target: [-4.394 -1.699  0.433] | EE Error: 0.0100 m | Time: 17.44s | SUCCESS
+[ 997/1000] Start: ( 1.02, -0.62, yaw=-2.13) | Target: [2.536 1.972 0.624] | EE Error: 0.0100 m | Time: 13.55s | SUCCESS
+[ 998/1000] Start: ( 1.31, -0.65, yaw= 1.05) | Target: [ 2.701 -2.208  0.527] | EE Error: 0.0100 m | Time: 35.94s | SUCCESS
+[ 999/1000] Start: ( 1.80, -0.07, yaw=-2.46) | Target: [3.295 3.564 0.845] | EE Error: 0.0100 m | Time: 17.29s | SUCCESS
+[1000/1000] Start: ( 0.29, -0.49, yaw= 0.51) | Target: [-1.21   2.913  0.791] | EE Error: 0.0100 m | Time: 14.73s | SUCCESS
+
+==================================================================
+FINAL TEST RESULTS SUMMARY
+==================================================================
+Total Points Tested          : 1000
+Target Distance Range (m)    : [2.0, 4.0]
+Success Criterion            : EE Error <= 0.05 m
+Stop Tolerance               : EE Error <= 0.01 m
+Successful Reaches           : 970
+Failed Reaches               : 30
+Success Rate                 : 97.00%
+------------------------------------------------------------------
+Mean EE Error (m)            : 0.0326
+Median EE Error (m)          : 0.0100
+Std EE Error (m)             : 0.1284
+Min EE Error (m)             : 0.0097
+Max EE Error (m)             : 0.9971
+Average Episode Time (s)     : 14.32
+Total Wall Time (s)          : 1435.2
+==================================================================
+Saved summary plot to /tmp/claude-1000/-home-rick-LAB-SESSION-COMP-0245-2026-PUBLIC-final-Machine-Learning-Final-Task-robotnik-arm-task-robotnik-dagger-v5/571d05c1-9ea3-42d4-b5fb-c87cc464c1c7/scratchpad/linear_wt2/robotnik_arm_task/combined_test_results/test_summary.png

@@ -154,11 +154,12 @@ McNemar's exact test on the 37 cases where the models differ gives p = 7.5¬∑10‚Å
   <img src="figures/linear_vs_dagger_distance.png" alt="Success rate of the linear model and DAgger V6 per spawn-to-target distance band, 0.9-3.5 m test" width="480">
 </p>
 
-Reproduce (the linear test needs its branch checked out, with `models/` and `configs/` available):
+Reproduce (the linear test needs its branch checked out, with a link to `RoboEnv/models` in its `robotnik_arm_task/`). We ran it at commit `957d57e`; later commits of `test_combined_random.py` count success at 1 cm instead of 5 cm, but `compare_with_linear.py` recomputes success at 5 cm from the logged errors and the weights are unchanged, so either commit gives the same comparison.
 ```bash
 # on branch shivansh/linear_regression, in robotnik_arm_task/
 python test_combined_random.py > linear_regression_test.log
-# back here: DAgger on the same cases, then the comparison
+# back here: copy the log next to this README, then run DAgger on the same cases and compare
+cp <linear checkout>/robotnik_arm_task/linear_regression_test.log .
 python make_linear_protocol_cases.py --radius-min 2.0 --radius-max 4.0 --out eval_v6/cases_2.0-4.0.csv
 python robotnik_dagger_collect.py --mode deploy --cases-csv eval_v6/cases_2.0-4.0.csv --stop-rule linear \
     --max-steps 40000 --workers 10 --model-dir trained_model_dagger_v6 --num-episodes 1000 \

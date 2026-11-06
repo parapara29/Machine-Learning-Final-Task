@@ -1,3 +1,4 @@
+# Runs one episode in PyBullet: RF wheels with an RF, DAgger or expert arm.
 import numpy as np
 import time
 import os
@@ -6,14 +7,14 @@ from pathlib import Path
 import joblib
 from features import wheel_features, arm_features, ARM_JOINTS
 
-ARM_TASK_DIR = Path(__file__).parent.parent / "robotnik_arm_task"
+ARM_TASK_DIR = Path(__file__).parent.parent / "robotnik_arm_task"  # robot configs and expert controller
 sys.path.insert(0, str(ARM_TASK_DIR))
-RUN_DIR = Path(__file__).parent / "results" / "rf_run_4"
-DAGGER_DIR = ARM_TASK_DIR / "robotnik_dagger_v5"
+RUN_DIR = Path(__file__).parent / "results" / "rf_run_4"  # trained forests
+DAGGER_DIR = ARM_TASK_DIR / "robotnik_dagger_v5"  # Ricktho's DAgger arm
 FEATURE_SET = "extra"       #we can use extra or raw
-PREDICT_EVERY = 10
-ARM_MODEL = "dagger"
-ARM_REACH_LIMIT = None
+PREDICT_EVERY = 10  # wheel forest runs every N steps
+ARM_MODEL = "dagger"  # "rf", "dagger" or "expert"
+ARM_REACH_LIMIT = None  # reach limit passed to the expert arm controller
 
 # Headless mode and step cap for CI / direct runs
 headless = os.environ.get("ROBOENV_HEADLESS", "").strip().lower() in ("1", "true", "yes")
@@ -40,6 +41,7 @@ def load_dagger_arm():
 
 
 def load_models(feature_set):
+    # Wheel and arm forests of one feature set.
     model_dir = RUN_DIR / feature_set
     rf_wheel = joblib.load(model_dir / "rf_wheel.joblib")
     rf_arm = joblib.load(model_dir / "rf_arm.joblib")
@@ -48,6 +50,7 @@ def load_models(feature_set):
     return rf_wheel, rf_arm, model_dir
 
 def sim_state(base_pos, base_bearing, q_mes, qd_mes, target, goal_pos, goal_bearing, ee_pos, nav_done, q_init):
+    # Live robot state as named columns, the same format as the training table.
     s = {
         "base_x": base_pos[0], "base_y": base_pos[1], "base_z": base_pos[2],
         "base_bearing": base_bearing,

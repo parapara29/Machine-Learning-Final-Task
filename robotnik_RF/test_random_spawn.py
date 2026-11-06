@@ -23,22 +23,19 @@ from features import wheel_features
 # linear models replaced by the E4 controller: RF wheels (extra features) + DAgger V5.3-A arm.
 # The test cases, the simulation setup, the stop rule and the success rule are unchanged.
 
-# ==============================================================================
-# TEST SETTINGS (same as test_combined_random.py)
-# ==============================================================================
-NUM_TESTS = 1000
+NUM_TESTS = 1000  # number of test cases
 REACH_TOLERANCE = 0.01    # Stop simulation once EE error <= 0.01 m (same as robotnik_arm_task.py)
 SUCCESS_TOLERANCE = 0.05  # Count episode as a success if final EE error <= 0.05 m
 RADIUS_MIN = 0.9          # Min target distance from robot start position (m)
 RADIUS_MAX = 3.5          # Max target distance from robot start position (m)
-SEED = 42
-NUM_WORKERS = max(1, (os.cpu_count() or 4) // 2)
-max_steps = int(os.environ.get("ROBOENV_MAX_STEPS", "40000"))
+SEED = 42  # same seed as Shivansh, so the same cases
+NUM_WORKERS = max(1, (os.cpu_count() or 4) // 2)  # parallel processes
+max_steps = int(os.environ.get("ROBOENV_MAX_STEPS", "40000"))  # step cap per episode (40 s)
 # ==============================================================================
 
-FEATURE_SET = "extra"
-OUT_DIR = rf_sim.RUN_DIR / "eval_random_spawn"
-FIELDS = ["episode", "start_x", "start_y", "start_yaw", "target_x", "target_y", "target_z",
+FEATURE_SET = "extra"  # wheel forest of E4
+OUT_DIR = rf_sim.RUN_DIR / "eval_random_spawn"  # results of this test
+FIELDS = ["episode", "start_x", "start_y", "start_yaw", "target_x", "target_y", "target_z",  # CSV columns
           "final_error", "time", "nav_done", "nav_time", "success", "wheel_ms", "arm_ms", "stop"]
 
 # Global worker variables (initialized once per CPU worker process)
@@ -195,6 +192,7 @@ def test_one_point(case):
 
 
 def read_rows(path):
+    # Rows of the result CSV, empty if it does not exist yet.
     if not path.exists():
         return []
     with open(path, newline="") as f:
@@ -202,6 +200,7 @@ def read_rows(path):
 
 
 def wilson(k, n, z=1.96):
+    # 95 % Wilson interval of k successes in n trials, in percent.
     centre = (k + z**2 / 2) / (n + z**2)
     half = z * np.sqrt(k * (n - k) / n + z**2 / 4) / (n + z**2)
     return 100 * (centre - half), 100 * (centre + half)

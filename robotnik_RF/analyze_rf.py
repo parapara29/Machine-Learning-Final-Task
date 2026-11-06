@@ -14,10 +14,9 @@ from train_rf import (
 #   2. Hidden state: the expert holds a randomized start pose
 #   3. Single instant vs temporal inputs: where the arm forest's errors are
 
-RUN_DIR = Path(__file__).parent / "results" / "rf_run_4"
-OUT_DIR = Path(__file__).parent / "results" / "analysis"
-TARGETS_CSV = Path(__file__).parent.parent / "data_randomized" / "targets.csv"
-# Third series color (validated together with raw blue and extra orange for colorblind separation).
+RUN_DIR = Path(__file__).parent / "results" / "rf_run_4"  # saved forests to analyse
+OUT_DIR = Path(__file__).parent / "results" / "analysis"  # report figures
+TARGETS_CSV = Path(__file__).parent.parent / "data_randomized" / "targets.csv"  # random arm offset of each episode
 COLORS = {**COLORS, "lags": "#1f9e89", "relative": "#1f9e89"}
 GREY = "#a3a29f"
 # Past joint states added as temporal inputs: 10 and 30 rows back = 0.1 s and 0.3 s at 100 Hz.
@@ -30,11 +29,13 @@ JOINT_LABELS = [f"J{i}" for i in range(1, 8)]   # J1..J7 = motors 4..10 = torque
 
 
 def style(ax):
+    # Shared axis style.
     ax.grid(True, alpha=0.3)
     ax.spines[["top", "right"]].set_visible(False)
 
 
 def arm_targets(s):
+    # The 7 joint torques.
     return np.column_stack([s[f"torque_arm_{i}"] for i in range(7)])
 
 
@@ -56,6 +57,7 @@ def load_split_with_lags(d, ids, subsample=SUBSAMPLE):
 
 
 def episode_targets(d, ids):
+    # One target per episode.
     columns = list(d["columns"])
     ep = d["episode"]
     first = np.r_[True, ep[1:] != ep[:-1]] & np.isin(ep, ids)
@@ -63,6 +65,7 @@ def episode_targets(d, ids):
 
 
 def load_model(feature_set, part):
+    # Saved forest of RUN_DIR.
     rf = joblib.load(RUN_DIR / feature_set / f"rf_{part}.joblib")
     rf.n_jobs = -1
     return rf
@@ -75,6 +78,7 @@ def relative_wheel_features(s):
 
 
 def wheel_xy(s):
+    # Driving rows and their wheel commands.
     moving = ~s["nav_done"]
     return moving, np.column_stack([s[f"wheel_cmds_{i}"] for i in range(4)])[moving]
 
@@ -104,6 +108,7 @@ def shift_test(d, train_ids, test_ids):
 
 
 def figure_extrapolation(d, splits, path):
+    # Figure 1: shift test, wheel importance, training target range.
     train_ids, _, test_ids = splits
     r2 = shift_test(d, train_ids, test_ids)
     rf = load_model("extra", "wheel")
@@ -173,6 +178,7 @@ def hold_pose_data(d):
 
 
 def figure_hold_pose(d, splits, r2_no_hold, r2_extra, path):
+    # Figure 2: the expert holds q_init, and what hold_err adds.
     _, _, test_ids = splits
     nominal, to_init, to_nominal, offsets = hold_pose_data(d)
     # Example: the test episode and joint with the largest start offset.
@@ -225,6 +231,7 @@ def figure_hold_pose(d, splits, r2_no_hold, r2_extra, path):
 
 # //figure 3
 def figure_temporal(d, splits, r2, models, path, joint=5):
+    # Figure 3: past joint states do not help; errors sit in torque transients.
     _, _, test_ids = splits
     episode = test_ids[0]
     s, lags = load_split_with_lags(d, [episode], subsample=1)

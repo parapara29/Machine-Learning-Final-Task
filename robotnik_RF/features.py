@@ -1,12 +1,15 @@
+# Input features, shared by training (table columns) and simulation (live state).
 import numpy as np
 
 ARM_JOINTS = range(4, 11)  # motors 0..3 are the wheels, the arm is motors 4..10
 
 def state_from_table(table, columns):
+    # Table -> dict of named columns.
     return {name: table[:, i] for i, name in enumerate(columns)}
 
 
 def raw_features(s):
+    # The 21 raw inputs: base pose, joint angles and velocities, target.
     return np.column_stack(
         [s["base_x"], s["base_y"], s["base_z"], s["base_bearing"]]
         + [s[f"q_mes_{i}"] for i in ARM_JOINTS]
@@ -15,13 +18,14 @@ def raw_features(s):
     )
 
 def wheel_features(s, extra):
+    # extra adds the goal and the goal-relative features (29 inputs).
     x = raw_features(s)
     if not extra:
         return x
     dx = s["goal_x"] - s["base_x"]
     dy = s["goal_y"] - s["base_y"]
-    heading_to_goal = np.arctan2(dy, dx) - s["base_bearing"]
-    final_heading = s["goal_bearing"] - s["base_bearing"]
+    heading_to_goal = np.arctan2(dy, dx) - s["base_bearing"]  # heading error toward the goal
+    final_heading = s["goal_bearing"] - s["base_bearing"]  # orientation error at the goal
     return np.column_stack([
         x,
         s["goal_x"], s["goal_y"], s["goal_bearing"],
@@ -31,6 +35,7 @@ def wheel_features(s, extra):
     ])
 
 def arm_features(s, extra):
+    # extra adds nav_done, end-effector, target error, sin/cos of q and hold error (49 inputs).
     x = raw_features(s)
     if not extra:
         return x
@@ -52,6 +57,7 @@ RAW_NAMES = (
 
 
 def wheel_feature_names(extra):
+    # Names in the same order as wheel_features.
     if not extra:
         return RAW_NAMES
     return RAW_NAMES + [
@@ -62,6 +68,7 @@ def wheel_feature_names(extra):
 
 
 def arm_feature_names(extra):
+    # Names in the same order as arm_features.
     if not extra:
         return RAW_NAMES
     return (

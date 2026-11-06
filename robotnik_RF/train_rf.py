@@ -1,3 +1,4 @@
+# Trains the wheel and arm forests for raw and extra inputs; saves models, R² and plots.
 from pathlib import Path
 import numpy as np
 import time
@@ -11,22 +12,23 @@ from features import (
 )
 import json
 
-CACHE = Path(__file__).parent / "data_randomized_cache.npz"
-RESULTS_DIR = Path(__file__).parent / "results"
-SEED = 42
-SPLIT_FILE = Path(__file__).parent / "episode_split.json"  # ricktho split: 1400 / 300 / 300
-SUBSAMPLE = 10
+CACHE = Path(__file__).parent / "data_randomized_cache.npz"  # output of prepare_data.py
+RESULTS_DIR = Path(__file__).parent / "results"  # one rf_run_N folder per run
+SEED = 42  # fixes the forest randomness
+SPLIT_FILE = Path(__file__).parent / "episode_split.json"  # ricktho MLP split: 1400 / 300 / 300
+SUBSAMPLE = 10  # keep every 10th row (one per 100 ms)
 # Every run trains both feature sets on the same split, so they can be compared directly.
 FEATURE_SETS = ["raw", "extra"]
-N_ESTIMATORS = 50
-MIN_SAMPLES_LEAF = 10
+N_ESTIMATORS = 50  # trees per forest
+MIN_SAMPLES_LEAF = 10  # smallest leaf size, limits overfitting
 
-ARM_OUTPUTS = [f"torque_arm_{i}" for i in range(7)]
-WHEEL_OUTPUTS = [f"wheel_cmds_{i}" for i in range(4)]
+ARM_OUTPUTS = [f"torque_arm_{i}" for i in range(7)]  # 7 joint torques
+WHEEL_OUTPUTS = [f"wheel_cmds_{i}" for i in range(4)]  # 4 wheel speeds
 COLORS = {"raw": "#2a78d6", "extra": "#eb6834"}
 INK, MUTED = "#1f1f1e", "#52514e"
 
 def split_episodes():
+    # Train, validation and test episode IDs.
     split = json.loads(SPLIT_FILE.read_text())
 
     test_ids = np.array(split["test"])
@@ -35,6 +37,7 @@ def split_episodes():
     return train_ids, val_ids, test_ids
 
 def load_split(d, ids):
+    # Subsampled rows of these episodes as named columns.
     mask = np.isin(d["episode"], ids)
     table = d["table"][mask][::SUBSAMPLE]
     nav_done = d["nav_done"][mask][::SUBSAMPLE]
@@ -43,6 +46,7 @@ def load_split(d, ids):
     return s
 
 def make_xy(s, extra):
+    # Inputs and outputs. Wheel rows stop at nav_done, since the wheels are zero afterwards.
     y_arm = np.column_stack([s[f"torque_arm_{i}"] for i in range(7)])
     y_wheel = np.column_stack([s[f"wheel_cmds_{i}"] for i in range(4)])
 
@@ -66,6 +70,7 @@ def train_rf(X, y):
     return rf
 
 def evaluate(rf, X, y):
+    # R² per output.
     pred = rf.predict(X)
     return r2_score(y, pred, multioutput="raw_values")
 
@@ -124,6 +129,7 @@ def plot_r2_comparison(results, path):
     plt.close(fig)
 
 def run_feature_set(d, splits, feature_set, run_dir):
+    # Trains, scores and saves both forests for one feature set.
     extra = feature_set == "extra"
     train_ids, val_ids, test_ids = splits
     X_arm, y_arm, X_wheel, y_wheel = make_xy(load_split(d, train_ids), extra)

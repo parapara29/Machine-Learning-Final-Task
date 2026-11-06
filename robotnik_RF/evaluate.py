@@ -1,3 +1,4 @@
+# Runs experiments E1-E4 headless in parallel; saves one CSV per experiment and plots.
 import os
 os.environ["ROBOENV_HEADLESS"] = "1"
 
@@ -13,23 +14,23 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import rf_sim
 
-SPLIT_FILE = Path(__file__).parent / "episode_split.json"
-TARGETS_CSV = Path(__file__).parent.parent / "data_randomized" / "targets.csv"
+SPLIT_FILE = Path(__file__).parent / "episode_split.json"  # train / validation / test episode IDs
+TARGETS_CSV = Path(__file__).parent.parent / "data_randomized" / "targets.csv"  # targets of the dataset episodes
 # EVAL_DIR = rf_sim.RUN_DIR / "eval"
 
-EXPERIMENTS = {
+EXPERIMENTS = {  # name: (arm model, wheel feature set)
     "E1": ("rf", "raw"),
     "E2": ("rf", "extra"),
     "E3": ("dagger", "raw"),
     "E4": ("dagger", "extra"),
 }
-SPLIT = "random"      
-NUM_EPISODES = 1000        
-REACH_TOLERANCE = 0.05
-MAX_STEPS = 20000
-RANDOM_SEED = 2026
-WORKERS = max(1, os.cpu_count() // 2)
-EVAL_DIR = rf_sim.RUN_DIR / f"eval_{SPLIT}_{REACH_TOLERANCE * 100:.0f}cm"
+SPLIT = "random"  # "random" = new targets, or "validation" / "test" episodes
+NUM_EPISODES = 1000  # targets per experiment
+REACH_TOLERANCE = 0.05  # success threshold (m)
+MAX_STEPS = 20000  # step cap per episode
+RANDOM_SEED = 2026  # seed of the random targets
+WORKERS = max(1, os.cpu_count() // 2)  # parallel processes
+EVAL_DIR = rf_sim.RUN_DIR / f"eval_{SPLIT}_{REACH_TOLERANCE * 100:.0f}cm"  # one folder per protocol
 
 FIELDS = ["episode", "target_x", "target_y", "target_z", "success",
           "final_error", "best_error", "time", "nav_time", "stop"]
@@ -38,6 +39,7 @@ INK, MUTED = "#1f1f1e", "#52514e"
 
 
 def load_episodes():
+    # List of (episode ID, target).
     if SPLIT == "random":
         # Same target distribution as collect_data.py, new seed, so the targets are unseen.
         rng = np.random.default_rng(RANDOM_SEED)
@@ -53,6 +55,7 @@ def load_episodes():
 
 
 def run_episode(job):
+    # One headless episode; an exception becomes a failed row.
     arm_model, feature_set, episode, target = job
     if arm_model == "dagger":
         import torch
@@ -67,6 +70,7 @@ def run_episode(job):
 
 
 def read_rows(path):
+    # Rows of a result CSV, empty if it does not exist yet.
     if not path.exists():
         return []
     with open(path, newline="") as f:
@@ -74,6 +78,7 @@ def read_rows(path):
 
 
 def run_experiment(name, episodes):
+    # Runs the missing episodes and appends each result to the CSV.
     arm_model, feature_set = EXPERIMENTS[name]
     path = EVAL_DIR / f"{name}.csv"
     done = {int(row["episode"]) for row in read_rows(path)}
@@ -99,6 +104,7 @@ def run_experiment(name, episodes):
 
 
 def load_results(name):
+    # One experiment's CSV as numeric arrays.
     rows = read_rows(EVAL_DIR / f"{name}.csv")
     r = {key: np.array([float(row[key]) for row in rows]) for key in FIELDS[:-1]}
     r["success"] = r["success"].astype(bool)
@@ -108,6 +114,7 @@ def load_results(name):
 
 # //plotting
 def plot_episodes(name, r, path):
+    # Error histogram, target map and best error vs height.
     fig, axes = plt.subplots(1, 3, figsize=(16, 4.8))
     arm_model, feature_set = EXPERIMENTS[name]
     ok = r["success"]
@@ -144,6 +151,7 @@ def plot_episodes(name, r, path):
 
 
 def plot_success_comparison(results, path):
+    # Success rate of every experiment.
     names = list(results)
     rates = [results[name]["success"].mean() * 100 for name in names]
     colors = [COLORS[EXPERIMENTS[name][1]] for name in names]
@@ -164,6 +172,7 @@ def plot_success_comparison(results, path):
 
 
 def summarize():
+    # Prints the results table and redraws the plots.
     results = {name: load_results(name) for name in EXPERIMENTS if (EVAL_DIR / f"{name}.csv").exists()}
     print(f"\n{'':4s} {'arm':7s} {'wheel':6s} {'success':>14s} {'median best err':>16s} {'mean time ok':>13s}")
     for name, r in results.items():

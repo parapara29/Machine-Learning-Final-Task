@@ -133,9 +133,38 @@ Three figures that explain why a high offline R² does not give closed-loop succ
   the 5 cm band and says nothing about 1 cm precision. See the tolerance study for that.
 - E1–E4 always start at the origin, inside the training region. For the random-spawn protocol of the
   linear model and DAgger V6, see the random-spawn test above.
-- The 2.0–4.0 m version of the random-spawn test (Table I of the report) was not run for the forests.
+- The 2.0–4.0 m version of the random-spawn test (Table II of the report) was not run for the forests.
 - The supervisor switches from driving to reaching when the base is within **0.15 m** and 0.05 rad of
   its goal (or after 25 s). The expert uses 0.08 m. Once it switches, the wheels are set to zero.
+
+### Robustness (`test_adversarial.py`, `results/rf_run_4/eval_adversarial/`, `eval_noise*/`)
+
+**Disturbances.** E4 with the disturbances of Shivansh's `test_adversarial_robustness.py`, from the origin on the
+same 25 targets in the training range, because E4 already fails from far spawns without any disturbance. An episode
+stops at 1 cm or after a 2 s stall, and succeeds if the final error is ≤ 5 cm. This stop rule is stricter than the
+one of `evaluate.py`, so the undisturbed 76 % is not comparable with the 94.3 % above: 22 of the 25 undisturbed
+episodes came within 5 cm at some point.
+
+| Test | Success (≤ 5 cm) | Median final error |
+|---|---|---|
+| No disturbance | 19/25 (76 %) | 22 mm |
+| Shove: 30 N on the gripper for 0.25 s | 11/25 (44 %) | 63 mm |
+| Target jump: 0.6–0.9 m at t = 2 s, new target in the training range | 10/25 (40 %) | 55 mm |
+| Base displacement: 0.4 m after parking, only the base moves | 4/25 (16 %) | 742 mm |
+| Payload: 0.5 kg on the gripper | 0/25 (0 %) | 1012 mm |
+
+**Sensor noise.** `evaluate.py E4` on 100 random targets with `noise_flag` set to 1 in `robotnik_arm.json`. The
+`_cov` values are used as standard deviations (`np.random.normal(0, value)`), and they also affect the measured
+end-effector error.
+
+| σ | Success | Base reached its goal |
+|---|---|---|
+| 0.0001 | 76/100 | 79/100 |
+| 0.001 | 37/100 | 39/100 |
+
+The arm succeeds in 113 of the 118 episodes in which the base arrives, so the wheel forest is the weak part. Offline,
+1 mm of noise on `base_z`, which varies by only about 0.5 mm while driving, lowers the wheel R² from 0.99 to 0.90. A
+noise-free run on the same 100 targets was not done.
 
 ## Inputs
 
@@ -161,7 +190,8 @@ The wheel model is trained only on rows before `nav_done` (the base is not movin
 | `analyze_rf.py` | Data analysis figures for the report (shift test, hold pose, temporal inputs) in `results/analysis/` |
 | `rf_sim.py` | Runs one episode in PyBullet with the GUI (`ARM_MODEL` = `"rf"`, `"dagger"` or `"expert"`) |
 | `evaluate.py` | Runs E1–E4 headless in parallel; writes per-episode CSVs and plots to `results/rf_run_4/eval_<split>_<tol>cm/` |
-| `test_random_spawn.py` | E4 on the group's random-spawn test (Shivansh's cases and stop rule); resumable, writes `results/rf_run_4/eval_random_spawn/` and prints the Table I metrics, including inference time |
+| `test_random_spawn.py` | E4 on the group's random-spawn test (Shivansh's cases and stop rule); resumable, writes `results/rf_run_4/eval_random_spawn/` and prints the metrics of the report, including inference time |
+| `test_adversarial.py` | E4 under four disturbances (shove, target jump, payload, base displacement) and without any; resumable, writes `results/rf_run_4/eval_adversarial/`. Needs `noise_flag` and `collision_enable` set to 0 |
 | `episode_split.json` | Ricktho's train / validation / test episode IDs |
 
 ## How to run
@@ -178,6 +208,8 @@ pixi run -e ml python evaluate.py         # E1–E4, about 2 h per experiment fo
 pixi run -e ml python evaluate.py E3 E4   # only some experiments
 pixi run -e ml python test_random_spawn.py      # E4 on the random-spawn test, ~5 h with 8 workers
 pixi run -e ml python test_random_spawn.py 10   # only the first 10 cases (same cases as in the full run)
+pixi run -e ml python test_adversarial.py       # E4 under the four disturbances, 125 episodes
+pixi run -e ml python test_adversarial.py 2     # only the first 2 targets of every test
 ```
 
 Inference time printed by `test_random_spawn.py` is measured inside the parallel run, so it is higher than
@@ -193,7 +225,8 @@ Do not edit `rf_sim.py` or `features.py` while an evaluation is running: every e
 process that imports them again.
 
 **Models**: the four forests of `results/rf_run_4` (raw/extra × wheel/arm, about 115 MB) are in git, so
-`rf_sim.py` and `evaluate.py` run right after cloning. They read the models from `RUN_DIR` (currently
+`rf_sim.py` and `evaluate.py` run after cloning once RoboEnv's `models/` folder is copied into
+`robotnik_arm_task/`. They read the models from `RUN_DIR` (currently
 `results/rf_run_4`). The E3/E4 arm also needs Ricktho's `robotnik_dagger_v5/trained_model_dagger_v5_3_A`.
 
 **Not in git** (too large): the dataset and the cache. The dataset `data_randomized` (2000 expert

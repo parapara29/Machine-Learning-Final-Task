@@ -31,8 +31,8 @@ Each group member developed one approach on their own branch. This `main` branch
 ### `hafizh/random_forest`: random forest controller
 
 - **Model:** a random forest for the wheels (raw or goal-relative "extra" inputs), paired with either a random forest arm or the DAgger MLP arm (V5.3-A from `ricktho`), giving four experiments E1–E4.
-- **Result:** the random forest base with the DAgger arm (E4) succeeds in 94.3 % of 1000 random targets from the default spawn at the origin. A fully random forest controller succeeds in fewer than 1 % despite an offline R² of up to 0.95, which shows that offline accuracy does not imply closed-loop success.
-- **Start with:** the branch README and `robotnik_RF/`.
+- **Result:** the random forest base with the DAgger arm (E4) succeeds in 94.3 % of 1000 random targets from the default spawn at the origin, at about 1 ms per step. On the 0.9–3.5 m random-spawn cases, where DAgger reaches 90.0 % and the linear model 65.0 %, E4 succeeds in only 6.9 %: the demonstrations start within ±0.25 m of the origin, and its inputs still contain world coordinates, which a forest cannot extrapolate. A fully random forest controller succeeds in fewer than 1 % despite an offline R² of up to 0.95, which shows that offline accuracy does not imply closed-loop success.
+- **Start with:** the branch `README.md`, `robotnik_RF/evaluate.py` (E1–E4) and `robotnik_RF/test_random_spawn.py` (random-spawn test).
 
 ### Head-to-head comparison
 
@@ -49,7 +49,9 @@ The linear model and the DAgger policy were run on the same 1000 cases of `test_
 - DAgger's failures are arm stalls just outside the 5 cm tolerance.
 - The linear model is more precise when it succeeds and much faster to train and run.
 
-The random forest results use a different test (fixed spawn at the origin), so they are not directly comparable. Details are in the `ricktho` branch (`robotnik_arm_task/robotnik_dagger_v5/README.md`, section "Comparison with the linear-regression model").
+
+The random forest was not run on these 2.0–4.0 m cases. Its main results use a fixed spawn at the origin, and E4 was also run on the earlier 0.9–3.5 m version of this test (6.9 %, see its branch).
+
 
 ## What is on `main`
 

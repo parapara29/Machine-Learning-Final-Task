@@ -174,6 +174,20 @@ uv run robotnik_arm_task/test_combined_random.py
 
 ---
 
+### Step 6: Run the Adversarial Robustness Benchmark (100 Stress Tests)
+```bash
+uv run robotnik_arm_task/test_adversarial_robustness.py
+```
+* **What it does:** Tests 100 randomized episodes (25 per category) across 4 adversarial and disturbance conditions:
+  1. **Arm Shove:** Sudden $30\,\text{N}$ external force pulse on the gripper mid-reach to test restoring stiffness.
+  2. **Target Jump Midway:** Dynamic $0.6\text{--}1.0\,\text{m}$ target relocation en route to test dynamic re-planning.
+  3. **Unmodeled Arm Payload:** $+0.5\,\text{kg}$ downward gravitational load attached to the end-effector.
+  4. **Base Displacement:** $0.4\,\text{m}$ lateral base kick after parking to test closed-loop re-docking recovery.
+* **Outputs Generated:**
+  - Live console progress and category breakdown table (success rates at $\le 5\,\text{cm}$ and $\le 1\,\text{cm}$, median errors).
+  - `robotnik_arm_task/adversarial_results/adversarial_results.csv`: Complete log of every test case and outcome.
+  - `robotnik_arm_task/adversarial_results/adversarial_summary.png`: Publication-quality comparison bar chart and error distribution scatter plots.
+
 ---
 
 ## 5. Latest Benchmark Results

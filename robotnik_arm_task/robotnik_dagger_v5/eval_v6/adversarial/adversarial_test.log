@@ -1,0 +1,227 @@
+==================================================================
+   ADVERSARIAL & PERTURBATION ROBUSTNESS BENCHMARK (V6 DAgger)
+==================================================================
+Model                        : /home/rick/LAB_SESSION_COMP_0245_2026_PUBLIC/final/Machine-Learning-Final-Task/robotnik_arm_task/robotnik_dagger_v5/trained_model_dagger_v6
+Total Tests Planned          : 100 (25 per category)
+Parallel Workers             : 12
+Categories Evaluated         :
+  1. Arm Shove               : 30.0 N impulse on gripper mid-reach
+  2. Target Jump Midway      : Dynamic 0.6-0.9m target relocation en route
+  3. Unmodeled Arm Payload   : +0.50 kg constant downward mass
+  4. Base Displacement       : 0.40 m lateral base displacement + closed-loop recovery
+==================================================================
+
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_footprintb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_base_docking_contact_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_arm_base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effectorb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+robot_j2s7s300_end_effector[  1/100] Type: shove          | Final Err:  10.0 mm | Time: 13.6s | SUCCESS (<=5cm) [STRICT <=1cm] | Deflection: 8.2cm
+[  2/100] Type: shove          | Final Err:  39.7 mm | Time: 13.7s | SUCCESS (<=5cm) | Deflection: 11.6cm
+[  3/100] Type: shove          | Final Err:  35.5 mm | Time: 15.7s | SUCCESS (<=5cm) | Deflection: 7.9cm
+[  4/100] Type: shove          | Final Err:  10.0 mm | Time: 11.1s | SUCCESS (<=5cm) [STRICT <=1cm] | Deflection: 10.7cm
+[  5/100] Type: shove          | Final Err:  37.9 mm | Time: 16.0s | SUCCESS (<=5cm) | Deflection: 25.5cm
+[  6/100] Type: shove          | Final Err:  17.7 mm | Time: 13.7s | SUCCESS (<=5cm) | Deflection: 5.3cm
+[  7/100] Type: shove          | Final Err:  10.0 mm | Time: 14.7s | SUCCESS (<=5cm) [STRICT <=1cm] | Deflection: 22.3cm
+[  8/100] Type: shove          | Final Err:  76.5 mm | Time: 14.7s | FAIL | Deflection: 26.4cm
+[  9/100] Type: shove          | Final Err:  13.3 mm | Time: 11.1s | SUCCESS (<=5cm) | Deflection: 8.2cm
+[ 10/100] Type: shove          | Final Err:  10.0 mm | Time: 17.5s | SUCCESS (<=5cm) [STRICT <=1cm] | Deflection: 12.0cm
+[ 11/100] Type: shove          | Final Err:  14.0 mm | Time: 15.8s | SUCCESS (<=5cm) | Deflection: 8.8cm
+[ 12/100] Type: shove          | Final Err:  35.8 mm | Time: 12.4s | SUCCESS (<=5cm) | Deflection: 7.9cm
+[ 13/100] Type: shove          | Final Err:  82.2 mm | Time: 15.1s | FAIL | Deflection: 11.8cm
+[ 14/100] Type: shove          | Final Err:  10.0 mm | Time: 15.6s | SUCCESS (<=5cm) [STRICT <=1cm] | Deflection: 18.0cm
+[ 15/100] Type: shove          | Final Err:  57.2 mm | Time: 15.7s | FAIL | Deflection: 25.2cm
+[ 16/100] Type: shove          | Final Err:  46.6 mm | Time: 15.4s | SUCCESS (<=5cm) | Deflection: 11.7cm
+[ 17/100] Type: shove          | Final Err:   9.9 mm | Time: 10.8s | SUCCESS (<=5cm) [STRICT <=1cm] | Deflection: 7.3cm
+[ 18/100] Type: shove          | Final Err:  10.0 mm | Time: 19.2s | SUCCESS (<=5cm) [STRICT <=1cm] | Deflection: 4.7cm
+[ 19/100] Type: shove          | Final Err:  20.2 mm | Time: 14.2s | SUCCESS (<=5cm) | Deflection: 8.0cm
+[ 20/100] Type: shove          | Final Err:  38.2 mm | Time: 17.9s | SUCCESS (<=5cm) | Deflection: 22.9cm
+[ 21/100] Type: shove          | Final Err:  23.8 mm | Time: 19.9s | SUCCESS (<=5cm) | Deflection: 8.8cm
+[ 22/100] Type: shove          | Final Err:  10.0 mm | Time: 16.7s | SUCCESS (<=5cm) [STRICT <=1cm] | Deflection: 13.7cm
+[ 23/100] Type: shove          | Final Err:  18.1 mm | Time: 18.2s | SUCCESS (<=5cm) | Deflection: 8.9cm
+[ 24/100] Type: shove          | Final Err:  10.0 mm | Time: 18.3s | SUCCESS (<=5cm) [STRICT <=1cm] | Deflection: 22.4cm
+[ 25/100] Type: shove          | Final Err:  52.7 mm | Time: 15.4s | FAIL | Deflection: 11.3cm
+[ 26/100] Type: target_jump    | Final Err:  17.7 mm | Time: 14.6s | SUCCESS (<=5cm)
+[ 27/100] Type: target_jump    | Final Err:  10.0 mm | Time: 16.5s | SUCCESS (<=5cm) [STRICT <=1cm]
+[ 28/100] Type: target_jump    | Final Err:  10.0 mm | Time: 13.7s | SUCCESS (<=5cm) [STRICT <=1cm]
+[ 29/100] Type: target_jump    | Final Err:  16.2 mm | Time: 14.7s | SUCCESS (<=5cm)
+[ 30/100] Type: target_jump    | Final Err:  15.1 mm | Time: 16.6s | SUCCESS (<=5cm)
+[ 31/100] Type: target_jump    | Final Err:  10.9 mm | Time: 13.5s | SUCCESS (<=5cm)
+[ 32/100] Type: target_jump    | Final Err:  19.1 mm | Time: 18.8s | SUCCESS (<=5cm)
+[ 33/100] Type: target_jump    | Final Err:  13.8 mm | Time: 15.7s | SUCCESS (<=5cm)
+[ 34/100] Type: target_jump    | Final Err:  23.8 mm | Time: 18.8s | SUCCESS (<=5cm)
+[ 35/100] Type: target_jump    | Final Err:  18.5 mm | Time: 15.7s | SUCCESS (<=5cm)
+[ 36/100] Type: target_jump    | Final Err:  42.9 mm | Time: 20.0s | SUCCESS (<=5cm)
+[ 37/100] Type: target_jump    | Final Err:  18.6 mm | Time: 19.8s | SUCCESS (<=5cm)
+[ 38/100] Type: target_jump    | Final Err:  18.0 mm | Time: 18.0s | SUCCESS (<=5cm)
+[ 39/100] Type: target_jump    | Final Err:  10.0 mm | Time: 17.5s | SUCCESS (<=5cm) [STRICT <=1cm]
+[ 40/100] Type: target_jump    | Final Err:  22.4 mm | Time: 18.7s | SUCCESS (<=5cm)
+[ 41/100] Type: target_jump    | Final Err:  20.6 mm | Time: 18.6s | SUCCESS (<=5cm)
+[ 42/100] Type: target_jump    | Final Err:  14.6 mm | Time: 14.2s | SUCCESS (<=5cm)
+[ 43/100] Type: target_jump    | Final Err:  22.3 mm | Time: 23.0s | SUCCESS (<=5cm)
+[ 44/100] Type: target_jump    | Final Err:  22.9 mm | Time: 17.2s | SUCCESS (<=5cm)
+[ 45/100] Type: target_jump    | Final Err:  14.0 mm | Time: 18.7s | SUCCESS (<=5cm)
+[ 46/100] Type: target_jump    | Final Err:  13.6 mm | Time: 21.1s | SUCCESS (<=5cm)
+[ 47/100] Type: target_jump    | Final Err: 548.9 mm | Time: 40.0s | FAIL
+[ 48/100] Type: target_jump    | Final Err:  12.3 mm | Time: 17.1s | SUCCESS (<=5cm)
+[ 49/100] Type: target_jump    | Final Err:  18.9 mm | Time: 17.5s | SUCCESS (<=5cm)
+[ 50/100] Type: target_jump    | Final Err:  23.2 mm | Time: 15.7s | SUCCESS (<=5cm)
+[ 51/100] Type: payload        | Final Err: 1139.1 mm | Time: 27.1s | FAIL
+[ 52/100] Type: payload        | Final Err: 1220.7 mm | Time: 18.0s | FAIL
+[ 53/100] Type: payload        | Final Err: 1215.3 mm | Time: 23.5s | FAIL
+[ 54/100] Type: payload        | Final Err: 924.4 mm | Time: 18.9s | FAIL
+[ 55/100] Type: payload        | Final Err: 3617.2 mm | Time: 33.0s | FAIL
+[ 56/100] Type: payload        | Final Err: 878.6 mm | Time: 19.3s | FAIL
+[ 57/100] Type: payload        | Final Err: 510.5 mm | Time: 30.9s | FAIL
+[ 58/100] Type: payload        | Final Err: 792.1 mm | Time: 29.6s | FAIL
+[ 59/100] Type: payload        | Final Err: 806.0 mm | Time: 24.6s | FAIL
+[ 60/100] Type: payload        | Final Err: 1039.6 mm | Time: 40.0s | FAIL
+[ 61/100] Type: payload        | Final Err: 1023.7 mm | Time: 40.0s | FAIL
+[ 62/100] Type: payload        | Final Err: 1346.1 mm | Time: 40.0s | FAIL
+[ 63/100] Type: payload        | Final Err: 1227.5 mm | Time: 40.0s | FAIL
+[ 64/100] Type: payload        | Final Err: 1144.5 mm | Time: 40.0s | FAIL
+[ 65/100] Type: payload        | Final Err: 811.9 mm | Time: 40.0s | FAIL
+[ 66/100] Type: payload        | Final Err: 1000.4 mm | Time: 40.0s | FAIL
+[ 67/100] Type: payload        | Final Err: 1264.0 mm | Time: 40.0s | FAIL
+[ 68/100] Type: payload        | Final Err: 631.6 mm | Time: 20.1s | FAIL
+[ 69/100] Type: payload        | Final Err: 4701.0 mm | Time: 30.6s | FAIL
+[ 70/100] Type: payload        | Final Err: 1046.8 mm | Time: 40.0s | FAIL
+[ 71/100] Type: payload        | Final Err: 860.4 mm | Time: 40.0s | FAIL
+[ 72/100] Type: payload        | Final Err: 1354.4 mm | Time: 16.2s | FAIL
+[ 73/100] Type: payload        | Final Err: 891.1 mm | Time: 40.0s | FAIL
+[ 74/100] Type: payload        | Final Err: 820.6 mm | Time: 40.0s | FAIL
+[ 75/100] Type: base_displace  | Final Err: 954.3 mm | Time: 40.0s | FAIL
+[ 76/100] Type: base_displace  | Final Err: 101.5 mm | Time: 19.3s | FAIL
+[ 77/100] Type: payload        | Final Err: 665.5 mm | Time: 40.0s | FAIL
+[ 78/100] Type: base_displace  | Final Err:  25.4 mm | Time: 22.7s | SUCCESS (<=5cm)
+[ 79/100] Type: base_displace  | Final Err:  60.9 mm | Time: 19.1s | FAIL
+[ 80/100] Type: base_displace  | Final Err: 242.1 mm | Time: 19.1s | FAIL
+[ 81/100] Type: base_displace  | Final Err: 237.0 mm | Time: 40.0s | FAIL
+[ 82/100] Type: base_displace  | Final Err: 171.8 mm | Time: 18.8s | FAIL
+[ 83/100] Type: base_displace  | Final Err: 166.5 mm | Time: 20.6s | FAIL
+[ 84/100] Type: base_displace  | Final Err: 258.1 mm | Time: 18.7s | FAIL
+[ 85/100] Type: base_displace  | Final Err:  78.6 mm | Time: 19.2s | FAIL
+[ 86/100] Type: base_displace  | Final Err: 999.2 mm | Time: 40.0s | FAIL
+[ 87/100] Type: base_displace  | Final Err: 594.0 mm | Time: 40.0s | FAIL
+[ 88/100] Type: base_displace  | Final Err:  67.7 mm | Time: 17.9s | FAIL
+[ 89/100] Type: base_displace  | Final Err: 596.9 mm | Time: 40.0s | FAIL
+[ 90/100] Type: base_displace  | Final Err: 336.7 mm | Time: 16.1s | FAIL
+[ 91/100] Type: base_displace  | Final Err: 263.9 mm | Time: 40.0s | FAIL
+[ 92/100] Type: base_displace  | Final Err: 119.7 mm | Time: 16.9s | FAIL
+[ 93/100] Type: base_displace  | Final Err: 226.5 mm | Time: 20.3s | FAIL
+[ 94/100] Type: base_displace  | Final Err: 978.2 mm | Time: 40.0s | FAIL
+[ 95/100] Type: base_displace  | Final Err: 365.3 mm | Time: 40.0s | FAIL
+[ 96/100] Type: base_displace  | Final Err: 203.4 mm | Time: 20.1s | FAIL
+[ 97/100] Type: base_displace  | Final Err: 1192.7 mm | Time: 40.0s | FAIL
+[ 98/100] Type: base_displace  | Final Err: 891.0 mm | Time: 40.0s | FAIL
+[ 99/100] Type: base_displace  | Final Err: 1216.1 mm | Time: 40.0s | FAIL
+[100/100] Type: base_displace  | Final Err:  75.7 mm | Time: 17.8s | FAIL
+
+================================================================================
+                     ADVERSARIAL BENCHMARK RESULTS SUMMARY
+================================================================================
+Category           | Count | Task Succ (<=5cm) | Strict (<=1cm) | Median Err |  Mean Err
+--------------------------------------------------------------------------------
+shove              |    25 |            84.0% |         36.0% |     18.1 mm |    28.0 mm
+target_jump        |    25 |            96.0% |         12.0% |     18.0 mm |    39.1 mm
+payload            |    25 |             0.0% |          0.0% |   1023.7 mm |  1237.3 mm
+base_displace      |    25 |             4.0% |          0.0% |    242.1 mm |   416.9 mm
+--------------------------------------------------------------------------------
+OVERALL            |   100 |            46.0% |         12.0% |     71.7 mm |   430.3 mm
+================================================================================
+Total Wall-Clock Time: 376.4 seconds
+
+Results successfully saved to:
+  - CSV  : /home/rick/LAB_SESSION_COMP_0245_2026_PUBLIC/final/Machine-Learning-Final-Task/robotnik_arm_task/robotnik_dagger_v5/eval_v6/adversarial/adversarial_results.csv
+  - Plot : /home/rick/LAB_SESSION_COMP_0245_2026_PUBLIC/final/Machine-Learning-Final-Task/robotnik_arm_task/robotnik_dagger_v5/eval_v6/adversarial/adversarial_summary.png

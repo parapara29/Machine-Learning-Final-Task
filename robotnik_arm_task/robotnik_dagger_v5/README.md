@@ -169,6 +169,51 @@ python compare_with_linear.py --linear-log linear_regression_test.log --radius-m
 ```
 The logs of our linear runs are in `eval_v6/protocol_2.0-4.0/linear_regression_test.log` (2.0–4.0 m) and `eval_v6/linear_protocol/linear_regression_test.log` (0.9–3.5 m).
 
+### Adversarial robustness
+
+`test_adversarial_robustness.py` ports the linear model's `test_adversarial_robustness.py` (branch `shivansh/linear_regression`) to V6. The following are copied from it:
+- the 100 test cases (seed 42, 25 per disturbance): spawn x, y ∈ [−1.5, 1.5] m with any heading, target 2.2–3.8 m from the spawn, height 0.4–0.8 m;
+- the four disturbances:
+  - **shove:** a 30 N push on the gripper link for 250 ms, starting 0.5 s into the reach, in a random direction;
+  - **target jump:** at t = 2 s the target moves 0.6–0.9 m horizontally and ±0.1 m vertically;
+  - **payload:** a constant 0.5 kg · g downward force on the gripper link;
+  - **base displacement:** 0.2 s into the reach, the base is moved 0.4 m with `sim.ResetPose()`, which also resets the arm joints and the base heading to the start pose;
+- the stop rule: stop at 1 cm, after a 2 s stall (not before 1.5 s), or at 40000 steps;
+- the success criteria: final error ≤ 5 cm, strict ≤ 1 cm.
+
+Only the controller changes:
+- **Base goal:** V6 uses its own base goal pose (the expert's standoff pose, as in the comparison above) and recomputes it after a target jump.
+- **Navigation phase:** navigation completes on V6's observable navigation flag.
+- **Resuming navigation:** in the linear script the test harness tells the controller to drive again after a target jump, or when a base displacement leaves the base more than 0.2 m from its goal. For V6 the harness also clears the policy's latched phase at those moments, so the wheel network drives back.
+
+The simulator config must have `collision_enable` = 0: with collisions on, even the expert fails the task.
+
+| Disturbance (25 trials each) | Linear: success (≤ 5 cm) | Linear: ≤ 1 cm | Linear: median error | DAgger V6: success (≤ 5 cm) | DAgger V6: ≤ 1 cm | DAgger V6: median error |
+|---|---:|---:|---:|---:|---:|---:|
+| Shove, 30 N for 250 ms | **96.0 %** | **88.0 %** | **9.9 mm** | 84.0 % | 36.0 % | 18.1 mm |
+| Target jump, 0.6–0.9 m | 84.0 % | **76.0 %** | – | **96.0 %** | 12.0 % | 18.0 mm |
+| Payload, 0.5 kg | 0 % | 0 % | **168.0 mm** | 0 % | 0 % | 1023.7 mm |
+| Base displacement, 0.4 m | 0 % | 0 % | 820.8 mm | **4.0 %** | 0 % | **242.1 mm** |
+| All 100 | 45.0 % | 41.0 % | | 46.0 % | 12.0 % | 71.7 mm |
+
+![V6 under the four disturbances](eval_v6/adversarial/adversarial_summary.png)
+
+**Reading the results:**
+- **Shove:** both models recover from most shoves. The linear model ends closer, as on the undisturbed test.
+- **Target jump:** DAgger re-targets more often (24/25), because its wheel and arm networks act on the current target and goal at every step.
+- **Payload:** neither model can hold the load. 13 of the 25 V6 runs hit the 40 s cap, with the arm far from the target. Neither controller has an integral term, and V6 was never trained with a load on the gripper.
+  - The script calls `applyExternalForce` with `WORLD_FRAME` and `posObj=[0, 0, 0]`. PyBullet then applies the force at the world origin, not at the gripper, so the gripper link also receives a moment. Both models get the same disturbance.
+- **Base displacement:** V6 drives back to its goal after the kick but rarely completes the reach (11 runs hit the cap). The reset puts the arm back at its start pose and the heading back to the start heading. The base must then park again at close range, the regime where V6 already fails on the undisturbed test (see the failure modes below).
+
+Run (≈ 6 min with 12 workers):
+```bash
+python test_adversarial_robustness.py --workers 12   # --total-tests, --payload-mass, --shove-force, --displace-dist as in the original
+```
+Outputs in `eval_v6/adversarial/`:
+- `adversarial_results.csv`: one row per test, with the disturbance, start pose, target, final error, time, success flags and peak shove deflection;
+- `adversarial_summary.png`: success rates and final errors per disturbance;
+- `adversarial_test.log`: the console output of our run.
+
 ### Strengths and cost
 
 - **The linear model** is built by task-specific engineering: 40 hand-designed features, data filtering, DART noise injection and a hand-tuned parking rule. It is very cheap to train and run, and precise when it gets close, but all of its failures on the 2.0–4.0 m test come from the base navigation not finishing at the closest targets. All of this engineering has to be redesigned if the task or the expert changes.
@@ -363,6 +408,7 @@ bash run_v6_evaluation.sh   # -> eval_v6/linear_protocol/*/deploy_summary.csv, f
 | `run_v6_pipeline.sh` | the complete DAgger pipeline |
 | `run_v6_evaluation.sh`, `make_linear_protocol_cases.py`, `plot_v6_results.py` | evaluation and figures |
 | `compare_with_linear.py` | metrics and figures of the comparison with the linear-regression model (`figures/linear_vs_dagger_2to4*` for 2.0–4.0 m, `figures/linear_vs_dagger*` for 0.9–3.5 m) |
+| `test_adversarial_robustness.py` | the linear model's adversarial test (shove, target jump, payload, base displacement) run with V6 → `eval_v6/adversarial/` |
 | `run_robotnik_v6.py` | single-episode GUI runner |
 | `test_random_sampling.py` | unit tests for the target/spawn samplers (`python test_random_sampling.py`) |
 | `trained_model_dagger_v6/` | **final policy**; `trained_model_dagger_v6_r0/`, `_r1/` are the checkpoints of DAgger rounds 0 and 1 |

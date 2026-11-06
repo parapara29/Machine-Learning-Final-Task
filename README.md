@@ -77,6 +77,8 @@ Outputs, all in `robotnik_dagger_v5/`:
 
 The comparison with the linear-regression model (`compare_with_linear.py`) writes `figures/linear_vs_dagger_2to4.{pdf,png,json}`. Its commands are in the [DAgger README](robotnik_arm_task/robotnik_dagger_v5/README.md#comparison-with-the-linear-regression-model).
 
+The linear model's adversarial test (`test_adversarial_robustness.py`, run with the V6 policy, `python test_adversarial_robustness.py --workers 12`) writes `eval_v6/adversarial/adversarial_results.csv` (one row per test: disturbance, start pose, target, final error, success) and `eval_v6/adversarial/adversarial_summary.png`. Results are in the [DAgger README](robotnik_arm_task/robotnik_dagger_v5/README.md#adversarial-robustness).
+
 **4. Run the trained policy** in the GUI on a random target and spawn:
 ```bash
 cd robotnik_dagger_v5
@@ -97,6 +99,7 @@ Output: the PyBullet window, `SUCCESS` or `FAIL` with the final error in the ter
 | `robotnik_arm_task/collect_data.py` | the group's first collector (200 random targets, robot always starting from the default pose) | rewritten: random base start poses and arm start angles added, 2000 episodes, command-line options, one process per episode |
 | `robotnik_dagger_v5/robotnik_dagger_collect.py` | the simulation setup (`SimInterface`, `PinWrapper`, command loop) follows `robotnik_arm_task.py` | written from scratch: DAgger β-mixing of learner and expert, expert labels for every visited state, deployment/evaluation mode, random spawns, parallel workers, resume |
 | `robotnik_dagger_v5/make_linear_protocol_cases.py` | the random draws and their order are copied from `test_combined_random.py` (branch `shivansh/linear_regression`), so the test cases are identical | written from scratch around that |
+| `robotnik_dagger_v5/test_adversarial_robustness.py` | `test_adversarial_robustness.py` on branch `shivansh/linear_regression`: test cases, the four disturbances, stop rule, console output, CSV and figure copied | the linear-regression controller replaced by the V6 policy (its own base goal and navigation flag); the policy's latched phase cleared when the harness resumes navigation |
 | `dagger_common.py`, `v6_features.py`, `train_v6.py`, `run_robotnik_v6.py`, `plot_v6_results.py`, `compare_with_linear.py`, `benchmark_inference.py`, `test_random_sampling.py`, `run_v6_pipeline.sh`, `run_v6_evaluation.sh` (all in `robotnik_dagger_v5/`) | – | written from scratch |
 
 Libraries used: PyTorch (networks and training), NumPy, pandas, Matplotlib, tqdm, and PyBullet and Pinocchio through `simulation_and_control`. DAgger follows Ross, Gordon and Bagnell, "A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning", AISTATS 2011.

@@ -1,4 +1,7 @@
 /robotnik_arm_task/__pycache__/*
+__pycache__/
+*.pyc
 models/
 configs/
+!robotnik_arm_task/configs/
 data/
